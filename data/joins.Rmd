@@ -1,0 +1,47 @@
+---
+title: "Joining data"
+author: "Marc A.T. Teunis"
+date: "9-12-2020"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Intro
+
+ - Joining operations are frequenly used to increase or reduce the amount of data you have
+ - To join tables you need a shared variable called a `key`
+ - You can have multiple `keys` to join on 
+ - There are anumber of `join` verbs
+ - We start with the `join` verbs in dplyr
+ - We end with join operations using SQL
+ - We sometimes which to reshape the format of the data
+ - In previous lessons we learned how to do this with the `{tidyr}`package. The functions that we need to recall are: `pivot_longer()`, `pivot_wider()`  
+
+## Reshaping your data
+In order to get your data in the right shape for joining we sometimes need to reshape it. Usually, having or transforming your data in the `tidy` shape is a good practice if you want to perform subsequent joins.
+
+## Remember `tidy` data
+
+ 1. All variables in their own column
+ 1. All observations in their own row
+ 1. Every cell contains a single observations
+ 
+Below are two illustrations on how to transfer wide to long and vice versa. These examples can be used to understand the workings of the functions `pivot_longer()` and `pivot_wider()`
+```{r}
+#devtools::install_github("chrk623/dataAnim")
+
+data(datoy_wide)
+gather_anim(key = "Subject", value = "Score", col = c("English", "Maths"), data = datoy_wide)
+
+spread_anim(key = "Subject", value = "Score", data = datoy_long)
+
+```
+
+## <mark> EXERCISE 1 </mark> {-} 
+ 
+ a) Load the flu ("./data/flu_data.csv) and the dengue ("./data/dengue_data.csv) into two separate tables in R
+ 
+ b) Check if they are in the right shape 

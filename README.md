@@ -65,4 +65,4 @@ o opzetten eigen Rmarkdown-homepage met informatie over ontwikkeling van student
     SQL: toepassen
     o op data projecticum (of indien ongeschikt zelf in te brengen casus) en online presenteren op Rmarkdown-homepage
 
-this is the link 
+

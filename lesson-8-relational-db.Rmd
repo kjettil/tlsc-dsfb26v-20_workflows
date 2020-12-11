@@ -1,5 +1,5 @@
 ---
-title: "Joining data"
+title: "Working with relational data"
 author: "Marc A.T. Teunis"
 date: "9-12-2020"
 output: github_document
@@ -9,8 +9,15 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Intro
+## Resources and references
+Part of the materials in this chapter were reproduced in a an adapted form from [@r4ds]. DBeaver tutorials from youtube (see \@ref(resources)). Tutorials on using the package `{RPostgreSQL}` can also be found in \@ref(resources)
 
+
+## Intro
+Relational data is 
+
+
+## Joining data
  - Joining operations are frequenly used to increase or reduce the amount of data you have
  - To join tables you need a shared variable called a `key`
  - You can have multiple `keys` to join on 
@@ -19,6 +26,8 @@ knitr::opts_chunk$set(echo = TRUE)
  - We end with join operations using SQL
  - We sometimes which to reshape the format of the data
  - In previous lessons we learned how to do this with the `{tidyr}`package. The functions that we need to recall are: `pivot_longer()`, `pivot_wider()`  
+ - Understanding how joins work is essential for working with data stored in relational databases
+
 
 ## Reshaping your data
 In order to get your data in the right shape for joining we sometimes need to reshape it. Usually, having or transforming your data in the `tidy` shape is a good practice if you want to perform subsequent joins.
@@ -40,8 +49,49 @@ spread_anim(key = "Subject", value = "Score", data = datoy_long)
 
 ```
 
+## Relational data
+
+
+
+
+## Creating a PostgreSQL database in DBeaver
+In order 
+
+
+
+
+## Using R to work with PostgreSQL databases
+On the server th
+
+
+
 ## <mark> EXERCISE 1 </mark> {-} 
  
- a) Load the flu ("./data/flu_data.csv) and the dengue ("./data/dengue_data.csv) into two separate tables in R
+**TIPS**
+
+ - Be aware, the flu and dengue data contains metadata that should be stripped from the data on load.
+ - Think of a way to create valid country names that fit with the gapminder data.
+ - Use `readr::write_csv()` and `readr::write_rds()` to write cleaned tables to disk
  
- b) Check if they are in the right shape 
+ a) Load the flu ("./data/flu_data.csv), the dengue ("./data/dengue_data.csv) and the gapminder (`{dslabs}` package) into three separate dataframes in R
+ 
+ b) Check if they are in the right shape. Is the data in the 'tidy' format? If not change the format to 'tidy' 
+ 
+ c) Change the `country` and `date` variables of the three tables so that they coincide in terms of data type, class and values 
+ 
+ d) Store the three tables as seperate (so six in total) .csv and .rds files.
+
+
+
+    In R, maak van de wide tables een long/stacked formaat met {dplyr} (pivot longer()). Sla de nieuwe tabellen op als rds (R binary)
+    In Dbeaver creeer een nieuwe lege PostgreSQL database "workflowsdb"
+    Met behulp van R script ({RPostgreSQL} insert de twee tabellen in de "workflowsdb" database
+    Inspecteer de content van de tabellen met SQL (in DBeaver) en in R met behulp van {dplyr} en {dbplyr}
+    Laadt de gapminder data en pas de data in R zo aan dat een join met de dengue en flue data in de databse mogelijk is (bijvoorbeeld landnamen hetzelfde maken)
+    Sla deze clean gapminder data op in de "workflowsdb" database
+    Doe een aantal joins en inspecties op de data met SQL (bijvoorbeeld in DBeaver of met dplyr.
+    Genereer een grote tabel joined en exporteer die van de database naar de R sessie
+    Maak een aantal visualisatie op basis van de joined data met ggplot2 etc...
+
+
+

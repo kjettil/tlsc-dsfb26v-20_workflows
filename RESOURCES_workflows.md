@@ -48,4 +48,11 @@ o op data projecticum (of indien ongeschikt zelf in te brengen casus) en online 
 [database samples](https://wiki.postgresql.org/wiki/Sample_Databases)
 
 
+voor refrences:
+https://www.r-bloggers.com/2013/07/r-and-postgresql-using-rpostgresql-and-sqldf/
+https://www.r-bloggers.com/2016/02/using-postgresql-in-r-a-quick-how-to/
+https://www.datacareer.de/blog/connect-to-postgresql-with-r-a-step-by-step-example/
+https://db.rstudio.com/dplyr/
+https://dbplyr.tidyverse.org/
 
+=

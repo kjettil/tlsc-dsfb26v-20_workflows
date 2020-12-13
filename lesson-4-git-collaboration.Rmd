@@ -1,0 +1,30 @@
+---
+title: "Lesson 4 - Git collaboration"
+author: "Marc A.T. Teunis"
+date: "13-12-2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Tools for collaboration in Github
+
+### Issues
+
+ - Creating issues
+ - ass
+
+### Kanban automation
+
+### Branches
+
+### Pull requests
+
+
+
+### Github actions
+
+
+

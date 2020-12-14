@@ -1,0 +1,195 @@
+---
+title: "`r paste('Covid Cases and deaths for', params$month, 'in', params$geo_id)`"
+author: "Marc A.T. Teunis"
+date: "`r Sys.time()`"
+output:
+  html_document: default
+  powerpoint_presentation: default
+  word_document: default
+  pdf_document: default
+params:
+  geo_id: NL BE
+  month: February March April May June July August September October November December
+  year: 2020
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  error = FALSE
+  
+  )
+```
+
+```{r, include=FALSE}
+## Packages
+library(utils)
+library(tidyverse)
+library(tools)
+library(glue)
+library(readxl) 
+library(httr) 
+library(zoo)
+library(blscrapeR)
+```
+
+## Data
+```{r, echo=TRUE}
+## Read data from public url to csv file
+data <- readr::read_csv(
+  "https://opendata.ecdc.europa.eu/covid19/casedistribution/csv/data.csv", 
+  na = c("", " "))
+data
+```
+
+## Data cleaning
+```{r}
+
+## Filter for `r params$month` and `r params$geo_id`
+## create a conversion table to go from month name to month integer
+convert_months <- tibble(
+  month_name = c(
+    "january",
+    "february",
+    "march",
+    "april",
+    "may",
+    "june",
+    "july",
+    "august",
+    "september",
+    "october",
+    "november",
+    "december"),
+  month_number = c(1:12))
+
+  m_names <- str_split(tolower(params$month), pattern = " ") %>% unlist()
+
+
+  month_id <- convert_months %>%
+    dplyr::filter(
+      month_name %in% m_names) %>% 
+    dplyr::select(month_number)
+  
+  id <- month_id$month_number
+
+geo_ids <- str_split(string = params$geo_id, pattern = " ") %>% unlist()
+
+data_filter <- data %>%
+  dplyr::filter(
+    month %in% id,
+     geoId %in% geo_ids
+)
+  
+char_col <- map_lgl(
+  .x = data_filter,
+  .f = is.numeric 
+)
+
+#map(
+#  .x = data_filter[, !char_col],
+#  .f = unique
+#)
+
+country_names <- data_filter$countriesAndTerritories %>% unique() %>%
+  paste(collapse = ", ")
+
+Caps <- function(x) {
+s <- strsplit(x, " ")[[1]]
+paste(toupper(substring(s, 1,1)), substring(s, 2),
+sep="", collapse=" ")
+}
+
+range <- data_filter$month %>% unique() %>% enframe() %>%
+  arrange(value)
+
+month_df <- left_join(range, convert_months, by = c("value" = "month_number")) %>%
+  dplyr::mutate(month_name = firstupper(month_name))
+
+min_month <- month_df %>%
+  dplyr::filter(value == min(month_df$value))
+
+countries_vec <- str_split(
+  country_names, 
+  pattern = ",", 
+  simplify = FALSE
+  ) %>%
+  unlist() %>%
+  trimws() %>%
+  blscrapeR::firstupper()  
+  
+
+max_month <- month_df %>%
+  dplyr::filter(value == max(month_df$value))
+
+cap_cases <- paste(
+  "COVID-19 positive cases from", 
+  min_month$month_name, "to", max_month$month_name,
+  "for", glue_collapse(countries_vec, ", ", last = " and ")
+)
+
+cap_deaths <- paste(
+  "COVID-19 related deaths from", 
+  min_month$month_name, "to", max_month$month_name,
+  "for", glue_collapse(countries_vec, ", ", last = " and ")
+)
+
+
+data_filter  
+```
+
+## Cases
+```{r, fig.cap=cap_cases}
+set.seed(123)
+data_filter <- data_filter %>% 
+  mutate(date_time = lubridate::dmy(dateRep))  %>%  # Moving average
+  mutate(cases_ma = zoo::rollmean(cases, k = 7, fill = NA))
+
+
+#names(data_filter)
+plot_cases <- data_filter %>%
+  na.omit() %>%
+  ggplot(aes(x = date_time, y = cases_ma)) +
+  geom_point(aes(colour = geoId)) +
+  geom_line(aes(group = geoId, colour = geoId)) +
+  xlab("Date") +
+  ylab("COVID-19 positive tested cases") +
+  theme_bw()
+
+plot_cases
+
+
+
+```
+
+## Deaths
+```{r, fig.cap=cap_deaths}
+set.seed(123)
+
+data_filter <- data_filter %>% 
+  mutate(date_time = lubridate::dmy(dateRep)) %>%  # Moving average
+  mutate(deaths_ma = zoo::rollmean(deaths, k = 7, fill = NA))
+
+#names(data_filter)
+plot_deaths <- data_filter %>%
+  ggplot(aes(x = date_time, y = deaths_ma)) +
+  geom_point(aes(colour = geoId)) +
+  geom_line(aes(group = geoId, colour = geoId))  +
+  xlab("Date") +
+  ylab("COVID-19 related deaths") +
+  theme_bw()
+
+plot_deaths
+
+```
+
+## Interactive plot
+```{r}
+
+```
+
+
+
+

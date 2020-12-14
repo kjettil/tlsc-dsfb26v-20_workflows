@@ -9,22 +9,113 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Tools for collaboration in Github
+## Lesson content 
 
-### Issues
+In this lesson you will get to know many useful tools for collaboration in Github. You are required to apply them in your `Data Science Projecticum`
+
+## Issues
 
  - Creating issues
- - ass
+ - Assigning issues
+ - Fixing an issue [`fixes #<issue_number>`]
 
-### Kanban automation
+## Kanban & automation
 
-### Branches
+ - Assigning tasks
+ - Kanban columns
+ - Labels
+ - Milestones
+ - Projects
+ 
+## Branches
 
-### Pull requests
+ - Creating branches
+ - Assigning an issue to a branch
+
+## Pull requests
+
+ - Creating a pull request
+ - Merging a branch into `main`
+ - Deleting a stale branch
+
+## Github actions
+
+ - Deploying an `R CMD CHECK` build workflow
+ - Other actions
+ 
+## Topics
+
+Below you will find a short description for each Github collaboration topic. Each topic has a descriptive demo and one or more exercises.
+
+## Issues
+
+Github issues are the core for collaboration with people within and outside your code project. Issues can be used for external people to report a bug, a feature request or a question regarding functionality or implementation. People using for example your package can ask questions or report problems in the form of an issue. Below, an example is shown for the `{dplyr}` R-package, which has a huge user community.
+
+```{r}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "dplyr_issues.png"
+  )        
+)
+```
+
+Posting an issue when you encouter an error or bug helps developers create robuster code and is the core driving force for developing new features or resolving problems in open source software. Opening issues is an easy way to start contributing to the open source community.
+
+## **<mark> EXERCISE 1 <\mark>** {-}
+
+a) Review the first bug you can find on this page: 
+
+https://github.com/tidyverse/dplyr/issues
+
+Read the description and the propsed solutions if any. Describe in your own words what the bug relates to. Discuss the bug with a fellow student.
+
+b) Review issue  `#5640` in the `{dplyr}` issues. Why was this issue closed? Was the issue resolved for the user who reported it?
+
+## Creating issues in your project repo
+
+When collaborating together on 
 
 
 
-### Github actions
+
+## Assigning issues
+
+
+## Fixing an issue [`fixes #<issue_number>`]
 
 
 
+
+## Kanban & automation
+
+## Assigning tasks
+
+## Kanban columns
+
+## Labels
+
+## Milestones
+
+## Projects
+ 
+## Branches
+
+## Creating branches
+
+## Assigning an issue to a branch
+
+## Pull requests
+
+## Creating a pull request
+
+## Merging a branch into `main`
+
+## Deleting a stale branch
+
+## Github actions
+
+## Deploying an `R CMD CHECK` build workflow
+
+## Other actions
+ 

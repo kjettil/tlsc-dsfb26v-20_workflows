@@ -1,17 +1,18 @@
 ---
-title: "`r paste('Covid Cases and deaths for', params$month, 'in', params$geo_id)`"
-author: "Marc A.T. Teunis"
-date: "`r Sys.time()`"
-output:
-  html_document: default
-  powerpoint_presentation: default
-  word_document: default
-  pdf_document: default
 params:
   geo_id: NL BE
   month: February March April May June July August September October November December
   year: 2020
 ---
+# Lesson 5 - Part 2 - Advanced RMarkdown {#rmarkdownadvanced}
+
+## Lesson Contents
+
+ - Advanced Markdown syntax (images, links, references, cross-references)
+ - Bibtex
+ - 
+
+## Introduction
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
@@ -34,6 +35,7 @@ library(httr)
 library(zoo)
 library(blscrapeR)
 ```
+
 
 ## Data
 ```{r, echo=TRUE}

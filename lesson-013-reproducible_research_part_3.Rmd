@@ -1,0 +1,301 @@
+# Lesson 1 - Part 3 - Tools for Reproducible (Open) Science {#repoducibleresearch3}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  error = FALSE
+  , 
+  fig.width = 6,
+  fig.height = 4
+)
+
+image_dir <- here::here(
+  "images"
+)
+
+
+## packages
+library(tidyverse)
+library(ggExtra)
+
+```
+
+## Resources
+
+Get these slides at:
+
+ - https://github.com/uashogeschoolutrecht/work_flows" (source code)
+ - https://uashogeschoolutrecht.github.io/ (slides only)
+
+## Tools to enable Open Science (1/3)
+
+1 - Data Science programming languages
+
+```{r, dpi = 80}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "data_science_languages",
+    "InkedDia1_LI.jpg"
+  )
+)
+```
+
+
+## Tools to enable Open Science (2/3)
+
+2 - Data Science infrastructure & software
+
+```{r, dpi = 80}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "data_science_languages",
+    "Dia2.jpg"
+  )
+)
+```
+
+## Tools to enable Open Science (3/3)
+
+3 - Data Science learning tools
+
+```{r, dpi = 80}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "data_science_languages",
+    "Dia3.jpg"
+  )
+)
+```
+
+
+## Exploring the tools to do (Open) Data Science at HU
+
+ >- A little introduction to data formats and shapes
+ >- Introducing the tools; Github + RStudio + HU ResearchDRive
+ >- Introducing RStudio and the `{tidyverse}`
+ >- Getting materials from Github **LIVE DEMO**
+ >- Getting access to HU ResearchDrive **LIVE DEMO**
+ >- (Getting access to HU ResearchDrive from within RStudio **LIVE DEMO**)
+
+## Data-formats - Non-Proprietary {.build}
+
+File format source code is open and maintained by open source community or core development team.
+
+  >- `.netCDF` (Geo, proteomics, array-oriented scientific data)  
+  >- `.xml` / `.mzXML` (Markup language, human and machine readable, metadata + data together)
+  >- `.txt` / `.csv` (flat text file, usually tab, comma or semi colon (`;`) seperated) 
+  >- `.json` (text format that is completely language independent)  
+
+_Will remain readable, even if format becomes obsolete_
+
+**When storing a curated dataset for sharing or archiving it is always better to choose a non-proprietary format**
+
+## Data shape
+Look at these two tables, what do you notice?
+```{r}
+table2 %>% head(3)
+table3 %>% head(3)
+```
+
+<p style="font-size:14px">Both tables are build-in datasets from the {tidyr} package belonging to the [{tidyverse}](https://www.tidyverse.org/) suite of Data Science R packages</p> 
+
+## The `{tidyverse}`
+
+ - Suite of R-packages for Data Science and functional programming
+ - https://www.tidyverse.org/
+ - Connect to many other tools in R
+ 
+```{r, dpi = 90}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "tidyverse.png"
+  )
+)
+```
+<p style="font-size:14px">From: [Storybench](https://www.storybench.org/getting-started-with-tidyverse-in-r/)</p>  
+
+## Tidy data
+```{r}
+knitr::include_graphics(
+  file.path(image_dir, "tidy-1.png")
+)
+```
+
+ 1. Each variable goes in its own column
+ 1. Each observation goes in its own row
+ 1. Each cell contains only one value
+
+<p style="font-size:14px">From: ["R for Data Science", Grolemund and Wickham](https://r4ds.had.co.nz/)</p> 
+
+## Are these dataframes tidy? 
+```{r}
+map(
+  .x = list(
+    table5,
+    table4a),
+  .f = head, 3)
+```
+_What steps would we need to tidy them?_ 
+
+## `pivot_longer()`
+```{r, echo=TRUE}
+table4a %>% 
+  pivot_longer(
+    cols = `1999`:`2000`, 
+    names_to = "year",
+    values_to = "cases"
+  ) -> table4a_tidy
+table4a_tidy
+```
+
+## `separate()`
+```{r, echo=TRUE}
+table5 %>%
+  separate(
+    col = rate,
+    into = c("cases", "population"),
+    remove = TRUE
+  ) -> table5_tidy
+table5_tidy
+```
+
+## The git/Github.com workflow; segregating data from compute infrastructure from code
+
+```{r, dpi = 70}
+knitr::include_graphics(
+  file.path(image_dir,
+            "git_workflow.jpg")
+)
+```
+
+## Just for kicks, a graph
+```{r, fig.width=8, fig.height=5}
+
+shipman_murders <- read_csv(
+  here::here(
+    "data",
+    "D030",
+    "00-1-shipman-confirmed-victims-x.csv"
+    )
+  ) %>%
+  janitor::clean_names()
+
+plot <- shipman_murders %>%
+ggplot(aes(
+  x = fractional_death_year,
+  y = age,
+  colour = reorder(gender2, gender)
+  )) +      
+  geom_point(size = 2) +
+  labs(x = "Year", y = "Age of victim") +
+  scale_x_continuous(breaks = seq(1975, 1995, 5),
+    limits = c(1974, 1998)) +
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(39, 95)) +
+  scale_size_continuous(name = "Size", guide = FALSE) +
+  scale_colour_brewer(palette = "Set1")  + 
+  theme_bw() +
+  theme(
+    legend.position = c(0.125, 1.12),
+    legend.background = element_rect(colour = "black"),
+    legend.title = element_blank()) +
+  ggtitle("Shipman murders")
+
+  ggMarginal(plot, type="histogram")
+
+```
+<p style="font-size:14px">[Spiegelhalter, 2020, "The Art of Statistics"](https://github.com/dspiegel29/ArtofStatistics)</p> 
+
+## Getting the code for all webinars into your RStudio environment; introducing the jargon {.build}
+
+ >- **Get an Rstudio installation or account (via me)**
+ >- **Clone the repo to your RStudio Env.**
+ >- **Install any code dependencies in your Env.** 
+ >- **Run the code, and adapt if you want**
+ >- *Work on the code*
+ >- *Create a commit*
+ >- *Create a pull request*
+ 
+**LIVE DEMO** 
+
+## Github user-account
+
+ >- https://github.com
+ >- You can create personal and private repos
+ >- Adding a README.md to each repo is a good idea
+ >- The HU Github Data Science repos: https://github.com/uashogeschoolutrecht  
+ 
+## RStudio
+
+>- Integrated Development for R (and Python, Stan, C++, D3, SQL)
+>- Favorite IDE for using R
+>- Many integrated productivity tools (auto-completion, syntax highlighting, code-formatting, git-integrations, building tools)
+>- Send me an email if you want to use R/RStudio yourself!
+
+## Getting Github-repo content in RStudio {.build}
+
+ >- Copied url to Github repo on clipboard
+ >- Open new RStudio Project
+ >- Choose 'Version Control' Option
+ >- Paste url from clipboard in url field
+ >- Let the clone finish
+ >- Start using the code!
+ >- My code will work from a cloned github repo in an RStudio Project because of the [`{here}` package!](https://github.com/jennybc/here_here) 
+
+_Stop using `setwd()`!!!_
+
+ **LIVE DEMO**
+
+## HU ResearchDrive
+
+ >- Service brought to HU by SURF
+ >- Application: 
+https://bibliotheek.hu.nl/onderzoekers/datamanagement/
+ >- Access though webinterfacte and other software
+ >- SFTP software [CyberDuck](https://cyberduck.io/) (you need admin rights)
+ >- Rclone (commandline interface)
+
+## Which tool for what?
+```{r, dpi = 70}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "Presentatie1",
+    "Dia26.JPG"
+  )
+)
+```
+
+## Access HU-ResearchDrive from RStudio
+To make this work you will need a WebDav token from HU ResearchDrive 
+
+`Profile -> Security -> Create App`
+
+```{r, dpi = 80}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "Presentatie1",
+    "Dia17.JPG"
+  )
+)
+```
+**Live Demo**
+
+
+## Thank you for your attention!
+
+```{r, dpi = 150}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "Pepper.png")
+)
+```
+
+

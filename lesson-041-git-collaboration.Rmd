@@ -1,9 +1,4 @@
----
-title: "Lesson 4 - Git collaboration"
-author: "Marc A.T. Teunis"
-date: "13-12-2020"
-output: html_document
----
+# Lesson 4 - Git collaboration {#gitcollaboration}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -62,7 +57,7 @@ knitr::include_graphics(
 
 Posting an issue when you encouter an error or bug helps developers create robuster code and is the core driving force for developing new features or resolving problems in open source software. Opening issues is an easy way to start contributing to the open source community.
 
-## **<mark> EXERCISE 1 <\mark>** {-}
+## **<mark> EXERCISE 1 </mark>** {-}
 
 a) Review the first bug you can find on this page: 
 
@@ -74,12 +69,10 @@ b) Review issue  `#5640` in the `{dplyr}` issues. Why was this issue closed? Was
 
 ## Creating issues in your project repo
 
-When collaborating together on 
+When collaborating together on project repository, you can create issues to stay on track for the different actions that need to be undertaken. Issues can be related to adding functionality (code) to the project, but also to report a bug or to request the addition or improvement of documentation. You can create an issue by opening the `Issues` tab and creating a new issue by clicking the green `New issue` button. A form will open where you can add a title and further remarks to document your issue. The formatting of the `Leave a comment` field can be entered using Markdown formatting. When creating an issue, it is important to assign (preferable one) person to the issue. You can also choose a label, and if needed you can customize the label categories. When a Kanban/Project is also linked to the organization or repo, you can also add the issue to a Kanban board. More about Kanban here \@ref(kanban-and-automation). When creating a new issue, you can also add a `Milestone`. We will discuss this later \@ref(milestones) 
 
 
 
-
-## Assigning issues
 
 
 ## Fixing an issue [`fixes #<issue_number>`]
@@ -87,7 +80,7 @@ When collaborating together on
 
 
 
-## Kanban & automation
+## Kanban and automation
 
 ## Assigning tasks
 

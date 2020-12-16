@@ -1,5 +1,15 @@
 # Resources {#resources}
 
+## Github / SCRUM
+
+https://github.com/features/project-management/
+https://github.com/jvandemo/github-scrum-workflow
+https://unito.io/blog/github-projects-agile/
+https://dev.to/ben/for-those-who-make-use-of-github-projectswhats-your-process--5f7c [practices]
+https://www.youtube.com/watch?v=idZyqNIrt84 [github automation and projects]
+https://www.youtube.com/watch?v=YxKhb3fxtsU [github automation and projects]
+
+
 ## Credits
 
 For this course materials have been adapted from:

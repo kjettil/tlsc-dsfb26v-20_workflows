@@ -1,0 +1,408 @@
+# Lesson 1 - Part 1 - Reproducible (Open) Science {#reproducibleresearch1}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      error = FALSE,
+                      message = FALSE)
+
+image_dir <- here::here(
+  "images"
+)
+
+## packages
+library(tidyverse)
+library(nlme)
+```
+
+## Lesson Contents
+
+ - Part 1; Introducing Reproducible (Open) Science (June 11th, 2020)
+ - Part 2; Managing your project files and data with 'Guerilla Analytics' (June 23rd, 2020)
+ - Part 3; Reproducible (Open) Science - Tools (July 6th, 2020) 
+
+## Part 1; Introducing Reproducible (Open) Science
+
+ 1. When things go wrong 
+ 1. Why Reproducible (Open) Science?
+ 1. The need for learning programming
+ 1. An example of Reproducible (Open) Science
+ 
+$Reproducible\ (Open)\ Science =$ 
+$Reproducible\ Research + Open\ Science$
+
+## Is (hydroxy)chloroquine really an option for treating COVID-19?
+As you probably know, hydroxychloroquine was repeatedly touted as a promising cure for COVID-19 by US President Donald Trump 
+
+```{r, dpi = 70}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "trump_chloroquine.png"
+  )
+)
+```
+
+<p style="font-size:14px">https://www.washingtonpost.com/politics/2020/04/07/trumps-promotion-hydroxychloroquine-is-almost-certainly-about-politics-not-profits/</p>
+
+## But how are we really doing with (hydroxy)chloroquine as a treatment for COVID-19?
+
+```{r}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "lancet_covid.png"
+  )
+)
+
+```
+
+<p style="font-size:14px">https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31180-6/fulltext</p>
+
+## What was the reason for retracting this paper?
+
+<p style="font-size:18px">_"Our independent peer reviewers informed us that Surgisphere would not transfer the full dataset, client contracts, and the full ISO audit report to their servers for analysis as such transfer would violate client agreements and confidentiality requirements"_</p>
+
+ - Company Surgisphere ('data owner') did not share raw data
+ - At time of publication (raw) data and analysis (code) was not included in the manuscript
+ - The authors initiated the retract
+
+<p style="font-size:14px">https://www.sciencemag.org/news/2020/06/two-elite-medical-journals-retract-coronavirus-papers-over-data-integrity-questions</p>
+
+## Why is this a problem?
+
+ >- Scientific conclusions get picked up by the media, retracting statements is difficult
+ >- The credibility of the Journal, the researchers and the affiliated institutions are at stake (people got sacked over this!)
+ >- Clinical studies to hydroxy(choloroquine) were halted because of this paper 
+ >- The credibility of the company Surgisphere is at stake (they should have prevented this...)
+ >- The credibility of Science as a whole is at stake ('in the eye of the beholder')
+
+## The Lancet does not adhere to Reproducible (Open) Science {.build}
+
+Would the Lancet have adopted the Reproducible (Open) Science framework:
+
+ >- There would have been no publication, so no retraction necessary
+ >- The manuscript of this paper would not even have made it through the first check round
+ >- All data, code, methods and conclusions would have been submitted 
+ >- This would have enabled a complete and thorough peer-review process that includes replication of (part of) the data analysis of the study
+ >- Focus should be on the data and methods, not on the academic narratives and results ...
+ >- In physics and bioinformatics this is already common practice 
+
+## Data, methods and logic {.build}
+
+*[Brown, Kaiser & Allison, PNAS, 2018](https://doi.org/10.1073/pnas.1708279115)*
+
+"...in science, three things matter:
+
+ >1. the data, 
+ >1. the methods used to collect the data [...], and 
+ >1. the logic connecting the data and methods to conclusions,
+
+everything else is a distraction."
+
+## `Gollums` lurking about {.build}
+
+```{r, dpi = 80}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "gollum_climbing.jpg"
+  )
+)
+```
+
+ "In one case, a group accidentally used reverse-coded variables, making their conclusions the opposite of what the data supported."
+
+ "In another case, authors received an incomplete dataset because entire categories of data were missed; when corrected, the qualitative conclusions did not change, but the quantitative conclusions changed by a factor of >7"
+
+ <p style="font-size:14px">[Brown, Kaiser & Allison, 2018; PNAS](https://doi.org/10.1073/pnas.1708279115)</p>
+
+## Why we need Reproducible (Open) Science?
+
+ >- To assess validity of science and methods we need access to data, methods and conclusions
+ >- To learn from choices other researchers made
+ >- To learn from omissions, mistakes or errors
+ >- To prevent publication bias (also negative results will be available in reproducible research)
+ >- To be able to re-use and/or synthesize data (from many and diverse sources)
+ >- To have access to it all!
+ 
+<p style="font-size:14px">[Nature Collection on this topic](https://www.nature.com/collections/prbfkwmwvz)</p>
+ 
+## The _GUI problem_
+
+How would you 'describe' the steps of an analysis or creation of a graph when you use GUI* based software? 
+
+_"You can only do this using code, so it is (basically) impossible in a GUI"_**
+
+```{r, dpi = 80}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "messy_steps.jpg"
+  )
+)
+```
+
+<p style="font-size:14px">*[Graphical User Interface (GUI)...is a form of user interface that allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation, instead of text-based user interfaces, typed command labels or text navigation...](https://en.wikipedia.org/wiki/Graphical_user_interface)</p>
+
+<p style="font-size:14px">**The file "./Rmd/steps_to_graph_from_excel_file.html" shows you how to do this using the programming language R. In webinar part 3, we will revisit this example.</p>
+
+## Programming is essential for Reproducible (Open) Science {.build}
+
+ >- Only programming an analysis (or creation of a graph) records every step
+ >- The script(s) function as a (data) analysis journal 
+ >- Code is the logic that connects the data and methods to conclusions 
+ >- Learning to use a programming language takes time but pays of at the long run (for all of science)
+
+**(Literate) programming is a way to connect narratives to data, methods and results**
+
+```{r}
+knitr::include_graphics(file.path(image_dir,"rmd_printscr.png"))
+```
+
+## To  replicate a scientific study we need at least:
+
+ > - Scientific context, research questions and state of the art [<mark>P<mark/>]
+ > - (Experimental) model or characteristics of population or matter studied [<mark>P</mark>]
+ > - Data that was generated and corresponding meta data [<mark>D</mark>, _C_]
+ > - **Exact** (experimental) design of the study [<mark>P</mark>, _D_, <mark>C</mark>]
+ > - Exploratory data analysis of the data [_P_, <mark>C</mark>]
+ > - **Exact** methods that were used to conduct any formal inference [_P_, <mark>C</mark>]
+ > - Model diagnostics [_C_]
+ > - Interpretations of the (statistical) model results/model fitting process [_P_, _C_]
+ > - Conclusions and academic scoping of the results [<mark>P</mark>, _C_]
+ > - **Access to all of the above** [<mark>OAcc, OSrc</mark>]
+
+<p style="font-size:14px">$P = Publication$, $D = Data$, $C = Code$, $OAcc = Open\ Access$, $OSrc = Open\ Source$ </p> 
+
+## A short example of Reproducible (Open) Science
+
+Assume we have the following question:
+"Which of 4 types of chairs takes the least effort to arise from when seated in?"
+We have the following setup:
+
+ - 4 different types of chairs
+ - 9 different subjects (probably somewhat aged)
+ - Each subject is required to provide a score (from 6 to 20, 6 being very lightly strenuous, 20 being extremely strenuous) when arising from each of the 4 chairs. There is some 'wash-out' time in between the trials. The chair order is randomised.
+
+To analyze this experiment statistically, the model would need to include: the rating score as the **measured (or dependent) variable**, the type of chair as the **experimental factor** and the subject as the **blocking factor**
+
+## Mixed effects models
+
+A typical analysis method for this type of randomized block design is a so-called 'multi-level' or also called 'mixed-effects' or 'hierarchical' models. An analysis method much used in clinical or biological scientific practice. 
+ 
+You could also use one-way ANOVA but I will illustrate why this is not a good idea 
+
+## What do we minimally need, to replicate the science of this experiment? {.build}
+
+I will show:
+
+ >- the data 
+ >- an exploratory graph 
+ >- a statistical model 
+ >- the statistical model results
+ >- a model diagnostic
+ >- some conclusions 
+ 
+In the next few slides, I will hopefully convince you of the power of (literate) programming to communicate such an analysis. 
+
+<p style="font-size:14px">[Example reproduced from: Pinheiro and Bates, 2000, _Mixed-Effects Models in S and S-PLUS_, Springer, New York.](https://cran.r-project.org/web/packages/nlme/index.html)</p>
+ 
+## The data of the experiment
+
+<p style="font-size:14px">[Wretenberg, Arborelius & Lindberg, 1993](https://doi.org/10.1080/00140139308967910)</p>
+
+
+```{r, echo=TRUE}
+library(nlme)
+ergoStool %>% as_tibble()
+```
+
+## An exploratory graph
+```{r}
+set.seed(123)
+plot_ergo <- ergoStool %>%
+  ggplot(aes(x = reorder(Type, effort), y = effort)) + 
+  geom_boxplot(colour = "darkgreen", outlier.shape = NA) + 
+  geom_jitter(aes(colour = reorder(Subject, -effort)), 
+              width = 0.2, size = 3) +
+  scale_colour_manual(values = c("red","blue", "green", "darkblue", "darkgreen", "purple", "grey", "black", "darkgrey")) +
+  ylab("Effort (Borg scale score)") +
+  xlab("Chair type") + 
+  guides(colour=guide_legend(title="Subject id")) +
+  theme_bw()
+plot_ergo
+```
+
+## Mind the variability per subject, what do you see?
+
+ - Can you say something about within-subject variability (note 'Minster Blue')?
+ - Can you say something about between-subject variability (note 'Mister Green', vs 'Mister Black')?
+ - Which chair type takes, on average the biggest effort to arise from?
+ 
+```{r, fig.width=5, fig.height=3}
+plot_ergo
+```
+
+## The statistical questions
+
+ 1. Which chair type takes, on average the biggest effort to arise from? (ANOVA / MEM, fixed effects)
+ - Do individual (within subject) differences play a role in appointing a average score to a chair type? (MEM, random effects)
+ - Does variability between subjects play a role in determining the 'best' chair type (ANOVA / MEM, confidence intervals)
+
+## The statistical model 
+Statistical models (in R) can be specified by a `model formula`. The left side of the formula is the dependent variable, the right side are the 'predictors'. Here we include a `fixed` and a `random` term to the model (as is common for mixed-effects models)
+
+```{r, echo=TRUE, eval=FALSE}
+library(nlme)
+```
+```{r, echo=TRUE}
+ergo_model <- lme(
+  data = ergoStool, # the data to be used for the model
+  fixed = effort ~ Type, # the dependent and fixed effects variables
+  random = ~1 | Subject # random intercepts for Subject variable
+)
+```
+
+<p style="font-size:18px">The `lme()` function is part of the [`{nlme}`](https://cran.r-project.org/web/packages/nlme/index.html) package for mixed effects modelling in R</p>
+
+<p style="font-size:18px">Example reproduced from: [Pinheiro and Bates, 2000, _Mixed-Effects Models in S and S-PLUS_, Springer, New York.](https://cran.r-project.org/web/packages/nlme/index.html)</p>
+
+## The statistical results
+```{r}
+result <- ergo_model %>% summary() 
+result$tTable %>% as.data.frame() %>% knitr::kable()
+```
+
+## Model diagnostics {.build}
+
+ >- Diagnostics of a fitted model is the most important step in a statistical analysis
+ >- In most scientific papers the details are lacking 
+ >- Did the authors omit to perform this step? Or did they not report it?
+ >- If you do not want to include it in your paper, put it in an appendix!
+ 
+A residual plot shows the 'residual' error ('unexplained variance') after fitting the model. Under the Normality assumption standardized residuals should:
+ 
+ >1. Be normally distributed around 0
+ >1. Display no obvious 'patters'
+ >1. Should display overall equal 'spread' above and below 0 ('assumption of equal variance')
+ 
+## Residual plot
+```{r, echo=TRUE}
+plot(ergo_model) ## type = 'pearson' (standardized residuals)
+```
+
+## The conclusions in a plot
+```{r}
+# install.packages("ggsignif")
+library(ggsignif)
+p_values <- result$tTable %>% as.data.frame()
+annotation_df <- data.frame(Type=c("T1", "T2"), 
+                            start=c("T1", "T1"), 
+                            end=c("T2", "T3"),
+                            y=c(16, 14),
+                            label=
+                              paste("p-value:",
+                              c(
+                              formatC(
+                                p_values$`p-value`[2], digits = 3),
+                              formatC(
+                                p_values$`p-value`[3], digits = 3)
+                              )
+                            )
+                          )
+                            
+set.seed(123)
+ergoStool %>%
+  ggplot(aes(x = reorder(Type, effort), 
+             y = effort)) + 
+  geom_boxplot(colour = "darkgreen", 
+               outlier.shape = NA) + 
+  geom_jitter(aes(
+    colour = reorder(Subject, -effort)), 
+    width = 0.2, 
+    size = 3) +
+  scale_colour_manual(
+    values = c(
+      "red", "blue","green", 
+      "darkblue", "darkgreen", 
+      "purple", "grey", "black", 
+      "darkgrey")) +
+  ylab("Effort (Borg scale score)") +
+  xlab("Chair type") + 
+  guides(colour=guide_legend(title="Subject id")) +
+  ylim(c(6,20)) +
+  geom_signif(
+    data=annotation_df,
+    aes(xmin=start, 
+    xmax=end, 
+    annotations=label, 
+    y_position=y),
+    textsize = 5, vjust = -0.2,
+    manual=TRUE) +
+  theme_bw() -> plot_ergo
+plot_ergo
+```
+
+## And the most important part...
+
+odz: _Practice what you preach_
+
+If you want to reproduce, add-on, falsify or apply your own ideas to this example, you can find the code (and data) in [Github.com](https://github.com/uashogeschoolutrecht/work_flows)
+
+**In webinar 3, I will show you how to actually run, use and organize code like this!**
+
+```{r, dpi = 60}
+knitr::include_graphics(
+  file.path(image_dir,
+  "git_collaboration.png")
+)
+```
+
+## Thank you for your attention!
+
+```{r, dpi = 150}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "Pepper.png")
+)
+```
+
+**UPCOMING WEBINARS:**
+
+ - Part 2; Managing your project files and data with 'Guerilla Analytics' 
+ (~June 23rd, 2020)
+ - Part 3; Reproducible (Open) Science @HU - Tools (~July 6th, 2020)
+ 
+ [Peer Support Group Data Science](tln.hu.nl)
+ [support voor onderzoek](https://bibliotheek.hu.nl/onderzoekers/)
+
+## Example; The Open Science Framework [OSF](https://osf.io/)
+```{r}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "cos-shield.png")
+)
+```
+
+$Reproducible\ Science = P + D + C + OAcc + OSrc$ 
+
+**OSF has it all**
+
+<p style="font-size:14px">$P = Publication$, $D = Data$, $C = Code$, $OAcc = Open\ Access$, $OSrc = Open\ Source$ </p> 
+
+## OSF - Reproducible Project: Psychology
+
+ >- 100 publications in Psychology journals
+ >- Results from half of these publications could be reproduced
+ >- Full access to P, D and C in [OSF](https://osf.io/ezcuj/)
+ >- The publication is not published in an OAcc journal but:
+ >- [The submitted manuscript is available in OSF](http://pps.sagepub.com/content/7/6/657.abstract)
+ >- [The R code used is available in OSF](https://osf.io/fkmwg/)  
+ 
+ $RP:Psychology = P + D + C + OSrc\ (+ OAcc)$
+
+<p style="font-size:14px">$P = Publication$, $D = Data$, $C = Code$, $OAcc = Open\ Access$, $OSrc = Open\ Source$ </p> 
+

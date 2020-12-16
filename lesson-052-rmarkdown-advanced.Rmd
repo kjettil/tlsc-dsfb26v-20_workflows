@@ -10,7 +10,21 @@ params:
 
  - Advanced Markdown syntax (images, links, references, cross-references)
  - Bibtex
- - 
+ - Parameters (params in yaml header, params in chunks)
+ - Using Shiny interactive elements in RMarkdown
+ - Using `rmarkdown::render()` to render one or multiple paramterized reports
+ - Deployment / setting up Github pages for your portfolio
+ - Automating deployment - github actions
+ - Bookdown / blogdown
+ 
+ ## Resources
+
+ - https://github.com/r-lib/actions/blob/master/examples/README.Rmd
+ - https://rmarkdown.rstudio.com/developer_parameterized_reports.html%23parameter_types%2F
+ - https://bookdown.org/yihui/rmarkdown/parameterized-reports.html
+ 
+
+
 
 ## Introduction
 

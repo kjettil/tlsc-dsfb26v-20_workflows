@@ -1,0 +1,369 @@
+# Lesson 1 - Part 2 - Managing your (data) projects with 'Guerrilla Analytics' {#reproducibleresearch2}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  error = FALSE
+  , 
+  fig.width = 6,
+  fig.height = 4
+)
+
+image_dir <- here::here(
+  "images"
+)
+
+## packages
+library(tidyverse)
+library(readxl)
+
+```
+
+## Part 2; Contents
+
+ >1. Guerrilla Analytics principles
+ >1. Files and folders / Project structure
+ >1. Data-formats & Data shapes / Tidy data
+ >1. Encoding variables & Exploratory Data Analysis
+
+<p style="font-size:14px">The slides, data and source code are on Github: https://github.com/uashogeschoolutrecht/work_flows</p> 
+
+<p style="font-size:14px">The slides are also here: https://uashogeschoolutrecht.github.io/</p> 
+
+
+## Do you recognize this!
+
+<p style="font-size:14px">from: https://medium.com/@jameshoareid/final-pdf-finalfinal-pdf-actualfinal-pdf-cae61ab1d94c</p>
+```{r, dpi=50}
+knitr::include_graphics(
+  file.path(
+  image_dir,
+    "final_final.png"
+  )
+)
+
+```
+
+## The Guerrilla Analytics Principles
+
+ >1. Space is cheap, confusion is expensive
+ >1. Simple, visual project structures and conventions
+ >3. Automate with program code
+ >4. Link  stored data to data in the analytics environment to data in work products
+ >5. Version control changes to data and analytics code 
+ >6. Consolidate team knowledge  
+ >7. Use code that runs from start to finish
+
+<p style="font-size:14px">[Guerrilla Analytics book by Enda Ridge, ](https://guerrilla-analytics.net/)</p>
+
+```{r, dpi = 300}
+knitr::include_graphics(
+  here::here("images", "guerrilla_analytics.jpg")
+)
+```
+
+## P1: Space is cheap, confusion is expensive
+
+ >- Keep your files, you never know when you need them
+ >- Store data in online-cloud storage (HU Research Drive)
+ >- Protect youself: do not click on attachments and spiffy emails, cybercriminals are getting smarter everyday
+ >- Create md5sums for important (source) data-files
+ >- Agree on a system, share it, use it, stick to it
+ 
+```{r, results='markup'}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "docking_station_harddisk.jpg"
+  )
+)
+```
+
+## P2: Simple, visual project structures and conventions    
+
+ >- Create a seperate folder for each analytics project (in RStudio -> RStudio Project)
+ >- Do not deeply nest folders (max 2-3 levels)
+ >- Keep information about the data, close to the data
+ >- Store each dataset in its own subfolder
+ >- Do not change file names or move them (in a code project)
+ >- Do not manually edit data source files
+ >- In code, use relative paths
+ 
+## Better not!
+```{r}
+fs::dir_tree(here::here("wrong_structure"))
+```
+
+## How to organize data files
+```{r}
+fs::dir_tree(here::here("data-raw"))
+```
+
+## Data integrity {.build}
+
+MD5SUMS are
+
+ >- A unique code to identify a file (_This file -> `r tools::md5sum(here::here("Rmd", "webinar_part_2.html"))`_)
+ >- Can be used to verify the integrity or the version of a file
+ >- Can be genarated from Windows, MacOS, Linux or from within e.g. R/Python/Bash
+ >- md5sums are also used for safety: checking an md5sum ensures that the code is valid and has not changed (e.g. [Anaconda](https://www.digitalocean.com/community/tutorials/how-to-install-anaconda-on-ubuntu-18-04-quickstart))
+ >- There are many different types of hash functions [MD5, SHA256 are much used for data and software](https://en.wikipedia.org/wiki/List_of_hash_functions)
+ 
+_In webinar 3, I will show you how to generate these yourself! (from Windows and R). Look at the file "./data-raw/D010/supporting/md5sums.R" if you can't wait_ 
+
+## Sharing data
+
+ >- Remove sensitive data from each file by pseudoencoding or anonymizing or removing
+ >- Removing or encoding sensitive data can be done from within R
+ >- Agree on a file naming convention within a team, before the work starts
+ >- Agree on where data is stored and who has access
+ >- Suppress the impulse to store multiple copies of the data in different locations
+ >- If you sent data files, sent the md5sums along
+ 
+
+## Recieving data
+
+ >- Never change a filename (as inconvenient it may be)
+ >- Put a new dataset (one or multiple files) in its own numbered folder
+ >- Write an README.txt describing the data, store it in the same folder as where the dataset lives
+ >- A new version of the 'same' dataset goes into the orginal folder, the old version moves to a new folder (e.g v01)
+
+
+## P3: Automation
+
+ >- Do everything programatically (in code) for reasons of reproducibility
+ >- Store clean curated datasets in the "data" folder, with md5sums and a README.txt
+ >- Use literate programming (RMarkdown or Jupyter Notebook) for full analysis
+ >- Store scripts in a "./code" or "./inst" folder
+ >- Store functions in R in a "./R" folder
+
+ 
+## This requires a (COVID-19) example
+
+ >- Imagine we want daily reports on the number of COVID-19 cases and caused deaths
+ >- We want to be able to dynamically report data for different countries and dates to compare situations in the World
+ >- The data is available (for manual and automated download) from the European Center for Disease Control
+ >- The analysis can be coded completely from begin to end to result in the information we need
+
+<p style="font-size:14px">[A more extensive reproducible research COVID-19 example for NL](https://github.com/J535D165/CoronaWatchNL)</p> 
+ 
+## The results of the analysis; deaths
+```{r, fig.width=8, fig.height=5}
+source(here::here("code", "covid_cases.R")); plot
+```
+<p style="font-size:14px">From: [Data Source - ECDC](https://opendata.ecdc.europa.eu/covid19/casedistribution/csv)</p> 
+
+## The results of the analysis; cases
+```{r, fig.width=8, fig.height=5}
+source(here::here("code", "covid_cases.R")); plot_cases
+```
+<p style="font-size:14px">From: [Data Source - ECDC](https://opendata.ecdc.europa.eu/covid19/casedistribution/csv)</p> 
+ 
+## Let's take a look at the source file
+
+The source file is an RMarkdown file that downloads the data and generates an HTML report including two figures.
+
+```{r, dpi = 60}
+knitr::include_graphics(here::here(
+    "images",
+    "covid_rmd_screenshot.jpg"
+  )
+)
+```
+
+## Parameterization
+
+ >- This Rmd is parameterized on date and country
+ >- The script automatically includes the parameters in the title of the report and the captions of the figures
+ >- The 'rendered' date is automatically set, for versioning
+ >- Parameterization can used to automate reporting for many values of parameters
+ >- Further automation is easy now (although the ECDC has current technical problems in making the latest data available for download - and they do not use md5sums!!)
+
+```{r, dpi = 60}
+knitr::include_graphics(here::here(
+    "images",
+    "covid_rmd_screenshot.jpg"
+  )
+)
+```
+
+## GA Principle 4: Link stored data, to data in the analytics environment, to data in work products
+
+Basically this can be done with literate programming with R or Python in RStudio or Jupyter:
+
+ - The data is stored on disk or in the Cloud
+  - The analytics environment is the Global Environment (where variables and R-objects live)
+ - Data is pulled from the storage in the Analytics Environment by a script  
+ - The work products (Rmd / Notebooks) bring it together
+
+```{r, dpi=200, fig.align='right'}
+knitr::include_graphics(
+  file.path(
+  image_dir,
+  "one_ring.jpg")
+)
+```
+
+## GA Principle 5: Version control for data and code - Git/Github {.build}
+
+ >- When you do data analysis, you should use code (Webinar 1)
+ > - When you write code, you should use Git, preferably in combination with Github
+ >- Hence: When you do data analysis, you should use Git & Github 
+ >- Git/Github is 'track-changes for code'
+ 
+Imagine working on a script together with a colleague in Groningen. You email her your code and your data. She makes adjustments and sents the code back to you. You test the code and change something, the code breaks...You are lost on what she changed and what you changed...
+
+_"Learning Git can be challenging ..., but it pays off in the long run. Eventually you will always break working code, multiple times"_ Jenny Brian
+
+## Git/Github.com: Track changes for code 
+
+```{r, dpi = 70}
+knitr::include_graphics(file.path(image_dir, "git_commit_diff.png"))
+```
+<p style="font-size:14px">[Tutorial Git/Github and RStudio](https://happygitwithr.com/)</p>
+
+<p style="font-size:14px">[Github HU repo](https://github.com/uashogeschoolutrecht)</p>
+
+## GA Principle 6: Consolidate team knowledge 
+
+ >- Make guidelines on datamanagement, storage places and workflows
+ >- Agree within the team on them
+ >- Stick to them!
+ >- Work together in a virtual collaboration envrionment (VRE)
+ >- Work together on code using Github
+ >- Provide for education and share best practices within the organization, the department and/or the team
+ 
+<p style="font-size:14px">[Peer Support Group Data Science](tln.hu.nl)</p>
+
+<p style="font-size:14px">[Support for research](https://bibliotheek.hu.nl/onderzoekers/)</p>
+
+<p style="font-size:14px">[Github HU docs](https://uashogeschoolutrecht.github.io)</p>
+
+<p style="font-size:14px">[Exploratory Data Analysis Masterclasses](https://bookdown.org/maddocent/exploratory_data_analysis/)</p> 
+
+## GA Principle 7: Prefer analytics code that runs from start to finish
+
+ - Create work products in RMarkdown or Jupyter notebooks (I will show these in Webinar 3)
+ - [In R, create an R-package](https://github.com/UtrechtUniversity/R-data-cafe/tree/master/themes/start_with_rmd)
+ - Write functions that isolate code and can be recycled
+ - Use iterations to prevent repetition
+
+## Some pointers to help you (and others) use code for data analysis
+
+ - If you want to use programming, you need to be consistent
+ - A couple of seemingly unimportant things become vital
+ - Practice makes perfect
+ 
+_"Ten minutes of R a day, keeps Excel away"_ 
+
+## File names and file formats
+ - Never use `!@#$%^&*()+=:;"'|{}[]\<>?/~` in a file name
+ - Use `snake_case` or `CamelCase` 
+ - Apply this also to file headers (column names)
+ - Do not use soft spaces (`" "` = soft space / `"_"` = hard space)
+
+## A how-not-to example {.build}
+
+```{r, dpi = 80}
+knitr::include_graphics(
+  file.path(image_dir, "bad_formatting_file_name_and_headers.jpg")
+)
+```
+
+_what is wrong with this file name and its headers? can you spot another problem with the data sheet?_
+
+## Data-formats - Non-Proprietary
+
+File format source code is open and maintained by open source community or core development team.
+
+  - .netCDF (Geo, proteomics, array-oriented scientific data)  
+  - .xml / mzXML (Markup language, human and machine readable, metadata + data together)
+  - .txt / .csv (flat text file, usually tab, comma or semi colon (`;`) seperated) 
+  - .json (text format that is completely language independent)  
+
+_Will remain readable, even if format becomes obsolete_
+
+When storing a curated dataset for sharing or archiving it is always better to choose a non-proprietary format
+
+## Data shape
+Look at these two tables, what do you notice?
+```{r}
+table2
+table3
+```
+
+<p style="font-size:14px">Both tables are build-in datasets from the {tidyr} package belonging to the {tidyverse} suite of Data Science R packages</p> 
+
+## Tidy data
+```{r}
+knitr::include_graphics(
+  file.path(image_dir, "tidy-1.png")
+)
+```
+
+ 1. Each variable goes in its own column
+ 1. Each observation goes in its own row
+ 1. Each cell contains only one value
+
+<p style="font-size:14px">From: ["R for Data Science", Grolemund and Wickham](https://r4ds.had.co.nz/)</p> 
+
+
+## A penguin wrap up
+
+<p style="font-size:14px">[palmerpenguins](https://github.com/allisonhorst/palmerpenguins)</p> 
+
+```{r}
+# install.packages("remotes")
+# remotes::install_github("allisonhorst/palmerpenguins")
+library(palmerpenguins)
+data_penguins <- palmerpenguins::penguins_raw 
+data_penguins
+```
+
+## Exploratory data Analysis - missingness
+```{r, dpi = 130}
+naniar::vis_miss(data_penguins)
+```
+
+## Factor levels
+
+```{r, echo=TRUE}
+data_penguins %>%
+  ggplot(aes(x = Sex, y = `Flipper Length (mm)`)) +
+  geom_point(aes(colour = Species), position = "jitter", show.legend = FALSE)
+unique(data_penguins$Sex) ## we also call this factor levels
+```
+
+## Variable encodings
+ 
+ - Use explicit encoding: male/female instead of `0`/`1`
+ - Encodings can always be altered programmatically
+ - Be consistent (see next graph)
+ - Write a code journal that explains encodings, including units and levels
+ - Use factors if a variable has a set of discrete possible outcomes: `sex`, `species`, `marital_status` etc
+ - Use an ordered factor if there is a hiarchy in the factor levels: `year`, `month`, `number_of_legs`
+
+## Just for kicks, one more graph
+```{r, fig.width=8, fig.height=5}
+#data_penguins$Species %>% unique()
+data_penguins[c(256:300), "Species"] <- "Gentoo penguin" 
+data_penguins %>%
+  ggplot(aes(x = Island, y = `Body Mass (g)`)) +
+  geom_jitter(aes(colour = Species), show.legend = TRUE, width = .3, alpha = 0.8)
+```
+
+## Thank you for your attention!
+
+```{r, dpi = 150}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "Pepper.png")
+)
+```
+
+
+
+

@@ -1,9 +1,4 @@
----
-title: "Working with relational data"
-author: "Marc A.T. Teunis"
-date: "9-12-2020"
-output: github_document
----
+# Lesson 8 - Working with relational data & databases {#relationaldb}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -40,6 +35,7 @@ In order to get your data in the right shape for joining we sometimes need to re
  
 Below are two illustrations on how to transfer wide to long and vice versa. These examples can be used to understand the workings of the functions `pivot_longer()` and `pivot_wider()`
 ```{r}
+library(dataAnim)
 #devtools::install_github("chrk623/dataAnim")
 
 data(datoy_wide)

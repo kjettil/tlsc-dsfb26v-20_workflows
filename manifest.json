@@ -1191,6 +1191,39 @@
         "Built": "R 4.0.2; ; 2020-07-06 18:13:07 UTC; windows"
       }
     },
+    "here": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com/",
+      "GithubRepo": null,
+      "GithubUsername": null,
+      "GithubRef": null,
+      "GithubSha1": null,
+      "description": {
+        "Package": "here",
+        "Title": "A Simpler Way to Find Your Files",
+        "Version": "1.0.0",
+        "Date": "2020-11-15",
+        "Authors@R": "\n    c(person(given = \"Kirill\",\n             family = \"M\\u00fcller\",\n             role = c(\"aut\", \"cre\"),\n             email = \"krlmlr+r@mailbox.org\",\n             comment = c(ORCID = \"0000-0002-1416-3412\")),\n      person(given = \"Jennifer\",\n             family = \"Bryan\",\n             role = \"ctb\",\n             email = \"jenny@rstudio.com\",\n             comment = c(ORCID = \"0000-0002-6983-2759\")))",
+        "Description": "Constructs paths to your project's files.\n    Declare the relative path of a file within your project with 'i_am()'.\n    Use the 'here()' function as a drop-in replacement for 'file.path()',\n    it will always locate the files relative to your project root.",
+        "License": "MIT + file LICENSE",
+        "URL": "https://here.r-lib.org/, https://github.com/r-lib/here",
+        "BugReports": "https://github.com/r-lib/here/issues",
+        "Imports": "rprojroot (>= 2.0.1)",
+        "Suggests": "conflicted, covr, fs, knitr, palmerpenguins, plyr, readr,\nrmarkdown, testthat, uuid, withr",
+        "VignetteBuilder": "knitr",
+        "Encoding": "UTF-8",
+        "LazyData": "true",
+        "RoxygenNote": "7.1.1.9000",
+        "Config/testthat/edition": "3",
+        "NeedsCompilation": "no",
+        "Packaged": "2020-11-15 14:39:44 UTC; kirill",
+        "Author": "Kirill Müller [aut, cre] (<https://orcid.org/0000-0002-1416-3412>),\n  Jennifer Bryan [ctb] (<https://orcid.org/0000-0002-6983-2759>)",
+        "Maintainer": "Kirill Müller <krlmlr+r@mailbox.org>",
+        "Repository": "CRAN",
+        "Date/Publication": "2020-11-15 17:10:02 UTC",
+        "Built": "R 4.0.3; ; 2020-11-15 19:01:59 UTC; windows"
+      }
+    },
     "highr": {
       "Source": "CRAN",
       "Repository": "https://cran.rstudio.com/",
@@ -3264,7 +3297,7 @@
       "checksum": "5288dfe8d39f6938e185406fea746455"
     },
     "DESCRIPTION": {
-      "checksum": "676f58f7b482a92d3e40b9abedd398fd"
+      "checksum": "cb2ba1d571cd3488b77e46ceedc793c0"
     },
     "images/bad_formatting_file_name_and_headers.jpg": {
       "checksum": "58c023d33354b0a1df251b74d8b41bee"
@@ -3530,6 +3563,9 @@
     "packrat/desc/gtable": {
       "checksum": "f30de703211d66c8f12b48813fc970ed"
     },
+    "packrat/desc/here": {
+      "checksum": "9f95176d9fa08596de71b55cef62c946"
+    },
     "packrat/desc/highr": {
       "checksum": "99e0e8caec4fd959349fa8f532d8c2db"
     },
@@ -3729,7 +3765,7 @@
       "checksum": "bb155101c03cdb363b8f960a23643cd9"
     },
     "packrat/packrat.lock": {
-      "checksum": "64d3a884098d145784998b6fd6c69605"
+      "checksum": "ccd0598e51db55ba01338f0aeaac62d9"
     },
     "R/README.txt": {
       "checksum": "b7aeb223ad0d9562eae82a94a7bb2964"

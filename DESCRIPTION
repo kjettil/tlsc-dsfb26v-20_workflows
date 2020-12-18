@@ -11,6 +11,7 @@ RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Imports:
   blscrapeR,
+  here,
   dataAnim,
   dplyr,
   ggExtra,

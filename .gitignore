@@ -28,3 +28,5 @@ vignettes/*.pdf
 .Renviron
 _bookdown_files
 workflows_reader
+workflows_course.rds
+_book

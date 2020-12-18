@@ -1,7 +1,7 @@
 --- 
 title: "Course Workflows [HU OSIRIS: tlsc-dsfb26v-20_workflows]"
 author: "Alyanne de Haan, PhD; Bas van Gestel, PhD; Rene van der Ploeg, PhD; Chris van Oevelen, PhD; Marc Teunis, PhD"
-date: "`r Sys.time()`"
+date: "2020-12-17 09:53:33"
 site: bookdown::bookdown_site
 output:
   bookdown::html_book:
@@ -18,33 +18,14 @@ params:
   year: 2020
 ---
 
-```{r include=FALSE, eval=FALSE}
-# source(here::here("code", "get_rmd_dependencies.R"))
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-
-```
 
 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.width = 6, fig.height = 4,
-                      warning = FALSE,
-                      error = FALSE, message = FALSE)
 
 
-image_dir <- here::here(
-  "images"
-)
-
-```
 
 
-```{r, include=FALSE, warning=FALSE, error=FALSE, message=FALSE}
-library(tidyverse)
-```
+
 
 # Course introduction
 
@@ -96,28 +77,17 @@ This website is a `{bookdown}`project that forms the reader and learning content
 
 <p style="font-size:18px">The complete source code for this reader can be found here:
 
-```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
-urls <- readr::read_csv(
-  here::here("urls")
-)
-
-urls[1,2] %>%
-  unlist() %>%
-  as.character() %>%
-  paste()
-
-```
+[1] "https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows"
 
 
 ## Getting the materials
 To compile this website locally, first clone the website repository from 
-```{r, echo=FALSE}
-urls <- readr::read_csv(
-  here::here("urls")
-)
 
-urls[1,2]
-
+```
+## # A tibble: 1 x 1
+##   url                                                        
+##   <chr>                                                      
+## 1 https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows
 ```
 
 then run `devtools::install(".")` from within the cloned repo directory. This will install all the dependent R-packages.
@@ -129,7 +99,7 @@ Last, you can also access all the functions that are associated with this projec
 ## Getting R and RStudio
 During the course you can work on a Cloud Computing Environment which provides web access to R and RStudio via a Virtual Machine. This machine runs a server edition of RStudio and has the latest R version and all the required packages available. In order to access the server you will need credentials, which you will recieve before the course starts. This is a convenient way to use R in a course and during the course we will only be using this environment. This is to ensure reproducibility and prevents a lot of trouble shooting from your side and the teacher's side.
 
-The server can be found here `r as.character(unlist(urls[4,2]))`. You will get credentials for the server, before the course starts.
+The server can be found here https://datascience.hu.nl/rstudio/tlsc-dsfb26v-20/. You will get credentials for the server, before the course starts.
 
 If you want to use R and RStudio locally on your laptop, this is where you can download the software from:
 
@@ -142,7 +112,8 @@ This website was created using the `{bookdown}` [@R-bookdown] package written by
 
 The `{bookdown}` package can be installed from CRAN or Github:
 
-```{r eval=FALSE}
+
+```r
 install.packages("bookdown")
 # or the development version
 # devtools::install_github("rstudio/bookdown")

@@ -1,0 +1,17 @@
+blscrapeR
+dataAnim
+dplyr
+ggExtra
+ggplot2
+ggsignif
+glue
+httr
+nlme
+palmerpenguins
+readxl
+rprojroot
+tidyr
+tidyverse
+tools
+utils
+zoo

@@ -2,8 +2,11 @@
 
 _This chapter is best read in the source RMarkdown file_
 
-## Credits:
+## Resources
+
 https://nceas.github.io/sasap-training/materials/reproducible_research_in_r_fairbanks/index.html
+
+https://guides.github.com/features/mastering-markdown/
 
 ## Introduction
 

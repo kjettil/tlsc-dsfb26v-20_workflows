@@ -1,6 +1,6 @@
-url,description
-https://github.com/uashogeschoolutrecht/staRters,github-repo
-https://datascience.hu.nl/shiny/r-starters/marc.teunis/,reader
-https://github.com/uashogeschoolutrecht/staRters,public-answers
-https://datascience.hu.nl/rstudio/r-starters/,RStudio-Server
+course,url,description
+tlsc-dsfb26v-20_workflows,https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows,github-repo
+tlsc-dsfb26v-20_workflows,https://datascience.hu.nl/rsconnect/workflows_reader,reader
+tlsc-dsfb26v-20_workflows,https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows_students,public-answers
+tlsc-dsfb26v-20_workflows,https://datascience.hu.nl/rstudio/tlsc-dsfb26v-20/,RStudio-Server
 

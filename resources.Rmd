@@ -1,5 +1,16 @@
 # Resources {#resources}
 
+
+## Credits
+
+For this course materials have been adapted from:
+ 
+  - Wickham and Grolemund, "R for Data Science", 2017, O'Reily
+  - Field et. al., 2015, "Discovering Statistics Using R", Sage Publications Ltd.
+  - Sr. David Spiegelhalter, "The Art of Statistics", 2019, Pelican Books
+  
+
+
 ## Github / SCRUM
 
 https://github.com/features/project-management/
@@ -10,14 +21,6 @@ https://www.youtube.com/watch?v=idZyqNIrt84 [github automation and projects]
 https://www.youtube.com/watch?v=YxKhb3fxtsU [github automation and projects]
 
 
-## Credits
-
-For this course materials have been adapted from:
- 
-  - Wickham and Grolemund, "R for Data Science", 2017, O'Reily
-  - Field et. al., 2015, "Discovering Statistics Using R", Sage Publications Ltd.
-  - Sr. David Spiegelhalter, "The Art of Statistics", 2019, Pelican Books
-  
 ## Resources:
 
 ### Youtube
@@ -56,6 +59,12 @@ For this course materials have been adapted from:
  - https://github.com/jennybc
  - https://github.com/hadley
 
+### Github integration / CI
+
+
+### AGILE SCRUM
+
+
 ### Github resource list
 
 There are many 'R resources lists' to be found on the internet. Here, I just mention three that I liked.
@@ -73,6 +82,15 @@ https://support.rstudio.com/hc/en-us/articles/360023654474-Installing-and-Config
 
 
 ## Databases
+https://www.r-bloggers.com/2013/07/r-and-postgresql-using-rpostgresql-and-sqldf/
+https://www.r-bloggers.com/2016/02/using-postgresql-in-r-a-quick-how-to/
+https://www.datacareer.de/blog/connect-to-postgresql-with-r-a-step-by-step-example/
+https://db.rstudio.com/dplyr/
+https://dbplyr.tidyverse.org/
+
+[database samples](https://wiki.postgresql.org/wiki/Sample_Databases)
+
+
 
 ### DBeaver
 

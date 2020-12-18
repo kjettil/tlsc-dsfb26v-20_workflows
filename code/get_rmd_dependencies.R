@@ -77,12 +77,13 @@ get_dependencies() %>%
   arrange(value) -> dependencies
 
 
-write_lines(dependencies$value, path = "DEPENDENCIES.txt")
+write_lines(dependencies$value, file = "DEPENDENCIES.txt")
 
-walk(
-  .x = dependencies$value,
-  .f = pacman::p_install
-)
+## install all dependencies
+#walk(
+#  .x = dependencies$value,
+#  .f = pacman::p_install
+#)
 
 
 

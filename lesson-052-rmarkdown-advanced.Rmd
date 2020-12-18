@@ -22,11 +22,14 @@ params:
  - https://github.com/r-lib/actions/blob/master/examples/README.Rmd
  - https://rmarkdown.rstudio.com/developer_parameterized_reports.html%23parameter_types%2F
  - https://bookdown.org/yihui/rmarkdown/parameterized-reports.html
- 
-
-
+ - [github actions for R](https://community.rstudio.com/t/github-actions-for-r-introducing-the-ghactions-package/23571) 
+ - https://bookdownplus.netlify.app/portfolio/
 
 ## Introduction
+
+RMarkdown is R's answer to doing reproducible research. In this lesson we take the next step in customization of RMardown reports. First we introduce a number of addiotnial formatting, style and technical capabilites in RMarkdown to increase productivity and creativity with RMarkdown. 
+Furthermore, we will see that RMarkdown can used for a number of semi- and fully automated reporting workflows. We will start with a user side definition of parameters that can be used to render documents and run code inside Rmd files that can be varied on the basis of user-defined input. Next step in complexity is to move to interactive Shiny elements build into an RMarkdown file, approaching the development of App-like documents or websites. Than we introduce the `{bookdown}` and `{blogdown}` package as publication frameworks for publishing reports, books, websites and blogs. You will learn how to setup your own website to host data products that will help you show your skills as a programmer/bioinformatician. This can be very helpfull in finding a job.     
+Last step in complexity that we will add is to setup Continuous Integration (CI) for publishing data products, directly from RStudio. We will again use build-in functionality in Github.com com for this (Github actions).
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
@@ -50,6 +53,15 @@ library(zoo)
 library(blscrapeR)
 ```
 
+ - Advanced Markdown syntax (images, links, references, cross-references)
+ - Bibtex
+ - Parameters (params in yaml header, params in chunks)
+ - Using Shiny interactive elements in RMarkdown
+ - Using `rmarkdown::render()` to render one or multiple paramterized reports
+ - Deployment / setting up Github pages for your portfolio
+ - Bookdown / blogdown
+ - Automating deployment - github actions
+
 
 ## Data
 ```{r, echo=TRUE}
@@ -63,10 +75,23 @@ data
 ## Data cleaning
 ```{r}
 
+data <- data %>%
+  mutate(
+    date = lubridate::dmy(dateRep),
+    ) %>%
+  separate(
+    col = date, 
+    into = c("year", "month", "day"), remove = FALSE) %>%
+  mutate(
+    month = as.integer(month)
+  )
+
+
+
 ## Filter for `r params$month` and `r params$geo_id`
 ## create a conversion table to go from month name to month integer
 convert_months <- tibble(
-  month_name = c(
+  month = c(
     "january",
     "february",
     "march",
@@ -81,13 +106,15 @@ convert_months <- tibble(
     "december"),
   month_number = c(1:12))
 
-  m_names <- str_split(tolower(params$month), pattern = " ") %>% unlist()
-
+  m_names <- str_split(tolower(params$month), pattern = " ") %>% 
+    unlist() %>%
+    enframe() 
 
   month_id <- convert_months %>%
     dplyr::filter(
-      month_name %in% m_names) %>% 
-    dplyr::select(month_number)
+      month %in% m_names$value) 
+  #%>% 
+  #  dplyr::select(month_number)
   
   id <- month_id$month_number
 
@@ -122,7 +149,7 @@ range <- data_filter$month %>% unique() %>% enframe() %>%
   arrange(value)
 
 month_df <- left_join(range, convert_months, by = c("value" = "month_number")) %>%
-  dplyr::mutate(month_name = firstupper(month_name))
+  dplyr::mutate(month = firstupper(month))
 
 min_month <- month_df %>%
   dplyr::filter(value == min(month_df$value))
@@ -142,13 +169,13 @@ max_month <- month_df %>%
 
 cap_cases <- paste(
   "COVID-19 positive cases from", 
-  min_month$month_name, "to", max_month$month_name,
+  min_month$month, "to", max_month$month,
   "for", glue_collapse(countries_vec, ", ", last = " and ")
 )
 
 cap_deaths <- paste(
   "COVID-19 related deaths from", 
-  min_month$month_name, "to", max_month$month_name,
+  min_month$month, "to", max_month$month,
   "for", glue_collapse(countries_vec, ", ", last = " and ")
 )
 
@@ -159,15 +186,15 @@ data_filter
 ## Cases
 ```{r, fig.cap=cap_cases}
 set.seed(123)
-data_filter <- data_filter %>% 
-  mutate(date_time = lubridate::dmy(dateRep))  %>%  # Moving average
-  mutate(cases_ma = zoo::rollmean(cases, k = 7, fill = NA))
+#data_filter <- data_filter %>% 
+#  mutate(date_time = lubridate::dmy(dateRep))  %>%  # Moving average
+#  mutate(cases_ma = zoo::rollmean(cases, k = 7, fill = NA))
 
 
 #names(data_filter)
 plot_cases <- data_filter %>%
   na.omit() %>%
-  ggplot(aes(x = date_time, y = cases_ma)) +
+  ggplot(aes(x = date, y = cases_weekly)) +
   geom_point(aes(colour = geoId)) +
   geom_line(aes(group = geoId, colour = geoId)) +
   xlab("Date") +
@@ -184,13 +211,13 @@ plot_cases
 ```{r, fig.cap=cap_deaths}
 set.seed(123)
 
-data_filter <- data_filter %>% 
-  mutate(date_time = lubridate::dmy(dateRep)) %>%  # Moving average
-  mutate(deaths_ma = zoo::rollmean(deaths, k = 7, fill = NA))
+#data_filter <- data_filter %>% 
+#  mutate(date_time = lubridate::dmy(dateRep)) %>%  # Moving average
+#  mutate(deaths_ma = zoo::rollmean(deaths, k = 7, fill = NA))
 
 #names(data_filter)
 plot_deaths <- data_filter %>%
-  ggplot(aes(x = date_time, y = deaths_ma)) +
+  ggplot(aes(x = date, y = deaths_weekly)) +
   geom_point(aes(colour = geoId)) +
   geom_line(aes(group = geoId, colour = geoId))  +
   xlab("Date") +

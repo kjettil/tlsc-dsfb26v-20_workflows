@@ -27,7 +27,8 @@ Imports:
   tools,
   utils,
   zoo,
-  tinytex
+  tinytex,
+  tidyverse
 Suggests:
   bookdown,
   rmarkdown,

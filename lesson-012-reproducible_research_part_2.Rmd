@@ -149,18 +149,11 @@ _In webinar 3, I will show you how to generate these yourself! (from Windows and
 
 <p style="font-size:14px">[A more extensive reproducible research COVID-19 example for NL](https://github.com/J535D165/CoronaWatchNL)</p> 
  
-## The results of the analysis; deaths
-```{r, fig.width=8, fig.height=5}
-source(here::here("code", "covid_cases.R")); plot
-```
+## A dedicated repo for the analysis with data from the ECDC:
+https://github.com/uashogeschoolutrecht/covid_demo
+
 <p style="font-size:14px">From: [Data Source - ECDC](https://opendata.ecdc.europa.eu/covid19/casedistribution/csv)</p> 
 
-## The results of the analysis; cases
-```{r, fig.width=8, fig.height=5}
-source(here::here("code", "covid_cases.R")); plot_cases
-```
-<p style="font-size:14px">From: [Data Source - ECDC](https://opendata.ecdc.europa.eu/covid19/casedistribution/csv)</p> 
- 
 ## Let's take a look at the source file
 
 The source file is an RMarkdown file that downloads the data and generates an HTML report including two figures.

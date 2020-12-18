@@ -13,5 +13,8 @@ bookdown::render_book(
 
 ## create manifest for github continous integration updates the bookdown website
 ## upon push to master
-rsconnect::writeManifest(dir_out)
+
+rsconnect::writeManifest(
+  here::here()
+)
 

@@ -7,7 +7,4 @@ bookdown::render_book(
 ## upon push to master
 
 rsconnect::writeManifest(
-  appPrimaryDoc = here::here(
-    dir_out,
-    "index.html"),
-  contentCategory = "site")
+  appPrimaryDoc = "index.Rmd")

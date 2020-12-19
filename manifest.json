@@ -4,10 +4,10 @@
   "platform": "4.0.3",
   "metadata": {
     "appmode": "rmd-static",
-    "primary_rmd": "C:/Users/mteunis/workspaces/COURSES/tlsc-dfsb26v-20_workflows/reader_tlsc-dfsb26v_workflows/index.html",
+    "primary_rmd": "index.Rmd",
     "primary_html": null,
-    "content_category": "site",
-    "has_parameters": false
+    "content_category": null,
+    "has_parameters": true
   },
   "packages": {
     "BH": {

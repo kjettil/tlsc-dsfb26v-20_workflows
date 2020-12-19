@@ -8,7 +8,6 @@ bibliography: [references.bib]
 biblio-style: apalike
 link-citations: yes
 always_allow_html: yes
-self_contained: false
 github-repo: "uashogeschoolutrecht/tlsc-dsfb26v-20_workflows"
 description: "This is the course on managing and setting up workflows for collaboration, data analysis pipeline and reporting"
 params:

@@ -1,5 +1,4 @@
 bookdown::gitbook:
-  self_contained: false
   toc_depth: 1
   css: style.css
   config:

@@ -4,7 +4,7 @@
   "platform": "4.0.3",
   "metadata": {
     "appmode": "rmd-static",
-    "primary_rmd": "C:/Users/mteunis/workspaces/COURSES/tlsc-dfsb26v-20_workflows/index.Rmd",
+    "primary_rmd": "C:/Users/mteunis/workspaces/COURSES/tlsc-dfsb26v-20_workflows/reader_tlsc-dfsb26v_workflows/index.html",
     "primary_html": null,
     "content_category": "site",
     "has_parameters": false
@@ -3732,10 +3732,10 @@
       "checksum": "bd2be74cfb08058c4f8ad68da4665fc9"
     },
     "_bookdown_files/lesson-012-reproducible_research_part_2_files/figure-html/unnamed-chunk-15-1.png": {
-      "checksum": "49c1f10a597f1a7bb453f4b317a0d356"
+      "checksum": "b0d1ac72278e412843094c552345c4dd"
     },
     "_bookdown_files/lesson-012-reproducible_research_part_2_files/figure-html/unnamed-chunk-16-1.png": {
-      "checksum": "0e62c6f644b1a1ca7c1397fc44a886cc"
+      "checksum": "6c87b24a18024ac24b3a14d3e0b9cb9b"
     },
     "_bookdown_files/lesson-012-reproducible_research_part_2_files/figure-html/unnamed-chunk-17-1.png": {
       "checksum": "b612e69ce0ca54387427d0ac5c003e5a"
@@ -4494,10 +4494,10 @@
       "checksum": "2ba7ba865898b0d8844dd9ba06659554"
     },
     "reader_tlsc-dfsb26v_workflows/index.html": {
-      "checksum": "73e338ec53714f6679db23de69cc6d8d"
+      "checksum": "40b704db60e9d6f891cf57dca20549ba"
     },
     "reader_tlsc-dfsb26v_workflows/index.md": {
-      "checksum": "0b7743217343dd4f0f6a90d8a051696f"
+      "checksum": "66fef3f84897ba0f29ce2d24dd66840d"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-011-reproducible_research_part_1.md": {
       "checksum": "4faa8a5defd50e024070892169e9f68b"
@@ -4521,10 +4521,10 @@
       "checksum": "bd2be74cfb08058c4f8ad68da4665fc9"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-012-reproducible_research_part_2_files/figure-html/unnamed-chunk-15-1.png": {
-      "checksum": "49c1f10a597f1a7bb453f4b317a0d356"
+      "checksum": "b0d1ac72278e412843094c552345c4dd"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-012-reproducible_research_part_2_files/figure-html/unnamed-chunk-16-1.png": {
-      "checksum": "0e62c6f644b1a1ca7c1397fc44a886cc"
+      "checksum": "6c87b24a18024ac24b3a14d3e0b9cb9b"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-013-reproducible_research_part_3.md": {
       "checksum": "a0fff0bc540c5137f061a4e362025859"
@@ -4539,7 +4539,7 @@
       "checksum": "6186f38f342cd3b6b5f09d74521cb73d"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-051-rmarkdown.md": {
-      "checksum": "f154083e3e577b3c0117945a860abdee"
+      "checksum": "7d030d7714786f83d69958e72d2438b8"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-051-rmarkdown_files/figure-html/unnamed-chunk-1-1.png": {
       "checksum": "a6b82660b8c15f7fdab7d54f6c9a9d03"
@@ -4557,7 +4557,7 @@
       "checksum": "dbc4ea732461001d7bf6f491267db49a"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-081-relational-db.md": {
-      "checksum": "11b8bf03cb6e994b8e46ffa7836bb597"
+      "checksum": "551c6d835cb7ea87bc68846699f0fe9f"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-2-collaboration-using-agilescrum.html": {
       "checksum": "1cb569e65d91f7158fc8eda9a3bad777"
@@ -4662,7 +4662,7 @@
       "checksum": "e63ce30f3f48f74c39990654ec36c7f3"
     },
     "reader_tlsc-dfsb26v_workflows/relationaldb.html": {
-      "checksum": "d095ab334eda2e24337586e6952c9b9c"
+      "checksum": "eab712cf2adb906ecd213eb185f06f5b"
     },
     "reader_tlsc-dfsb26v_workflows/repoducibleresearch3.html": {
       "checksum": "c03baa9745ac257d9a025332edff96a4"
@@ -4680,13 +4680,13 @@
       "checksum": "5c1b4066c52b09f1750f5232ff70491c"
     },
     "reader_tlsc-dfsb26v_workflows/rmarkdown.html": {
-      "checksum": "1add92277cfe04a7f37b83c9376bd637"
+      "checksum": "55c6b860707be20ce30f16214a871880"
     },
     "reader_tlsc-dfsb26v_workflows/rmarkdownadvanced.html": {
       "checksum": "4860ea7ba056a3e199eb6961af7d295c"
     },
     "reader_tlsc-dfsb26v_workflows/search_index.json": {
-      "checksum": "6ee51b630e057403299eaf62bd010748"
+      "checksum": "df8e8e023369732f8f510158a0979826"
     },
     "reader_tlsc-dfsb26v_workflows/style.css": {
       "checksum": "0685a61954d17298eb8a27d7f3e4e8ae"

@@ -6,6 +6,8 @@ params:
 ---
 # Lesson 5 - Part 2 - Advanced RMarkdown {#rmarkdownadvanced}
 
+_This chapter is best read from the source RMarkdown file_
+
 ## Lesson Contents
 
  - Advanced Markdown syntax (images, links, references, cross-references)

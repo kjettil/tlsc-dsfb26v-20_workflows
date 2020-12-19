@@ -2,6 +2,10 @@
 
 _This chapter is best read in the source RMarkdown file_
 
+## Lesson Contents
+
+ - 
+
 ## Resources
 
 https://nceas.github.io/sasap-training/materials/reproducible_research_in_r_fairbanks/index.html

@@ -3732,10 +3732,10 @@
       "checksum": "bd2be74cfb08058c4f8ad68da4665fc9"
     },
     "_bookdown_files/lesson-012-reproducible_research_part_2_files/figure-html/unnamed-chunk-15-1.png": {
-      "checksum": "91a5f25225cdde100220f36cd15752b6"
+      "checksum": "dbbc6e0ea6433b7b1cc52c84c46fd0d0"
     },
     "_bookdown_files/lesson-012-reproducible_research_part_2_files/figure-html/unnamed-chunk-16-1.png": {
-      "checksum": "9ddbf0ab31490d5dd524b34573efba07"
+      "checksum": "2f1f362b2e2887416e5e257eb0a4755b"
     },
     "_bookdown_files/lesson-012-reproducible_research_part_2_files/figure-html/unnamed-chunk-17-1.png": {
       "checksum": "b612e69ce0ca54387427d0ac5c003e5a"
@@ -3798,7 +3798,7 @@
       "checksum": "f987c9873c86d142965e6383080c7db0"
     },
     "_output.yml": {
-      "checksum": "b59cb016196f8a13aa56a004a27d16f3"
+      "checksum": "000637f4ae0654c92e94106403ace110"
     },
     "code/covid_cases.R": {
       "checksum": "4a2fd0c53b8d7f3c56dfd22ea97013da"
@@ -4026,7 +4026,7 @@
       "checksum": "2ba7ba865898b0d8844dd9ba06659554"
     },
     "index.Rmd": {
-      "checksum": "393afe83154dce613ada324a1921ca2e"
+      "checksum": "483bf1ff0274b99c3f03daa3b4cd87c6"
     },
     "lesson-011-reproducible_research_part_1.Rmd": {
       "checksum": "2448ce22e2028b06d8469516ae33f2e2"
@@ -4494,10 +4494,10 @@
       "checksum": "2ba7ba865898b0d8844dd9ba06659554"
     },
     "reader_tlsc-dfsb26v_workflows/index.html": {
-      "checksum": "c9481c266569d6963643ecec071ec350"
+      "checksum": "9c3f619cb3609f014e3cc51265fae0c2"
     },
     "reader_tlsc-dfsb26v_workflows/index.md": {
-      "checksum": "7e91332922c66db9520f879093779a0e"
+      "checksum": "c837e12d725316bbb0c37c12d39cdea3"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-011-reproducible_research_part_1.md": {
       "checksum": "4faa8a5defd50e024070892169e9f68b"
@@ -4521,10 +4521,10 @@
       "checksum": "bd2be74cfb08058c4f8ad68da4665fc9"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-012-reproducible_research_part_2_files/figure-html/unnamed-chunk-15-1.png": {
-      "checksum": "91a5f25225cdde100220f36cd15752b6"
+      "checksum": "dbbc6e0ea6433b7b1cc52c84c46fd0d0"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-012-reproducible_research_part_2_files/figure-html/unnamed-chunk-16-1.png": {
-      "checksum": "9ddbf0ab31490d5dd524b34573efba07"
+      "checksum": "2f1f362b2e2887416e5e257eb0a4755b"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-013-reproducible_research_part_3.md": {
       "checksum": "a0fff0bc540c5137f061a4e362025859"
@@ -4539,7 +4539,7 @@
       "checksum": "6186f38f342cd3b6b5f09d74521cb73d"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-051-rmarkdown.md": {
-      "checksum": "c3fc0bafdae6a88513735ea75f97ee2b"
+      "checksum": "5bbafbd832f6a9bedb7bbc8635bf1750"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-051-rmarkdown_files/figure-html/unnamed-chunk-1-1.png": {
       "checksum": "a6b82660b8c15f7fdab7d54f6c9a9d03"
@@ -4557,7 +4557,7 @@
       "checksum": "dbc4ea732461001d7bf6f491267db49a"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-081-relational-db.md": {
-      "checksum": "a8d68b587326e8cc107828790a4d9798"
+      "checksum": "15963aebeed797b3b71d7ac682e47d07"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-2-collaboration-using-agilescrum.html": {
       "checksum": "1cb569e65d91f7158fc8eda9a3bad777"
@@ -4662,7 +4662,7 @@
       "checksum": "e63ce30f3f48f74c39990654ec36c7f3"
     },
     "reader_tlsc-dfsb26v_workflows/relationaldb.html": {
-      "checksum": "d94302977f0683b29a667c027d30e4fc"
+      "checksum": "57403e12407423f1448c761da36a20a7"
     },
     "reader_tlsc-dfsb26v_workflows/repoducibleresearch3.html": {
       "checksum": "c03baa9745ac257d9a025332edff96a4"
@@ -4680,13 +4680,13 @@
       "checksum": "5c1b4066c52b09f1750f5232ff70491c"
     },
     "reader_tlsc-dfsb26v_workflows/rmarkdown.html": {
-      "checksum": "ce43e62e13bb6d6ca8cef18a908d3a37"
+      "checksum": "38827a26a6f326eb4a58bae679dc43f0"
     },
     "reader_tlsc-dfsb26v_workflows/rmarkdownadvanced.html": {
       "checksum": "4860ea7ba056a3e199eb6961af7d295c"
     },
     "reader_tlsc-dfsb26v_workflows/search_index.json": {
-      "checksum": "4b78de20b0c2c536d8e870279ba21e1a"
+      "checksum": "597d6bc43cf18370469e503cd698901f"
     },
     "reader_tlsc-dfsb26v_workflows/style.css": {
       "checksum": "0685a61954d17298eb8a27d7f3e4e8ae"

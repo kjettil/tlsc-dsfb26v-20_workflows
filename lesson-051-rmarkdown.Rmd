@@ -4,8 +4,11 @@ _This chapter is best read in the source RMarkdown file_
 
 ## Lesson Contents
 
- - 
-
+ - Extended Markdown syntax (figures, links, html tags, LaTeX formulas)
+ - Chunk options vs global settings (e.g. ggplot theme)
+ - Output formats (slides, Word, Powerpoint, pdf, themes)
+ - Publication grade reports (templates)
+ 
 ## Resources
 
 https://nceas.github.io/sasap-training/materials/reproducible_research_in_r_fairbanks/index.html
@@ -173,6 +176,12 @@ output:
 ---
 
 ```
+
+## LaTeX
+You can write formulas in RMarkdown using LaTeX
+The formula for a straigth line with slope `a` and intercept `b`
+
+$Yi = aXi + b$
 
 ## Summary
 

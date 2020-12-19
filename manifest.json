@@ -3735,10 +3735,10 @@
       "checksum": "bd2be74cfb08058c4f8ad68da4665fc9"
     },
     "_bookdown_files/lesson-012-reproducible_research_part_2_files/figure-html/unnamed-chunk-15-1.png": {
-      "checksum": "18a8effb0d0aeb9276fbf02c340393aa"
+      "checksum": "d8b88fec8bad163d7aa3b83b3da02060"
     },
     "_bookdown_files/lesson-012-reproducible_research_part_2_files/figure-html/unnamed-chunk-16-1.png": {
-      "checksum": "c6f7cf63b99ce7dd9447b23aae8a73d0"
+      "checksum": "d6969fa018375832a4d308875a82e76c"
     },
     "_bookdown_files/lesson-012-reproducible_research_part_2_files/figure-html/unnamed-chunk-17-1.png": {
       "checksum": "b612e69ce0ca54387427d0ac5c003e5a"
@@ -4026,7 +4026,7 @@
       "checksum": "2ba7ba865898b0d8844dd9ba06659554"
     },
     "index.Rmd": {
-      "checksum": "61a6fdc3c2019e171fcb4e2a4cbc3e73"
+      "checksum": "393afe83154dce613ada324a1921ca2e"
     },
     "lesson-011-reproducible_research_part_1.Rmd": {
       "checksum": "2448ce22e2028b06d8469516ae33f2e2"
@@ -4044,7 +4044,7 @@
       "checksum": "b6b324330e68ff62f1aee1da90465362"
     },
     "lesson-051-rmarkdown.Rmd": {
-      "checksum": "056e449e421233d463de6827be4aa79a"
+      "checksum": "d43104b3f41fe7f12261cdf010f2f218"
     },
     "lesson-052-rmarkdown-advanced.Rmd": {
       "checksum": "fb8684978ac33ae32ac7922f19d480cf"
@@ -4494,10 +4494,10 @@
       "checksum": "2ba7ba865898b0d8844dd9ba06659554"
     },
     "reader_tlsc-dfsb26v_workflows/index.html": {
-      "checksum": "15a1cfb39e37c9aa766d18a2db7622e6"
+      "checksum": "63cd00d685ec3647061b8e17b93bf73d"
     },
     "reader_tlsc-dfsb26v_workflows/index.md": {
-      "checksum": "518a5a475ad5242b387e8983364f9c57"
+      "checksum": "197904a70699564059dbd58f145cd926"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-011-reproducible_research_part_1.md": {
       "checksum": "4faa8a5defd50e024070892169e9f68b"
@@ -4521,10 +4521,10 @@
       "checksum": "bd2be74cfb08058c4f8ad68da4665fc9"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-012-reproducible_research_part_2_files/figure-html/unnamed-chunk-15-1.png": {
-      "checksum": "18a8effb0d0aeb9276fbf02c340393aa"
+      "checksum": "d8b88fec8bad163d7aa3b83b3da02060"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-012-reproducible_research_part_2_files/figure-html/unnamed-chunk-16-1.png": {
-      "checksum": "c6f7cf63b99ce7dd9447b23aae8a73d0"
+      "checksum": "d6969fa018375832a4d308875a82e76c"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-013-reproducible_research_part_3.md": {
       "checksum": "a0fff0bc540c5137f061a4e362025859"
@@ -4539,7 +4539,7 @@
       "checksum": "6186f38f342cd3b6b5f09d74521cb73d"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-051-rmarkdown.md": {
-      "checksum": "a64a9d151864a6572727ead851a85a3f"
+      "checksum": "2dde2c65dd54585640d4f9f857b40040"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-051-rmarkdown_files/figure-html/unnamed-chunk-1-1.png": {
       "checksum": "a6b82660b8c15f7fdab7d54f6c9a9d03"
@@ -4557,7 +4557,7 @@
       "checksum": "dbc4ea732461001d7bf6f491267db49a"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-081-relational-db.md": {
-      "checksum": "37aac37a89f2e1fcdd6091c390930733"
+      "checksum": "6397020da785d0a9bc877721e6a86294"
     },
     "reader_tlsc-dfsb26v_workflows/lesson-2-collaboration-using-agilescrum.html": {
       "checksum": "1cb569e65d91f7158fc8eda9a3bad777"
@@ -4659,10 +4659,10 @@
       "checksum": "8edeb5f6927ad832a4533de95d398ebe"
     },
     "reader_tlsc-dfsb26v_workflows/reference-keys.txt": {
-      "checksum": "efbe59c0362058e4592c8b9241a3f875"
+      "checksum": "e63ce30f3f48f74c39990654ec36c7f3"
     },
     "reader_tlsc-dfsb26v_workflows/relationaldb.html": {
-      "checksum": "a666e645425c1fe0fab21fd035bb6f9d"
+      "checksum": "23cf3fa93fd9d45fc28f17257a9aaced"
     },
     "reader_tlsc-dfsb26v_workflows/repoducibleresearch3.html": {
       "checksum": "c03baa9745ac257d9a025332edff96a4"
@@ -4680,13 +4680,16 @@
       "checksum": "5c1b4066c52b09f1750f5232ff70491c"
     },
     "reader_tlsc-dfsb26v_workflows/rmarkdown.html": {
-      "checksum": "0e8aeeec06af03b6347db16443df7f00"
+      "checksum": "242d6df1009701241d8d528b9eedd141"
     },
     "reader_tlsc-dfsb26v_workflows/rmarkdownadvanced.html": {
       "checksum": "4860ea7ba056a3e199eb6961af7d295c"
     },
+    "reader_tlsc-dfsb26v_workflows/rsconnect/documents/index.md/datascience.hu.nl/marc.teunis/reader_tlsc-dfsb26v_workflows.dcf": {
+      "checksum": "07675293203339dc2e3ce491de87a73b"
+    },
     "reader_tlsc-dfsb26v_workflows/search_index.json": {
-      "checksum": "ea7d595f2161bb87373cec4f2f9791bb"
+      "checksum": "3717e898dff8593c2ad8995a83759ace"
     },
     "reader_tlsc-dfsb26v_workflows/style.css": {
       "checksum": "0685a61954d17298eb8a27d7f3e4e8ae"

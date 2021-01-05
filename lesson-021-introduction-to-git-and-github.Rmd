@@ -1,0 +1,54 @@
+# Lesson 2 - Introduction to Git and GitHub
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Learning goals
+
+
+
+## The Git workflow
+
+### Saving a new version of your files (commit)
+
+### Updating the GitHub repository (push)
+
+### Updating your local Git repository based on changes in GitHub (pull)
+
+
+
+## Creating a new Git repository on GitHub
+
+
+
+
+## How to work with Git in RStudio
+
+### Getting started with Git in RStudio
+
+#### Connecting to your Git repository on GitHub
+
+#### The Git menu in RStudio
+
+### Saving a new version of your file (commit)
+
+### Updating the GitHub repository (push)
+
+
+
+
+## 
+
+
+
+
+
+## Resources
+
+- Git Book (command line)
+
+- Git and RStudio
+
+- Resources for GitHub
+

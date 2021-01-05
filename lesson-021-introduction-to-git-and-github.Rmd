@@ -6,9 +6,28 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Learning goals
 
+In this lesson, you will learn how to keep track of your file changes using Git. After this lesson:
+
+- you know the different steps of the Git workflow (commit, push and pull);
+- you know how to set up a new Git repository; 
+- you can keep track of your file changes using Git, RStudio and GitHub;
+- and you can instruct git to ignore certain files for version control (gitignore).
+
+
+## Why Git and GitHub?
+
+To explain why Git and GitHub are so important, let us look at an example. Suppose you are analyzing some data for your internship using R. You have written an R script to perform the data analysis and the script is working. However, one day you decide to make some changes to the script in order to make the computations a bit faster. You work the whole day on the code and at the end of the day you try if the code is working as expected. Unfortunately, it is not working as expected. But the code was working before. It would be great if you could go back to the previous version of the code. Or if you could easily see the changes you made, to find out why your script stopped working. 
+
+The example shows that it is important to keep track of your changes. Of course you could have made the adjustments to the script in a copy of the original script. But in this way, you would end up with a lot of files on your computer. In addition, it is not easy to see *what* you changed. This is why we use **version control software**: software that keeps track of file changes and allows you to inspect the changes and to go back to previous versions of the files.
+
+**Git** is the most popular version control software used today. It is designed to track changes of text-based files (files you can open in a text editor, such as R scripts and markdown files). Git can be easily used to track the changes of files that are on your computer. 
+
+However, you often want to work together with others (for example, fellow students or colleagues) on the same scripts. **GitHub** is a web-based platform that was created to promote collaboration. GitHub is based on the Git software. The platform allows you to create an online copy of your files and the Git version history. This copy can then be shared with others, who can then also contribute to the code themselves. You can use the online copy on GitHub also for yourself, for example as a backup of your code in case your computer crashes or you accidentally remove some folders on your computer.     
 
 
 ## The Git workflow
+
+
 
 ### Saving a new version of your files (commit)
 
@@ -18,7 +37,12 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 
-## Creating a new Git repository on GitHub
+
+## Creating a new Git repository
+
+### Step 1: Creating a new Git repository on GitHub
+
+### Step 2: Downloading the Git repository to your computer (cloning)
 
 
 
@@ -38,8 +62,12 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 
-## 
+## Ignore files for version control (gitignore)
 
+
+
+
+## Exercises
 
 
 

@@ -1,0 +1,6 @@
+# Lesson 2 - Part 3 - Exercises and resources
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+

@@ -1,0 +1,34 @@
+# Lesson 2 - Part 2 - Git and RStudio
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Creating a new Git repository
+
+### Step 1: Creating a new Git repository on GitHub
+
+### Step 2: Downloading the Git repository to your computer (cloning)
+
+
+
+
+## How to work with Git in RStudio
+
+### Getting started with Git in RStudio
+
+#### Connecting to your Git repository on GitHub
+
+#### The Git menu in RStudio
+
+### Saving a new version of your file (commit)
+
+### Updating the GitHub repository (push)
+
+
+
+
+## Ignore files for version control (gitignore)
+
+

@@ -1,4 +1,4 @@
-# Lesson 2 - Introduction to Git and GitHub
+# Lesson 2 - Part 1 - Introduction to Git and GitHub
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -41,52 +41,10 @@ Once you have placed files in the Git repository folder, you can start to track 
 
 ### Updating the GitHub repository (push)
 
-When you commit your changes, the Git repository on your computer will be updated: a new version of your files will be added to the version history of the Git repository on your computer. However, the online copy of your Git repository on GitHub does not get updated, unless you tell Git to do so. The process of updating your Git repository on GitHub based on local changes (new versions on your computer), is called **pushing** (you 'push' the changes from your computer to GitHub).  
+When you commit your changes, the Git repository on your computer will be updated: a new version of your files will be added to the version history of the Git repository on your computer. However, the online copy of your Git repository on GitHub does not get updated, unless you tell Git to do so. The process of updating your Git repository on GitHub based on local changes (new versions on your computer), is called **pushing** (you 'push' the changes from your computer to GitHub). You can push your changes each time you commit your changes, but it is also possible to push all the commits at once at the end of the day. However, it is recommended to push your changes at least once per day, to keep the copy of your Git repository on GitHub up to date.
 
 ### Updating your local Git repository based on changes in GitHub (pull)
 
+If you work together with other persons, it may be the case that the Git repository on GitHub has been changed by other persons. These commits are then present in the Git repository on GitHub, but not in your local Git repository. In other words, the Git repository on your computer is lagging behind the Git repository on GitHub. In this case, you want to update your Git repository on your computer based on the changes on GitHub. This update process is the reverse of pushing, hence it is called **pulling** (you 'pull' the changes from GitHub to your computer).
 
-
-
-## Creating a new Git repository
-
-### Step 1: Creating a new Git repository on GitHub
-
-### Step 2: Downloading the Git repository to your computer (cloning)
-
-
-
-
-## How to work with Git in RStudio
-
-### Getting started with Git in RStudio
-
-#### Connecting to your Git repository on GitHub
-
-#### The Git menu in RStudio
-
-### Saving a new version of your file (commit)
-
-### Updating the GitHub repository (push)
-
-
-
-
-## Ignore files for version control (gitignore)
-
-
-
-
-## Exercises
-
-
-
-
-## Resources
-
-- Git Book (command line)
-
-- Git and RStudio
-
-- Resources for GitHub
-
+Pulling is only important if other persons contributed to the repository. In this lesson we will focus on the simple situation were you work alone on your files and you are the only person contributing to the Git repository on GitHub. In the next lesson we will explore the best practices for working together on the same files. 

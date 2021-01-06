@@ -4,3 +4,15 @@
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+## Exercises
+
+
+
+
+## Resources
+
+- Git Book (command line)
+
+- Git and RStudio
+
+- Resources for GitHub

@@ -22,16 +22,26 @@ The example shows that it is important to keep track of your changes. Of course 
 
 **Git** is the most popular version control software used today. It is designed to track changes of text-based files (files you can open in a text editor, such as R scripts and markdown files). Git can be easily used to track the changes of files that are on your computer. 
 
-However, you often want to work together with others (for example, fellow students or colleagues) on the same scripts. **GitHub** is a web-based platform that was created to promote collaboration. GitHub is based on the Git software. The platform allows you to create an online copy of your files and the Git version history. This copy can then be shared with others, who can then also contribute to the code themselves. You can use the online copy on GitHub also for yourself, for example as a backup of your code in case your computer crashes or you accidentally remove some folders on your computer.     
+However, you often want to work together with others (for example, fellow students or colleagues) on the same scripts. **GitHub** is a [web-based platform](https://github.com/) that was created to promote collaboration. GitHub is based on the Git software. The platform allows you to create an online copy of your files and the Git version history. This copy can then be shared with others, who can then also contribute to the code themselves. You can use the online copy on GitHub also for yourself, for example as a backup of your code in case your computer crashes or you accidentally remove some folders on your computer.     
 
 
 ## The Git workflow
 
+You are hopefully convinced that Git and GitHub are the way to go. But how do you start? How can you use Git and GitHub to keep track of the file changes in your scripts? In this section you will learn the different steps of the Git workflow. We will focus on the concepts; in the next section we will give you a detailed protocol of how to do things by yourself. 
 
+### Setting up a Git repository
+
+Before you can use Git and GitHub to track your file changes, you need to set up your own Git repository. A **Git repository** a folder in which the version control takes place. That means that all the changes of files that are located in that folder (and its subfolders) are tracked. It is best practice to initiate the Git repository on GitHub and then download it to your computer, as will be explained in the next section. This results in a folder on your computer. All files that you place in this folder will be under version control by Git. 
+
+Just as you can have multiple folders on your computer, you can also have multiple Git repositories on your computer (and on GitHub). It is recommended to create a separate Git repository for each project you are doing. For example, if you create scripts and markdown files for your internship, you create a Git repository that only contains the work of this internship. If you performed several separate research projects in your internship, you can create separate Git repositories for each research project. 
 
 ### Saving a new version of your files (commit)
 
+Once you have placed files in the Git repository folder, you can start to track the file changes. It is important to note that Git does not automatically track the file changes. If you do not tell Git to save the version history, it will not do anything! Hence, you need to actively tell to Git to save the file changes. The action of saving a new version of your files in the Git repository's file history is called a **commit**. It is recommended to regularly commit your changes, preferably several times a day. 
+
 ### Updating the GitHub repository (push)
+
+When you commit your changes, the Git repository on your computer will be updated: a new version of your files will be added to the version history of the Git repository on your computer. However, the online copy of your Git repository on GitHub does not get updated, unless you tell Git to do so. The process of updating your Git repository on GitHub based on local changes (new versions on your computer), is called **pushing** (you 'push' the changes from your computer to GitHub).  
 
 ### Updating your local Git repository based on changes in GitHub (pull)
 

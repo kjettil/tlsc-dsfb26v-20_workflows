@@ -16,3 +16,6 @@ knitr::opts_chunk$set(echo = FALSE)
 - Git and RStudio
 
 - Resources for GitHub
+- Resources for licenses:
+  * [Information on licensing of R packages](https://r-pkgs.org/license.html)
+  * [General information about licenses](https://choosealicense.com/licenses/)

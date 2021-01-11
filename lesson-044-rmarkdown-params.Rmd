@@ -4,7 +4,7 @@ params:
   month: February March April May June July August September October November December
   year: 2020
 ---
-# Lesson 5 - Part 2 - Advanced RMarkdown {#rmarkdownadvanced}
+# Lesson 4.4 - RMarkdown - parameters {#rmarkdownparams}
 
 _This chapter is best read from the source RMarkdown file_
 

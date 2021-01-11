@@ -1,0 +1,11 @@
+# Lesson 4.6 - RMarkdown - Interactivity {#rmarkdowninteractive}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This lesson is about building Shiny widgets into your RMarkdown to create interactive visualizations. We will illustrate this, using the `{flexdashboard}` extension for RMarkdown:
+
+https://rmarkdown.rstudio.com/flexdashboard/
+
+

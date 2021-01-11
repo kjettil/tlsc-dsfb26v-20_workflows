@@ -1,0 +1,13 @@
+# Lesson 4.2 - RMarkdown - Code chunks {#rmarkdownchunks}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown chunks
+
+_This chapter is best read in the source RMarkdown file_
+
+This lesson is about controlling the behaviour of RMarkdown chunks. The advanced nature of this chapter is that we will control chapter options by using RMarkdown parameters.
+
+Illustrate the use of controlling reporting flow for different types of statistical analyses for different types of data input -> paramtetric vs non-parameteric, T-test vs One-way anova, Dose-Response Curve...

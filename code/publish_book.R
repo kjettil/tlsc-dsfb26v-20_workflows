@@ -1,4 +1,4 @@
-dir_out <- here::here("simple_bookdown")
+dir_out <- here::here("test_bookdown")
 
 bookdown::render_book(
   input = here::here(),
@@ -6,5 +6,5 @@ bookdown::render_book(
 ## create manifest for github continous integration updates the bookdown website
 ## upon push to master
 
-rsconnect::writeManifest(
-  appPrimaryDoc = "index.Rmd")
+#rsconnect::writeManifest(
+#  appPrimaryDoc = "index.Rmd")

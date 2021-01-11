@@ -1,4 +1,4 @@
-# Lesson 5 - Part 1 - Literate Programming with RMarkdown {#rmarkdown}
+# Lesson 4.1 - RMarkdown - Syntax {#rmarkdownsyntax}
 
 _This chapter is best read in the source RMarkdown file_
 
@@ -182,6 +182,35 @@ You can write formulas in RMarkdown using LaTeX
 The formula for a straigth line with slope `a` and intercept `b`
 
 $Yi = aXi + b$
+
+## Inclusing images
+There are basically two ways to include an image from an existing file:
+
+In an R-chunk call `knitr::include_graphics()`
+```
+
+```
+Displays
+```{r}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "prime.jpeg"
+  )
+)
+```
+
+We can also use Markdown syntax like this
+
+```
+
+```
+
+
+The advantage of this approach is that you can use all the chunk options for this code chunk, controlling e.g. the size and behaviour of the image as you would normally do for a code-generated 
+
+
+
 
 ## Summary
 

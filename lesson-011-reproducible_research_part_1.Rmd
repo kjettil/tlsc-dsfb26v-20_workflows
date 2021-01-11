@@ -1,4 +1,4 @@
-# Lesson 1 - Part 1 - Reproducible (Open) Science {#reproducibleresearch1}
+# Lesson 1.1 - Reproducible Research - Introduction {#represintro}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
@@ -9,11 +9,45 @@ knitr::opts_chunk$set(echo = TRUE,
 image_dir <- here::here(
   "images"
 )
+chapter_name <- "represintro"
+lesson_number <- c("1.1")
 
-## packages
+``` 
+
+
+## Packages
+```{r}
 library(tidyverse)
 library(nlme)
 ```
+
+```{r, topic}
+## add topics below to write them automatically to the course contents table
+topics <- c(
+  "Open source",
+  "Guerilla analytics",
+  "software development",
+  "Literate programming",
+  "Programming vs GUI",
+  "R Markdown",
+  "R Markdwon Driven Development",
+  "R package development",
+  "Git/Github",
+  "Version Control"
+)
+
+tibble(
+  Lesson_Number = lesson_number,
+  Lesson_Name = chapter_name,
+  Topics = topics
+  ) %>%
+  write_csv(file = "course_contents.csv", 
+            append = TRUE)
+
+```
+
+
+
 
 ## Lesson Contents
 

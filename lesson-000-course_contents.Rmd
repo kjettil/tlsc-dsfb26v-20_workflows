@@ -1,0 +1,19 @@
+# Course contents {#coursecontents}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, include=FALSE}
+library(tidyverse)
+```
+
+```{r, read_data}
+read_csv(
+  here::here(
+    "course_contents.csv"
+  )) %>% 
+  distinct(df = ., , .keep_all = TRUE)
+  knitr::kable()
+```
+

@@ -37,10 +37,21 @@ Turn any GitHub repository into a simple but powerful agile work environment.
 
 [Adapted from Wikipedia - The free Ecyclopedia](https://en.wikipedia.org/wiki/Agile_software_development)
 
-In software development, agile (sometimes written Agile) practices approach discovering requirements and developing solutions through the collaborative effort of self-organizing and cross-functional teams. Their customer(s)/end user(s) play a pivotal role in the work process and are involved in reviews at regular intervals. It advocates adaptive planning, evolutionary development, early delivery, and continual improvement, and it encourages flexible responses to change. 
+In software development, agile (here written as Agile) practices approach discovering requirements and developing solutions through the collaborative effort of self-organizing and cross-functional teams. Their customer(s)/end user(s) play a pivotal role in the work process and are involved in reviews at regular intervals. It advocates adaptive planning, evolutionary development, early delivery, and continual improvement, and it encourages flexible responses to change. 
 
+### Agile explained
 The Agile way of working is also very suitable for Scientific projects that have elements of Data Science and Software development. Because it is short-cycle development and prototyping, it is very useful in projects where different tasks need to be integrated in a tool or workflow or analysis.
-During the Data Science Projecticum, we will require you (within you project team, to ) 
+During the Data Science Projecticum, we will require you (within you project team, to apply the Agile way of working).
+
+### SCRUM 
+In practical sense, scrum is the collection of meetings and the tools used to administer the workload. The central tool that is being used to monitor all activities is called the 'Project Backlog'. You can look at this 'Project Backlog as the collection of all the work that needs to be done to complete the full project. Because the Agile way of work does not work with long term planning, but works according short cycles of developing a product, a service or perform a study, or involve stakeholders, the 'Project Backlog' is where all the team members go regularly together to agree on what needs to be done next.
+
+The short cycles of working on developing new features, running computations, performing experiments, interviewing customers and stake-holders and acquiring new tools are called 'Sprints'. In each sprint, which typically lasts 3 working weeks, a number of items from the Backlog are 'moved' to the so-called 'Sprint Backlog'. During regular weekly sessions discussion take place which items need to go from the 'Project Backlog' to the 'Sprint Backlog' in order to add value to the project. These sessions are called 'Sprint planning'. At the start of each sprint a single  
+
+
+
+
+
 
 
 
@@ -52,7 +63,13 @@ During the Data Science Projecticum, we will require you (within you project tea
 Image: [Scrum primer](http://www.scrumprimer.org/overview).
 
 
-## How it works
+### Github organization and Data Science Projecticum
+
+
+
+
+
+## How it works in Detail
 
 - items are reported as **issues**
 - points and meta data are assigned to items as **labels**
@@ -80,17 +97,6 @@ Add the following labels to your repository:
 - `priority: high`
 - `priority: highest`
 
-### Points
-
-`point` labels allow you to assign velocity points to individual items (issues) e.g. using [Fibonacci numbers](http://en.wikipedia.org/wiki/Fibonacci_number):
-
-- `point: 1`
-- `point: 2`
-- `point: 3`
-- `point: 5`
-- `point: 8`
-- `point: 13`
-- `point: 21`
 
 ### Types
 

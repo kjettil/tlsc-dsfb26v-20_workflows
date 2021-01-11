@@ -1,4 +1,4 @@
-dir_out <- here::here("reader_tlsc-dfsb26v_workflows")
+dir_out <- here::here("simple_bookdown")
 
 bookdown::render_book(
   input = here::here(),

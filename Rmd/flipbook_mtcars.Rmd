@@ -1,0 +1,115 @@
+---
+title: "A minimal {ggplot2} example"
+subtitle: "Code demo with {flipbookr}"
+author: "Marc A.T. Teunis"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, hygge, ninjutsu]
+    nature:
+      ratio: 16:9
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+```{r, include = F}
+# This is the recommended set up for flipbooks
+# you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
+library(flipbookr)
+library(tidyverse)
+```
+
+---
+
+```{r, mtcars_data, include=FALSE}
+datasets::mtcars %>% 
+  as_tibble()
+
+```
+
+`r chunk_reveal("mtcars_data")`
+
+---
+## Using `{SLOWggplot}`
+
+ - SLOWggplot is a dialect of normal ggplot2 code. 
+ - Build an image more gradually
+ - Features and aesthetics are added incrementally
+ - Ideal for this flipbook demo and learning ggplot2! 
+ - See: https://evangelinereynolds.netlify.app/post/slow-ggplot/ for more info
+
+---
+
+```{r, mtcars_plot, include=FALSE}
+mtcars %>%
+  ggplot() + #BREAK
+  aes(x = disp) +
+  aes(y = mpg) + #BREAK
+  geom_point(position = "jitter") + #BREAK
+  aes(colour = as_factor(cyl))
+```
+
+`r chunk_reveal("mtcars_plot", break_type = "user")`
+
+---
+## Break types
+There are a number of break types that help you customize the flipbook
+
+---
+
+```{r, mtcars_non_seq, include=FALSE}
+mtcars %>%
+  ggplot() + 
+  aes(x = disp) +
+  aes(y = mpg) + 
+  geom_point(
+    size = 3,
+    alpha = 0.5, 
+    colour = "blue") +   
+  aes(shape = as_factor(cyl)) +
+  ggtitle("An example plot using the infamous mtcars")
+```
+
+
+`r chunk_reveal("mtcars_non_seq")`
+
+---
+
+
+<!-- adjust font size in this css code chunk, currently 80 -->
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 80%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+
+code.r.hljs.remark-code{
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+code.r.hljs.remark-code:hover{
+  overflow-x:visible;
+  width: 500px;
+  border-style: solid;
+}
+```
+
+
+
+---
+
+# Notes: 
+
+- This minimal flipbook assumes you are online when you build and view.  It is going to find the most recent remark.js info online.
+
+- xaringan/remark.js slideshows are not self contained, single file slide shows.  Make sure you ship all the associated files that are created to display your flipbooks/slideshows.  I like to push .html and associated files to github repository and use Github Pages to host for beyond local sharing. :-)
+

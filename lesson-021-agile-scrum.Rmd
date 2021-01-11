@@ -39,9 +39,8 @@ Turn any GitHub repository into a simple but powerful agile work environment.
 
 In software development, agile (sometimes written Agile) practices approach discovering requirements and developing solutions through the collaborative effort of self-organizing and cross-functional teams. Their customer(s)/end user(s) play a pivotal role in the work process and are involved in reviews at regular intervals. It advocates adaptive planning, evolutionary development, early delivery, and continual improvement, and it encourages flexible responses to change. 
 
-
-[further explanation needed]
-
+The Agile way of working is also very suitable for Scientific projects that have elements of Data Science and Software development. Because it is short-cycle development and prototyping, it is very useful in projects where different tasks need to be integrated in a tool or workflow or analysis.
+During the Data Science Projecticum, we will require you (within you project team, to ) 
 
 
 

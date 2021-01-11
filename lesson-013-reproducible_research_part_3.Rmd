@@ -1,7 +1,21 @@
 # Lesson 1.3 - Reproducible Research Tools {#represtools}
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+
+knitr::opts_chunk$set(
+  echo = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  error = FALSE
+  , 
+  fig.width = 6,
+  fig.height = 4
+)
+
+image_dir <- here::here(
+  "images"
+)
+
 chapter_name <- "represtools"
 lesson_number <- "1.3"
 ```
@@ -18,8 +32,10 @@ This lesson contains:
 ## Packages
 ```{r}
 library(tidyverse)
-```
+## packages
+library(ggExtra)
 
+```
 
 ```{r, topic}
 ## add topics below to write them automatically to the course contents table
@@ -43,31 +59,6 @@ tibble(
   write_csv(
     file = "course_contents.csv", 
     append = TRUE)
-
-```
-
-
-
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-  echo = TRUE,
-  warning = FALSE,
-  message = FALSE,
-  error = FALSE
-  , 
-  fig.width = 6,
-  fig.height = 4
-)
-
-image_dir <- here::here(
-  "images"
-)
-
-
-## packages
-library(tidyverse)
-library(ggExtra)
 
 ```
 

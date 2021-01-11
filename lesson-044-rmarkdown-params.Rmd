@@ -236,5 +236,7 @@ plot_deaths
 ```
 
 
-
+ Go over this tutorial: [RStudio Params in Rmd](https://rmarkdown.rstudio.com/developer_parameterized_reports.html%23parameter_types%2F#overview)
+ 1. Define one parameter in your analysis
+ 1. Knit two different reports of your parameterized Rmd (with two different values for one paramter defined) and sent them to the teacher
 

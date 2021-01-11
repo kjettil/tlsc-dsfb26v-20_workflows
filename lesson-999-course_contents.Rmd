@@ -12,8 +12,8 @@ library(tidyverse)
 read_csv(
   here::here(
     "course_contents.csv"
-  )) %>% 
-  distinct(df = ., , .keep_all = TRUE)
-  knitr::kable()
+  )) -> cc 
+  
+distinct(cc, Topics, .keep_all = TRUE)
 ```
 

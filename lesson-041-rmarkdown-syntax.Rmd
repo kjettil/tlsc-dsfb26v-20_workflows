@@ -113,7 +113,7 @@ You can include inline r-code in this way:
 
 `r 2+2`
 
-It evaluates to: 2 + 2 = 4
+It evaluates to: `r 2+2`
 
 ### Plots
 
@@ -183,15 +183,22 @@ The formula for a straigth line with slope `a` and intercept `b`
 
 $Yi = aXi + b$
 
-## Inclusing images
-There are basically two ways to include an image from an existing file:
+To build more complex formula's you can use an online LaTeX . See 
 
-In an R-chunk call `knitr::include_graphics()`
-```
 
-```
+## Including images
+
+There are basically three ways to include an image from an existing file:
+
+ 1. In an RMarkdown code chunk
+ 1. As a direct link to an image file with the `![caption](link)` tag
+ 1. From embedded html code
+
+### In an R-chunk call
+You can use the function from `{knitr}` `include_graphics()`
+
 Displays
-```{r}
+```{r, dpi=300, fig.cap="'Optimus Prime'; Leader of the Autobots"}
 knitr::include_graphics(
   here::here(
     "images",
@@ -200,14 +207,43 @@ knitr::include_graphics(
 )
 ```
 
-We can also use Markdown syntax like this
+The advantage of this approach is that you can use all the chunk options for this code chunk, controlling e.g. the size and behavior of the image as you would normally do for a code-generated graphs. Setting the `dpi` option in the code chunk controls the size of the image displayed in the rendered output. To see more options run `?knitr::include_graphics()` in the R console. 
+
+If you would like to use the above chunk option -- I personally prefer this option because it is an R only solution -- you should know about the `{captioner}` package. This package helps you with numbering tables and figures and with it you can create standardized captions, or add captions to your figures from another source file. A good workflow would be to write all captions in a separate text file and add them to your R Markdown document using the `{captioner}`package. In this way you can more easily edit and revise captions separate from the main text. For more info on [`{captioner}`](https://cran.r-project.org/web/packages/captioner/vignettes/using_captioner.html)   
+
+### 2. We can also use Markdown syntax like this
+See [this blog](https://medium.com/markdown-monster-blog/getting-images-into-markdown-documents-and-weblog-posts-with-markdown-monster-9ec6f353d8ec) for more details
 
 ```
+![Megatron-Leader of the Decepticons](./images/megatron.jpeg){ width=20%}
+```
+Note that the path name is not a string
+
+!['Megatron'; Leader of the Decepticons](./images/megatron.jpeg){ width=20%}
+
+Setting `{ width=x%}` is a special control for Pandoc, which is the engine that converts RMarkdown to plain Markdown. This does not work for all Markdown dialects.
+
+The advantage of this approach is that it is written very fast. You can also include an image from a web url like this
 
 ```
+![My personal favorite; 'Soundwave'](https://static.wikia.nocookie.net/transformers/images/8/89/Transformers_G1_Soundwave.jpg)
+```
 
+![My personal favorite; 'Soundwave'](https://static.wikia.nocookie.net/transformers/images/8/89/Transformers_G1_Soundwave.jpg)
 
-The advantage of this approach is that you can use all the chunk options for this code chunk, controlling e.g. the size and behaviour of the image as you would normally do for a code-generated 
+### 3. You can also include a local (or web url linked) image using html.
+
+```
+<img src="https://static.wikia.nocookie.net/transformers/images/b/bf/Perceptorg1.jpg"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 20px;" />
+```
+
+<img src="https://static.wikia.nocookie.net/transformers/images/b/bf/Perceptorg1.jpg"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+
+The advantage of this latter option is obviously that you can tweak the apperance and the behavior of your image far better using embedded html. The disadvantge might be that you would have to learn html. This however is a very good idea if you intend to become a Data Scientist/Bioinformatician.
 
 
 
@@ -224,9 +260,7 @@ The advantage of this approach is that you can use all the chunk options for thi
 
  1. Find a relevant dataset  that you recently found or are busy with at the moment*
  1. Write a short Rmd report where you LOAD and VISUALIZE (create at least 3 different graphs) the data in an Rmd report.
- 1. Go over this tutorial: [RStudio Params in Rmd](https://rmarkdown.rstudio.com/developer_parameterized_reports.html%23parameter_types%2F#overview)
- 1. Define one parameter in your analysis
- 1. Knit two different reports of your parameterized Rmd (with two different values for one paramter defined) and sent them to the teacher
+ 1.
  
 *If you do nog have a dataset, you can use this one:
 "./data/API_AG.LND.FRST.K2_DS2_en_csv_v2_716262"

@@ -1,10 +1,4 @@
----
-title: "Lesson 2 - Collaborating through Agile/SCRUM"
-author: "Marc A.T. Teunis"
-date: "`r Sys.time()"
----
-
-# Lesson 2 - Collaboration using Agile/SCRUM
+# Lesson 2 - Collaboration through Agile/SCRUM
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

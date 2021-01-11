@@ -1,0 +1,52 @@
+# Lesson 2 - Part 2 - Git and RStudio
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+In this section, we will give you a detailed protocol for working with Git using RStudio. This protocol assumes that only one person is contributing to the Git repository. If you work together with other persons, you will need additional tools than the one presented here. You will learn more about these tools in the next lesson.  
+
+## Creating a new Git repository
+
+Before you can track your file changes using Git, you first need to set up your Git repository. It is best practice to create your Git repository on GitHub and then download a copy of the Git repository to your computer. We explain these two steps in detail below.
+
+### Step 1: Creating a new Git repository on GitHub
+
+To set up our Git repository, we go to the [GitHub login page](https://github.com/login) and log in with our credentials. We are then taken to a home page. On the left side, we find a panel with our repositories. Here, we can click on 'New' to create a new repository (see Figure 1, top panel). 
+
+Once we click on 'New', we will be taken to a menu were we can specify the details of our new Git repository. The menu consists of the following parts (see also Figure 1, bottom panel):
+
+- **Repository name field**: in the repository name field we can specify the name for our new repository. GitHub will automatically check if another repository with the same name already exists. 
+- **Public or Private**: when you create a new repository, you have to indicate if you want to create a public or a private repository. A **public repository** can be found and downloaded by anyone on the internet (although only specified can contribute to the Git repository). A **private repository** is only accessible to persons specified by you (the owner). Although it is recommended to allow others to access and use your code by creating a public repository, this not always possible. Especially if you are employed (or doing an internship!) at a company or other agency, your employer often does not allow you to make your files public. Always check with your employer (or supervisor) to see what is allowed. *Choose a private repository if you are not sure!*
+- **Initialization files**: when you create a repository, you can create some 'initialization files'. These files include a README file, a gitignore file and a license:
+  - **README file**: a README file is a file that contains information about the repository. This file should be read by everyone that is planning to use the files in the repository. It usually contains information about the content of the Git repository. It is easy to make a README file, so it is not necessary to create the file when creating the Git repository. 
+  - **gitignore file**: we will explain the purpose of the gitignore file in detail below. In short, the gitignore file contains all the file names of files that should *not* be followed by Git. That means that you cannot commit changes to files that are in the gitignore file. On GitHub, you can easily create a gitignore file that is specific for the programming language you are using. It is therefore recommended to create a gitignore file (for example, for R) when creating the Git repository.
+  - **license**: when you create a public repository, it is important to add a license to your repository. The license states what others can do with the files in the Git repository. For example, with an MIT license, you allow others to use your file for any purpose they like (even for commercial applications). Similarly, if you want to use the files of others, it is important to check their license to see what you can and cannot do. Please check the resources for more information about licenses.  
+
+![Figure 1. Creating a new Git repository on GitHub. See the main text for the details.](images/lesson22_1_createRepo.png)
+
+### Step 2: Downloading the Git repository to your computer (cloning)
+
+![Figure 2. Downloading the Git repository to your computer using RStudio. See the main text for the details. ](images/lesson22_2_downloadRepo.png)
+
+
+
+
+## How to work with Git in RStudio
+
+### Getting started with Git in RStudio
+
+#### Connecting to your Git repository on GitHub
+
+#### The Git menu in RStudio
+
+### Saving a new version of your file (commit)
+
+### Updating the GitHub repository (push)
+
+
+
+
+## Ignore files for version control (gitignore)
+
+

@@ -1,0 +1,57 @@
+# Lesson 3 - Git Branching and Merging
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Learning goals
+
+
+
+## The extended Git workflow
+
+### Creating a new development environment (branching)
+
+### Saving a new version of your files (commit)
+
+### Uploading the development environment to GitHub (push)
+
+### Merging the development branch with the main branch (pull request)
+
+
+
+
+## How to work with Git in RStudio
+
+### Creating a new development environment (branching)
+
+### Saving a new version of your files (commit)
+
+### Uploading the development environment to GitHub (push)
+
+
+
+
+## How to merge the development branch with the main branch on GitHub
+
+### Creating a pull request on GitHub
+
+### Resolving a pull request on GitHub
+
+### Downloading the changes to your local repository (pull)
+
+
+
+
+## Exercises
+
+
+
+
+
+## Resources
+
+- Git Book (command line)
+
+- Resources for GitHub
+

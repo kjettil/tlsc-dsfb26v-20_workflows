@@ -48,7 +48,8 @@ topics <- c(
   "R Markdown Driven Development",
   "R package development",
   "Git/Github",
-  "Version Control"
+  "Version Control",
+  "Docker"
 )
 
 tibble(

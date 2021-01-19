@@ -1,14 +1,5 @@
 Lesson_Number,Lesson_Name,Topics
 1.1,represintro,Open source
-1.1,represintro,software development
-1.1,represintro,Bioconductor
-1.1,represintro,{renv}
-1.1,represintro,R Markdown
-1.1,represintro,R Markdwon Driven Development
-1.1,represintro,R package development
-1.1,represintro,Git/Github
-1.1,represintro,Version Control
-1.1,represintro,Open source
 1.1,represintro,Guerilla analytics
 1.1,represintro,software development
 1.1,represintro,Literate programming
@@ -28,6 +19,7 @@ Lesson_Number,Lesson_Name,Topics
 1.1,represintro,R package development
 1.1,represintro,Git/Github
 1.1,represintro,Version Control
+1.1,represintro,Reproducible research
 1.1,represintro,Open source
 1.1,represintro,Guerilla analytics
 1.1,represintro,software development
@@ -38,15 +30,7 @@ Lesson_Number,Lesson_Name,Topics
 1.1,represintro,R package development
 1.1,represintro,Git/Github
 1.1,represintro,Version Control
-1.3,represtools,Open source
-1.3,represtools,software development
-1.3,represtools,Bioconductor
-1.3,represtools,{renv}
-1.3,represtools,R Markdown
-1.3,represtools,R Markdown Driven Development
-1.3,represtools,R package development
-1.3,represtools,Git/Github
-1.3,represtools,Version Control
+1.1,represintro,Reproducible research
 1.1,represintro,Open source
 1.1,represintro,Guerilla analytics
 1.1,represintro,software development
@@ -57,15 +41,7 @@ Lesson_Number,Lesson_Name,Topics
 1.1,represintro,R package development
 1.1,represintro,Git/Github
 1.1,represintro,Version Control
-1.3,represtools,Open source
-1.3,represtools,software development
-1.3,represtools,Bioconductor
-1.3,represtools,{renv}
-1.3,represtools,R Markdown
-1.3,represtools,R Markdown Driven Development
-1.3,represtools,R package development
-1.3,represtools,Git/Github
-1.3,represtools,Version Control
+1.1,represintro,Reproducible research
 1.1,represintro,Open source
 1.1,represintro,Guerilla analytics
 1.1,represintro,software development
@@ -85,6 +61,7 @@ Lesson_Number,Lesson_Name,Topics
 1.3,represtools,R package development
 1.3,represtools,Git/Github
 1.3,represtools,Version Control
+1.1,represintro,Reproducible research
 1.1,represintro,Open source
 1.1,represintro,Guerilla analytics
 1.1,represintro,software development
@@ -104,6 +81,7 @@ Lesson_Number,Lesson_Name,Topics
 1.3,represtools,R package development
 1.3,represtools,Git/Github
 1.3,represtools,Version Control
+1.1,represintro,Reproducible research
 1.1,represintro,Open source
 1.1,represintro,Guerilla analytics
 1.1,represintro,software development
@@ -123,3 +101,112 @@ Lesson_Number,Lesson_Name,Topics
 1.3,represtools,R package development
 1.3,represtools,Git/Github
 1.3,represtools,Version Control
+1.1,represintro,Reproducible research
+1.1,represintro,Open source
+1.1,represintro,Guerilla analytics
+1.1,represintro,software development
+1.1,represintro,Literate programming
+1.1,represintro,Programming vs GUI
+1.1,represintro,R Markdown
+1.1,represintro,R Markdwon Driven Development
+1.1,represintro,R package development
+1.1,represintro,Git/Github
+1.1,represintro,Version Control
+1.1,represintro,Reproducible research
+1.1,represintro,Open source
+1.1,represintro,Guerilla analytics
+1.1,represintro,software development
+1.1,represintro,Literate programming
+1.1,represintro,Programming vs GUI
+1.1,represintro,R Markdown
+1.1,represintro,R Markdwon Driven Development
+1.1,represintro,R package development
+1.1,represintro,Git/Github
+1.1,represintro,Version Control
+1.3,represtools,Open source
+1.3,represtools,software development
+1.3,represtools,Bioconductor
+1.3,represtools,{renv}
+1.3,represtools,R Markdown
+1.3,represtools,R Markdown Driven Development
+1.3,represtools,R package development
+1.3,represtools,Git/Github
+1.3,represtools,Version Control
+1.3,represtools,Docker
+1.1,represintro,Reproducible research
+1.1,represintro,Open source
+1.1,represintro,Guerilla analytics
+1.1,represintro,software development
+1.1,represintro,Literate programming
+1.1,represintro,Programming vs GUI
+1.1,represintro,R Markdown
+1.1,represintro,R Markdwon Driven Development
+1.1,represintro,R package development
+1.1,represintro,Git/Github
+1.1,represintro,Version Control
+1.1,represintro,Reproducible research
+1.1,represintro,Open source
+1.1,represintro,Guerilla analytics
+1.1,represintro,software development
+1.1,represintro,Literate programming
+1.1,represintro,Programming vs GUI
+1.1,represintro,R Markdown
+1.1,represintro,R Markdwon Driven Development
+1.1,represintro,R package development
+1.1,represintro,Git/Github
+1.1,represintro,Version Control
+1.1,represintro,Reproducible research
+1.1,represintro,Open source
+1.1,represintro,Guerilla analytics
+1.1,represintro,software development
+1.1,represintro,Literate programming
+1.1,represintro,Programming vs GUI
+1.1,represintro,R Markdown
+1.1,represintro,R Markdwon Driven Development
+1.1,represintro,R package development
+1.1,represintro,Git/Github
+1.1,represintro,Version Control
+1.1,represintro,Reproducible research
+1.1,represintro,Open source
+1.1,represintro,Guerilla analytics
+1.1,represintro,software development
+1.1,represintro,Literate programming
+1.1,represintro,Programming vs GUI
+1.1,represintro,R Markdown
+1.1,represintro,R Markdwon Driven Development
+1.1,represintro,R package development
+1.1,represintro,Git/Github
+1.1,represintro,Version Control
+1.1,represintro,Reproducible research
+1.1,represintro,Open source
+1.1,represintro,Guerilla analytics
+1.1,represintro,software development
+1.1,represintro,Literate programming
+1.1,represintro,Programming vs GUI
+1.1,represintro,R Markdown
+1.1,represintro,R Markdwon Driven Development
+1.1,represintro,R package development
+1.1,represintro,Git/Github
+1.1,represintro,Version Control
+1.1,represintro,Reproducible research
+1.1,represintro,Open source
+1.1,represintro,Guerilla analytics
+1.1,represintro,software development
+1.1,represintro,Literate programming
+1.1,represintro,Programming vs GUI
+1.1,represintro,R Markdown
+1.1,represintro,R Markdwon Driven Development
+1.1,represintro,R package development
+1.1,represintro,Git/Github
+1.1,represintro,Version Control
+1.1,represintro,Reproducible research
+1.1,represintro,Open source
+1.1,represintro,Guerilla analytics
+1.1,represintro,software development
+1.1,represintro,Literate programming
+1.1,represintro,Programming vs GUI
+1.1,represintro,R Markdown
+1.1,represintro,R Markdwon Driven Development
+1.1,represintro,R package development
+1.1,represintro,Git/Github
+1.1,represintro,Version Control

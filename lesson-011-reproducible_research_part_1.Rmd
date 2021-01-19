@@ -1,5 +1,11 @@
 # Lesson 1.1 - Reproducible Research - Introduction {#represintro}
 
+This is part 1 of lesson 1. Lesson 1 consists of:
+
+ - Part 1; Introducing Reproducible Research
+ - Part 2; Managing your project files and data with 'Guerilla Analytics'
+ - Part 3; RMarkdown Driven Development 
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
                       warning = FALSE,
@@ -14,16 +20,16 @@ lesson_number <- c("1.1")
 
 ``` 
 
-
 ## Packages
 ```{r}
 library(tidyverse)
 library(nlme)
 ```
 
-```{r, topic}
+```{r, topic, include=FALSE}
 ## add topics below to write them automatically to the course contents table
 topics <- c(
+  "Reproducible research",
   "Open source",
   "Guerilla analytics",
   "software development",
@@ -46,22 +52,52 @@ tibble(
 
 ```
 
+## Resources
 
+https://www.displayr.com/what-is-reproducible-research/
 
+https://book.fosteropenscience.eu/en/02OpenScienceBasics/04ReproducibleResearchAndDataAnalysis.html
 
 ## Lesson Contents
 
- - Part 1; Introducing Reproducible (Open) Science (June 11th, 2020)
- - Part 2; Managing your project files and data with 'Guerilla Analytics' (June 23rd, 2020)
- - Part 3; Reproducible (Open) Science - Tools (July 6th, 2020) 
+This lesson is about the 'movement' in science called 'Reproducible Research'.
 
-## Part 1; Introducing Reproducible (Open) Science
 
- 1. When things go wrong 
- 1. Why Reproducible (Open) Science?
- 1. The need for learning programming
- 1. An example of Reproducible (Open) Science
- 
+
+## Introducing Reproducible Research
+
+[This fragment is adapted from:](https://book.fosteropenscience.eu/en/02OpenScienceBasics/04ReproducibleResearchAndDataAnalysis.html)
+
+Reproducibility means that research data and code are made available so that others are able to reach the same results as claimed in scientific outputs. Closely related is the concept of replicability, the act of repeating a scientific methodology to reach similar conclusions. These concepts are core elements of empirical research. Thus far, the focus in your education has been on the replicability principle. In order to increase the quality of your research output, we now turn our focus to reproducibility in this course.
+
+Improving reproducibility leads to increased rigour and quality of scientific outputs, and thus to greater trust in science. There has been a growing need and willingness to expose research workflows from initiation of a project and data collection right through to the interpretation and reporting of results. These developments have come with their own sets of challenges, including designing integrated research workflows that can be adopted by collaborators while maintaining high standards of integrity.
+
+The concept of reproducibility is directly applied to the scientific method, the cornerstone of Science, and particularly to the following five steps:
+
+ - Formulating a hypothesis
+ - Designing the study
+ - Running the study and collecting the data
+ - Analyzing the data
+ - Reporting the study
+
+Each of these steps should be clearly reported by providing clear and open documentation, and thus making the study transparent and reproducible. Many factors can contribute to the causes of non-reproducibility, but can also drive the implementation of specific measures to address these causes. The culture and environment in which research takes place is an important 'top-down' factor. From a 'bottom-up perspective, continuing education and training for researchers can raise awareness and disseminate good practice. This is the central reason why we adress this issue and provide you with the tools to do reproducible research in this course
+
+While understanding the full range of factors that contribute to reproducibility is important, it can also be hard to break down these factors into steps that can immediately be adopted into an existing research program and immediately improve its reproducibility. One of the first steps to take is to assess the current state of affairs, and to track improvement as steps are taken to increase reproducibility even more. 
+
+![Some of the common issues with research reproducibility are shown here.](https://book.fosteropenscience.eu/en/Images/image_2.png){ width=60%}
+
+[Source: Symposium report, October 2015. Reproducibility and reliability of biomedical research: improving research  practice](https://acmedsci.ac.uk/viewFile/56314e40aac61.pdf)
+
+## Open Science
+
+Open Science is the practice of science in such a way that others can collaborate and contribute, where research data, lab notes and other research processes are freely available, under terms that enable reuse, redistribution and reproduction of the research and its underlying data and methods (FOSTER Open Science Definition). In a nutshell, Open Science is transparent and accessible knowledge that is shared and developed through collaborative networks (Vicente-Sáez & Martínez-Fuentes 2018).
+
+Open Science is about increased rigour, accountability, and reproducibility for research. It is based on the principles of inclusion, fairness, equity, and sharing, and ultimately seeks to change the way research is done, who is involved and how it is valued. It aims to make research more open to participation, review/refutation, improvement and (re)use for the world to benefit.
+
+
+
+
+
 $Reproducible\ (Open)\ Science =$ 
 $Reproducible\ Research + Open\ Science$
 
@@ -440,3 +476,47 @@ $Reproducible\ Science = P + D + C + OAcc + OSrc$
 
 <p style="font-size:14px">$P = Publication$, $D = Data$, $C = Code$, $OAcc = Open\ Access$, $OSrc = Open\ Source$ </p> 
 
+## <mark>ASSIGNMENT; "Assing a reproducibility score for scientific literature"</mark> {-}
+
+resource: https://www.researchgate.net/publication/340244621_Reproducibility_and_reporting_practices_in_COVID-19_preprint_manuscripts/fulltext/5e81f9fd92851caef4ae37ba/Reproducibility-and-reporting-practices-in-COVID-19-preprint-manuscripts.pdf
+
+This exercise is about identifying reproducibility issues in a scientific publication. We use the criteria for reproduciblity that are publically available [via:](https://www.researchgate.net/deref/https%3A%2F%2Fwww.ripeta.com%2Fuploads%2F7%2F4%2F8%2F7%2F7487334%2Fripeta_approach_and_criteria_definitions.pdf)
+
+| Transparency Criteria| Definition       | Response Type|
+|---------|-------------------------------|----------|
+|Study Purpose |A concise statement in the introduction of the article, often in the last paragraph, that establishes the reason the research was conducted. Also called the study objective.| Binary| 
+|Data Availability Statement | A statement, in an individual section offset from the main body of text, that explains how or if one can access a study’s data. The title of the section may vary, but it must explicitly mention data; it is therefore distinct from a supplementary materials section.| Binary|
+|Data Location | Where the article’s data can be accessed, either raw or processed.| Found Value|
+|Study Location| Author has stated in the methods section where the study took place or the data’s country/region of origin.| Binary; Found Value|
+|Author Review| The professionalism of the contact information that the author has provided in the manuscript.|Found Value|
+|Ethics Statement | A statement within the manuscript indicating any ethical concerns, including the presence of sensitive data.|Binary|
+|Funding Statement| A statement within the manuscript indicating whether or not the authors received funding for their research.|Binary|
+Code Availability | Authors have shared access to the most updated code that they used in their study, including code used for analysis. |Binary|
+
+**Table clarification** The `Transparency Criteria` are criteria you need to score the article of your choice for. Read them carefully and discuss with another course participant if you do not understand them. 
+Each Tranparance criterion comes with a `Definition` that explains the criterion in more details. These descriptions are particularly helpful to understand what the criterium entails and what to look for in the article. The `Response Type` is the actual score  
+
+In this assisgment you need to find a scientific article yourself, using PubMed or another database or repository. Use only Open Access articles. Having an article in hand, go over the table above and score the article according the criteria. **<mark>Be sure to select a primary article that presents a study using data from a experimental work </mark>**. This can be laboratory experiments or _in silico_ experiments. Reviews and meta analysis are not suitable for this assignment     
+
+To guide your search you can choose between these topics
+
+ - "Coronavirus / COVID-19"
+ - "The effects of compound on an organism / Toxicology"
+ - "The effectiveness of a drug or treatment in an animal study"
+ - "The effects of a compound investigated in a cell or organoid system"
+ 
+**TIPS**
+
+ - If you do not know where to start your literature search start here: https://www.biorxiv.org/
+ - This assignment is not about the topic you select, so try to do that quickly
+ - You may want to cheat and select an article that scores TRUE on the `Data Availability Statement`, beacause that enables you to use the this article again in one of the next assignments.
+ 
+
+To complete the assignment, execute activity A to G  
+ 
+ - A) Initiate an empty RMarkdown file in your RStudio enviroment and provide author and title (after the title of this exercise)
+ - B) Search for a primary Open Access article on one of the above listed topics, using Pubmed Central
+ - C) Read the article diagnoally to check if is indeed a primary article discribing emperical scientific findings. 
+ - D) Include the reference to this article in your Rmd file
+ - E) Score the article on the basis of the above 'Repita' criteria
+ - F) Write an Rmarkdown report on your findings, including the table above and some information about the article such as general aim, short methods and results. If data is available, try including some  

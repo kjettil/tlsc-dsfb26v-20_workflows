@@ -5,7 +5,7 @@ date: "`r Sys.time()`"
 site: bookdown::bookdown_site
 output: 
   bookdown::html_book:
-    number_sections: false
+    number_sections: true
 bibliography: [references.bib]
 biblio-style: apalike
 link-citations: yes

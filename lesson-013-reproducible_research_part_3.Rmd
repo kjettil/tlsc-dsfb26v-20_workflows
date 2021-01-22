@@ -21,13 +21,21 @@ lesson_number <- "1.3"
 ```
 
 
+## Lesson contests
+
 This lesson contains:
 
  - Open Source Software and communities
- - Bioconductor Workflows
+ - Bioconductor Workflows (Docker)
  - Open Peer Review (F1000)
- - RMarkdown drive development
- - 
+ - RMarkdown driven development
+ - How to use RStudio Docker images
+
+
+
+
+
+
 
 ## Packages
 ```{r}

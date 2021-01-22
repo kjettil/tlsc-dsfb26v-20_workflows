@@ -516,7 +516,25 @@ To complete the assignment, execute activity A to G
  
  - A) Initiate an empty RMarkdown file in your RStudio enviroment and provide author and title (after the title of this exercise)
  - B) Search for a primary Open Access article on one of the above listed topics, using Pubmed Central
- - C) Read the article diagnoally to check if is indeed a primary article discribing emperical scientific findings. 
+ - C) Read the article diagonally to check if is indeed a primary article describing emperical scientific findings. 
  - D) Include the reference to this article in your Rmd file
  - E) Score the article on the basis of the above 'Repita' criteria
  - F) Write an Rmarkdown report on your findings, including the table above and some information about the article such as general aim, short methods and results. If data is available, try including some  
+ - G) Store the source Rmd and knitted HTML in a folder called 'Rmd' in your course RStudio project. You will need it again later in the course
+ 
+## <mark>Assignment</mark>
+
+To complete this assignment you will have to follow steps A-
+
+ - A) Using the [OSF website](https://osf.io/), select a project that addresses an aspect of the SARS-Cov-2 virus. 
+ - B) Select a project that has a dataset and R-code shared in the project environment. 
+ - C) Have a look at the code. Describe in your own words what the code intents to achieve.
+ - D) In terms of readibility of the code, how would you grade (1(very bad)-5(very good)) the code available.
+ - E) Download the code and the data to a new RStudio project
+ - F) Run the script or code that is available to reproduce at least 1 figure
+ - G) When you encounter errors or flaws in the script, try fixing them and record your changes.
+ - H) Taken together on a scale from 1 (very hard) to 5 (very easy), how much effort did it take you to reproduce the visualization from the project, report or article
+ - I) Generate an RMarkdown script that contains the details on the project you selected, the code you used to create the visualization and your score for reproducibility.
+ 
+ 
+ 

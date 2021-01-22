@@ -357,6 +357,8 @@ knitr::include_graphics(
 )
 ```
 
+## EXERCISE 1. Guerilla analytics {-}
+Look at you RStudio project that you created for the DAUR-II final assignment
 
-
+MD5 sum
 

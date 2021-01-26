@@ -1,5 +1,8 @@
 # Lesson 1.1 - Reproducible Research - Introduction {#represintro}
 
+## Exercise and assignment directives
+Please answer all the assignment and exercises in an RMarkdown document. Save it somewhere in your course project. You will need to hand this in later in Github.com.
+
 This is part 1 of lesson 1. Lesson 1 consists of:
 
  - Part 1; Introducing Reproducible Research
@@ -60,9 +63,7 @@ https://book.fosteropenscience.eu/en/02OpenScienceBasics/04ReproducibleResearchA
 
 ## Lesson Contents
 
-This lesson is about the 'movement' in science called 'Reproducible Research'.
-
-
+This lesson is about the 'movement' in science called 'Reproducible Research'. It explains the principles of Open Science and connected terms such as Open Access, Open Source and Reproducible Research, and Open Data.
 
 ## Introducing Reproducible Research
 
@@ -94,99 +95,6 @@ Open Science is the practice of science in such a way that others can collaborat
 
 Open Science is about increased rigour, accountability, and reproducibility for research. It is based on the principles of inclusion, fairness, equity, and sharing, and ultimately seeks to change the way research is done, who is involved and how it is valued. It aims to make research more open to participation, review/refutation, improvement and (re)use for the world to benefit.
 
-
-
-
-
-$Reproducible\ (Open)\ Science =$ 
-$Reproducible\ Research + Open\ Science$
-
-## Is (hydroxy)chloroquine really an option for treating COVID-19?
-As you probably know, hydroxychloroquine was repeatedly touted as a promising cure for COVID-19 by US President Donald Trump 
-
-```{r, dpi = 70}
-knitr::include_graphics(
-  file.path(
-    image_dir,
-    "trump_chloroquine.png"
-  )
-)
-```
-
-<p style="font-size:14px">https://www.washingtonpost.com/politics/2020/04/07/trumps-promotion-hydroxychloroquine-is-almost-certainly-about-politics-not-profits/</p>
-
-## But how are we really doing with (hydroxy)chloroquine as a treatment for COVID-19?
-
-```{r}
-knitr::include_graphics(
-  file.path(
-    image_dir,
-    "lancet_covid.png"
-  )
-)
-
-```
-
-<p style="font-size:14px">https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31180-6/fulltext</p>
-
-## What was the reason for retracting this paper?
-
-<p style="font-size:18px">_"Our independent peer reviewers informed us that Surgisphere would not transfer the full dataset, client contracts, and the full ISO audit report to their servers for analysis as such transfer would violate client agreements and confidentiality requirements"_</p>
-
- - Company Surgisphere ('data owner') did not share raw data
- - At time of publication (raw) data and analysis (code) was not included in the manuscript
- - The authors initiated the retract
-
-<p style="font-size:14px">https://www.sciencemag.org/news/2020/06/two-elite-medical-journals-retract-coronavirus-papers-over-data-integrity-questions</p>
-
-## Why is this a problem?
-
- >- Scientific conclusions get picked up by the media, retracting statements is difficult
- >- The credibility of the Journal, the researchers and the affiliated institutions are at stake (people got sacked over this!)
- >- Clinical studies to hydroxy(choloroquine) were halted because of this paper 
- >- The credibility of the company Surgisphere is at stake (they should have prevented this...)
- >- The credibility of Science as a whole is at stake ('in the eye of the beholder')
-
-## The Lancet does not adhere to Reproducible (Open) Science {.build}
-
-Would the Lancet have adopted the Reproducible (Open) Science framework:
-
- >- There would have been no publication, so no retraction necessary
- >- The manuscript of this paper would not even have made it through the first check round
- >- All data, code, methods and conclusions would have been submitted 
- >- This would have enabled a complete and thorough peer-review process that includes replication of (part of) the data analysis of the study
- >- Focus should be on the data and methods, not on the academic narratives and results ...
- >- In physics and bioinformatics this is already common practice 
-
-## Data, methods and logic {.build}
-
-*[Brown, Kaiser & Allison, PNAS, 2018](https://doi.org/10.1073/pnas.1708279115)*
-
-"...in science, three things matter:
-
- >1. the data, 
- >1. the methods used to collect the data [...], and 
- >1. the logic connecting the data and methods to conclusions,
-
-everything else is a distraction."
-
-## `Gollums` lurking about {.build}
-
-```{r, dpi = 80}
-knitr::include_graphics(
-  file.path(
-    image_dir,
-    "gollum_climbing.jpg"
-  )
-)
-```
-
- "In one case, a group accidentally used reverse-coded variables, making their conclusions the opposite of what the data supported."
-
- "In another case, authors received an incomplete dataset because entire categories of data were missed; when corrected, the qualitative conclusions did not change, but the quantitative conclusions changed by a factor of >7"
-
- <p style="font-size:14px">[Brown, Kaiser & Allison, 2018; PNAS](https://doi.org/10.1073/pnas.1708279115)</p>
-
 ## Why we need Reproducible (Open) Science?
 
  >- To assess validity of science and methods we need access to data, methods and conclusions
@@ -217,19 +125,6 @@ knitr::include_graphics(
 
 <p style="font-size:14px">**The file "./Rmd/steps_to_graph_from_excel_file.html" shows you how to do this using the programming language R. In webinar part 3, we will revisit this example.</p>
 
-## Programming is essential for Reproducible (Open) Science {.build}
-
- >- Only programming an analysis (or creation of a graph) records every step
- >- The script(s) function as a (data) analysis journal 
- >- Code is the logic that connects the data and methods to conclusions 
- >- Learning to use a programming language takes time but pays of at the long run (for all of science)
-
-**(Literate) programming is a way to connect narratives to data, methods and results**
-
-```{r}
-knitr::include_graphics(file.path(image_dir,"rmd_printscr.png"))
-```
-
 ## To  replicate a scientific study we need at least:
 
  > - Scientific context, research questions and state of the art [<mark>P<mark/>]
@@ -245,10 +140,268 @@ knitr::include_graphics(file.path(image_dir,"rmd_printscr.png"))
 
 <p style="font-size:14px">$P = Publication$, $D = Data$, $C = Code$, $OAcc = Open\ Access$, $OSrc = Open\ Source$ </p> 
 
+So we can conclude that 
+
+$Reproducible\ (Open)\ Science =$ 
+$Reproducible\ Research + Open\ Science$
+
+## EXERCISE
+
+Is (hydroxy)chloroquine really an option for treating COVID-19?
+As you probably know, hydroxychloroquine was repeatedly touted as a promising cure for COVID-19 by US President Donald Trump in 2020. 
+
+```{r, dpi = 70}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "trump_chloroquine.png"
+  )
+)
+```
+
+<p style="font-size:14px">https://www.washingtonpost.com/politics/2020/04/07/trumps-promotion-hydroxychloroquine-is-almost-certainly-about-politics-not-profits/</p>
+
+## But how are we really doing with (hydroxy)chloroquine as a treatment for COVID-19?
+
+```{r}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "lancet_covid.png"
+  )
+)
+
+```
+
+<p style="font-size:14px">https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31180-6/fulltext</p>
+
+**Answer the following questions**
+
+a) What was the reason for retracting this [paper](https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31180-6/fulltext)?
+
+```{r, include=FALSE, eval=FALSE}
+# <p style="font-size:18px">_"Our independent peer reviewers informed us that Surgisphere would not transfer the full dataset, client contracts, and the full ISO audit report to their servers for analysis as such transfer would violate client agreements and confidentiality requirements"_</p>
+# 
+#  - Company Surgisphere ('data owner') did not share raw data
+#  - At time of publication (raw) data and analysis (code) was not included in the manuscript
+#  - The authors initiated the retract
+# 
+# <p style="font-size:14px">https://www.sciencemag.org/news/2020/06/two-elite-medical-journals-retract-coronavirus-papers-over-data-integrity-questions</p>
+```
+
+ B) Why is the retraction in itself a problem?
+
+```{r, include = FALSE, eval=FALSE}
+ # >- Scientific conclusions get picked up by the media, retracting statements is difficult
+ # >- The credibility of the Journal, the researchers and the affiliated institutions are at stake (people got sacked over this!)
+ # >- Clinical studies to hydroxy(choloroquine) were halted because of this paper 
+ # >- The credibility of the company Surgisphere is at stake (they should have prevented this...)
+ # >- The credibility of Science as a whole is at stake ('in the eye of the beholder')
+```
+
+ C)  In the sense that we defined above, does The Lancet adhere to Reproducible (Open) Science? Why not?
+
+```{r}
+# Would the Lancet have adopted the Reproducible (Open) Science framework:
+# 
+#  >- There would have been no publication, so no retraction necessary
+#  >- The manuscript of this paper would not even have made it through the first check round
+#  >- All data, code, methods and conclusions would have been submitted 
+#  >- This would have enabled a complete and thorough peer-review process that includes replication of (part of) the data analysis of the study
+#  >- Focus should be on the data and methods, not on the academic narratives and results ...
+#  >- In physics and bioinformatics this is already common practice 
+```
+
+
+## Data, methods and logic {.build}
+
+So in order to perform Reproducible Open Science we need to make a full connection between the data, the analysis and the narratives (the conclusions, the 'story', etc.)
+In *[Brown, Kaiser & Allison, PNAS, 2018](https://doi.org/10.1073/pnas.1708279115)*
+We read:
+
+"...in science, three things matter:
+
+ >1. the data, 
+ >1. the methods used to collect the data [...], and 
+ >1. the logic connecting the data and methods to conclusions,
+
+everything else is a distraction."
+
+So what happens if we do not adhere to this principle?
+
+## `Gollums` lurking about {.build}
+
+```{r, dpi = 80}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "gollum_climbing.jpg"
+  )
+)
+```
+
+## Why using Excel for Biology is a bad idea
+When you use Excel for data collection and especially for genetics and genomics studies, you risk losing and messing up your data. This is due to the 'autoformatting' in Excel. This is nicely adressed in this [paper:](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7). The authors show, through an automated workflow, that many Excel files used for genomics studies and that were supplied as supplementary materials to a publication contains 'autoformatted' _changed_ gene names. 
+
+In itself this 'autoformatting' is problematic enough, but when you have data containing time series or dates, things start to become really problematic when you use Excel.
+
+Also, if only one record in a whole Excel file is changed to the wrong data-type, R will parse this column most likely as a character. This stresses the need for thourougly checking your data types, after importing Excel files into R.
+
+We will practice a bit to see this happening live in an Exercise 
+
+## EXERCISE
+
+ A) In R, try downloading the following [file:](http://genesdev.cshlp.org/content/suppl/2009/06/11/gad.1806309.DC1/FancySuppTable2.xls)
+ B) What problems do you encounter, when trying to import this Excel file using `{readxl}`?
+ C) Perform a manual download of this file by going [here:](http://genesdev.cshlp.org/content/suppl/2009/06/11/gad.1806309.DC1). You need the file under the link `Supp Table 2.xls`
+ D) Why is manually downloading this file a problem?
+ E) Import the manually downloaded Excel file into R 
+ F) Open the file and compare the contents of the file to the Supplementary table shown [here](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7#Sec1). What do you observe? Why do you think this is happening?
+ G) Look at this article in the Microsoft help: https://support.microsoft.com/en-us/office/stop-automatically-changing-numbers-to-dates-452bd2db-cc96-47d1-81e4-72cec11c4ed8
+ H) Change the column `Example Gene Name Conversion` in the file 
+[here:](http://genesdev.cshlp.org/content/suppl/2009/06/11/gad.1806309.DC1) to text. 
+ I) Change the column named `GENE SYMBOL` in [this file](http://genesdev.cshlp.org/content/suppl/2009/11/03/23.21.2484.DC2/Bilodeau_Supp_Table_11.xls) to text.
+ J) Now try to find the wrongly converted gene called `40059` in this datafile
+ H) On the basis of your observations in this exercise: what are your conclusions about using Excel. How could you make the use of Excel _safer_ for data collection and analysis?
+
+```{r, parse_failure, include=FALSE, eval=FALSE}
+url <- c("http://genesdev.cshlp.org/content/suppl/2009/06/11/gad.1806309.DC1/FancySuppTable2.xls")
+
+download.file(
+  url = url,
+  destfile = "FancySuppTable2.xls"
+  )
+
+fancy_supp <- read_csv(
+  here::here(
+    "FancySuppTable2.xls"
+  )
+)
+
+
+url2 <- c("http://genesdev.cshlp.org/content/suppl/2009/11/03/23.21.2484.DC2/Bilodeau_Supp_Table_11.xls")
+
+download.file(
+  url = url2,
+  destfile = "bilodeau.xls"
+  )
+
+bilodeau_supp <- readxl::read_xls(
+  here::here(
+    "bilodeau.xls"
+  )
+)
+
+# Error: 
+#...\bilodeau.xls
+#   libxls error: Unable to open file
+```
+
+
+--------------- EXERCISE END ------------------------------
+
+## EXERCISE
+
+The data for this exercise was derived from an experiment in which adult _C.elegans_ nematodes were exposed to varying concentrations of different compounds. The variables `RawData` (the outcome - number of offspring counted as an integer value, after incubation time), `compName` (the generic name of the compound/chemical), the `compConcentration` (the concentration of the compound), and the `expType` are the most important variables in this dataset.
+A typical analysis with this data would be to run a dose-response analysis using a log-logistic model with estimates for the maximal, the minimal, the IC50 concentration and the slope at IC50. We will not go into the details but a good package to run such computations and create graphs in R is the `{drc}` package. [See:](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0146021) [and:](https://cran.r-project.org/web/packages/drc/index.html). In the exercise below we will create some visualizations using `{ggplot2}`.
+
+A) Review the following Excel file in the `./data/CE.LIQ.FLOW.062_Tidydata.xlsx`, by opening the file in Excel. See if you can spot anything perculiar about this file. Do not edit the file in any way. Just close it when you are done
+ 
+B) Open the file in R, using the `{readxl}` package.
+ 
+```{r, include=FALSE, eval=FALSE}
+celiqflow_062 <- readxl::read_xlsx(
+  here::here(
+    "data",
+    "CE.LIQ.FLOW.062_Tidydata.xlsx"
+  )
+)
+```
+
+C) Inspect the data types of columns `RawData`, `compName` and `compConcentration`. What types would you expect from the experimental description above. Have the datatypes been correctly assigned during the importing of the data into R?
+
+```{r, include=FALSE, eval=FALSE}
+names(celiqflow_062)
+map(celiqflow_062, typeof)
+```
+
+D) Create a graph displaying a scatterplot for the `CE.LIQ.FLOW.062_Tidydata.xlsx` data, for the different compounds and the varying concentrations. Put the `compConcentration` on the x-axis, the `DataRaw` counts on the y-axis and assign a colour to each level in `compName`. Assign a different symbol (`shape = `) to each level in the `expType` variable. Try fixing the labels of the x-axis so that we can read them.
+
+**TIPS** 
+ I always have difficulty remembering how to rotate axis labels in R. That is why I wrote an R package that has a convenient function. The package can be installed by running:
+```
+devtools::install_github("uashogeschoolutrecht/toolboxr")
+## load the package
+library(toolboxr)
+```
+The function you need from `{toolboxr}` is `rotate_axis_labels()`. Type
+`?rotate_axis_labels()` in the R Console to see how to use this function. 
+
+If you have any suggestions for a good convenience function to add to this package, create an issue on github.com for a feature request or clone/fork the repository, add the fucntion you would like to add and create a pull request. You will learn how to take this steps in lesson 2 and 3.
+
+```{r}
+celiqflow_062 %>%
+  ggplot(aes(x = compConcentration, 
+             y = RawData)) +
+  geom_point(aes(colour = compName,
+                 shape = expType)) +
+  toolboxr::rotate_axis_labels("x", 45)
+  
+```
+
+E) When creating the plot under C), what happened with the ordering of the x-axis labels. Explain why this happens. Look at the data-type of the `compConcentration` column in the data again to find a clue.
+
+F) Correct the data-type of `compConcentration` to `numeric` and than look at the graph again. Use a log10 transformation on the x-axis to get a clear graph. Also, add a bit of `jitter` to the points in the graph so that points are not overlapping.  
+```{r}
+## TODO: add jitter, does not work
+celiqflow_062 %>%
+  mutate(compConcentration = as.numeric(compConcentration)) %>%
+  ggplot(aes(x = log10(compConcentration + 0.001), 
+             y = RawData)) +
+  geom_point(aes(colour = compName,
+                 shape = expType)) +
+  toolboxr::rotate_axis_labels("x", 45)
+```
+
+Fill in:
+G) The positive control for this experiments is .....
+H) The negative control for this experiment is .....
+I) Think about how you would analyse this experiment to learn whether there is indeed an effect of different concentrations on offspring count and whether the different compounds have a different curve (IC50). Write down you analysis as a step-wise plan 
+J) Normalize the data for the `controlNegative` in such a way that the mean value for `controlNegative` is exactly equal to 1 and that all other values are expressed as a fraction thereof.
+
+--------------- EXERCISE END ------------------------------
+
+## When things go terribly wrong
+
+In *[Brown, Kaiser & Allison, PNAS, 2018](https://doi.org/10.1073/pnas.1708279115)* we also read:
+
+ "In one case, a group accidentally used reverse-coded variables, making their conclusions the opposite of what the data supported."
+
+ "In another case, authors received an incomplete dataset because entire categories of data were missed; when corrected, the qualitative conclusions did not change, but the quantitative conclusions changed by a factor of >7"
+
+These are common mistakes and if no checks or tests are build in than the conclusions from a study could be completely wrong. This does not only lead to bad science, it can be dangerous.
+
+How would you mitigate such a risk?
+We can start by doing everything we do in code via scripting. The prefect way to do this is, is by using literate programming such as is done when using RMarkdown. In this course we call this `RMarkdown driven development`
+
+## Programming is essential for Reproducible (Open) Science {.build}
+
+ >- Only programming an analysis (or creation of a graph) records every step
+ >- The script(s) function as a (data) analysis journal 
+ >- Code is the logic that connects the data and methods to conclusions 
+ >- Learning to use a programming language takes time but pays of at the long run (for all of science)
+
+**(Literate) programming is a way to connect narratives to data, methods and results**
+
+```{r}
+knitr::include_graphics(file.path(image_dir,"rmd_printscr.png"))
+```
+
 ## A short example of Reproducible (Open) Science
 
 Assume we have the following question:
 "Which of 4 types of chairs takes the least effort to arise from when seated in?"
+
 We have the following setup:
 
  - 4 different types of chairs

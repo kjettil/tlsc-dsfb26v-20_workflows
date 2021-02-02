@@ -357,6 +357,94 @@ knitr::include_graphics(
 )
 ```
 
+
+
+
+
+## Data-formats - Non-Proprietary {.build}
+
+File format source code is open and maintained by open source community or core development team.
+
+  >- `.netCDF` (Geo, proteomics, array-oriented scientific data)  
+  >- `.xml` / `.mzXML` (Markup language, human and machine readable, metadata + data together)
+  >- `.txt` / `.csv` (flat text file, usually tab, comma or semi colon (`;`) seperated) 
+  >- `.json` (text format that is completely language independent)  
+
+_Will remain readable, even if format becomes obsolete_
+
+**When storing a curated dataset for sharing or archiving it is always better to choose a non-proprietary format**
+
+## Data shape
+Look at these two tables, what do you notice?
+```{r}
+table2 %>% head(3)
+table3 %>% head(3)
+```
+
+<p style="font-size:14px">Both tables are build-in datasets from the {tidyr} package belonging to the [{tidyverse}](https://www.tidyverse.org/) suite of Data Science R packages</p> 
+
+## The `{tidyverse}`
+
+ - Suite of R-packages for Data Science and functional programming
+ - https://www.tidyverse.org/
+ - Connect to many other tools in R
+ 
+```{r, dpi = 90}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "tidyverse.png"
+  )
+)
+```
+<p style="font-size:14px">From: [Storybench](https://www.storybench.org/getting-started-with-tidyverse-in-r/)</p>  
+
+## Tidy data
+```{r}
+knitr::include_graphics(
+  file.path(image_dir, "tidy-1.png")
+)
+```
+
+ 1. Each variable goes in its own column
+ 1. Each observation goes in its own row
+ 1. Each cell contains only one value
+
+<p style="font-size:14px">From: ["R for Data Science", Grolemund and Wickham](https://r4ds.had.co.nz/)</p> 
+
+## Are these dataframes tidy? 
+```{r}
+map(
+  .x = list(
+    table5,
+    table4a),
+  .f = head, 3)
+```
+_What steps would we need to tidy them?_ 
+
+## `pivot_longer()`
+```{r, echo=TRUE}
+table4a %>% 
+  pivot_longer(
+    cols = `1999`:`2000`, 
+    names_to = "year",
+    values_to = "cases"
+  ) -> table4a_tidy
+table4a_tidy
+```
+
+## `separate()`
+```{r, echo=TRUE}
+table5 %>%
+  separate(
+    col = rate,
+    into = c("cases", "population"),
+    remove = TRUE
+  ) -> table5_tidy
+table5_tidy
+```
+
+
 ## EXERCISE 1. Guerilla analytics {-}
 Look at you RStudio project that you created for the DAUR-II final assignment
 

@@ -1,4 +1,4 @@
-# Lesson 1.3 - Reproducible Research Tools {#represtools}
+# Lesson 1 - Part 3 - Reproducible Research Tools {#represtools}
 
 ```{r setup, include=FALSE}
 
@@ -138,20 +138,62 @@ The year is 2026:
 You have been analyzing about a 100 transcriptome samples by now and your code lives in a github repository. You are running the analyses on the groups analysis server for computational reasons. There is a major update for R version 6.0.0 and the R kernel has been significantly overhauled. This revisons of base R has caused the reverse-dependency for EdgeR and DESeq2 to break for this R version. This means that running your existing code does not work for this new version of R. The IT department, in charge of maintenance has already updated the server to R version 6.0.0.
 How do you solve this? How would you be able to still run your code. From the processes and tools used in software development, there are a number of solutions to the problem.
 
- 1. Projects
+ 1. **Projects**
  When you work with packages that need to be installed in your analysis environment it is good practice to create separate environments for each project. How you define a project can have multiple aspects. Usually a project is defined by the data being related to a single research question or research project. Using an RStudio project, linked to a git repository is a good way to start.   
- 1. Package environments
+ 1. **Package environments**
  When you need (and you almost allways need) to install additional packages (R) or libraries (Python) on top of the base installation it is best ot create a package environment in your project. In this course we will show you how to do this for R. We will also provide a demo on how to do this for a complete analysis pipeline (metagenomics - `Qiime2`). We will run this Qiime2 pipline in a Docker container
- 1. Containers
+ 1. **Containers**
  Container technology has revolutionized the way we use resources for computation. Having application run in containers has the advantage that you can isolate tasks and applications from the operating system. A container is meant to run temporarily (also called ephemeral in IT jargon). It can be quicly brought up, do the thing it is supposed to and than brought down again. The absolute advantage of this is that the avaiable resources are used much more efficiently: A container will only use resources during it's life time. One it disappears, the resources it consumes are free again. We will see how we can isolate R Studio in a Docker container and than run a microbiome `Qiime2` analysis on it.
- 1. git/Github
- Git and Github.com
+ 1. **Version control**
+ Software that can be used to track changes in code and data such as git and subversion are must-haves when you are programming and writing code. Simple: There is no other way to track changes or collaborate on code than using a repository with code under version control. In this course, you will get to know the ins and outs on using git in conjunction with github.com for working on code, managing versions, retracing your steps or fix errors and collaboration.
  
+## EXERCISE; RStudio Projects, start with an empty or existing git repo
+
+ A) Start this exercise by watching these videos on RStudio resources:
+  - https://rstudio.com/resources/webinars/managing-part-1-projects-in-rstudio/
+  - https://rstudio.com/resources/webinars/managing-part-2-github-and-rstudio/
+  
+ B) We will start with an existing github repo. Clone [this github repo](https://github.com/stemangiola/bioc_2020_tidytranscriptomics/) to a new RStudio project. If you forgot how to do [that:](https://rstudio.com/resources/webinars/managing-part-1-projects-in-rstudio/)
+
+ C) In this new project called 'bioc_2020_tidytranscriptomics', open the file "./tidytranscriptomics.Rmd", and run all the code chunks --> You will get some errors, why? What do you need to do before you are able to run this Rmd?
+ 
+ 
+## EXERCISE `{renv}` Environments for R
+
+Go over [this tutorial](https://rstudio.github.io/renv/articles/renv.html). Run the `{renv}` tutorial inside your 'EpiForBioWorkshop2020' project. Write down a number of clear advantages for using `{renv}`
+
+
+## EXERCISE RStudio Docker container
+
+ A) Install (if you have not already done so) Microsoft Visual Studio Code. You can find the software [here:](https://code.visualstudio.com/) 
+ 
+ B) Install the Docker plugin in your Visual Studio Code. [See here](https://code.visualstudio.com/docs/containers/overview). For the Docker plugin to work, you need [Docker Desktop](https://docs.docker.com/get-docker/).
+ 
+ C) Go over [this](https://code.visualstudio.com/docs/remote/containers-tutorial) tutorial to learn how to use Docker in Visual Studio Code
+ 
+ D) Run the Docker container for the 'bioc_2020_tidytranscriptomics' by running the command below in your Terminal (Not the R Console!):
+ 
+ ```
+ ## run this command in your Visual Studio Code Terminal
+docker run -e PASSWORD=abc -p 8787:8787 stemangiola/bioc_2020_tidytranscriptomics:bioc2020
+``` 
+ 
+ The container will be available in Visual Studio Code. You can access the container by right-clicking the container named `stemangiola/bioc_2020_tidytranscriptomics`. Choose `Open in Browser`. Alternatively, go to the website in your browser: `http://localhost:8787/`. You will get an RStudio Login screen. Username: 'rstudio' and passwd: 'abc'.
+ 
+ D) Once you get the hang of using Docker, what benefits do you see? Write them down.
+ 
+EXERCISE; R package 
+In stead of building a Docker file for your project (for which you need to learn a bit more bout Docker), you can also create an R package. Usually packages are build and linked to a github repo. 
+
+Install the R package `bioc2020tidytranscriptomics` by following the instruction in [this](https://github.com/stemangiola/bioc_2020_tidytranscriptomics) github repo. 
+
+ A) Compare this workflow to the workflow of Docker. Write a short essay (300 words) on the advantages and disadvantages for both methods.
 
 
 
 
-## EXERCISE; RStudio Projects
+
+
 
 ## EXERCISE; `{renv}`
 

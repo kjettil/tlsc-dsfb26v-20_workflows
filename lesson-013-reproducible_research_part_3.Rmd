@@ -168,7 +168,7 @@ How do you solve this? How would you be able to still run your code. From the pr
 Go over [this tutorial](https://rstudio.github.io/renv/articles/renv.html). Run the `{renv}` tutorial inside your 'EpiForBioWorkshop2020' project. Write down a number of clear advantages for using `{renv}`
 
 
-**## EXERCISE RStudio Docker container**
+**## EXERCISE RStudio Docker container (`VSC-Terminal -> R`)**
 
  A) Install (if you have not already done so) Microsoft Visual Studio Code. You can find the software [here:](https://code.visualstudio.com/) 
  
@@ -187,7 +187,7 @@ docker run -e PASSWORD=abc -p 8787:8787 stemangiola/bioc_2020_tidytranscriptomic
  
  D) Once you get the hang of using Docker, what benefits do you see? Write them down.
  
-**EXERCISE; R package** 
+**EXERCISE; R package in a Docker container (`R`)** 
 In stead of building a Docker file for your project (for which you need to learn a bit more bout Docker), you can also create an R package. Usually packages are build and linked to a github repo. 
 
 Install the R package `bioc2020tidytranscriptomics` by following the instruction in [this](https://github.com/stemangiola/bioc_2020_tidytranscriptomics) github repo. 
@@ -195,7 +195,7 @@ Install the R package `bioc2020tidytranscriptomics` by following the instruction
  A) Compare this workflow to the workflow of Docker. Write a short essay (300 words) on the advantages and disadvantages for both methods. Add why the combination of Docker and an R package in Github is even better?
 
 
-## **EXERCISE; Building a simple R package**
+## **EXERCISE; Building a simple R package (`R`)**
 
 Clone the [repo](https://github.com/UtrechtUniversity/R-data-cafe)
 Open the folder /themes/start_with_rmd as a new RStudio project
@@ -203,7 +203,59 @@ Open the folder /themes/start_with_rmd as a new RStudio project
 Go over the file /Rmd/start_with_rmd.Rmd
 If all goes well you just build your first package called 'bumblebee' with one function.
 
-To lea
+To learn more about packages
+
+## **EXERCISE Conda environments (`Terminal`)**
+For this Exercise we will start by installing Miniconda in you RStudio server account, to have an envrironment where we can experiment with `conda`.
+
+Go over these steps to complete this exercise:
+ 
+ 1. Initiate an empty RStudio project in your RStudio online environment (RStudio Server) called "conda_experiments"
+ 
+ 2. Install **Miniconda** following [these](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html) instructions. 
+ 
+ **TIPS**
+ - If the installer asks you to add miniconda to the PATH, choose 'yes'. 
+ - Choose the Miniconda version for the latest version of Python (64-bit).
+ - Download the installer using `wget`. Do not forget
+ - Check the sha256 sums if the file (you can find the hash on the installer page) - [see also](https://conda.io/projects/conda/en/latest/user-guide/install/download.html#cryptographic-hash-verification)
+
+```{bash, include=FALSE, eval=FALSE}
+## in your project run from terminal
+mkdir tmp
+cd temp
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+## when asked for adding to PATH -> 'yes'
+
+```
+
+ 3. To test if the installation went well run
+ ```
+ conda list
+ ```
+ You should see a bunch of packages as output. 
+ 
+ 4. Update conda and all packages using:  
+ 
+ ```
+ conda update -n base conda`
+ conda update --all
+ ```
+ I
+ 4. Create an new conda environment using this command
+ 
+ ```
+ conda create -n qimme2
+ ```
+ 
+ 5. Qiime is a workflow for analyzing metagenomics (16S and Amplicon sequencing). You can use conda to characterize and classify microbial composition of samples. Let's install the `qiime2` workflow in our new `qimme2` conda environment
+ 
+```
+
+```
+
+## Portfolio
 
 
 

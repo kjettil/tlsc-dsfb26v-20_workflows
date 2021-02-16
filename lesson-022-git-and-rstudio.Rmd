@@ -4,7 +4,7 @@
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-In this section, we will give you a detailed protocol for working with Git using RStudio. This protocol assumes that only one person is contributing to the Git repository. If you work together with other persons, you will need additional tools than the one presented here. You will learn more about these tools in the next lesson.  
+In this section, we will give you a detailed protocol for working with Git using RStudio. This protocol assumes that **only one person is contributing to the Git repository**. If you work together with other persons, you will need additional tools than the ones presented here. You will learn more about these tools in the next lesson.   
 
 ## Creating a new Git repository
 
@@ -27,12 +27,21 @@ Once we click on 'New', we will be taken to a menu were we can specify the detai
 
 ### Step 2: Downloading the Git repository to your computer (cloning)
 
+Once you have created a new Git repository on GitHub, you can download the repository to your computer. Downloading a Git repository is called **cloning**. The steps for cloning a Git repository are as follows:
+
+1. Copy the GitHub link to the new Git repository (see figure 2, top panel). 
+2. In RStudio, go to File > New Project...
+3. In the Project menu, select 'Version Control', then 'Git' and subsequently enter the details of the Git repository (see figure 2, bottom panel). Also select the folder in which you want the repository to be located. 
+4. Click 'Create Project'. 
+
+RStudio will now create a new R Project and clone the Git repository from GitHub. 
+
+As you learned in the DAUR1 course, it is best practice to use R Projects if you are working with RStudio. Using the above steps, you can easily couple the R Project to the Git repository. All files in the R Project folder will now be tracked for version control. These files can be R scripts, (R)markdown files, but also (among others) bash scripts. 
+
 ![Figure 2. Downloading the Git repository to your computer using RStudio. See the main text for the details. ](images/lesson22_2_downloadRepo.png)
-
-
-
-
 ## How to work with Git in RStudio
+
+OK, you are ready to go! You have created your first Git repository and you can now start to add files and track their changes. In this part, we will show you how to commit your changes and how to push your changes to the Git repository on GitHub. 
 
 ### Getting started with Git in RStudio
 
@@ -50,3 +59,4 @@ Once we click on 'New', we will be taken to a menu were we can specify the detai
 ## Ignore files for version control (gitignore)
 
 
+## Using Git outside RStudio

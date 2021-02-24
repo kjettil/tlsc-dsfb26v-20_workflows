@@ -45,18 +45,70 @@ OK, you are ready to go! You have created your first Git repository and you can 
 
 ### Getting started with Git in RStudio
 
-#### Connecting to your Git repository on GitHub
+We start by creating a new R script and saving it in the directory of the Git repository. In the right upper corner of RStudio, we can find a submenu called 'Git'. If we open this menu, you can see the changes you have made to the repository (see figure 3). These changes may be new files that you just added to the repository, but they also can be changes to the content of pre-existing files. 
 
-#### The Git menu in RStudio
+```{r echo=FALSE, out.width='70%', fig.align='center', fig.cap='Figure 3. Git menu in RStudio.'}
+knitr::include_graphics('images/lesson22_3_gitmenu.PNG')
+```
+
+In this Git menu, you can perform all your Git actions, including committing your changes, pushing your changes to GitHub or pulling GitHub changes to your computer. We will now discuss these steps in detail. 
 
 ### Saving a new version of your file (commit)
 
+We just created a new R script. In addition, by cloning our Git repository from GitHub, we created a new R Project file. These changes need to be stored in the Git repository. In other words, we need to commit the changes to the Git repository. We can do this by clicking on the 'Commit' button in the Git menu. A new window will then open. In this window, we can select the changes we want to commit to the Git repository (see figure 4, left upper corner). Note that by selecting a file, we can see the changes in the bottom panel of the window (in which lines in green are new/added lines and lines in red are old/removed lines). After selecting the files we want to commit, we can write a commit message in the upper right panel. This commit message is necessary to later on easily distinguish the different commits in GitHub. It is therefore important to write commit messages that clearly indicate the changes you made in the commit. Finally, you can commit your changes by pressing the 'Commit' button. You can now close the commit window (also the other window that pops up after pressing the 'Commit' button.  
+
+```{r echo=FALSE, out.width='80%', fig.align='center', fig.cap='Figure 4. Committing changes in RStudio.'}
+knitr::include_graphics('images/lesson22_4_commitmenu.PNG')
+```
+
 ### Updating the GitHub repository (push)
 
+After committing your changes, you have to update the GitHub repository. You can do this by pushing the recent commit(s) to GitHub using the 'Push' button (with the green, upward pointing arrow) in the Git menu. After pushing your changes, you can see the new/changed files in GitHub (you may need to refresh your page to see the changes). GitHub also offers a nice interface to see the exact file changes for each commit. In the main menu of your repository, you can click on the 'commits' link and subsequently select your most recent commit. You will then see all file changes that were committed during that commit (see figure 5). 
 
-
+```{r echo=FALSE, out.width='80%', fig.align='center', fig.cap='Figure 5. Check out your commits in GitHub.'}
+knitr::include_graphics('images/lesson22_5_commitsGitHub.png')
+```
 
 ## Ignore files for version control (gitignore)
 
+Some file changes do not have to be tracked by Git. These include file changes to files that are generated automatically by R (such as .RData and .Rhistory files) or other software. You can indicate to Git to ignore these files by creating an **gitignore** file in the Git repository. This is just a simple text file that is saved as '.gitignore' in the Git repository. In this file, you store the names of the files you want to ignore. You can also ignore entire directories or files with a certain file extension (see [this page](https://git-scm.com/docs/gitignore#_pattern_format) for the syntax). 
+
+As indicated above, you can easily create gitignore files on GitHub when you create your Git repository. On GitHub, you can select your programming language and then create a gitignore file that ignores system files of that programming language. You can always add other files and directories to the gitignore file yourself later. 
 
 ## Using Git outside RStudio
+
+In the text above, we explained how to use Git in combination with RStudio. However, you may also want to use Git with other programming languages, such as Python or Bash, outside RStudio. Of course this is possible. In fact, Git was designed to be used independently, as a simple command line tool. Once you install Git on your computer, you also install the Git Bash command line tool. You can use this tool in every directory of your computer to initiate Git repositories or to maintain them. Below, we will show you how you can do this and we learn you the most important commands. 
+
+Suppose we want to clone the Git repository outside RStudio in a directory on our computer. We can do this by browsing on our computer to the destination folder. In this folder, we can right click with our mouse and select 'Git Bash Here' (see figure 6). A command line will open, which is basically a Linux command line. 
+
+```{r echo=FALSE, out.width='80%', fig.align='center', fig.cap='Figure 6. Open Git Bash tool in a folder on your computer.'}
+knitr::include_graphics('images/lesson22_6_gitCommandLine.png')
+```
+
+You can now clone the Git repository from GitHub using the following command (of course replacing the link with the link of your own repository):
+
+```{bash echo=TRUE, eval=FALSE}
+git clone https://github.com/basvangestel/test.git
+```
+
+A new folder will now be created. In this folder, the files of your Git repository are located. Now you can go to this folder and add/change the files. With the following command you can change which files have been changed:
+
+```{bash echo=TRUE, eval=FALSE}
+git status
+```
+
+You can commit the file changes with the following command:
+
+```{bash echo=TRUE, eval=FALSE}
+git add --all; git commit -m 'your-message'
+```
+
+This command may look a bit difficult. The first part (`git add --all`) corresponds to selecting (all) the files in the RStudio commit window. Note that with this command you commit all file changes, unless they are ignored as indicated by the gitignore file. The second part (`git commit -m 'your-message'`) corresponds to writing your commit message and pressing the commit button in the RStudio commit window. 
+
+Finally, you can push and pull changes using the following commands:
+
+```{bash echo=TRUE, eval=FALSE}
+git push origin main
+git pull origin main
+```
+

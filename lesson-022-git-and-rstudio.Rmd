@@ -12,42 +12,47 @@ Before you can track your file changes using Git, you first need to set up your 
 
 ### Step 1: Creating a new Git repository on GitHub
 
-To set up our Git repository, we go to the [GitHub login page](https://github.com/login) and log in with our credentials. We are then taken to a home page. On the left side, we find a panel with our repositories. Here, we can click on 'New' to create a new repository (see Figure 1, top panel). 
+To set up our Git repository, we go to the [GitHub login page](https://github.com/login) and log in with our credentials. We are then taken to a home page. On the left side, we find a panel with our repositories. Here, we can click on 'New' to create a new repository (see figure below, top panel). 
 
-Once we click on 'New', we will be taken to a menu were we can specify the details of our new Git repository. The menu consists of the following parts (see also Figure 1, bottom panel):
+Once we click on 'New', we will be taken to a menu were we can specify the details of our new Git repository. The menu consists of the following parts (see also figure below, bottom panel):
 
-- **Repository name field**: in the repository name field we can specify the name for our new repository. GitHub will automatically check if another repository with the same name already exists. 
-- **Public or Private**: when you create a new repository, you have to indicate if you want to create a public or a private repository. A **public repository** can be found and downloaded by anyone on the internet (although only specified can contribute to the Git repository). A **private repository** is only accessible to persons specified by you (the owner). Although it is recommended to allow others to access and use your code by creating a public repository, this not always possible. Especially if you are employed (or doing an internship!) at a company or other agency, your employer often does not allow you to make your files public. Always check with your employer (or supervisor) to see what is allowed. *Choose a private repository if you are not sure!*
-- **Initialization files**: when you create a repository, you can create some 'initialization files'. These files include a README file, a gitignore file and a license:
-  - **README file**: a README file is a file that contains information about the repository. This file should be read by everyone that is planning to use the files in the repository. It usually contains information about the content of the Git repository. It is easy to make a README file, so it is not necessary to create the file when creating the Git repository. 
-  - **gitignore file**: we will explain the purpose of the gitignore file in detail below. In short, the gitignore file contains all the file names of files that should *not* be followed by Git. That means that you cannot commit changes to files that are in the gitignore file. On GitHub, you can easily create a gitignore file that is specific for the programming language you are using. It is therefore recommended to create a gitignore file (for example, for R) when creating the Git repository.
-  - **license**: when you create a public repository, it is important to add a license to your repository. The license states what others can do with the files in the Git repository. For example, with an MIT license, you allow others to use your file for any purpose they like (even for commercial applications). Similarly, if you want to use the files of others, it is important to check their license to see what you can and cannot do. Please check the resources for more information about licenses.  
+1. **Repository name field**: in the repository name field we can specify the name for our new repository. GitHub will automatically check if another repository with the same name already exists. 
+1. **Public or Private**: when you create a new repository, you have to indicate if you want to create a public or a private repository. A **public repository** can be found and downloaded by anyone on the internet (although only specified can contribute to the Git repository). A **private repository** is only accessible to persons specified by you (the owner). Although it is recommended to allow others to access and use your code by creating a public repository, this not always possible. Especially if you are employed (or doing an internship!) at a company or other agency, your employer often does not allow you to make your files public. Always check with your employer (or supervisor) to see what is allowed. *Choose a private repository if you are not sure!*
+1. **Initialization files**: when you create a repository, you can create some 'initialization files'. These files include a README file, a gitignore file and a license:
+  a. **README file**: a README file is a file that contains information about the repository. This file should be read by everyone that is planning to use the files in the repository. It usually contains information about the content of the Git repository. It is easy to make a README file, so it is not necessary to create the file when creating the Git repository. 
+  a. **gitignore file**: we will explain the purpose of the gitignore file in detail below. In short, the gitignore file contains all the file names of files that should *not* be followed by Git. That means that you cannot commit changes to files that are in the gitignore file. On GitHub, you can easily create a gitignore file that is specific for the programming language you are using. It is therefore recommended to create a gitignore file (for example, for R) when creating the Git repository.
+  a. **license**: when you create a public repository, it is important to add a license to your repository. The license states what others can do with the files in the Git repository. For example, with an MIT license, you allow others to use your file for any purpose they like (even for commercial applications). Similarly, if you want to use the files of others, it is important to check their license to see what you can and cannot do. Please check the resources for more information about licenses.  
 
-![Figure 1. Creating a new Git repository on GitHub. See the main text for the details.](images/lesson22_1_createRepo.png)
+```{r echo=FALSE, fig.align='center', fig.cap='Creating a new Git repository on GitHub. See the main text for the details.'}
+knitr::include_graphics('images/lesson22_1_createRepo.png')
+```
 
 ### Step 2: Downloading the Git repository to your computer (cloning)
 
 Once you have created a new Git repository on GitHub, you can download the repository to your computer. Downloading a Git repository is called **cloning**. The steps for cloning a Git repository are as follows:
 
-1. Copy the GitHub link to the new Git repository (see figure 2, top panel). 
+1. Copy the GitHub link to the new Git repository (see figure below, top panel). 
 2. In RStudio, go to File > New Project...
-3. In the Project menu, select 'Version Control', then 'Git' and subsequently enter the details of the Git repository (see figure 2, bottom panel). Also select the folder in which you want the repository to be located. 
+3. In the Project menu, select 'Version Control', then 'Git' and subsequently enter the details of the Git repository (see figure below, bottom panel). Also select the folder in which you want the repository to be located. 
 4. Click 'Create Project'. 
 
 RStudio will now create a new R Project and clone the Git repository from GitHub. 
 
 As you learned in the DAUR1 course, it is best practice to use R Projects if you are working with RStudio. Using the above steps, you can easily couple the R Project to the Git repository. All files in the R Project folder will now be tracked for version control. These files can be R scripts, (R)markdown files, but also (among others) bash scripts. 
 
-![Figure 2. Downloading the Git repository to your computer using RStudio. See the main text for the details. ](images/lesson22_2_downloadRepo.png)
+```{r echo=FALSE, fig.align='center', fig.cap='Downloading the Git repository to your computer using RStudio. See the main text for the details.'}
+knitr::include_graphics('images/lesson22_2_downloadRepo.png')
+```
+
 ## How to work with Git in RStudio
 
 OK, you are ready to go! You have created your first Git repository and you can now start to add files and track their changes. In this part, we will show you how to commit your changes and how to push your changes to the Git repository on GitHub. 
 
 ### Getting started with Git in RStudio
 
-We start by creating a new R script and saving it in the directory of the Git repository. In the right upper corner of RStudio, we can find a submenu called 'Git'. If we open this menu, you can see the changes you have made to the repository (see figure 3). These changes may be new files that you just added to the repository, but they also can be changes to the content of pre-existing files. 
+We start by creating a new R script and saving it in the directory of the Git repository. In the right upper corner of RStudio, we can find a submenu called 'Git'. If we open this menu, you can see the changes you have made to the repository (see figure below). These changes may be new files that you just added to the repository, but they also can be changes to the content of pre-existing files. 
 
-```{r echo=FALSE, out.width='70%', fig.align='center', fig.cap='Figure 3. Git menu in RStudio.'}
+```{r echo=FALSE, out.width='70%', fig.align='center', fig.cap='Git menu in RStudio.'}
 knitr::include_graphics('images/lesson22_3_gitmenu.PNG')
 ```
 
@@ -55,17 +60,17 @@ In this Git menu, you can perform all your Git actions, including committing you
 
 ### Saving a new version of your file (commit)
 
-We just created a new R script. In addition, by cloning our Git repository from GitHub, we created a new R Project file. These changes need to be stored in the Git repository. In other words, we need to commit the changes to the Git repository. We can do this by clicking on the 'Commit' button in the Git menu. A new window will then open. In this window, we can select the changes we want to commit to the Git repository (see figure 4, left upper corner). Note that by selecting a file, we can see the changes in the bottom panel of the window (in which lines in green are new/added lines and lines in red are old/removed lines). After selecting the files we want to commit, we can write a commit message in the upper right panel. This commit message is necessary to later on easily distinguish the different commits in GitHub. It is therefore important to write commit messages that clearly indicate the changes you made in the commit. Finally, you can commit your changes by pressing the 'Commit' button. You can now close the commit window (also the other window that pops up after pressing the 'Commit' button.  
+We just created a new R script. In addition, by cloning our Git repository from GitHub, we created a new R Project file. These changes need to be stored in the Git repository. In other words, we need to commit the changes to the Git repository. We can do this by clicking on the 'Commit' button in the Git menu. A new window will then open. In this window, we can select the changes we want to commit to the Git repository (see figure below, left upper corner). Note that by selecting a file, we can see the changes in the bottom panel of the window (in which lines in green are new/added lines and lines in red are old/removed lines). After selecting the files we want to commit, we can write a commit message in the upper right panel. This commit message is necessary to later on easily distinguish the different commits in GitHub. It is therefore important to write commit messages that clearly indicate the changes you made in the commit. Finally, you can commit your changes by pressing the 'Commit' button. You can now close the commit window (also the other window that pops up after pressing the 'Commit' button.  
 
-```{r echo=FALSE, out.width='80%', fig.align='center', fig.cap='Figure 4. Committing changes in RStudio.'}
+```{r echo=FALSE, out.width='80%', fig.align='center', fig.cap='Committing changes in RStudio.'}
 knitr::include_graphics('images/lesson22_4_commitmenu.PNG')
 ```
 
 ### Updating the GitHub repository (push)
 
-After committing your changes, you have to update the GitHub repository. You can do this by pushing the recent commit(s) to GitHub using the 'Push' button (with the green, upward pointing arrow) in the Git menu. After pushing your changes, you can see the new/changed files in GitHub (you may need to refresh your page to see the changes). GitHub also offers a nice interface to see the exact file changes for each commit. In the main menu of your repository, you can click on the 'commits' link and subsequently select your most recent commit. You will then see all file changes that were committed during that commit (see figure 5). 
+After committing your changes, you have to update the GitHub repository. You can do this by pushing the recent commit(s) to GitHub using the 'Push' button (with the green, upward pointing arrow) in the Git menu. After pushing your changes, you can see the new/changed files in GitHub (you may need to refresh your page to see the changes). GitHub also offers a nice interface to see the exact file changes for each commit. In the main menu of your repository, you can click on the 'commits' link and subsequently select your most recent commit. You will then see all file changes that were committed during that commit (see figure below). 
 
-```{r echo=FALSE, out.width='80%', fig.align='center', fig.cap='Figure 5. Check out your commits in GitHub.'}
+```{r echo=FALSE, out.width='80%', fig.align='center', fig.cap='Check out your commits in GitHub.'}
 knitr::include_graphics('images/lesson22_5_commitsGitHub.png')
 ```
 
@@ -79,9 +84,9 @@ As indicated above, you can easily create gitignore files on GitHub when you cre
 
 In the text above, we explained how to use Git in combination with RStudio. However, you may also want to use Git with other programming languages, such as Python or Bash, outside RStudio. Of course this is possible. In fact, Git was designed to be used independently, as a simple command line tool. Once you install Git on your computer, you also install the Git Bash command line tool. You can use this tool in every directory of your computer to initiate Git repositories or to maintain them. Below, we will show you how you can do this and we learn you the most important commands. 
 
-Suppose we want to clone the Git repository outside RStudio in a directory on our computer. We can do this by browsing on our computer to the destination folder. In this folder, we can right click with our mouse and select 'Git Bash Here' (see figure 6). A command line will open, which is basically a Linux command line. 
+Suppose we want to clone the Git repository outside RStudio in a directory on our computer. We can do this by browsing on our computer to the destination folder. In this folder, we can right click with our mouse and select 'Git Bash Here' (see figure below). A command line will open, which is basically a Linux command line. 
 
-```{r echo=FALSE, out.width='80%', fig.align='center', fig.cap='Figure 6. Open Git Bash tool in a folder on your computer.'}
+```{r echo=FALSE, out.width='80%', fig.align='center', fig.cap='Open Git Bash tool in a folder on your computer.'}
 knitr::include_graphics('images/lesson22_6_gitCommandLine.png')
 ```
 
@@ -112,3 +117,53 @@ git push origin main
 git pull origin main
 ```
 
+<div class="question">
+##### Exercise 2.2
+
+a) Create a new Git repository on GitHub. Make sure that the Git repository contains a gitignore file for R.  
+b) Clone the Git repository to your computer using RStudio (hence creating an R Project on the fly).
+c) Create an RMarkdown file in the Git repository with the following content:
+
+```{r echo=TRUE, eval=FALSE}
+---
+title: "My own RMarkdown file"
+output: html_document
+---
+
+This is my first RMarkdown file tracked by Git!!
+```
+
+d) Commit the changes to the Git repository and push the changes to GitHub. Check the commit on GitHub to inspect the file changes.
+e) Add some extra lines to the RMarkdown file and change the title. Commit the changes and push the changes to GitHub. Check the commit on GitHub to inspect the file changes.
+</div>
+
+<div class="question">
+##### Exercise 2.2
+
+Use the Git repository of the previous question for this question.
+
+a) Create a directory called 'data'. Add a few Excel files in this directory and also some csv files (you can also just create some empty files using Excel). Check the Git menu in RStudio (but do not commit anything!).
+b) Update the gitignore file in such a way that all the files in the data directory are ignored. Check the Git menu in RStudio (refresh if necessary). What do you see?
+c) Update the gitignore file in such a way that all the Excel files in the data directory are ignored. Check the Git menu in RStudio (refresh if necessary). What do you see?
+</div>
+
+<details><summary>Click for the answer</summary>
+
+a) - 
+b) Add to the gitignore file a line with `data/**`. The files in the data directory are removed from the Git menu. 
+c) Change in the gitignore file the line `data/**` for `data/*.xls`. Now only the Excel files are ignored, but the csv files appear in the window again.
+</details>
+
+<div class="question">
+##### Exercise 2.2
+
+a) Clone the Git repository that you created on GitHub (see question 2.2.1) to a folder on your computer using the command line.
+b) Change the RMarkdown file. Check the changes using `git status`. What do you see?
+c) Commit your changes and push the changes to GitHub using the command line. 
+</div>
+
+<div class="question">
+##### Exercise 2.2
+
+Create a Git repository on GitHub for your portfolio. Subsequently, clone the GitHub repository to your computer and add the files that you already created. Commit/push the changes.
+</div>

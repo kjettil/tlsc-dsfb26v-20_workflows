@@ -6,7 +6,7 @@ Please answer all the assignment and exercises in an RMarkdown document. Save it
 This is part 1 of lesson 1. Lesson 1 consists of:
 
  - Part 1; Introducing Reproducible Research
- - Part 2; Managing your project files and data with 'Guerilla Analytics'
+ - Part 2; Managing your project files and data with 'Guerrilla Analytics'
  - Part 3; RMarkdown Driven Development 
 
 ```{r setup, include=FALSE}
@@ -63,7 +63,7 @@ https://book.fosteropenscience.eu/en/02OpenScienceBasics/04ReproducibleResearchA
 
 ## Lesson Contents
 
-This lesson is about the 'movement' in science called 'Reproducible Research'. It explains the principles of Open Science and connected terms such as Open Access, Open Source and Reproducible Research, and Open Data.
+This lesson is about the 'movement' in science called 'Reproducible Research'. It explains the principles of Open Science and connected terms such as Open Access, Open Source and Reproducible Research, Open Peer Review and Open Data.
 
 ## Introducing Reproducible Research
 
@@ -125,7 +125,7 @@ knitr::include_graphics(
 
 <p style="font-size:14px">**The file "./Rmd/steps_to_graph_from_excel_file.html" shows you how to do this using the programming language R. In webinar part 3, we will revisit this example.</p>
 
-## To  replicate a scientific study we need at least:
+## To replicate a scientific study we need at least:
 
  > - Scientific context, research questions and state of the art [<mark>P<mark/>]
  > - (Experimental) model or characteristics of population or matter studied [<mark>P</mark>]
@@ -138,12 +138,13 @@ knitr::include_graphics(
  > - Conclusions and academic scoping of the results [<mark>P</mark>, _C_]
  > - **Access to all of the above** [<mark>OAcc, OSrc</mark>]
 
+
 <p style="font-size:14px">$P = Publication$, $D = Data$, $C = Code$, $OAcc = Open\ Access$, $OSrc = Open\ Source$ </p> 
 
 So we can conclude that 
 
-$Reproducible\ (Open)\ Science =$ 
-$Reproducible\ Research + Open\ Science$
+$Reproducible\ (Open)\ Science = P + D + C + OAcc + OSrc$
+and 
 
 ## EXERCISE
 
@@ -199,7 +200,7 @@ a) What was the reason for retracting this [paper](https://www.thelancet.com/jou
  # >- The credibility of Science as a whole is at stake ('in the eye of the beholder')
 ```
 
- C)  In the sense that we defined above, does The Lancet adhere to Reproducible (Open) Science? Why not?
+ C)  In the sense that we defined above, does The Lancet adhere to Reproducible (Open) Science? Why does is / Why not?
 
 ```{r}
 # Would the Lancet have adopted the Reproducible (Open) Science framework:
@@ -241,15 +242,15 @@ knitr::include_graphics(
 ```
 
 ## Why using Excel for Biology is a bad idea
-When you use Excel for data collection and especially for genetics and genomics studies, you risk losing and messing up your data. This is due to the 'autoformatting' in Excel. This is nicely adressed in this [paper:](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7). The authors show, through an automated workflow, that many Excel files used for genomics studies and that were supplied as supplementary materials to a publication contains 'autoformatted' _changed_ gene names. 
+When you use Excel for data collection and especially for genetics and genomics studies, you risk losing and/or messing up your data. This is mainly due to the 'autoformatting' in Excel, but other problems could occur as well. This is nicely adressed in this [paper:](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7). The authors show, through an automated workflow, that many Excel files used for genomics studies, and that were supplied as supplementary materials to a publication contain, 'autoformatted' (read _changed_) gene names. 
 
 In itself this 'autoformatting' is problematic enough, but when you have data containing time series or dates, things start to become really problematic when you use Excel.
 
-Also, if only one record in a whole Excel file is changed to the wrong data-type, R will parse this column most likely as a character. This stresses the need for thourougly checking your data types, after importing Excel files into R.
+Also, if only one record in a whole Excel file is changed to the wrong data-type, R and other tools will parse this column most likely as a character. This stresses the need for thouroughly checking your data types, especially after importing Excel files into R.
 
 We will practice a bit to see this happening live in an Exercise 
 
-## EXERCISE
+## **EXERCISE; Reading a strangly formatted column from an Excel file**
 
  A) In R, try downloading the following [file:](http://genesdev.cshlp.org/content/suppl/2009/06/11/gad.1806309.DC1/FancySuppTable2.xls)
  B) What problems do you encounter, when trying to import this Excel file using `{readxl}`?
@@ -261,8 +262,8 @@ We will practice a bit to see this happening live in an Exercise
  H) Change the column `Example Gene Name Conversion` in the file 
 [here:](http://genesdev.cshlp.org/content/suppl/2009/06/11/gad.1806309.DC1) to text. 
  I) Change the column named `GENE SYMBOL` in [this file](http://genesdev.cshlp.org/content/suppl/2009/11/03/23.21.2484.DC2/Bilodeau_Supp_Table_11.xls) to text.
- J) Now try to find the wrongly converted gene called `40059` in this datafile
- H) On the basis of your observations in this exercise: what are your conclusions about using Excel. How could you make the use of Excel _safer_ for data collection and analysis?
+ J) Now try to find the wrongly converted gene called `40059` in this data file
+ H) On the basis of your observations in this exercise: what are your conclusions about using Excel. How could you make the use of Excel _safer_ for data collection and analysis? What would you recommend your peers? Write (in Rmd) a short recommendation on the safe use of Excel for data collection (min 200 words).
 
 ```{r, parse_failure, include=FALSE, eval=FALSE}
 url <- c("http://genesdev.cshlp.org/content/suppl/2009/06/11/gad.1806309.DC1/FancySuppTable2.xls")
@@ -302,10 +303,10 @@ bilodeau_supp <- readxl::read_xls(
 
 ## EXERCISE
 
-The data for this exercise was derived from an experiment in which adult _C.elegans_ nematodes were exposed to varying concentrations of different compounds. The variables `RawData` (the outcome - number of offspring counted as an integer value, after incubation time), `compName` (the generic name of the compound/chemical), the `compConcentration` (the concentration of the compound), and the `expType` are the most important variables in this dataset.
+The data for this exercise was kindly supplied by J. Louter (INT/ILC) and was derived from an experiment in which adult _C.elegans_ nematodes were exposed to varying concentrations of different compounds. The variables `RawData` (the outcome - number of offspring counted as an integer value, after incubation time), `compName` (the generic name of the compound/chemical), the `compConcentration` (the concentration of the compound), and the `expType` are the most important variables in this dataset.
 A typical analysis with this data would be to run a dose-response analysis using a log-logistic model with estimates for the maximal, the minimal, the IC50 concentration and the slope at IC50. We will not go into the details but a good package to run such computations and create graphs in R is the `{drc}` package. [See:](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0146021) [and:](https://cran.r-project.org/web/packages/drc/index.html). In the exercise below we will create some visualizations using `{ggplot2}`.
 
-A) Review the following Excel file in the `./data/CE.LIQ.FLOW.062_Tidydata.xlsx`, by opening the file in Excel. See if you can spot anything perculiar about this file. Do not edit the file in any way. Just close it when you are done
+A) Review the following Excel file in the `./data/CE.LIQ.FLOW.062_Tidydata.xlsx`, by opening the file in Excel. See if you can spot anything peculiar about this file. Do not edit the file in any way. Just close it when you are done. (Annoyingly, Excel asks you to save your changes, even if you did not touch anything in the file: why is this cumbersome?)
  
 B) Open the file in R, using the `{readxl}` package.
  
@@ -318,7 +319,7 @@ celiqflow_062 <- readxl::read_xlsx(
 )
 ```
 
-C) Inspect the data types of columns `RawData`, `compName` and `compConcentration`. What types would you expect from the experimental description above. Have the datatypes been correctly assigned during the importing of the data into R?
+C) Inspect the data types of columns `RawData`, `compName` and `compConcentration`. What types would you expect from the experimental description above. Have the data types been correctly assigned during the importing of the data into R?
 
 ```{r, include=FALSE}
 names(celiqflow_062)
@@ -337,7 +338,7 @@ library(toolboxr)
 The function you need from `{toolboxr}` is `rotate_axis_labels()`. Type
 `?rotate_axis_labels()` in the R Console to see how to use this function. 
 
-If you have any suggestions for a good convenience function to add to this package, create an issue on github.com for a feature request or clone/fork the repository, add the fucntion you would like to add and create a pull request. You will learn how to take this steps in lesson 2 and 3.
+If you have any suggestions for a good convenience function to add to this package, create an issue on github.com for a feature request or clone/fork the repository, add the function you would like to add and create a pull request. You will learn how to take these steps in lesson 2 and 3.
 
 ```{r}
 celiqflow_062 %>%
@@ -366,8 +367,9 @@ celiqflow_062 %>%
 Fill in:
 G) The positive control for this experiments is .....
 H) The negative control for this experiment is .....
-I) Think about how you would analyse this experiment to learn whether there is indeed an effect of different concentrations on offspring count and whether the different compounds have a different curve (IC50). Write down you analysis as a step-wise plan 
-J) Normalize the data for the `controlNegative` in such a way that the mean value for `controlNegative` is exactly equal to 1 and that all other values are expressed as a fraction thereof.
+I) Think about how you would analyze this experiment to learn whether there is indeed an effect of different concentrations on offspring count and whether the different compounds have a different curve (IC50). Write down you analysis as a step-wise plan 
+J) Normalize the data for the `controlNegative` in such a way that the mean value for `controlNegative` is exactly equal to 1 and that all other values are expressed as a fraction thereof. Rerun your graphs with the normalized data. 
+H) Why would you want to take the step under J?
 
 --------------- EXERCISE END ------------------------------
 
@@ -382,14 +384,16 @@ In *[Brown, Kaiser & Allison, PNAS, 2018](https://doi.org/10.1073/pnas.170827911
 These are common mistakes and if no checks or tests are build in than the conclusions from a study could be completely wrong. This does not only lead to bad science, it can be dangerous.
 
 How would you mitigate such a risk?
-We can start by doing everything we do in code via scripting. The prefect way to do this is, is by using literate programming such as is done when using RMarkdown. In this course we call this `RMarkdown driven development`
+We can start by doing everything we do in code via scripting. The preferred way to do this is, is by using literate programming such as is done when using RMarkdown. In this course we call this `RMarkdown driven development`
 
-## Programming is essential for Reproducible (Open) Science {.build}
+## Programming is essential for Reproducible (Open) Science
+Because we can only connect the data, the methods used to collect the data and the narratives, so how the results were obtained, by using code. And we can create a script and multiple types of output from a single script by using RMarkdown, it is the perfect tool for enabling Open Resproducible research.
 
  >- Only programming an analysis (or creation of a graph) records every step
  >- The script(s) function as a (data) analysis journal 
  >- Code is the logic that connects the data and methods to conclusions 
  >- Learning to use a programming language takes time but pays of at the long run (for all of science)
+ >- Using literate programming (RMarkdown), enables to connect everything together in a single script
 
 **(Literate) programming is a way to connect narratives to data, methods and results**
 
@@ -416,7 +420,7 @@ A typical analysis method for this type of randomized block design is a so-calle
  
 You could also use one-way ANOVA but I will illustrate why this is not a good idea 
 
-## What do we minimally need, to replicate the science of this experiment? {.build}
+## What do we minimally need, to replicate the science of this experiment? 
 
 I will show:
 
@@ -424,24 +428,30 @@ I will show:
  >- an exploratory graph 
  >- a statistical model 
  >- the statistical model results
- >- a model diagnostic
+ >- a model diagnostic (logic why this is suitable model)
  >- some conclusions 
  
-In the next few slides, I will hopefully convince you of the power of (literate) programming to communicate such an analysis. 
+When preforming statistics, it is important to realize that no single model is the correct or best model. There are always multiple options and trade-offs to be made. The most important learning lesson here is: 
+
+**"In the end it matters more that insight is provided into what assumptions were made for the experiment/the data/the subject and the model, and not so much as which model is best."**. The way to do this is, is _again_ with writen a script that records all the steps and choices made. 
+ 
+In the next paragraph, I will try to show you of the power of (literate) programming to communicate such an analysis. 
 
 <p style="font-size:14px">[Example reproduced from: Pinheiro and Bates, 2000, _Mixed-Effects Models in S and S-PLUS_, Springer, New York.](https://cran.r-project.org/web/packages/nlme/index.html)</p>
  
 ## The data of the experiment
 
 <p style="font-size:14px">[Wretenberg, Arborelius & Lindberg, 1993](https://doi.org/10.1080/00140139308967910)</p>
-
+The data is available as a `data.frame` in the `{nlme}` package, which is a much valued R package for running multi-level statistical models. Below we import the data as a `tibble` (glorified `data.frame`) 
 
 ```{r, echo=TRUE}
 library(nlme)
 ergoStool %>% as_tibble()
 ```
+<p style="font-size:18px">The `lme()` function is part of the [`{nlme}`](https://cran.r-project.org/web/packages/nlme/index.html) package for mixed effects modelling in R</p>
 
 ## An exploratory graph
+First step is (always) plot all the data that you have. Or, in case you have very much data, take a random sample and plot that. A scatter plot is a very good start. It provides you already with an idea on the spread of some variables (here we plot the dependent on the y-axis and some predictor variable on the x-axis). The seed is for reproducibility. Which function in the code below is dependent on a random number generator?
 ```{r}
 set.seed(123)
 plot_ergo <- ergoStool %>%
@@ -449,7 +459,13 @@ plot_ergo <- ergoStool %>%
   geom_boxplot(colour = "darkgreen", outlier.shape = NA) + 
   geom_jitter(aes(colour = reorder(Subject, -effort)), 
               width = 0.2, size = 3) +
-  scale_colour_manual(values = c("red","blue", "green", "darkblue", "darkgreen", "purple", "grey", "black", "darkgrey")) +
+  scale_colour_manual(
+    values = c(
+      "red","blue", 
+      "green", "darkblue", 
+      "darkgreen", "purple", 
+      "grey", "black", "darkgrey")
+    ) +
   ylab("Effort (Borg scale score)") +
   xlab("Chair type") + 
   guides(colour=guide_legend(title="Subject id")) +
@@ -457,28 +473,27 @@ plot_ergo <- ergoStool %>%
 plot_ergo
 ```
 
-## Mind the variability per subject, what do you see?
+## EXERCISE; Mind the variability per subject, what do you see?
 
- - Can you say something about within-subject variability (note 'Minster Blue')?
- - Can you say something about between-subject variability (note 'Mister Green', vs 'Mister Black')?
- - Which chair type takes, on average the biggest effort to arise from?
+ A) Can you say something about within-subject variability (note 'Minster Blue')?
+ B) Can you say something about between-subject variability (note 'Mister Green', vs 'Mister Black')?
+ C) Which chair type takes, on average the biggest effort to arise from?
+ D) Looking at the code, why do you think the x-axis is not displaying the `Chair type` in a numeric order?
  
-```{r, fig.width=5, fig.height=3}
-plot_ergo
-```
+--------------- EXERCISE END ------------------------------
 
 ## The statistical questions
+When we look at the scientific question and the data, we can deduce a number of statistical questions
 
- 1. Which chair type takes, on average the biggest effort to arise from? (ANOVA / MEM, fixed effects)
- - Do individual (within subject) differences play a role in appointing a average score to a chair type? (MEM, random effects)
- - Does variability between subjects play a role in determining the 'best' chair type (ANOVA / MEM, confidence intervals)
+ 1. Which chair type takes, on average the biggest effort to arise from?
+ 2. What model would best capture the variability we see in the data, how would we reflect for example the inter-personal variability we observed in the exercise above, in a model
+ 3. Do individual (within subject) differences play a role in appointing a average score to a chair type? (MEM, random effects)
+ 4. Does variability between subjects play a role in determining the 'best' chair type (ANOVA / MEM, confidence intervals)
+ 5. What numbers can we appoint to the questions above? Numbers in statistics are usually called parameters.
 
 ## The statistical model 
-Statistical models (in R) can be specified by a `model formula`. The left side of the formula is the dependent variable, the right side are the 'predictors'. Here we include a `fixed` and a `random` term to the model (as is common for mixed-effects models)
+Statistical models (in R) can be specified by a `model formula`. The left side of the formula is the dependent variable, the right side are the 'predictors'. Here we include a `fixed` and a `random` term to the model (as is common for mixed-effects models). The fixed and random terms in the model are terms that reflect here the randomization (over persons) and the inter-person variability we observe in the data.
 
-```{r, echo=TRUE, eval=FALSE}
-library(nlme)
-```
 ```{r, echo=TRUE}
 ergo_model <- lme(
   data = ergoStool, # the data to be used for the model
@@ -487,9 +502,30 @@ ergo_model <- lme(
 )
 ```
 
-<p style="font-size:18px">The `lme()` function is part of the [`{nlme}`](https://cran.r-project.org/web/packages/nlme/index.html) package for mixed effects modelling in R</p>
+We choose here to allow each volunteer to have its own curve, that has an intercept with the y axis. For sake of simplicity we assume the curves run parallel, so we assume a fixed slope. In more complicated designs we could also include a random slope, that allows the curves to vary in slope. This can be interpreted as that the effect of `Chair type` on `Effort` is not equal for each combination of Chair type and subject. 
 
-<p style="font-size:18px">Example reproduced from: [Pinheiro and Bates, 2000, _Mixed-Effects Models in S and S-PLUS_, Springer, New York.](https://cran.r-project.org/web/packages/nlme/index.html)</p>
+Lets see if the assumption of fixed slope holds:
+```{r}
+plot_ergo_slopes <- ergoStool %>%
+  ggplot(aes(x = reorder(Type, effort), y = effort)) + 
+  geom_jitter(aes(colour = reorder(Subject, -effort)), 
+              width = 0.2, size = 3) +
+  geom_smooth(aes(group = Subject, colour = Subject), method = "lm", se = FALSE) +
+  scale_colour_manual(
+    values = c(
+      "red","blue", 
+      "green", "darkblue", 
+      "darkgreen", "purple", 
+      "grey", "black", "darkgrey")
+    ) + 
+  ylab("Effort (Borg scale score)") +
+  xlab("Chair type") + 
+  guides(colour=guide_legend(title="Subject id")) +
+  theme_bw()
+plot_ergo_slopes
+```
+
+What do you think? Is the assumption for a fixed slope defensible?
 
 ## The statistical results
 ```{r}
@@ -497,12 +533,12 @@ result <- ergo_model %>% summary()
 result$tTable %>% as.data.frame() %>% knitr::kable()
 ```
 
-## Model diagnostics {.build}
+## Model diagnostics
 
  >- Diagnostics of a fitted model is the most important step in a statistical analysis
  >- In most scientific papers the details are lacking 
  >- Did the authors omit to perform this step? Or did they not report it?
- >- If you do not want to include it in your paper, put it in an appendix!
+ >- If you do not want to include it in your paper, put it in an appendix, or even better, online!
  
 A residual plot shows the 'residual' error ('unexplained variance') after fitting the model. Under the Normality assumption standardized residuals should:
  
@@ -516,6 +552,7 @@ plot(ergo_model) ## type = 'pearson' (standardized residuals)
 ```
 
 ## The conclusions in a plot
+We will spend a whole lesson on creating 'publication worthy' graphs. Here is one that you could find a paper about the `ergoStool` experiment and the analysis we did above.
 ```{r}
 # install.packages("ggsignif")
 library(ggsignif)
@@ -567,41 +604,9 @@ ergoStool %>%
 plot_ergo
 ```
 
-## And the most important part...
-
-odz: _Practice what you preach_
-
-If you want to reproduce, add-on, falsify or apply your own ideas to this example, you can find the code (and data) in [Github.com](https://github.com/uashogeschoolutrecht/work_flows)
-
-**In webinar 3, I will show you how to actually run, use and organize code like this!**
-
-```{r, dpi = 60}
-knitr::include_graphics(
-  file.path(image_dir,
-  "git_collaboration.png")
-)
-```
-
-## Thank you for your attention!
-
-```{r, dpi = 150}
-knitr::include_graphics(
-  file.path(
-    image_dir,
-    "Pepper.png")
-)
-```
-
-**UPCOMING WEBINARS:**
-
- - Part 2; Managing your project files and data with 'Guerilla Analytics' 
- (~June 23rd, 2020)
- - Part 3; Reproducible (Open) Science @HU - Tools (~July 6th, 2020)
- 
- [Peer Support Group Data Science](tln.hu.nl)
- [support voor onderzoek](https://bibliotheek.hu.nl/onderzoekers/)
 
 ## Example; The Open Science Framework [OSF](https://osf.io/)
+To enable and facilitate the practice op Open Science, there are a number of organizations and foudations that support researchers. Below are a few examples. It is helpful to know about them if you are looking for places to get data, share data and code and to find good practices and examples.
 ```{r}
 knitr::include_graphics(
   here::here(
@@ -625,10 +630,16 @@ $Reproducible\ Science = P + D + C + OAcc + OSrc$
  >- [The submitted manuscript is available in OSF](http://pps.sagepub.com/content/7/6/657.abstract)
  >- [The R code used is available in OSF](https://osf.io/fkmwg/)  
  
- $RP:Psychology = P + D + C + OSrc\ (+ OAcc)$
+## Another journal that supports Open Science is F1000 Research
+The journal can be found [here](https://f1000research.com/).
+Have a look at the special Bioconductor channel: https://f1000research.com/gateways/bioconductor
 
-<p style="font-size:14px">$P = Publication$, $D = Data$, $C = Code$, $OAcc = Open\ Access$, $OSrc = Open\ Source$ </p> 
+## EXERCISE; Open Peer Review
 
+
+
+ 
+ 
 ## <mark>ASSIGNMENT; "Assing a reproducibility score for scientific literature"</mark> {-}
 
 resource: https://www.researchgate.net/publication/340244621_Reproducibility_and_reporting_practices_in_COVID-19_preprint_manuscripts/fulltext/5e81f9fd92851caef4ae37ba/Reproducibility-and-reporting-practices-in-COVID-19-preprint-manuscripts.pdf

@@ -45,13 +45,6 @@ topics <- c(
   "Version Control"
 )
 
-tibble(
-  Lesson_Number = lesson_number,
-  Lesson_Name = chapter_name,
-  Topics = topics
-  ) %>%
-  write_csv(file = "course_contents.csv", 
-            append = TRUE)
 
 ```
 

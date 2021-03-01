@@ -12,12 +12,14 @@ This course assumes you have a working installation and administrator access to 
  1. [Visual Studio Code Docker plugin](https://code.visualstudio.com/)
  1. [R - at least Version 4.0](https://cran.r-project.org/)
  1. [RStudio IDE](https://rstudio.com/products/rstudio/download/)
- 1. [Git for Windows]()
- 1. [DBeaver]()
- 1. [CyberDuck]()
- 1. [Microsoft Teams]()
+ 1. [Git for Windows](https://git-scm.com/download/win)
+ 1. [DBeaver](https://dbeaver.io/)
+ 1. [CyberDuck](https://cyberduck.io/)
+ 1. [Microsoft Teams](https://www.microsoft.com/nl-nl/microsoft-teams/group-chat-software)
 
-Some additional things you need to take into account or that you will need for this course.
+## Additional 'things'
+
+Some additional things you need to take into account or that you will need for this course:
 
  - When installing the software, make sure you install the software in the order indicated above
  - Next to this software we assume you also have an account set up in Github.com. You will need this to setup your portfolio, which will be the end-product for this course and which will be needed for passing the exam
@@ -32,6 +34,5 @@ The online sessions require you to have an internet connection and an updated ve
 During this course we really invite you to seek interaction on the course contents, the exercises and assignments with fellow course participants and the instructors. In order to facilitate this we will have a specific Q&A platform ready for you. The details will be made known on CANVAS.
 
 ## Exam
-The credits for this course can be earned by handing in the final exam assignment. The details are described here \@ref(exam). In short: In your own personal github account you will need to setup a github pages page. This page will function as a portfolio where you will post all the assignements and output products of the course. For details on github-pages [see:](https://pages.github.com/)  
-
+The credits for this course can be earned by handing in the final exam assignment. The details are described here \@ref(exam). In short: You will have to publish a bookdown project to the Course publication server (RStudio Connect). This page will function as a portfolio where you will post all the assignments and output products of the course. Only the lecturers of the course will have access to your portfolio products.  
 

@@ -43,21 +43,14 @@ In practical sense, scrum is the collection of meetings and the tools used to ad
 The short cycles of working on developing new features, running computations, performing experiments, interviewing customers and stake-holders and acquiring new tools are called 'Sprints'. In each sprint, which typically lasts 3 working weeks, a number of items from the Backlog are 'moved' to the so-called 'Sprint Backlog'. During regular weekly sessions discussion take place which items need to go from the 'Project Backlog' to the 'Sprint Backlog' in order to add value to the project. These sessions are called 'Sprint planning'. At the start of each sprint a single  
 
 
-
-
-
-
-
-
-
 ### Workflow
 
 ![en_overview](https://cloud.githubusercontent.com/assets/1859381/5411950/c44c229e-8207-11e4-915f-d31ccd66c5bd.png)
 
 Image: [Scrum primer](http://www.scrumprimer.org/overview).
 
-
 ### Github organization and Data Science Projecticum
+To effectively collaborate with your partner on the Data Science Projectioncum Assignment, you will need to setup a new organization in Github. Each project assignment comes with its own 'Acronym'. Use this acronym to setup the organization. Once the organization is created you can 
 
 
 

@@ -13,6 +13,12 @@ In this lesson, you will learn how to keep track of your file changes using Git.
 - you can keep track of your file changes using Git, RStudio and GitHub;
 - and you can instruct git to ignore certain files for version control (gitignore).
 
+## Prerequisites
+
+Before you continue with this lesson, make sure you have fulfilled the following prerequisites:
+
+- You have [installed Git](https://git-scm.com/downloads) on your computer.
+- You have [created a GitHub account](https://github.com/join?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home). 
 
 ## Why Git and GitHub?
 

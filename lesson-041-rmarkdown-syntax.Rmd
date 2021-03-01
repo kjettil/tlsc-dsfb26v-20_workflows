@@ -245,9 +245,6 @@ The advantage of this approach is that it is written very fast. You can also inc
 
 The advantage of this latter option is obviously that you can tweak the apperance and the behavior of your image far better using embedded html. The disadvantge might be that you would have to learn html. This however is a very good idea if you intend to become a Data Scientist/Bioinformatician.
 
-
-
-
 ## Summary
 
 - Markdown is a simple plain text format suitable for authoring rich documents
@@ -260,11 +257,11 @@ The advantage of this latter option is obviously that you can tweak the apperanc
 
  1. Find a relevant dataset  that you recently found or are busy with at the moment*
  1. Write a short Rmd report where you LOAD and VISUALIZE (create at least 3 different graphs) the data in an Rmd report.
- 1.
+ 1. Publish the exploratory analysis in your portfolio
  
 *If you do nog have a dataset, you can use this one:
 "./data/API_AG.LND.FRST.K2_DS2_en_csv_v2_716262"
 
-**Please send me the your report for feedback by email, or place it on you github account and send me the link.**
+**Place it on you github (portfolio) repo and send me the link.**
 
 

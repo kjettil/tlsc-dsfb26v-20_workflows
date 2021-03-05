@@ -10,17 +10,48 @@ In the previous section you learned how to use Git if you are the only person wo
 
 Suppose Bas and Marc are working together on a (data analysis) project. For this project, Bas created one shared Git repository on GitHub in which Bas and Marc can store the scripts for the project. Bas and Marc both cloned this repository to their laptops. Every now and then Bas and Marc make changes to the scripts. You can imagine that this may go wrong: Bas and Marc are both adding/deleting things from the Git repository at the same time from different computers and this can result in conflicts. For example, Bas may decide to add an extra line to script1 and commit/push the changes to GitHub. Marc, who still worked on the old version, removes some lines from script1. When Marc now commit/push the changes to GitHub an error will occur, because Marc's changes are not in line with Bas' changes. 
 
-Clearly, if you are working together with other persons, the workflow presented previously is to simple and can give rise to conflicts. Fortunately, Git offers additional tools for working together. 
+Clearly, if you are working together with other persons, the workflow presented previously is too simple and can give rise to conflicts. Fortunately, Git offers additional tools for working together. The most important tool is a branch. A **branch** can be seen as a development environment in Git in which you store your commits. When you create a Git repository in GitHub, you automatically create one branch, the **main branch**. In the default state, you store all commits in this main branch. If you are working with multiple persons on the same project, it is best practice to have a **development branch** for each person. You can create such a development branch anytime during the project. When you create a development branch, you basically create a copy of the main branch (you 'branch off') in which you can work without affecting the content of the main branch. In this development branch you can commit/push as you normally would do in the main branch. After you made your changes and you know that the scripts are working as expected, you can add your changes to the main branch by **merging** your development branch with the main branch. You can most easily perform this merge on GitHub (where it is called a **pull request**), because of GitHub's user-friendly interface. After that, you can pull the updates in the main branch to your computer. 
 
+In summary, the workflow for projects with multiple persons consists of the following steps:
 
+1. The person that wants to make some changes to the project, creates a development branch. 
+1. This person can then make his changes, commit the changes and push them to GitHub. 
+1. On GitHub, the person can create a pull request to add his changes to the main branch. 
+1. All the team members can now pull the changes to their computer.
 
-
+Below, we will explain these steps in detail and we will show how you can perform the steps in RStudio and GitHub.
 
 ## How to work with Git in RStudio
 
 ### Creating a new development environment (branching)
 
+If you are committing your changes to the Git repository, the default is to commit the changes to the main branch. If you are in RStudio, you can easily see on which branch you are working by checking the Git menu:
+
+```{r echo=FALSE, fig.align='center', fig.cap='The main branch in RStudio.'}
+knitr::include_graphics('images/lesson23_1_mainbranch.png')
+```
+
+You can create a development branch by clicking on the purple 'New Branch' symbol in the Git menu: 
+
+```{r echo=FALSE, fig.align='center', fig.cap='Create a new branch in RStudio.'}
+knitr::include_graphics('images/lesson23_2_newbranch.png')
+```
+
+A new menu will then open. In this menu, you can choose the name for your development branch. for the rest, you can accept the default settings (see figure below). 
+
+```{r echo=FALSE, fig.align='center', fig.cap='Branch menu in RStudio.', out.width='40%'}
+knitr::include_graphics('images/lesson23_3_newbranch2.png')
+```
+
+After creating the development branch, you can see that you automatically switched from the main branch to the newly created development branch. 
+
 ### Saving a new version of your files (commit)
+
+Now you are on the new development branch, you can start changing files. After you made your changes, you can commit your changes and push the changes to GitHub as explained in the previous section. You can also see the changes you made in GitHub by selecting the correct branch. You can do this in the 'code' menu of your repository:
+
+```{r echo=FALSE, fig.align='center', fig.cap='Branch menu in GitHub.', out.width='40%'}
+knitr::include_graphics('images/lesson23_4_branchesGitHub.png')
+```
 
 ### Uploading the development environment to GitHub (push)
 
@@ -35,6 +66,8 @@ Clearly, if you are working together with other persons, the workflow presented 
 
 ### Downloading the changes to your local repository (pull)
 
+### Closing the local development branch
+
 
 
 
@@ -45,14 +78,18 @@ Use the Git repository that you created in the first exercise of the Lesson 2.2 
 
 a) Create a new branch in RStudio. 
 b) Modify the markdown file by adding some additional text. Save the changes and commit/push the changes to GitHub. Go to GitHub and try to find the commits of the new branch. 
-c) In RStudio, change to the main branch. What happens to your recent changes in your RMarkdown file?
+c) In RStudio, change to the main branch. What happens to your recent changes in your RMarkdown file? What happens if you change to your development branch?
+d) Merge your changes with the main branch by creating and resolving a pull request. In RStudio, switch to the main branch and pull your changes. Does the RMarkdown file now have the changes?
+e) Delete the local development branch using the command line.
 </div>
 
 <details><summary>Click for the answer</summary>
 
 a) - 
 b) 
-c) The changes disappear, because the changes are only present in the development branch and not in the main branch. 
+c) The changes disappear, because the changes are only present in the development branch and not in the main branch. If you go back to your development branch, the content reappears.
+d) After resolving the pull request on GitHub and pulling the changes to your computer, you should be able to see the file changes in the main branch. 
+e) You can delete the branch on your computer using the command `git branch -d <branch-name>`.
 </details>
 
 

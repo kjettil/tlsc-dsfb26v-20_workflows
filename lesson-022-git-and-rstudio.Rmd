@@ -4,7 +4,7 @@
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-In this section, we will give you a detailed protocol for working with Git using RStudio. This protocol assumes that **only one person is contributing to the Git repository**. If you work together with other persons, you will need additional tools than the ones presented here. You will learn more about these tools in the next lesson.   
+In this section, we will give you a detailed protocol for working with Git using RStudio. This protocol assumes that **only one person is contributing to the Git repository**. If you work together with other persons, you will need additional tools than the ones presented here. You will learn more about these tools in the next section.   
 
 ## Creating a new Git repository
 

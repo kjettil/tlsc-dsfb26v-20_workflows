@@ -21,7 +21,7 @@ In summary, the workflow for projects with multiple persons consists of the foll
 
 Below, we will explain these steps in detail and we will show how you can perform the steps in RStudio and GitHub.
 
-## How to work with Git in RStudio
+## The extended Git workflow in RStudio and GitHub
 
 ### Creating a new development environment (branching)
 
@@ -37,7 +37,7 @@ You can create a development branch by clicking on the purple 'New Branch' symbo
 knitr::include_graphics('images/lesson23_2_newbranch.png')
 ```
 
-A new menu will then open. In this menu, you can choose the name for your development branch. for the rest, you can accept the default settings (see figure below). 
+Make sure that you pull once before creating your development branch, to make sure that your main branch is up to date. Once you click on the 'New Branch' symbol, a new menu will open. In this menu, you can choose the name for your development branch. for the rest, you can accept the default settings (see figure below). 
 
 ```{r echo=FALSE, fig.align='center', fig.cap='Branch menu in RStudio.', out.width='40%'}
 knitr::include_graphics('images/lesson23_3_newbranch2.png')
@@ -45,7 +45,7 @@ knitr::include_graphics('images/lesson23_3_newbranch2.png')
 
 After creating the development branch, you can see that you automatically switched from the main branch to the newly created development branch. 
 
-### Saving a new version of your files (commit)
+### Saving a new version of your files (commit and push)
 
 Now you are on the new development branch, you can start changing files. After you made your changes, you can commit your changes and push the changes to GitHub as explained in the previous section. You can also see the changes you made in GitHub by selecting the correct branch. You can do this in the 'code' menu of your repository:
 
@@ -53,16 +53,24 @@ Now you are on the new development branch, you can start changing files. After y
 knitr::include_graphics('images/lesson23_4_branchesGitHub.png')
 ```
 
-### Uploading the development environment to GitHub (push)
+### Creating and resolving a pull request on GitHub
+
+Once you finished making your changes, you can add the changes to the main branch. The most easy way to do this is to create a pull request on GitHub. On the GitHub website you can go to the pull request menu:
+
+```{r echo=FALSE, fig.align='center', fig.cap='Pull request menu in GitHub.'}
+knitr::include_graphics('images/lesson23_5_pullrequest.png')
+```
+
+Usually, you will see a message in this menu that states that your development branch had some recent pushes. You can then click on the 'Compare and pull request' button. If this message is not visible, you can click on the 'New pull request' button. In both cases, you will go to a new page that looks like this:
+
+```{r echo=FALSE, fig.align='center', fig.cap='Pull request menu in GitHub.'}
+knitr::include_graphics('images/lesson23_6_pullrequest2.png')
+```
+
+Here, you have to check if the branches that are going to be merged, are correct. In this case it is correct: the development branch 'Bas3' will be merged into the main branch. GitHub also checks for you if there will be any conflicts when merging. If everyone follows the workflow as indicated in this lesson, there will rarely be conflicts. If everything is OK, you can create the pull request by clicking on the 'Create pull request' button. 
 
 
 
-
-## How to merge the development branch with the main branch on GitHub
-
-### Creating a pull request on GitHub
-
-### Resolving a pull request on GitHub
 
 ### Downloading the changes to your local repository (pull)
 

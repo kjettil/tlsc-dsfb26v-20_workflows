@@ -10,17 +10,8 @@ In the previous section you learned how to use Git if you are the only person wo
 
 Suppose Bas and Marc are working together on a (data analysis) project. For this project, Bas created one shared Git repository on GitHub in which Bas and Marc can store the scripts for the project. Bas and Marc both cloned this repository to their laptops. Every now and then Bas and Marc make changes to the scripts. You can imagine that this may go wrong: Bas and Marc are both adding/deleting things from the Git repository at the same time from different computers and this can result in conflicts. For example, Bas may decide to add an extra line to script1 and commit/push the changes to GitHub. Marc, who still worked on the old version, removes some lines from script1. When Marc now commit/push the changes to GitHub an error will occur, because Marc's changes are not in line with Bas' changes. 
 
-Clearly, if you are working together with other persons, the workflow presented previously is to simple and can give rise to conflicts. 
+Clearly, if you are working together with other persons, the workflow presented previously is to simple and can give rise to conflicts. Fortunately, Git offers additional tools for working together. 
 
-## How to use branches for your work
-
-### Creating a new development environment (branching)
-
-### Saving a new version of your files (commit)
-
-### Uploading the development environment to GitHub (push)
-
-### Merging the development branch with the main branch (pull request)
 
 
 
@@ -47,7 +38,22 @@ Clearly, if you are working together with other persons, the workflow presented 
 
 
 
-## Exercises
+<div class="question">
+##### Exercise 2.3
+
+Use the Git repository that you created in the first exercise of the Lesson 2.2 (the repository with the markdown file). 
+
+a) Create a new branch in RStudio. 
+b) Modify the markdown file by adding some additional text. Save the changes and commit/push the changes to GitHub. Go to GitHub and try to find the commits of the new branch. 
+c) In RStudio, change to the main branch. What happens to your recent changes in your RMarkdown file?
+</div>
+
+<details><summary>Click for the answer</summary>
+
+a) - 
+b) 
+c) The changes disappear, because the changes are only present in the development branch and not in the main branch. 
+</details>
 
 
 

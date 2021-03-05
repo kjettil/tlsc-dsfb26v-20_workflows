@@ -1,14 +1,18 @@
-# Lesson 3 - Git Branching and Merging
+# Lesson 2 - Part 3 - Git Branching and Merging
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Learning goals
+In the previous section you learned how to use Git if you are the only person working on a project. However, often you are **working together with other persons**. Git offers some additional tools to promote collaboration. We will introduce these additional tools in this section.
 
+## The extended Git workflow: branching & merging
 
+Suppose Bas and Marc are working together on a (data analysis) project. For this project, Bas created one shared Git repository on GitHub in which Bas and Marc can store the scripts for the project. Bas and Marc both cloned this repository to their laptops. Every now and then Bas and Marc make changes to the scripts. You can imagine that this may go wrong: Bas and Marc are both adding/deleting things from the Git repository at the same time from different computers and this can result in conflicts. For example, Bas may decide to add an extra line to script1 and commit/push the changes to GitHub. Marc, who still worked on the old version, removes some lines from script1. When Marc now commit/push the changes to GitHub an error will occur, because Marc's changes are not in line with Bas' changes. 
 
-## The extended Git workflow
+Clearly, if you are working together with other persons, the workflow presented previously is to simple and can give rise to conflicts. 
+
+## How to use branches for your work
 
 ### Creating a new development environment (branching)
 

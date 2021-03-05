@@ -11,7 +11,9 @@ In this lesson, you will learn how to keep track of your file changes using Git.
 - you know the different steps of the Git workflow (commit, push and pull);
 - you know how to set up a new Git repository; 
 - you can keep track of your file changes using Git, RStudio and GitHub;
-- and you can instruct git to ignore certain files for version control (gitignore).
+- you can instruct git to ignore certain files for version control (gitignore);
+- you can create a personal development environment (branch);
+- and you can add you personal changes to the work of the group (pull request). 
 
 ## Prerequisites
 

@@ -121,9 +121,16 @@ e) You can delete the branch on your computer using the command `git branch -d <
 </details>
 
 
-## Resources
+## Git resources
 
-- Git Book (command line)
+### Git command line
 
-- Resources for GitHub
+- [Git - the simple guide](http://rogerdudler.github.io/git-guide/). This web resource provides a simple explanation of Git and its commands.
+- [Pro Git book](https://git-scm.com/book/en/v2). This book explains the principles behind Git and also provides a great introduction to the Git command line. 
+
+### Git and R(Studio)
+
+- [Collaboration and time travel using Git](https://rstudio.com/resources/webinars/collaboration-and-time-travel-version-control-with-git-github-and-rstudio/). In this video (approximately 45 minutes), R guru Hadley Wickham explains the concepts of Git collaboration and Git version control. 
+- [Happy Git with R book](https://happygitwithr.com/). This book is a nice resource for R users that want to use Git in their projects.
+
 

@@ -9,6 +9,11 @@ For this course materials have been adapted from:
   - Field et. al., 2015, "Discovering Statistics Using R", Sage Publications Ltd.
   - Sr. David Spiegelhalter, "The Art of Statistics", 2019, Pelican Books
   
+## License resources
+
+- [Choose a License](https://choosealicense.com/). This website helps you to choose the best license for your project. 
+- [Using licenses on GitHub](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/licensing-a-repository). This GitHub documentation page provides information about how to add and apply licenses to your GitHub repositories.
+  
 ## Git resources
 
 ### Git command line

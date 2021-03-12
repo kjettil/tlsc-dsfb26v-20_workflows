@@ -102,7 +102,7 @@ knitr::include_graphics(
   file.path(
     image_dir,
     "data_science_languages",
-    "Dia2.JPG"
+    "Dia2.jpg"
   )
 )
 ```
@@ -116,7 +116,7 @@ knitr::include_graphics(
   file.path(
     image_dir,
     "data_science_languages",
-    "Dia3.JPG"
+    "Dia3.jpg"
   )
 )
 ```

@@ -4,18 +4,18 @@
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-In the previous section you learned how to use Git if you are the only person working on a project. However, often you are **working together with other persons**. Git offers some additional tools to promote collaboration. We will introduce these additional tools in this section.
+In part two of this lesson you learned how to use Git if you are the only person working on a project. However, often you are **working together with other persons**. Git offers some additional tools to promote collaboration. We will introduce these additional tools in this part.
 
 ## The extended Git workflow: branching & merging
 
-Suppose Bas and Marc are working together on a (data analysis) project. For this project, Bas created one shared Git repository on GitHub in which Bas and Marc can store the scripts for the project. Bas and Marc both cloned this repository to their laptops. Every now and then Bas and Marc make changes to the scripts. You can imagine that this may go wrong: Bas and Marc are both adding/deleting things from the Git repository at the same time from different computers and this can result in conflicts. For example, Bas may decide to add an extra line to script1 and commit/push the changes to GitHub. Marc, who still worked on the old version, removes some lines from script1. When Marc now commit/push the changes to GitHub an error will occur, because Marc's changes are not in line with Bas' changes. 
+Suppose Bas and Marc are working together on a (data analysis) project. For this project, Bas created one shared Git repository on GitHub in which Bas and Marc can store the scripts for the project. Bas and Marc both cloned this repository to their laptops. Every now and then Bas and Marc make changes to the scripts. You can imagine that this may go wrong: Bas and Marc are both adding/deleting things from the Git repository at the same time from different computers and this can result in conflicts. For example, Bas may decide to add an extra line to script1 and commit/push the changes to GitHub. Marc, who still works on the old version, then removes some lines from script1. When Marc now commits/pushes the changes to GitHub an error will occur, because Marc's changes are not in line with Bas' changes. 
 
 Clearly, if you are working together with other persons, the workflow presented previously is too simple and can give rise to conflicts. Fortunately, Git offers additional tools for working together. The most important tool is a branch. A **branch** can be seen as a development environment in Git in which you store your commits. When you create a Git repository in GitHub, you automatically create one branch, the **main branch**. In the default state, you store all commits in this main branch. If you are working with multiple persons on the same project, it is best practice to have a **development branch** for each person. You can create such a development branch anytime during the project. When you create a development branch, you basically create a copy of the main branch (you 'branch off') in which you can work without affecting the content of the main branch. In this development branch you can commit/push as you normally would do in the main branch. After you made your changes and you know that the scripts are working as expected, you can add your changes to the main branch by **merging** your development branch with the main branch. You can most easily perform this merge on GitHub (where it is called a **pull request**), because of GitHub's user-friendly interface. After that, you can pull the updates in the main branch to your computer. 
 
 In summary, the workflow for projects with multiple persons consists of the following steps:
 
 1. The person that wants to make some changes to the project, creates a development branch. 
-1. This person can then make his changes, commit the changes and push them to GitHub. 
+1. This person can then make his changes, commits the changes and pushes them to GitHub. 
 1. On GitHub, the person can create a pull request to add his changes to the main branch. 
 1. All the team members can now pull the changes to their computer.
 
@@ -37,7 +37,7 @@ You can create a development branch by clicking on the purple 'New Branch' symbo
 knitr::include_graphics('images/lesson23_2_newbranch.png')
 ```
 
-Make sure that you pull once before creating your development branch, to make sure that your main branch is up to date. You can pull using the blue, downward pointing pull arrow in the GitHub menu. Once you click on the 'New Branch' symbol, a new menu will open. In this menu, you can choose the name for your development branch. for the rest, you can accept the default settings (see figure below). 
+Make sure that you pull once before creating your development branch, to make sure that your main branch is up to date. You can pull using the blue, downward pointing pull arrow in the Git menu. Once you click on the 'New Branch' symbol, a new menu will open. In this menu, you can choose the name for your development branch. For the other options, you can accept the default settings (see figure below). 
 
 ```{r echo=FALSE, fig.align='center', fig.cap='Branch menu in RStudio.', out.width='40%'}
 knitr::include_graphics('images/lesson23_3_newbranch2.png')
@@ -47,7 +47,7 @@ After creating the development branch, you can see that you automatically switch
 
 ### Saving a new version of your files (commit and push)
 
-Now you are on the new development branch, you can start changing files. After you made your changes, you can commit your changes and push the changes to GitHub as explained in the previous section. You can also see the changes you made in GitHub by selecting the correct branch. You can do this in the 'code' menu of your repository:
+Now that you are on the new development branch, you can start changing files. After you made your changes, you can commit your changes and push the changes to GitHub as explained in the previous section. You can also see the changes you made in GitHub by selecting the correct branch. You can do this in the 'code' menu of your repository:
 
 ```{r echo=FALSE, fig.align='center', fig.cap='Branch menu in GitHub.', out.width='40%'}
 knitr::include_graphics('images/lesson23_4_branchesGitHub.png')
@@ -67,17 +67,17 @@ Usually, you will see a message in this menu that states that your development b
 knitr::include_graphics('images/lesson23_6_pullrequest2.png')
 ```
 
-Here, you have to check if the branches that are going to be merged, are correct. In this case it is correct: the development branch 'Bas3' will be merged into the main branch. GitHub also checks for you if there will be any conflicts when merging. If everyone follows the workflow as indicated in this lesson, there will rarely be conflicts. If everything is OK, you can create the pull request by clicking on the 'Create pull request' button. 
+Here, you have to check if the branches that are going to be merged, are correct. In this case it is correct: the development branch 'Bas3' will be merged into the main branch. GitHub also checks for you if there will be any conflicts when merging. If everyone in your team follows the workflow as indicated in this lesson, there will rarely be conflicts. If everything is OK, you can create the pull request by clicking on the 'Create pull request' button. 
 
 After you created the pull request, you will be automatically guided to the page where you can resolve the merge request:
 
-```{r echo=FALSE, fig.align='center', fig.cap='Resolve pull request in GitHub.', out.width='90%'}
+```{r echo=FALSE, fig.align='center', fig.cap='Resolve pull request in GitHub (1).', out.width='90%'}
 knitr::include_graphics('images/lesson23_7_pullrequest3.png')
 ```
 
 Click on 'Merge pull request' and subsequently on 'Confirm merge'. If the merge was successful, you will see the following:
 
-```{r echo=FALSE, fig.align='center', fig.cap='Resolve pull request in GitHub.', out.width='90%'}
+```{r echo=FALSE, fig.align='center', fig.cap='Resolve pull request in GitHub (2).', out.width='90%'}
 knitr::include_graphics('images/lesson23_8_pullrequest4.png')
 ```
 
@@ -93,11 +93,11 @@ knitr::include_graphics('images/lesson23_1_mainbranch.png')
 
 Then you pull the changes from GitHub to your local Git repository using the blue, downward pointing arrow in the GitHub menu. 
 
-### Closing the local development branch
+### Deleting the local development branch
 
 You have updated the Git repository on GitHub and on your laptop. You have also removed the development branch from GitHub. However, the branch is still present on your laptop. You can remove the branch by opening the Terminal in RStudio and typing the command `git branch -d Bas3` (of course you have to use the name of your development branch instead of 'Bas3').
 
-The circle is closed: you have made some changes to the project using a development branch and merging this branch into the main branch. If you want to make some new changes, you can create a new branch and follow the same steps for these new changes. 
+The circle is closed: you have made some changes to the project using a development branch and merged this branch into the main branch. If you want to make some new changes, you can create a new branch and follow the same steps for these new changes. 
 
 <div class="question">
 ##### Exercise 2.3
@@ -113,13 +113,16 @@ e) Delete the local development branch using the command line.
 
 <details><summary>Click for the answer</summary>
 
-a) - 
-b) 
 c) The changes disappear, because the changes are only present in the development branch and not in the main branch. If you go back to your development branch, the content reappears.
 d) After resolving the pull request on GitHub and pulling the changes to your computer, you should be able to see the file changes in the main branch. 
 e) You can delete the branch on your computer using the command `git branch -d <branch-name>`.
 </details>
 
+<div class="question">
+##### Exercise 2.3
+
+Create one shared Git repository on GitHub for your Projecticum project. Make sure that the repository is shared and that your group member(s) can contribute. Subsequently, clone the GitHub repository to your computer and add your files using a development branch. Commit/push the changes and add the files to the main branch with a pull request.
+</div>
 
 ## Git resources
 

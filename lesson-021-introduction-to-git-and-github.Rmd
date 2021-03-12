@@ -13,11 +13,11 @@ In this lesson, you will learn how to keep track of your file changes using Git.
 - you can keep track of your file changes using Git, RStudio and GitHub;
 - you can instruct git to ignore certain files for version control (gitignore);
 - you can create a personal development environment (branch);
-- and you can add you personal changes to the work of the group (pull request). 
+- and you can add your personal changes to the work of the group (pull request). 
 
 ## Prerequisites
 
-Before you continue with this lesson, make sure you have fulfilled the following prerequisites:
+Before you continue with this lesson, make sure you have done the following:
 
 - You have [installed Git](https://git-scm.com/downloads) on your computer.
 - You have [created a GitHub account](https://github.com/join?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home). 
@@ -26,22 +26,22 @@ Before you continue with this lesson, make sure you have fulfilled the following
 
 To explain why Git and GitHub are so important, let us look at an example. Suppose you are analyzing some data for your internship using R. You have written an R script to perform the data analysis and the script is working. However, one day you decide to make some changes to the script in order to make the computations a bit faster. You work the whole day on the code and at the end of the day you try if the code is working as expected. Unfortunately, it is not working as expected. But the code was working before. It would be great if you could go back to the previous version of the code. Or if you could easily see the changes you made, to find out why your script stopped working. 
 
-The example shows that it is important to keep track of your changes. Of course you could have made the adjustments to the script in a copy of the original script. But in this way, you would end up with a lot of files on your computer. In addition, it is not easy to see *what* you changed. This is why we use **version control software**: software that keeps track of file changes and allows you to inspect the changes and to go back to previous versions of the files.
+The example shows that it is important to keep track of your changes. Of course you could have made your changes in a copy of the original script. But in this way, you would end up with a lot of files on your computer. In addition, it is not easy to see *what* you changed. This is why we use **version control software**: software that keeps track of file changes and allows you to inspect the changes and to go back to previous versions of the files.
 
-**Git** is the most popular version control software used today. It is designed to track changes of text-based files (files you can open in a text editor, such as R scripts and markdown files). Git can be easily used to track the changes of files that are on your computer. 
+**Git** is the most popular version control software used today. It is designed to track changes of text files (files you can open in a simple text editor, such as R scripts and markdown files). Git can be easily used to track the changes of files that are on your computer. 
 
 However, you often want to work together with others (for example, fellow students or colleagues) on the same scripts. **GitHub** is a [web-based platform](https://github.com/) that was created to promote collaboration. GitHub is based on the Git software. The platform allows you to create an online copy of your files and the Git version history. This copy can then be shared with others, who can then also contribute to the code themselves. You can use the online copy on GitHub also for yourself, for example as a backup of your code in case your computer crashes or you accidentally remove some folders on your computer.     
 
 
 ## The Git workflow
 
-You are hopefully convinced that Git and GitHub are the way to go. But how do you start? How can you use Git and GitHub to keep track of the file changes in your scripts? In this section you will learn the different steps of the Git workflow. We will focus on the concepts; in the next section we will give you a detailed protocol of how to do things by yourself. 
+You are hopefully convinced that Git and GitHub are the way to go. But how do you start? How can you use Git and GitHub to keep track of the file changes in your scripts? In this section, you will learn the different steps of the **Git workflow**. We will focus on the concepts. In part two of this lesson, we will give you a detailed protocol for how to do things by yourself. 
 
 ### Setting up a Git repository
 
-Before you can use Git and GitHub to track your file changes, you need to set up your own Git repository. A **Git repository** a folder in which the version control takes place. That means that all the changes of files that are located in that folder (and its subfolders) are tracked. It is best practice to initiate the Git repository on GitHub and then download it to your computer, as will be explained in the next section. This results in a folder on your computer. All files that you place in this folder will be under version control by Git. 
+Before you can use Git and GitHub to track your file changes, you need to set up your own Git repository. A **Git repository** is a folder in which the version control takes place. That means that all the changes of files that are located in that folder (and its subfolders) are tracked. It is best practice to initiate the Git repository on GitHub and then download it to your computer, as will be explained in part two of this lesson. This results in a folder on your computer. All files that you place in this folder will be under version control by Git. 
 
-Just as you can have multiple folders on your computer, you can also have multiple Git repositories on your computer (and on GitHub). It is recommended to create a separate Git repository for each project you are doing. For example, if you create scripts and markdown files for your internship, you create a Git repository that only contains the work of this internship. If you performed several separate research projects in your internship, you can create separate Git repositories for each research project. 
+Just as you can have multiple folders on your computer, you can also have multiple Git repositories on your computer (and on GitHub). It is recommended to create a separate Git repository for each project you are doing. For example, if you create scripts and markdown files for your internship, you create a Git repository that only contains the work of this internship. If you performed several different research projects in your internship, you can create separate Git repositories for each research project. 
 
 ### Saving a new version of your files (commit)
 
@@ -49,10 +49,10 @@ Once you have placed files in the Git repository folder, you can start to track 
 
 ### Updating the GitHub repository (push)
 
-When you commit your changes, the Git repository on your computer will be updated: a new version of your files will be added to the version history of the Git repository on your computer. However, the online copy of your Git repository on GitHub does not get updated, unless you tell Git to do so. The process of updating your Git repository on GitHub based on local changes (new versions on your computer), is called **pushing** (you 'push' the changes from your computer to GitHub). You can push your changes each time you commit your changes, but it is also possible to push all the commits at once at the end of the day. However, it is recommended to push your changes at least once per day, to keep the copy of your Git repository on GitHub up to date.
+When you commit your changes, the Git repository on your computer will be updated: a new version of your files will be added to the version history of the Git repository on your computer. However, the online copy of your Git repository on GitHub does not get updated, unless you tell Git to do so. The process of updating your Git repository on GitHub based on local changes (new versions on your computer) is called **pushing** (you 'push' the changes from your computer to GitHub). You can push your changes each time you commit your changes, but it is also possible to push all the commits at once at the end of the day. However, it is recommended to push your changes at least once per day, to keep the copy of your Git repository on GitHub up to date.
 
 ### Updating your local Git repository based on changes in GitHub (pull)
 
-If you work together with other persons, it may be the case that the Git repository on GitHub has been changed by other persons. These commits are then present in the Git repository on GitHub, but not in your local Git repository. In other words, the Git repository on your computer is lagging behind the Git repository on GitHub. In this case, you want to update your Git repository on your computer based on the changes on GitHub. This update process is the reverse of pushing, hence it is called **pulling** (you 'pull' the changes from GitHub to your computer).
+If you work together with other persons, it may be the case that the Git repository on GitHub has been changed by your collaborators/colleagues. These commits are then present in the Git repository on GitHub, but not in your local Git repository. In other words, the Git repository on your computer is lagging behind the Git repository on GitHub. In this case, you want to update your Git repository on your computer based on the changes on GitHub. This update process is the reverse of pushing, hence it is called **pulling** (you 'pull' the changes from GitHub to your computer).
 
-Pulling is only important if other persons contributed to the repository. In this lesson we will focus on the simple situation were you work alone on your files and you are the only person contributing to the Git repository on GitHub. In the next lesson we will explore the best practices for working together on the same files. 
+Pulling is only important if other persons contributed to the repository. In part two of this lesson, we will focus on the simple situation were you work alone on your files and you are the only person contributing to the Git repository on GitHub. In part three, we will explore the best practices for working together on the same files. 

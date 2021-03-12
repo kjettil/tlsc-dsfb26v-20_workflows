@@ -71,6 +71,26 @@ b) Review issue  `#5640` in the `{dplyr}` issues. Why was this issue closed? Was
 
 When collaborating together on project repository, you can create issues to stay on track for the different actions that need to be undertaken. Issues can be related to adding functionality (code) to the project, but also to report a bug or to request the addition or improvement of documentation. You can create an issue by opening the `Issues` tab and creating a new issue by clicking the green `New issue` button. A form will open where you can add a title and further remarks to document your issue. The formatting of the `Leave a comment` field can be entered using Markdown formatting. When creating an issue, it is important to assign (preferable one) person to the issue. You can also choose a label, and if needed you can customize the label categories. When a Kanban/Project is also linked to the organization or repo, you can also add the issue to a Kanban board. More about Kanban here \@ref(kanban-and-automation). When creating a new issue, you can also add a `Milestone`. We will discuss this later \@ref(milestones) 
 
+<div class="question">
+##### Exercise 3.1
+**The teachers have create a projecticum repository on github, use this repository for this exercise. If not, apply for one and ask to be added.**
+
+Follow these steps to complete this exercise:
+
+ 1. Add your first issue to the issue list in your projecticum: This issue has to be related to adding valuable project documentation to your repository. For example: start with editing the README.md file to contain information on the project and the repo.
+ 1. Assign the issue to your co worker (agree on an issue first, so make this exercise together with your project companion)
+ 1. Assign the issue to the Github project linked to the repo (if you have no project, create it and ad the repo as a linked repo to the github project)
+ 1. Create a new branch in the repo that you call issue_<issue_number>
+ 1. Clone (or pull if you already cloned the repo) the new branch to your RStudio projecticum project environment
+ 1. Solve the issue in your 'local' version of the repo
+ 1. Write a commit that adresses the issue solved and that also includes this phrase: "fixes #<issue_number>". Replace the `<issue_number>` part with the issue number that you are trying to push.
+ 1. Check the issue list to see if the issue was automatically closed
+ 1. Check the issue on the project Kanban board to see if it was automatically put in the `closed` column.
+ 
+ 
+
+
+
 
 
 

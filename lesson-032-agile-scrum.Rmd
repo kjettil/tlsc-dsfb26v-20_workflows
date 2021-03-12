@@ -122,6 +122,8 @@ The follow up for this lesson will be an online demo provided by one the SCRUM m
  A) Study the github documentation on "Project Boards" [here](https://docs.github.com/en/github/managing-your-work-on-github/managing-project-boards)
 
 
- B) Setup an organization for your projecticum  in your ead the documentation and 
+ B) Setup a project for your projecticum in your github account.
+ 
+ C) The teachers have created a specific repo for your projecticum project and have added you to them, Link this repo to the project you just created. 
 
 

@@ -196,7 +196,7 @@ set.seed(123)
 #names(data_filter)
 plot_cases <- data_filter %>%
   na.omit() %>%
-  ggplot(aes(x = date, y = cases_weekly)) +
+  ggplot(aes(x = date, y = `Cumulative_number_for_14_days_of_COVID-19_cases_per_100000`)) +
   geom_point(aes(colour = geoId)) +
   geom_line(aes(group = geoId, colour = geoId)) +
   xlab("Date") +
@@ -219,7 +219,7 @@ set.seed(123)
 
 #names(data_filter)
 plot_deaths <- data_filter %>%
-  ggplot(aes(x = date, y = deaths_weekly)) +
+  ggplot(aes(x = date, y = `Cumulative_number_for_14_days_of_COVID-19_cases_per_100000`)) +
   geom_point(aes(colour = geoId)) +
   geom_line(aes(group = geoId, colour = geoId))  +
   xlab("Date") +
@@ -230,13 +230,7 @@ plot_deaths
 
 ```
 
-## Interactive plot
-```{r}
-
-```
-
-
  Go over this tutorial: [RStudio Params in Rmd](https://rmarkdown.rstudio.com/developer_parameterized_reports.html%23parameter_types%2F#overview)
  1. Define one parameter in your analysis
  1. Knit two different reports of your parameterized Rmd (with two different values for one paramter defined) and sent them to the teacher
-
+ 

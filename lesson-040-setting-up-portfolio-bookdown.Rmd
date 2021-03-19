@@ -1,0 +1,28 @@
+# Setting up a bookdown project and publishing it online as course portfolio"
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Lesson aim
+After this lesson you will be able to
+
+ 1. Setup github pages
+ 1. Create a bookdown project
+ 1. Render a bookdown project to a local website
+ 1. Add the rendered site to your github pages
+ 
+## Github pages
+
+
+## Bookdown
+
+
+## A simple bookdown example
+
+
+## Add RMarkdown files and content to your local project
+
+
+## Render the book locally
+

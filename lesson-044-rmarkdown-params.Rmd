@@ -230,7 +230,30 @@ plot_deaths
 
 ```
 
- Go over this tutorial: [RStudio Params in Rmd](https://rmarkdown.rstudio.com/developer_parameterized_reports.html%23parameter_types%2F#overview)
+<div class="question">
+##### Exercise 4.4
+
+
+
+For this exercise we use the dataset [described here](https://epa.figshare.com/articles/dataset/Animal_Toxicity_Studies_Effects_and_Endpoints_Toxicity_Reference_Database_-_ToxRefDB_files_/6062545).
+The complete ToxCast dataset is quite large. We are using a subset of the data and focus on animal studies only.
+
+The file we will be using for this exercise is located in the "./data"folder as: `toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv`
+
+Go over the following steps to complete this exercise 
+
+ 1. Go over this tutorial: [RStudio Params in Rmd](https://rmarkdown.rstudio.com/developer_parameterized_reports.html%23parameter_types%2F#overview)
+ 1. Open a new Rmd file for this exercise (be sure to delete the standard example, except for the setup chunk as always)
+ 1. Open the file `./data/toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv` in a code chunk
+ 1 Explore the data (the information of this dataset can be found here: `./data/README_ToxRefDB_20141106.docx`)
+ 1. Write an analysis in your Rmd [use at 4 different graphs] where you visualize the relationship between animal species, the type of tests and the type of chemicals that have been tested.
+ 1. Identify at least two paramters in your analyses with which you could _parameterize_ you Rmd file.
+ 1. Adjust your Rmd to include these two paramters
+ 1. Publish the resulting Rmd (and two knitted .html in which you choose a different setting of your parameters) in your portfolio(repo) online
+ 
+ 
+ 
+ 
  1. Define one parameter in your analysis
  1. Knit two different reports of your parameterized Rmd (with two different values for one paramter defined) and sent them to the teacher
  

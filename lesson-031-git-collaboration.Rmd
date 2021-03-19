@@ -4,17 +4,17 @@
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Lesson content 
+## Learning aims
 
 In this lesson you will get to know many useful tools for collaboration in Github. You are required to apply them in your `Data Science Projecticum`
 
-## Issues
+Issues
 
  - Creating issues
  - Assigning issues
  - Fixing an issue [`fixes #<issue_number>`]
 
-## Kanban & automation
+Kanban & automation
 
  - Assigning tasks
  - Kanban columns
@@ -22,25 +22,16 @@ In this lesson you will get to know many useful tools for collaboration in Githu
  - Milestones
  - Projects
  
-## Branches
+Branches
 
  - Creating branches
  - Assigning an issue to a branch
 
-## Pull requests
+Pull requests
 
  - Creating a pull request
  - Merging a branch into `main`
  - Deleting a stale branch
-
-## Github actions
-
- - Deploying an `R CMD CHECK` build workflow
- - Other actions
- 
-## Topics
-
-Below you will find a short description for each Github collaboration topic. Each topic has a descriptive demo and one or more exercises.
 
 ## Issues
 
@@ -57,7 +48,9 @@ knitr::include_graphics(
 
 Posting an issue when you encouter an error or bug helps developers create robuster code and is the core driving force for developing new features or resolving problems in open source software. Opening issues is an easy way to start contributing to the open source community.
 
-## **<mark> EXERCISE 1 </mark>** {-}
+<div class="question">
+##### Exercise 3.1
+**Looking at issues to learn from others**
 
 a) Review the first bug you can find on this page: 
 
@@ -71,89 +64,63 @@ b) Review issue  `#5640` in the `{dplyr}` issues. Why was this issue closed? Was
 
 When collaborating together on project repository, you can create issues to stay on track for the different actions that need to be undertaken. Issues can be related to adding functionality (code) to the project, but also to report a bug or to request the addition or improvement of documentation. You can create an issue by opening the `Issues` tab and creating a new issue by clicking the green `New issue` button. A form will open where you can add a title and further remarks to document your issue. The formatting of the `Leave a comment` field can be entered using Markdown formatting. When creating an issue, it is important to assign (preferable one) person to the issue. You can also choose a label, and if needed you can customize the label categories. When a Kanban/Project is also linked to the organization or repo, you can also add the issue to a Kanban board. More about Kanban here \@ref(kanban-and-automation). When creating a new issue, you can also add a `Milestone`. We will discuss this later \@ref(milestones) 
 
+</div>
+
+
 <div class="question">
 ##### Exercise 3.1
-**The teachers have create a projecticum repository on github, use this repository for this exercise. If not, apply for one and ask to be added.**
+**The teachers have created a projecticum repository on github, use this repository for this exercise. If not, apply for one and ask to be added.**
 
 Follow these steps to complete this exercise:
 
  1. Add your first issue to the issue list in your projecticum: This issue has to be related to adding valuable project documentation to your repository. For example: start with editing the README.md file to contain information on the project and the repo.
+ 1. Ensure that the issue is also visible on the Kanban board of the project
  1. Assign the issue to your co worker (agree on an issue first, so make this exercise together with your project companion)
  1. Assign the issue to the Github project linked to the repo (if you have no project, create it and ad the repo as a linked repo to the github project)
  1. Create a new branch in the repo that you call issue_<issue_number>
  1. Clone (or pull if you already cloned the repo) the new branch to your RStudio projecticum project environment
  1. Solve the issue in your 'local' version of the repo
  1. Write a commit that adresses the issue solved and that also includes this phrase: "fixes #<issue_number>". Replace the `<issue_number>` part with the issue number that you are trying to push.
+ 1. Generate a pull request and merge the pull request to the main branch
  1. Check the issue list to see if the issue was automatically closed
  1. Check the issue on the project Kanban board to see if it was automatically put in the `closed` column.
+ 1. Delete the branch related to the issue you just resolved 
  
- 
+## One issue per change, one issue per branch [`fixes #<issue_number>` and `new branch`]
+In the exercise above we saw how to open, fix and automatically close an issue. But what defines an issue and how would you prevent working on the same piece of code when working together.
 
+In the main [resource](https://guides.github.com/introduction/flow/) used for this piece in the course, we can read this about branches (as was already explained previously):
 
+```
+Branching is a core concept in Git, and the entire GitHub flow is based upon it. There's only one rule: anything in the main branch is always deployable.
 
+Because of this, it's extremely important that your new branch is created off of main when working on a feature or a fix. Your branch name should be descriptive (e.g., refactor-authentication, user-content-cache-key, make-retina-avatars), so that others can see what is being worked on.
+```
 
-
-
-
-## Fixing an issue [`fixes #<issue_number>`]
-
-
-
+When working together in git/github, this flow is extremely important to agree upon and than stick to it. 
 
 ## Kanban and automation
-
-## Assigning tasks
-
-## Kanban columns
-
-## Labels
+When using a github project, you can setup a Kanban board to track issues. Issues on the Kanban are also resolved when you close an issue, either manually or through a pull request.
 
 ## Milestones
+Milestones in Gihub can be sonsidered as Agile/SCRUM sprints. So each sprint is associated with one or multiple milestones that need to be resolved at the end of each sprint.
 
-## Projects
+<div class="question">
+##### Exercise 3.1
+To complete this exercise, you need to complete the following steps:
+
+ 1. Create at least 2 milestones for the first sprint of your projecticum project
+ 1. Create a number of *issues that need to be resolved for these 2 milstones to be completed (link these issue to the approapriate milestone you created in the previous step)
+ 1. Put these issues on the Kanban board in the 'In progress' column
+ 1. Create branch for each issue, you just created in Github
+ 1. Synchronize you local branches in RStudio, with the remote branches
+ 1. Switch to a branch of an issue you want to work on
+ 1. Start working and solving an issue
+ 1. When you are done with the issue: comit your changes, firt to you local issue-branch, than puch the commit to the remote (remember to use the 'fixes #<issue_number>' phrase in your commit
+ 1. Create a pull request to the 'main'branch
+ 1. Merge the pull request into main
+ 1. Observe what happened on the Kanban board. Where did the issue you just resolved land? What happened to the milestone? 
+ 1. Delete the branch related to the issue you just resolved 
  
-## Branches
-
-## Creating branches
-
-## Assigning an issue to a branch
-
-## Pull requests
-
-## Creating a pull request
-
-## Merging a branch into `main`
-
-## Deleting a stale branch
-
-## Github actions
-
-## Deploying an `R CMD CHECK` build workflow
-
-## Other actions
- 
-## Exercises
-
-The following few exercises belong to lesson 2.1 "Agile/SCRUM
-Read the information and additional info in this Lesson and execute the following assignments
-
-### <mark> EXERCISE 2.1; Setup a Github repo for Lesson 2 - Agile/SCRUM </mark> {-}
-
-A) Start by setting up an account on Github.com if you do not already have one.
-
-B) Activate 2-factor authentication (follow the steps here: https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/configuring-two-factor-authentication)
-
-C) Create a new github repository in your personal account called `wf-agile-scrum`
-
-### <mark> 
-
-## Resources
-
-- Git Book (command line)
-
-- Git and RStudio
-
-- Resources for GitHub
-- Resources for licenses:
-  * [Information on licensing of R packages](https://r-pkgs.org/license.html)
-  * [General information about licenses](https://choosealicense.com/licenses/)
+*Remember: a good issue is so small that it can be tackled in approximately a day's work
+^An issue can basically be anything, but here we mean something than can be comited to a repo, such as a piece of code, a dataset or documentation

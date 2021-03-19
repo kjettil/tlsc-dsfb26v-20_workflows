@@ -33,6 +33,17 @@ Pull requests
  - Merging a branch into `main`
  - Deleting a stale branch
 
+## Github flow
+The workflow proposed below is documented [here:](https://guides.github.com/introduction/flow/) 
+
+<div class="question">
+##### Exercise 3.1
+Study the Github Flow Documentation site mentioned above
+In your own words: write a summary on how this flow works. Discuss it with your Projecticum partner. See to it that you two really understand all the steps of the flow mentioned in the documentation.
+
+</div>
+
+
 ## Issues
 
 Github issues are the core for collaboration with people within and outside your code project. Issues can be used for external people to report a bug, a feature request or a question regarding functionality or implementation. People using for example your package can ask questions or report problems in the form of an issue. Below, an example is shown for the `{dplyr}` R-package, which has a huge user community.
@@ -46,7 +57,7 @@ knitr::include_graphics(
 )
 ```
 
-Posting an issue when you encouter an error or bug helps developers create robuster code and is the core driving force for developing new features or resolving problems in open source software. Opening issues is an easy way to start contributing to the open source community.
+Posting an issue when you encounter an error or bug helps developers create robuster code and is the core driving force for developing new features or resolving problems in open source software. Opening issues is an easy way to start contributing to the open source community.
 
 <div class="question">
 ##### Exercise 3.1

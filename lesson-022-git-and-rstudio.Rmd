@@ -1,4 +1,4 @@
-# Lesson 2 - Part 2 - Git and RStudio
+# Lesson 2.2 - Git and RStudio {#gitrstudio}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)

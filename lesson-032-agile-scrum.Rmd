@@ -1,4 +1,4 @@
-# Lesson 3.2 - Collaboration through Agile/SCRUM
+# Lesson 3.2 - Agile/Scrum {#agilescrum}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

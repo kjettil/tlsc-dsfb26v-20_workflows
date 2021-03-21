@@ -1,4 +1,4 @@
-# Lesson 1 - Part 3 - Reproducible Research Tools {#represtools}
+# Lesson 1.3 - Tools {#represtools}
 
 ```{r setup, include=FALSE}
 
@@ -21,9 +21,9 @@ lesson_number <- "1.3"
 ```
 
 
-## Lesson contents
+## Lesson aims
 
-This lesson contains:
+After taking this lesson you will be acquainted with:
 
  - Open Source Software and Communities (CRAN, Bioconductor, R Open Sci)
  - Bioconductor Workflows (Docker: - How to use RStudio Docker images
@@ -41,7 +41,7 @@ library(ggExtra)
 
 ```
 
-```{r, topic}
+```{r, topics, eval=FALSE}
 ## add topics below to write them automatically to the course contents table
 topics <- c(
   "Open source",

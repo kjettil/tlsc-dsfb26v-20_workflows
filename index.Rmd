@@ -6,13 +6,24 @@ site: bookdown::bookdown_site
 output: 
     bookdown::gitbook:
         css: style.css
-        number_sections: false
+        number_sections: true
+        split_by: chapter
+        config:
+            sharing:
+                 github: yes
+                 facebook: no
+                 twitter: no
+                 all: no
+            toc:
+                collapse: section
+                scroll_highlight: yes
+                before: <li class="toc-logo"><a href="./"><img style="float:left;" src="images/voorbeeldlogo2.png"></a> <h4 class=".paddingtitel ">Workflows </h2></li>
 bibliography: [references.bib]
 biblio-style: apalike
 link-citations: yes
 always_allow_html: yes
 github-repo: "uashogeschoolutrecht/tlsc-dsfb26v-20_workflows"
-description: "This is the course on managing and setting up workflows for collaboration, data analysis pipeline and reporting"
+description: "This is the course on managing and setting up workflows for collaboration, data analysis pipelines and reporting"
 params:
   geo_id: NL BE
   month: February March April May June July August September October November December

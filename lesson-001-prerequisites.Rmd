@@ -1,4 +1,4 @@
-# Prerequisites
+# Prerequisites {#preparingforthecourse}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -16,6 +16,8 @@ This course assumes you have a working installation and administrator access to 
  1. [DBeaver](https://dbeaver.io/)
  1. [CyberDuck](https://cyberduck.io/)
  1. [Microsoft Teams](https://www.microsoft.com/nl-nl/microsoft-teams/group-chat-software)
+
+For some exercises and assignment you need an RStudio Server account. You will get an account before the start of the course.
 
 ## Additional 'things'
 

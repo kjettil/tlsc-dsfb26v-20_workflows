@@ -1,4 +1,4 @@
-# Lesson 2 - Part 3 - Git Branching and Merging
+# Lesson 2.3 - Git Branching and Merging {#gitbranchmerge}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)

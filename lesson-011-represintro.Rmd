@@ -1,4 +1,4 @@
-# Lesson 1 - Part 1 - Reproducible Research Introduction {#represintro}
+# Lesson 1.1 - Introduction {#represintro}
 
 ## Exercise and assignment directives
 Please answer all the assignment and exercises in an RMarkdown document. Save it somewhere in your course project. You will need to hand this in later in Github.com.

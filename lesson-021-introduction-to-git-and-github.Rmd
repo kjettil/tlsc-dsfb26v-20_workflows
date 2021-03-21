@@ -1,4 +1,4 @@
-# Lesson 2 - Part 1 - Introduction to Git and GitHub
+# Lesson 2.1 - Introduction to Git and GitHub {#gitintro}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)

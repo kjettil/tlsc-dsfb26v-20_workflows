@@ -1,0 +1,152 @@
+## Data entry
+Data entry must be performed in the project template.  The template contains predefined information on the observations in the study. The blank information needs to be filled out by the person responsible for/or performing the data entry.
+
+Enter an “NA” for missing values, do not leave cells blank if there is a missing value. Use only “NA” and nothing else. If you want to add additional information on the “NA”, put that in the “remarks” column.
+
+After entry (and validation) of the filled-out template, NEVER change a value in the data. If you want to make changes, increment the version number of the file and document the change in the README.txt file or sheet in an Excel file (see below)
+
+## Naming conventions
+Data files can be raw data (data from the machine/assay) and data entered in a template or a digital version of e.g. answers to questionnaires.
+
+Use file names of datafiles that are descriptive, relatively short and provide a version number like `efro_tf_elisa_0_1_2.xlsx`. Try to be as consistent as possible in your naming style.
+
+Below are a couple of pointers for acceptable filenames (and variable names):
+
+-	Use "snake_case" so NEVER use spaces in file names, if you want a space use `"_"`
+-	Never use special characters like
+```
+! @ # $ % ^ & * ( ) + - = : " ' ; ? > < ~ / ? { } [ ] \ | ` ,
+```
+- Use lower case typeseting
+
+Special characters are reserved for other purposes and can cause problems when a back-up of the files is made or when files need to be loaded in analyzing software or when copying files. These pointers are also valid for naming variable names in data files.
+
+```{r, dpi = 50, echo=FALSE}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "bad-characters.png"
+
+  )
+)
+```
+
+When copying files, e.g. Windows can have problems with long file names or names containing special characters.
+-	Do not exceed the maximum path length for a file of 256 characters, to be safe for Windows systems. Path length is the full path to the file e.g. `\\medewerkers.ad.hvu.nl\dfs\users\fnt\mteunis\Documents\diagrams\data\test.xlsx`
+This example path has 78 characters, so is well within the system boundaries.
+
+## Folder structure
+Always work in a project folder to keep everything of the same project in one place.
+Do not nest you data in a complicated folder structure. Use a consistent folder structures that are flat. See figure 2 for an example. In this example “\data” contains data files, ready to be send for analysis. These could be filled out templates. In the “\data_raw” folder, data that comes directly from a machine or raw assay data can be stored.
+
+## Data-log
+In the root of the folder `\data` an MS Excel file is being kept to track all the files present in this folder. Provide names and additional information here. Meta information for the `\data_raw` folder is best kept in that folder in a `README.txt` file.
+
+The folder `doc` contains documentation and can be basically everything concerning information about the project, not concerning the data. For example a PowerPoint presentation on the experimental design of a study, or a contract or something else. Data information goes in the “supporting’ folder that is in the same folder as where the data file it refers to is stored.
+
+Use versioning of data files. Decide on a versioning system for yourself, an stick to it.
+
+## README.txt or README sheet inside an Excel file
+Meta information like type of variables, ranges, units, number of observations or subjects in a study, type of analysis goes in a README.txt file or a sheet in the Excel file containing the data. Keep the readme information close to the data file.
+An example of a readme file is depicted below.
+
+```{r, dpi = 50, echo=FALSE}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "readme.png"))
+```
+
+A short example of a README.txt file. It does not need to be very long, but provides information on where the data (which project?) refers to, who the owners are, who to contact in case of questions and what are the contents of the data (variable description)
+
+## Data Template
+
+A tidy data template is avaialable [here](https://github.com/uashogeschoolutrecht/efro-docs/blob/main/data/CE.LIQ.120_tidydata.xlsx)
+
+When using this template, please be aware the following pointers:
+
+For Excel users:
+
+ - Start your file in A1 of a clean new sheet.
+ - Use row 1 for variable names, use the rest of the rows for observations
+ - It is allowed to have existing sheets in the file. Label the new tidy formatted datasheet as "tidy"
+ - Do not fuse cells
+ - Provide one value per cell so e.g. put units in a separate column
+ - Adhere to the naming conventions for variable names (see above)
+ - Use cell validation for entered values. This is especially true if you have multiple categorical variables that need manual labeling in Excel. A typo is just around the corner.
+
+
+## Annotations and meta data
+In order to reduce effort in generating a complete tidy table for your data it might be worthwhile to create a number of extra tables containing meta data.
+Typically this is how it would work:
+
+Assume we have wide data format originally created in Excel looking like this
+```{r}
+measured1 <- rbinom(100, size = 2, prob = 0.3)
+measured2 <- rnorm(100, mean = 5.3, sd = 0.1)
+measured3 <- rnbinom(100, size = 10, prob = 0.1)
+concentration <- rep(1:10, 10)
+
+data <- tibble::tibble(
+  `concentration (mMol/l)` = concentration,
+  `measured 1 (pg/ml)` = measured1,
+  `measured 2 (ng/ml)` = measured2,
+  `measured 3 (ng/ml)` = measured3
+
+)
+
+data
+```
+
+The `r names(data)` are the variable names as provided in Excel. As you can see they are not adherent in a few ways tot the aforementioned naming conventions. The `r names(data)[2:ncol(data)]` refer to three variables that were determined in some experiment. The units of measurements are (as is common in Excel files) mentioned between brackets in the column name.
+
+For compatibility and interoperability reasons this dataformat can be improved to a more machine readable format. There are two solutions that could be provided here. One is more laborious to achieve manually (solution 2) than the other (solution 1). If there is no expertise for scripting reformatting and cleaning up data is available in the research group, I recommend solution 1.
+
+### Solution 1; Add meta data and variable information to a separate table
+The strategy is to keep all experimentally relevant data that is related to the experimental design in one sheet and all additional data (metadata or also called data about the data). In this case, the unit information that is included in the variable names can be considered metadata. So as an example, I will include that information in a separate table that I will coldata (short for column data)
+
+First we need to create a pivotted table where the first column represents the variable names of our `data` table. Than we need to add a row for each variable in our data. It is best if the variable names and the values in the meatdata table in column 1 excactly match (in term of spelling and typesetting). I will show how this looks for our data
+```{r}
+
+var_names <- names(data)
+
+metadata <- tibble::tibble(
+  varnames = var_names
+)
+
+metadata
+
+
+```
+
+We now have a `metadata` table with one column called `varnames`. However, we are not done. If we want to create a tidy format of our metadata table we need to separate the unit information from the variable names column. Let's extract the units into it's own column
+
+```{r}
+metadata %>%
+  mutate(
+    varnames = str_replace_all(
+      varnames,
+      pattern = " ",
+      replacement = "")) %>%
+  separate(
+    varnames,
+    into = c("varnames", "units"), sep = "\\(", remove = FALSE) %>%
+  mutate(
+    units = str_replace_all(
+      units,
+      pattern = "\\)",
+      replacement = "")) -> metadata_clean
+
+metadata_clean
+```
+
+We can now start adding additonal information such as remarks or methods to the the metadata column.
+
+```{r}
+methods <- c("dilution", "elisa", "lcms", "flow cytometry")
+remarks <- c(
+  "concentration of exposure compound",
+  "compound x is related to elevated blood pressure"
+  )
+```
+

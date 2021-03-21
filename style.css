@@ -1,16 +1,73 @@
-p.caption {
-  color: #777;
-  margin-top: 10px;
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 10px;
 }
-p code {
-  white-space: inherit;
-}
+
+
+
+
 pre {
-  word-break: normal;
-  word-wrap: normal;
+    border: 0px solid #cccccc;
+    border-radius: 0px;
+ }
+
+
+/* ---------- Links ----------------- */
+.book .book-body .page-wrapper .page-inner section.normal a {
+  color: #3f88ca;
 }
-pre code {
-  white-space: inherit;
+
+.book .book-body .page-wrapper .page-inner section.normal a:hover {
+color: #1f5386; /* darker color when hovering */
+text-decoration: none;
+}
+
+
+/*--- LOGO ---*/
+
+
+.toc-logo {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.toc-logo img {
+  max-width: 100%;
+  margin-bottom: 1px;
+}
+
+.summary > li:first-child {
+  height: auto !important; 
+}
+
+.book .book-summary {
+  background: white;
+  border-right: none;
+}
+
+#TOC {
+  top: 40%;
+  position: fixed;
+  width: 210px;
+}
+.tocify {
+  border: none;
+  color: grey;
+  border-radius: 0px;
+}
+.list-group-item.active {
+    color: #69b3a2;
+    background-color: white;
+    border-left: solid;
+    border-color: #69b3a2;
+}
+.list-group-item:hover {
+    color: #69b3a2;
+    background-color: white;
+    border-left: solid;
+    border-color: #69b3a2;
+}
+.tocify-extend-page {
+  display: none;
 }
 
 /* ---------- Button ----------------- */
@@ -55,10 +112,10 @@ div.question {
 
 
  /* ----------- automatic question numbering ---------*/
-h1 {
+h1 { 
   counter-reset: h5counter;
   text-align: center;
-
+  
 }
 h5:after {
     counter-increment: h5counter;

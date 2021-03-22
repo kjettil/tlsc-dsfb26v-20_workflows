@@ -131,7 +131,7 @@ As you can see from my own edits to these principles, quite a few are immediatel
 
 <div class="question">
 ##### Exercise 1.2
-Imagine you recieve a file attached to an email called: 
+Imagine you recieve a file attached to an email from a researcher in your research group called: 
 
 `salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx`
 
@@ -146,7 +146,7 @@ Describe the following steps in an RMarkdown file. You do not need to write the 
  1. Which steps do you need to take to load the data into R
  1. Which steps do you need to take in reshaping the file to make the dataformat match the requirement for using `{ggplot}
  1. Think of a better file name
- 1. Write a conceptual reply email to the researcher, where you address the changes that the researcher needs to make to the file in order for you to be able to analyze this data in R.
+ 1. Write a conceptual and kind and friendly, but clear reply email (in English) to the researcher, where you address the changes that the researcher needs to make to the file in order for you to be able to analyze this data in R.
  1. Add the resulting RMarkdown to your RStudio project portfolio project for this course (see prerequisites chapter \@ref(preparingforthecourse)), you will need to ad this file to your bookdown portfolio later in lesson \@ref(bookdownportfolio)
  
 </div> 
@@ -340,7 +340,6 @@ Take heed of these pointers:
  >- Store scripts in a "./code" or "./inst" folder
  >- Store (R) functions in R in a "./R" folder, and document them with [Roxygen2](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html)
 
- 
 #### Let's demonstrate with COVID-19 example
 
  >- Imagine we want daily reports on the number of COVID-19 cases and caused deaths
@@ -445,16 +444,178 @@ knitr::include_graphics(
 
 For machine learning purposes, data is often formatted in the `wide` format. We see an example here: 
 ```{r}
-data(package = "tidymodels")
+data(package = "mlbench", dataset = "BostonHousing")
+BostonHousing %>% as_tibble()
+```
+The different variables are arranged in a side-by-side fashion. In this example the data is still tidy, but there are also examples of wide formatted data that is not tidy. When you want to work with this data, you first need to transform it in a stacked or so-called long format that works well for `{tidyverse}`. We will see an example in the next exercise
+
+<div class="question">
+##### Exercise 1.2
+Remember the well plate experiment in the exercise above. Here we will perform a transformation on the data to make the data suitable for analysis in R. We will also create a single graph showing all the data available for all samples over measured time in the experiment. 
+
+The data file for this exercise can be found here: `./data/salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx`
+
+Go over the following steps to complete this exercise. Add the resulting RMarkdown to your portfolio bookdown project (see \@ref(bookdownportfolio).
+
+ 1. Review your answers to the previous exercise where we used this file in this lesson.
+ 1. Try reading the sheet called `All Cycles` in the Excel file. 
+ 1. What goes wrong with the formatting of the data if you start reading in the data from cell A1?
+ 1. Try solving this problem. 
+ 1. What shape of formatting would you say this data is in? Is the data tidy?
+ 1. Write a piece of code that creates a tidy format of this data. You also need to take a look a the sheet called `layout` to get information on the samples. Try generating a manual data frame that has 96 rows and a code for each sample. The experiment has been performed in duplo, so for each experimental condition there are two samples. 
+ 1. Now join your `sample data` dataframe to the raw data.
+ 1. Export the data as a .csv file.
+ 1. Write an appropriate README.txt file that accompanies this exported csv file. Save both in your `data` folder of your bookdown portfolio project.
+ 
+**TIPS:
+
+ - Remember: `dplyr::pivot_longer()` and `dplyr::pivot_wider()` are very helpful when you want to reshape your data in R
+ - After reading your data into R: be sure to check the datatype of the columns
+ - Create a sample data table containing sample information for each of the 96 samples mentioned in the `All Cycles` sheet. The information you need to do this is contained in sheet `layout`
+ - the `time` variable in this dataset is a nasty one. It is recorded in an uncenventional way. You need to use some cleaning up code to transform this variable in numbers (use `str_replace_all()`, to get rid of the stupid characters like `x` and the `_`. Next you can transform this variable into hours and minutes by using `seperate()`. Be aware that there will be 'empty' cells in the `minutes` column 
+ - Do you think it is a good idea to have graphs in an Excel worksheet that contains the raw data?
+ - How would you have stored the Raw data of this experiment?
+ 
+</div>
+
+<details><summary>Click for the answer</summary>
+answer
+```{r, cache=TRUE}
+# reading in the data - without any special settings
+library(readxl)
+
+data_platereader <- read_xlsx(
+  here::here(
+    "data",
+    "salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx"
+  ), sheet = "All Cycles"
+)
+## this data looks mangled because of several things: 
+# there is some metadata in the top region of the sheet
+# there is a weird looking headers (two headers?)
+
+## trying skip
+data_platereader <- read_xlsx(
+  here::here(
+    "data",
+    "salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx"
+  ), sheet = "All Cycles", skip = 11
+)
+
+## clean up and fix names
+data_platereader <- data_platereader %>%
+  rename(sample = Time, well = ...1) %>%
+  janitor::clean_names()
+
+## which wells have data?
+unique(data_platereader$well)
+
+
+## create sample table
+sample_names <- data_platereader$sample
+
+mv_utr_tx100 <- rep(c("mv", "mv", "mv", "mv", 
+                      "untr", "untr", "untr", "untr", "untr",
+                      "tx100", "tx100", "tx100"), times = 8)
+
+salmonella <- read_xlsx(
+  here::here(
+    "data",
+    "salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx"
+  ), sheet = "layout", range = "C5:N13"
+) %>%
+  janitor::clean_names() 
+
+# cheack data types
+map(
+  .x = salmonella,
+  typeof
+)
+
+salmonella <- salmonella %>%
+  pivot_longer(ul_sal_1:ul_sal_12,
+               names_to = "plate_column", 
+               values_to = "microliters_bacteria")
+
+## synthesize to sample table
+
+samples <- tibble(
+  well = data_platereader$well,  
+  sample = sample_names,
+  condition = mv_utr_tx100,
+  ul_salmonella = salmonella$microliters_bacteria
+)
+
+## join sample table with data
+data_join <- left_join(samples, data_platereader)
+
+## create tidy version
+data_tidy <- data_join %>%
+  pivot_longer(
+    x0_h:x24_h_5_min,
+    names_to = "time",
+    values_to = "value"
+  )
+
+## fix time variable
+data_tidy_time <- data_tidy %>%
+  mutate(time_var =
+  str_replace_all(
+    string = time,
+    pattern = "x",
+    replacement = ""
+  )) %>%
+  mutate(time_var =
+  str_replace_all(
+    string = time_var,
+    pattern = "_",
+    replacement = ""
+  )) %>%
+  mutate(time_var =
+  str_replace_all(
+    string = time_var,
+    pattern = "h",
+    replacement = ":"
+  )) %>%
+  mutate(time_var =
+  str_replace_all(
+    string = time_var,
+    pattern = "min",
+    replacement = ""
+  )) %>%
+  separate(
+    col = time_var,
+    into = c("hours", "minutes"),
+    remove = FALSE
+  ) %>%
+  mutate(
+    minutes = ifelse(minutes == "", "0", minutes)
+  ) %>%
+  mutate(minutes_passed = 60*as.numeric(hours) + as.numeric(minutes))
+
+## misingness
+data_tidy %>%
+  naniar::vis_miss()
+
+## graphs
+data_tidy_time %>%
+  group_by(condition, ul_salmonella, minutes_passed) %>%
+  summarise(mean_value = mean(value)) %>%
+  mutate(ul_salmonella = round(as.numeric(ul_salmonella), 2)) %>%
+  ggplot(aes(x = minutes_passed, y = mean_value)) +
+  geom_line(aes(colour = condition), show.legend = FALSE) +
+  facet_grid(condition ~ ul_salmonella) +
+  xlab("Time passed (minutes)") +
+  ylab("Mean AU")
+
 ```
 
-
-
-
-
+</details>
 
 ## Metadata
-Meta information like type of variables, ranges, units, number of observations or subjects in a study, type of analysis goes in a README.txt file or a sheet in the Excel file containing the data. Keep the readme information close to the data file. 
+Meta information like type of variable, ranges, units, number of observations or subjects in a study, type of analysis or experimental design goes in a README.txt file or a sheet in the Excel file containing the data. Keep the readme information close to the data file. Also, information about who is the owner of the data or who performed the experiment when and where and with what type of device or reagents is very useful to include.
+In our exercise above such README information would have saved us a lot of time figuring out what is what in the Excel file don't you think?
+
 An example of a readme file is depicted below. 
  
 ```{r, dpi = 50, echo=FALSE}
@@ -466,34 +627,9 @@ knitr::include_graphics(
  
 A short example of a README.txt file. It does not need to be very long, but provides information on where the data (which project?) refers to, who the owners are, who to contact in case of questions and what are the contents of the data (variable description) 
 
+## Variable encodings
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## A penguin wrap up
+Here we use the `{palmerpenguins}` dataset as an example to show you how to deal with encoding variables.
 
 <p style="font-size:14px">[palmerpenguins](https://github.com/allisonhorst/palmerpenguins)</p> 
 
@@ -505,13 +641,12 @@ data_penguins <- palmerpenguins::penguins_raw
 data_penguins
 ```
 
-## Exploratory data Analysis - missingness
+### Exploratory data Analysis - missingness
 ```{r, dpi = 130}
 naniar::vis_miss(data_penguins)
 ```
 
 ## Factor levels
-
 ```{r, echo=TRUE}
 data_penguins %>%
   ggplot(aes(x = Sex, y = `Flipper Length (mm)`)) +
@@ -528,122 +663,27 @@ unique(data_penguins$Sex) ## we also call this factor levels
  - Use factors if a variable has a set of discrete possible outcomes: `sex`, `species`, `marital_status` etc
  - Use an ordered factor if there is a hiarchy in the factor levels: `year`, `month`, `number_of_legs`
 
-## Just for kicks, one more graph
-```{r, fig.width=8, fig.height=5}
-#data_penguins$Species %>% unique()
-data_penguins[c(256:300), "Species"] <- "Gentoo penguin" 
-data_penguins %>%
-  ggplot(aes(x = Island, y = `Body Mass (g)`)) +
-  geom_jitter(aes(colour = Species), show.legend = TRUE, width = .3, alpha = 0.8)
-```
-
-## Thank you for your attention!
-
-```{r, dpi = 150}
-knitr::include_graphics(
-  file.path(
-    image_dir,
-    "Pepper.png")
-)
-```
-
-
-
-
-
 ## Data-formats - Non-Proprietary {.build}
-
-File format source code is open and maintained by open source community or core development team.
+When we store data for re-use, we need it to be in an interoperable form. This means that it can be read (also after a long time - let's say 30 years from now) into analysis software. This can be achieved by storing data in a so-called `non-proprietary` format. This means basically that the format source code is open and maintained by open source community or core development team.
+Here are some examples: 
 
   >- `.netCDF` (Geo, proteomics, array-oriented scientific data)  
   >- `.xml` / `.mzXML` (Markup language, human and machine readable, metadata + data together)
   >- `.txt` / `.csv` (flat text file, usually tab, comma or semi colon (`;`) seperated) 
-  >- `.json` (text format that is completely language independent)  
+  >- `.json` (text format that is completely language independent) 
+  >- `fastq` / `fasta` and their equivalents
+  
+These formats will remain readable, even if the format itself becomes obsolete
 
-_Will remain readable, even if format becomes obsolete_
+**When storing a curated dataset for sharing or archiving it is always better, and sometimes enforced by the repository, to choose a non-proprietary format**
 
-**When storing a curated dataset for sharing or archiving it is always better to choose a non-proprietary format**
-
-## Data shape
-Look at these two tables, what do you notice?
-```{r}
-table2 %>% head(3)
-table3 %>% head(3)
-```
-
-<p style="font-size:14px">Both tables are build-in datasets from the {tidyr} package belonging to the [{tidyverse}](https://www.tidyverse.org/) suite of Data Science R packages</p> 
-
-## The `{tidyverse}`
-
- - Suite of R-packages for Data Science and functional programming
- - https://www.tidyverse.org/
- - Connect to many other tools in R
+<div class = "question>
+##### Exercise 1.2
+Applying the Guerrilla analytics framwork to your own project
  
-```{r, dpi = 90}
-knitr::include_graphics(
-  file.path(
-    image_dir,
-    "tidyverse.png"
-  )
-)
-```
-<p style="font-size:14px">From: [Storybench](https://www.storybench.org/getting-started-with-tidyverse-in-r/)</p>  
-
-## Tidy data
-```{r}
-knitr::include_graphics(
-  file.path(image_dir, "tidy-1.png")
-)
-```
-
- 1. Each variable goes in its own column
- 1. Each observation goes in its own row
- 1. Each cell contains only one value
-
-<p style="font-size:14px">From: ["R for Data Science", Grolemund and Wickham](https://r4ds.had.co.nz/)</p> 
-
-## Are these dataframes tidy? 
-```{r}
-map(
-  .x = list(
-    table5,
-    table4a),
-  .f = head, 3)
-```
-_What steps would we need to tidy them?_ 
-
-## `pivot_longer()`
-```{r, echo=TRUE}
-table4a %>% 
-  pivot_longer(
-    cols = `1999`:`2000`, 
-    names_to = "year",
-    values_to = "cases"
-  ) -> table4a_tidy
-table4a_tidy
-```
-
-## `separate()`
-```{r, echo=TRUE}
-table5 %>%
-  separate(
-    col = rate,
-    into = c("cases", "population"),
-    remove = TRUE
-  ) -> table5_tidy
-table5_tidy
-```
-
-<div class="question">
-## EXERCISE 1. Guerilla analytics {-}
- 
- 1. Look at you RStudio project that you created for the DAUR-II final assignment
+ 1. Look at your RStudio project that you created for the DAUR-II final assignment
  1. Rearrange your project according the Guerilla principles explained above
- 1. Ad README files to the datasets 
- 1. Use the `{fs}` pacakge to share a screeshot of your folder tree, look [at:]() for more info on how to use the `{fs}` package. 
+ 1. Add README files to the datasets 
+ 1. Use the `{fs}` pacakge to share a screeshot of your folder tree in your portfolio, look [at:](https://www.tidyverse.org/blog/2018/01/fs-1.0.0/) for more info on how to use the `{fs}` package. 
 
 </div>
-
-
-
-

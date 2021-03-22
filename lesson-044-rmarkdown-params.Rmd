@@ -10,15 +10,10 @@ _This chapter is best read from the source RMarkdown file_
 
 ## Lesson Contents
 
- - Advanced Markdown syntax (images, links, references, cross-references)
- - Bibtex
- - Parameters (params in yaml header, params in chunks)
+ - RMarkdown arameters (params in yaml header, params in chunks)
  - Using Shiny interactive elements in RMarkdown
- - Using `rmarkdown::render()` to render one or multiple paramterized reports
- - Deployment / setting up Github pages for your portfolio
- - Automating deployment - github actions
- - Bookdown / blogdown
- 
+ - Using `rmarkdown::render()` to render one or multiple parameterized reports
+
  ## Resources
 
  - https://github.com/r-lib/actions/blob/master/examples/README.Rmd
@@ -29,9 +24,8 @@ _This chapter is best read from the source RMarkdown file_
 
 ## Introduction
 
-RMarkdown is R's answer to doing reproducible research. In this lesson we take the next step in customization of RMardown reports. First we introduce a number of addiotnial formatting, style and technical capabilites in RMarkdown to increase productivity and creativity with RMarkdown. 
-Furthermore, we will see that RMarkdown can used for a number of semi- and fully automated reporting workflows. We will start with a user side definition of parameters that can be used to render documents and run code inside Rmd files that can be varied on the basis of user-defined input. Next step in complexity is to move to interactive Shiny elements build into an RMarkdown file, approaching the development of App-like documents or websites. Than we introduce the `{bookdown}` and `{blogdown}` package as publication frameworks for publishing reports, books, websites and blogs. You will learn how to setup your own website to host data products that will help you show your skills as a programmer/bioinformatician. This can be very helpfull in finding a job.     
-Last step in complexity that we will add is to setup Continuous Integration (CI) for publishing data products, directly from RStudio. We will again use build-in functionality in Github.com com for this (Github actions).
+As we saw previously, RMarkdown is R's answer to doing reproducible research. In this lesson we take the next step in customization of RMardown reports. First we introduce a number of additional formatting, style and technical capabilities in RMarkdown to increase productivity and creativity with RMarkdown. 
+Furthermore, we will see that RMarkdown can used for a number of semi- and fully automated reporting work flows. We will start with a user side definition of parameters that can be used to render documents and run code inside Rmd files that can be varied on the basis of user-defined input. Next step in complexity is to move to interactive Shiny elements build into an RMarkdown file, approaching the development of App-like documents or websites. We will spend time on this in (\@ref(rmarkdowninteractive)). Than we introduce the `{bookdown}` package as a publication framework for publishing reports, books and websites. You will learn how to setup your own website to host data products that will help you show your skills as a programmer/bioinformatician. This can be very helpful in finding a job. You are required to hand in your hosted bookdown project as the exam for this course. We will explain how to set this up in \@ref(rmarkdowninteractive)      
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
@@ -55,205 +49,53 @@ library(zoo)
 library(blscrapeR)
 ```
 
- - Advanced Markdown syntax (images, links, references, cross-references)
- - Bibtex
- - Parameters (params in yaml header, params in chunks)
- - Using Shiny interactive elements in RMarkdown
- - Using `rmarkdown::render()` to render one or multiple paramterized reports
- - Deployment / setting up Github pages for your portfolio
- - Bookdown / blogdown
- - Automating deployment - github actions
+## RMarkdown parameterization
+By now you must have a clear idea on the possibilities of writing a reproducible `static` analysis report in RMarkdown. It is time to make it a bit more flexible and robust.
+Most of the time an analysis will depend on several parameters that yoy might want to vary for an analysis. We can think of the following things - and I will show examples of all later (this list is not exclusive):
 
-
-## Data
-```{r, echo=TRUE}
-## Read data from public url to csv file
-data <- readr::read_csv(
-  "https://opendata.ecdc.europa.eu/covid19/casedistribution/csv/data.csv", 
-  na = c("", " "))
-data
-```
-
-## Data cleaning
-```{r}
-
-data <- data %>%
-  mutate(
-    date = lubridate::dmy(dateRep),
-    ) %>%
-  separate(
-    col = date, 
-    into = c("year", "month", "day"), remove = FALSE) %>%
-  mutate(
-    month = as.integer(month)
-  )
-
-
-
-## Filter for `r params$month` and `r params$geo_id`
-## create a conversion table to go from month name to month integer
-convert_months <- tibble(
-  month = c(
-    "january",
-    "february",
-    "march",
-    "april",
-    "may",
-    "june",
-    "july",
-    "august",
-    "september",
-    "october",
-    "november",
-    "december"),
-  month_number = c(1:12))
-
-  m_names <- str_split(tolower(params$month), pattern = " ") %>% 
-    unlist() %>%
-    enframe() 
-
-  month_id <- convert_months %>%
-    dplyr::filter(
-      month %in% m_names$value) 
-  #%>% 
-  #  dplyr::select(month_number)
-  
-  id <- month_id$month_number
-
-geo_ids <- str_split(string = params$geo_id, pattern = " ") %>% unlist()
-
-data_filter <- data %>%
-  dplyr::filter(
-    month %in% id,
-     geoId %in% geo_ids
-)
-  
-char_col <- map_lgl(
-  .x = data_filter,
-  .f = is.numeric 
-)
-
-#map(
-#  .x = data_filter[, !char_col],
-#  .f = unique
-#)
-
-country_names <- data_filter$countriesAndTerritories %>% unique() %>%
-  paste(collapse = ", ")
-
-Caps <- function(x) {
-s <- strsplit(x, " ")[[1]]
-paste(toupper(substring(s, 1,1)), substring(s, 2),
-sep="", collapse=" ")
-}
-
-range <- data_filter$month %>% unique() %>% enframe() %>%
-  arrange(value)
-
-month_df <- left_join(range, convert_months, by = c("value" = "month_number")) %>%
-  dplyr::mutate(month = firstupper(month))
-
-min_month <- month_df %>%
-  dplyr::filter(value == min(month_df$value))
-
-countries_vec <- str_split(
-  country_names, 
-  pattern = ",", 
-  simplify = FALSE
-  ) %>%
-  unlist() %>%
-  trimws() %>%
-  blscrapeR::firstupper()  
-  
-
-max_month <- month_df %>%
-  dplyr::filter(value == max(month_df$value))
-
-cap_cases <- paste(
-  "COVID-19 positive cases from", 
-  min_month$month, "to", max_month$month,
-  "for", glue_collapse(countries_vec, ", ", last = " and ")
-)
-
-cap_deaths <- paste(
-  "COVID-19 related deaths from", 
-  min_month$month, "to", max_month$month,
-  "for", glue_collapse(countries_vec, ", ", last = " and ")
-)
-
-
-data_filter  
-```
-
-## Cases
-```{r, fig.cap=cap_cases}
-set.seed(123)
-#data_filter <- data_filter %>% 
-#  mutate(date_time = lubridate::dmy(dateRep))  %>%  # Moving average
-#  mutate(cases_ma = zoo::rollmean(cases, k = 7, fill = NA))
-
-
-#names(data_filter)
-plot_cases <- data_filter %>%
-  na.omit() %>%
-  ggplot(aes(x = date, y = `Cumulative_number_for_14_days_of_COVID-19_cases_per_100000`)) +
-  geom_point(aes(colour = geoId)) +
-  geom_line(aes(group = geoId, colour = geoId)) +
-  xlab("Date") +
-  ylab("COVID-19 positive tested cases") +
-  theme_bw()
-
-plot_cases
-
-
-
-```
-
-## Deaths
-```{r, fig.cap=cap_deaths}
-set.seed(123)
-
-#data_filter <- data_filter %>% 
-#  mutate(date_time = lubridate::dmy(dateRep)) %>%  # Moving average
-#  mutate(deaths_ma = zoo::rollmean(deaths, k = 7, fill = NA))
-
-#names(data_filter)
-plot_deaths <- data_filter %>%
-  ggplot(aes(x = date, y = `Cumulative_number_for_14_days_of_COVID-19_cases_per_100000`)) +
-  geom_point(aes(colour = geoId)) +
-  geom_line(aes(group = geoId, colour = geoId))  +
-  xlab("Date") +
-  ylab("COVID-19 related deaths") +
-  theme_bw()
-
-plot_deaths
-
-```
+ - The input data: The data might vary according for example a version of the data of the date it was generated, or the experiment that it was derived from. When the formatting of the data has been standardized, this can be parameterized. Think for exmaple about a transcriptome analysis for different input data.
+ - The statistical method: If multiple statistical models can be applied to the data or is dependent on the data input, you could parameterize the statistical method
+ - Visualizations: If different types of visualizations are generated from the Rmd, you could parameterize the type of visulization. This could be meaningful when you want to produce a report for different target audiences
+ - Groups in the data that represent a subset of the data. Imagine you have data of a transcriptome analysis for a large population of cancer patients. The type of cancer is a grouping variable that could be a meaningful parameter to use to generate a per cancer type report.  
 
 <div class="question">
 ##### Exercise 4.4
 
+To learn how to build a parameterized RMarkdown, go over [this tutorial](https://rmarkdown.rstudio.com/lesson-6.html). 
+The Rmd file of this tutorial can be found in the course folder: `./Rmd/ocean_floor.Rmd`
+
+Go over the following steps to complete the exercise
+ 
+ 1. Knit the Rmd as is and see what happens
+ 1. Try adjusting the parameter 'data' according the available datasets in the `{marmap}` (the command `data("marmap")`, will give you the available setting for the `data` parameter)
+ 1. RMarkdown Parameters are case sensitive (like everything else in R). Add a code chunk that takes both "Hawaii" and "hawaii" as valid input
+ 1. Place a version of the rendered document (with the parameter `data` set to a different value than default - so not "hawaii") in your portfolio project.
+ 
 
 
-For this exercise we use the dataset [described here](https://epa.figshare.com/articles/dataset/Animal_Toxicity_Studies_Effects_and_Endpoints_Toxicity_Reference_Database_-_ToxRefDB_files_/6062545).
-The complete ToxCast dataset is quite large. We are using a subset of the data and focus on animal studies only.
+## Parameterizing input data
+The most obvious use of paramterization is creating a parameter for different data inputs. Here we will examine an example using the European Center for Disease Control (ECDC) COVID-19 case data as an examples. 
 
-The file we will be using for this exercise is located in the "./data"folder as: `toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv`
+<div class="question">
+#### Assignment 4.4
 
-Go over the following steps to complete this exercise 
+The aim of this assignment is to create an RMardown file containing a pramterized report for the COVID-19 cases as can be downloaded from the ECDC. The Rmd should include at least three parameters:
 
- 1. Go over this tutorial: [RStudio Params in Rmd](https://rmarkdown.rstudio.com/developer_parameterized_reports.html%23parameter_types%2F#overview)
- 1. Open a new Rmd file for this exercise (be sure to delete the standard example, except for the setup chunk as always)
- 1. Open the file `./data/toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv` in a code chunk
- 1 Explore the data (the information of this dataset can be found here: `./data/README_ToxRefDB_20141106.docx`)
- 1. Write an analysis in your Rmd [use at 4 different graphs] where you visualize the relationship between animal species, the type of tests and the type of chemicals that have been tested.
- 1. Identify at least two paramters in your analyses with which you could _parameterize_ you Rmd file.
- 1. Adjust your Rmd to include these two paramters
- 1. Publish the resulting Rmd (and two knitted .html in which you choose a different setting of your parameters) in your portfolio(repo) online
+ 1. The country to which the report applies to
+ 1. The year that the reported data applies to 
+ 1. The period in months that the report applies to
+
+The minimum requirements for the report is that next to the three paramters mentioned above, it should include at least one graph for the COVID-19 cases and one graph for the COVID-19 related deaths. 
+After writing the Rmd, you should be able to render it with paramters set to any value you like and you need to publish your rendered version in your portfolio.
+
+Here are some pointers to get your started:
  
+ 1. Start in a new Rmd file in your portfolio bookdown project
+ 1. Start by downloading and exploring the data
+ 1. First create an non parameterized version of your analysis (you need to come up with a graph for cases and a graph for deaths)
+ 1. After the code is finished for a static report, you can start replacing parts of your filtering steps for parameters.
+ 1. One way to access the paramters while you are writing your report is by running the first code chunk in your Rmd interactively, this will make the parameters available as a list in your Global environment. You can than access the individual paramter values by using the `$` (params$<parameter_key>) operator in your code (as explained in the ocean floor tutorial). 
  
+**This assignment does not have a solution available, you are on your own here** 
  
- 
- 1. Define one parameter in your analysis
- 1. Knit two different reports of your parameterized Rmd (with two different values for one paramter defined) and sent them to the teacher
- 
+</div>

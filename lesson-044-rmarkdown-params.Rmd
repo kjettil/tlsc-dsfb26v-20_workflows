@@ -10,8 +10,7 @@ _This chapter is best read from the source RMarkdown file_
 
 ## Lesson Contents
 
- - RMarkdown arameters (params in yaml header, params in chunks)
- - Using Shiny interactive elements in RMarkdown
+ - RMarkdown parameters (params in yaml header, params in chunks)
  - Using `rmarkdown::render()` to render one or multiple parameterized reports
 
  ## Resources
@@ -70,8 +69,6 @@ Go over the following steps to complete the exercise
  1. Try adjusting the parameter 'data' according the available datasets in the `{marmap}` (the command `data("marmap")`, will give you the available setting for the `data` parameter)
  1. RMarkdown Parameters are case sensitive (like everything else in R). Add a code chunk that takes both "Hawaii" and "hawaii" as valid input
  1. Place a version of the rendered document (with the parameter `data` set to a different value than default - so not "hawaii") in your portfolio project.
- 
-
 
 ## Parameterizing input data
 The most obvious use of paramterization is creating a parameter for different data inputs. Here we will examine an example using the European Center for Disease Control (ECDC) COVID-19 case data as an examples. 
@@ -85,17 +82,26 @@ The aim of this assignment is to create an RMardown file containing a pramterize
  1. The year that the reported data applies to 
  1. The period in months that the report applies to
 
-The minimum requirements for the report is that next to the three paramters mentioned above, it should include at least one graph for the COVID-19 cases and one graph for the COVID-19 related deaths. 
+Here is where you can find the ECDC data: https://www.ecdc.europa.eu/en/covid-19/data
+
+The minimum requirements for the report is that next to the three parameters mentioned above, it should include at least one graph for the COVID-19 cases and one graph for the COVID-19 related deaths. 
 After writing the Rmd, you should be able to render it with paramters set to any value you like and you need to publish your rendered version in your portfolio.
 
 Here are some pointers to get your started:
  
  1. Start in a new Rmd file in your portfolio bookdown project
- 1. Start by downloading and exploring the data
+ 1. Start by downloading and exploring the data (you may pick multiple datasets)
  1. First create an non parameterized version of your analysis (you need to come up with a graph for cases and a graph for deaths)
  1. After the code is finished for a static report, you can start replacing parts of your filtering steps for parameters.
- 1. One way to access the paramters while you are writing your report is by running the first code chunk in your Rmd interactively, this will make the parameters available as a list in your Global environment. You can than access the individual paramter values by using the `$` (params$<parameter_key>) operator in your code (as explained in the ocean floor tutorial). 
+ 1. One way to access the parameters while you are writing your report is by running the first code chunk in your Rmd interactively, this will make the parameters available as a list in your Global environment. You can than access the individual paramter values by using the `$` (params$<parameter_key>) operator in your code (as explained in the ocean floor tutorial). 
  
 **This assignment does not have a solution available, you are on your own here** 
  
 </div>
+
+## Rendering a report using the `rmarkdown::render()` function
+Now that we have a parameterized report written in Rmd, we can use this Rmd file a template to generate multiple static reports, where we vry the values for the parameters. I will illustrate this using the ocean floor example. Then you will have to complete the final assignment of this lesson in which we will apply these principles on the covid-19 report you created in the previous assignment.  
+
+
+
+

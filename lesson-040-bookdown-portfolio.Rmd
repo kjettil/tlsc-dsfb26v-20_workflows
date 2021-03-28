@@ -24,13 +24,22 @@ Each account on github can be associated to one or multiple websites that are ho
 </div>
 
 ## Bookdown
-Bookdown is basically a collection of RMarkdown files, collated into a website with noce formatting and a 
+The `{bookdown}` R package is basically a collection of RMarkdown files, collated into a website with nice formatting and the possibility to cross reference and add citations and visualizations. The author of the bookdown is also the main author of `{knitr}`.    
 
 ## A simple bookdown example
+To start with bookdown, there is a [good and free resource available](https://bookdown.org/yihui/bookdown/get-started.html). 
 
+## Transform your current portfolio project to a bookdown site
 
-## Add RMarkdown files and content to your local project
 
 
 ## Render the book locally
+
+
+## Hosting the bookdown project in your github pages
+
+**IMPORTANT NOTE ON CONFIDENTIALITY**
+
+<mark>**When hosting you portfolio on a public web address, please make sure that there is no confidential information visable in your project. Data that falls under a non-disclosure agreement for example from your projecticum may not be shared. Also, be sure not to publish any personal secrets such as passwords and tokens, inside a github repo or webpage.**</mark> 
+
 

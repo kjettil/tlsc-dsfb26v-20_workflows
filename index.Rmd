@@ -139,7 +139,9 @@ To compile the book-site locally run `bookdown::render(".")` from inside the clo
 Last, you can also access all the functions that are associated with this project by running `devtools::build(".")`, to share or store the package `{workflows}` as a binary archive file.
  
 ## Getting R and RStudio
-During the course you can work on a Cloud Computing Environment which provides web access to R and RStudio via a Virtual Machine. This machine runs a server edition of RStudio and has the latest R version and all the required packages available. In order to access the server you will need credentials, which you will recieve before the course starts. This is a convenient way to use R in a course and during the course we will only be using this environment. This is to ensure reproducibility and prevents a lot of trouble shooting from your side and the teacher's side.
+During the course you can still work on the server you used in DAUR1. The Cloud Computing Environment provides web access to R and RStudio via a Virtual Machine. This machine runs a server edition of RStudio and has the latest R version and all the required packages available. However, you will also often use your own local Rstudio environment and other software (see chapter prerequisites!). You should be comfortable with working and fixing issues with R by now, enough to keep your local environment up and running.
+
+<!-- In order to access the server you will need credentials, which you will recieve before the course starts. This is a convenient way to use R in a course and during the course we will only be using this environment. This is to ensure reproducibility and prevents a lot of trouble shooting from your side and the teacher's side. -->
 
 The server can be found here `r as.character(unlist(urls[4,2]))`. You will get credentials for the server, before the course starts.
 

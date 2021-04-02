@@ -126,7 +126,7 @@ library(ggiraph)
 
 Let's look at a `{ggiraph}` + `{shiny}` example
 
-```{r}
+```{r, eval=FALSE}
 run_girafe_example("crimes")
 ```
 

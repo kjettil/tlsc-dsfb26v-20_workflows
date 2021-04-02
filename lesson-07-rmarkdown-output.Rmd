@@ -1,8 +1,22 @@
-# Lesson 4.6 - RMarkdown - Interactivity {#rmarkdowninteractive}
+# Lesson 7 - RMarkdown - Output formats {#rmarkdownoutput}
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+_This chapter is best read in the source RMarkdown file_
+
+
+## There are multiple RMarkdown outputs
+
+ - pdf
+ - MS Office Word
+ - MS Office Powerpoint
+ - Slide shows (`ioslides_presention`, `beamer`)
+ 
+ 
+## LaTeX installation 
+
+
+
+## Interactivity {#rmarkdowninteractive}
+
 
 ## Aim of this lesson
 
@@ -126,7 +140,7 @@ library(ggiraph)
 
 Let's look at a `{ggiraph}` + `{shiny}` example
 
-```{r}
+```{r, eval=FALSE}
 run_girafe_example("crimes")
 ```
 
@@ -144,3 +158,5 @@ Go over the following steps to complete this exercise:
  1. Update the dashboard code and push it to your projecticum github repository
  
  **Th-th-that's all folks!** 
+
+

@@ -1,4 +1,4 @@
-# Lesson 5.1 - Working with relational data & databases {#relationaldb}
+# Lesson 9 - Working with relational data & databases {#relationaldb}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

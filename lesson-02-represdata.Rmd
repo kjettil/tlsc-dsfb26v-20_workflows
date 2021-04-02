@@ -1,4 +1,4 @@
-# Lesson 1.2 - Data management {#represdata}
+# Lesson 2 - Data management {#represdata}
 
 ```{r, dpi = 50, echo=FALSE}
 knitr::include_graphics(

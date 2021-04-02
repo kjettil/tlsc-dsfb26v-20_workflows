@@ -6,7 +6,7 @@ site: bookdown::bookdown_site
 output: 
     bookdown::gitbook:
         css: style.css
-        number_sections: true
+        number_sections: false
         split_by: chapter
         config:
             sharing:

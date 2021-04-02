@@ -1,9 +1,13 @@
-# Lesson 1.1 - Introduction {#represintro}
+# Lesson 1 - Reproducible Research {#represintro}
 
-## Exercise and assignment directives
-Please answer all the assignment and exercises in an RMarkdown document. Save it somewhere in your course project. You will need to hand this in later in Github.com.
+This lesson is about the 'movement' in science called 'Reproducible Research'. It explains the principles of Open Science and connected terms such as Open Access, Open Source and Reproducible Research, Open Peer Review and Open Data. You will practice with workflows that enable working reproducible.
 
-This is part 1 of lesson 1. Lesson 1 consists of:
+## Before you start! Exercise and assignment directives
+Within the lesson you will encounter a number of exercises. 
+
+Please answer all the assignments and exercises in an RMarkdown document. You learned how to make one in DAUR1. Save it somewhere in your course project. You will need to hand this in later in Github.com (the handing in part will be explained later).
+
+Lesson 1 consists of:
 
  - Part 1; Introducing Reproducible Research
  - Part 2; Managing your project files and data with 'Guerrilla Analytics'
@@ -23,8 +27,7 @@ lesson_number <- c("1.1")
 
 ``` 
 
-## Packages
-```{r}
+```{r loadpackages, include=F}
 library(tidyverse)
 library(nlme)
 ```
@@ -48,19 +51,9 @@ topics <- c(
 
 ```
 
-## Resources
-
-https://www.displayr.com/what-is-reproducible-research/
-
-https://book.fosteropenscience.eu/en/02OpenScienceBasics/04ReproducibleResearchAndDataAnalysis.html
-
-## Lesson Contents
-
-This lesson is about the 'movement' in science called 'Reproducible Research'. It explains the principles of Open Science and connected terms such as Open Access, Open Source and Reproducible Research, Open Peer Review and Open Data.
-
 ## Introducing Reproducible Research
 
-[This fragment is adapted from:](https://book.fosteropenscience.eu/en/02OpenScienceBasics/04ReproducibleResearchAndDataAnalysis.html)
+This fragment is adapted from [this book](https://book.fosteropenscience.eu/en/02OpenScienceBasics/04ReproducibleResearchAndDataAnalysis.html)
 
 Reproducibility means that research data and code are made available so that others are able to reach the same results as claimed in scientific outputs. Closely related is the concept of replicability, the act of repeating a scientific methodology to reach similar conclusions. These concepts are core elements of empirical research. Thus far, the focus in your education has been on the replicability principle. In order to increase the quality of your research output, we now turn our focus to reproducibility in this course.
 
@@ -80,15 +73,15 @@ While understanding the full range of factors that contribute to reproducibility
 
 ![Some of the common issues with research reproducibility are shown here.](https://book.fosteropenscience.eu/en/Images/image_2.png){ width=60%}
 
-[Source: Symposium report, October 2015. Reproducibility and reliability of biomedical research: improving research  practice](https://acmedsci.ac.uk/viewFile/56314e40aac61.pdf)
+[Click for Source: Symposium report, October 2015. Reproducibility and reliability of biomedical research: improving research  practice](https://acmedsci.ac.uk/viewFile/56314e40aac61.pdf)
 
-## Open Science
+### Open Science
 
 Open Science is the practice of science in such a way that others can collaborate and contribute, where research data, lab notes and other research processes are freely available, under terms that enable reuse, redistribution and reproduction of the research and its underlying data and methods (FOSTER Open Science Definition). In a nutshell, Open Science is transparent and accessible knowledge that is shared and developed through collaborative networks (Vicente-Sáez & Martínez-Fuentes 2018).
 
 Open Science is about increased rigour, accountability, and reproducibility for research. It is based on the principles of inclusion, fairness, equity, and sharing, and ultimately seeks to change the way research is done, who is involved and how it is valued. It aims to make research more open to participation, review/refutation, improvement and (re)use for the world to benefit.
 
-## Why we need Reproducible (Open) Science?
+### Why do we need Reproducible (Open) Science?
 
  >- To assess validity of science and methods we need access to data, methods and conclusions
  >- To learn from choices other researchers made
@@ -97,15 +90,15 @@ Open Science is about increased rigour, accountability, and reproducibility for 
  >- To be able to re-use and/or synthesize data (from many and diverse sources)
  >- To have access to it all!
  
-<p style="font-size:14px">[Nature Collection on this topic](https://www.nature.com/collections/prbfkwmwvz)</p>
+If you think this is really cool and want to know a lot more, here is the <p style="font-size:14px">[Nature Collection on this topic](https://www.nature.com/collections/prbfkwmwvz)</p>
  
-## The _GUI problem_
+### The _GUI problem_
 
-How would you 'describe' the steps of an analysis or creation of a graph when you use GUI* based software? 
+Most people would agree that this seems to be a good practice. Let's all do open science! However, many people use GUI based software (graphical user interface). Citing Wikipedia, this is a *"user interface that allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation, instead of text-based user interfaces, typed command labels or text navigation."* So basically, any program that you use by clicking around in menu's, or using voice control etc, for data science this could for instance be SPSS (you used it in BID-dataverwerking) or Excel.
 
-_"You can only do this using code, so it is (basically) impossible in a GUI"_**
+However, how would you 'describe' the steps of an analysis or creation of a graph when you use GUI based software? 
 
-```{r, dpi = 80}
+```{r messysteps, dpi = 80}
 knitr::include_graphics(
   file.path(
     image_dir,
@@ -114,11 +107,16 @@ knitr::include_graphics(
 )
 ```
 
-<p style="font-size:14px">*[Graphical User Interface (GUI)...is a form of user interface that allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation, instead of text-based user interfaces, typed command labels or text navigation...](https://en.wikipedia.org/wiki/Graphical_user_interface)</p>
-
 <p style="font-size:14px">**The file "./Rmd/steps_to_graph_from_excel_file.html" shows you how to do this using the programming language R. In webinar part 3, we will revisit this example.</p>
 
-## To replicate a scientific study we need at least:
+Maybe ~~videotape~~ tiktok-record your process and add .mp4 to your paper? Type out every step in a Word document? Both options seem rather silly. This is actually really hard!
+
+_"In fact, you can only do this sensibly using code, so it is (basically) impossible in a GUI"_**
+
+
+### What you need for replication
+
+To replicate a scientific study we need at least:
 
  > - Scientific context, research questions and state of the art [<mark>P<mark/>]
  > - (Experimental) model or characteristics of population or matter studied [<mark>P</mark>]
@@ -139,12 +137,13 @@ So we can conclude that
 $Reproducible\ (Open)\ Science = P + D + C + OAcc + OSrc$
 and 
 
-## EXERCISE
+<div class="question">
+##### Exercise 1
 
 Is (hydroxy)chloroquine really an option for treating COVID-19?
 As you probably know, hydroxychloroquine was repeatedly touted as a promising cure for COVID-19 by US President Donald Trump in 2020. 
 
-```{r, dpi = 70}
+```{r, dpi = 70,echo=FALSE, message=FALSE }
 knitr::include_graphics(
   file.path(
     image_dir,
@@ -155,9 +154,10 @@ knitr::include_graphics(
 
 <p style="font-size:14px">https://www.washingtonpost.com/politics/2020/04/07/trumps-promotion-hydroxychloroquine-is-almost-certainly-about-politics-not-profits/</p>
 
-## But how are we really doing with (hydroxy)chloroquine as a treatment for COVID-19?
 
-```{r}
+But how are we really doing with (hydroxy)chloroquine as a treatment for COVID-19?
+
+```{r, echo=FALSE, message=FALSE }
 knitr::include_graphics(
   file.path(
     image_dir,
@@ -169,7 +169,7 @@ knitr::include_graphics(
 
 <p style="font-size:14px">https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31180-6/fulltext</p>
 
-**Answer the following questions**
+**Answer the following questions (and save in your Rmarkdown file!)**
 
 a) What was the reason for retracting this [paper](https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31180-6/fulltext)?
 
@@ -193,21 +193,22 @@ a) What was the reason for retracting this [paper](https://www.thelancet.com/jou
  # >- The credibility of Science as a whole is at stake ('in the eye of the beholder')
 ```
 
- C)  In the sense that we defined above, does The Lancet adhere to Reproducible (Open) Science? Why does is / Why not?
+ C)  In the sense that we defined above, does The Lancet adhere to Reproducible (Open) Science? Why does it / Why not, what is missing?
 
-```{r}
-# Would the Lancet have adopted the Reproducible (Open) Science framework:
-# 
-#  >- There would have been no publication, so no retraction necessary
-#  >- The manuscript of this paper would not even have made it through the first check round
-#  >- All data, code, methods and conclusions would have been submitted 
-#  >- This would have enabled a complete and thorough peer-review process that includes replication of (part of) the data analysis of the study
-#  >- Focus should be on the data and methods, not on the academic narratives and results ...
-#  >- In physics and bioinformatics this is already common practice 
-```
+</div>
+
+Would the Lancet have adopted the Reproducible (Open) Science framework:
+
+ >- There would have been no publication, so no retraction necessary
+ >- The manuscript of this paper would not even have made it through the first check round
+ >- All data, code, methods and conclusions would have been submitted
+ >- This would have enabled a complete and thorough peer-review process that includes replication of (part of) the data analysis of the study
+ >- Focus should be on the data and methods, not on the academic narratives and results ...
+ >- In physics and bioinformatics this is already common practice
 
 
-## Data, methods and logic {.build}
+
+### Data, methods and logic {.build}
 
 So in order to perform Reproducible Open Science we need to make a full connection between the data, the analysis and the narratives (the conclusions, the 'story', etc.)
 In *[Brown, Kaiser & Allison, PNAS, 2018](https://doi.org/10.1073/pnas.1708279115)*
@@ -223,9 +224,7 @@ everything else is a distraction."
 
 So what happens if we do not adhere to this principle?
 
-## `Gollums` lurking about {.build}
-
-```{r, dpi = 80}
+```{r, dpi = 80, echo=FALSE, message=FALSE}
 knitr::include_graphics(
   file.path(
     image_dir,
@@ -234,7 +233,7 @@ knitr::include_graphics(
 )
 ```
 
-## Why using Excel for Biology is a bad idea
+### Why using Excel for Biology is a bad idea
 When you use Excel for data collection and especially for genetics and genomics studies, you risk losing and/or messing up your data. This is mainly due to the 'autoformatting' in Excel, but other problems could occur as well. This is nicely adressed in this [paper:](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7). The authors show, through an automated workflow, that many Excel files used for genomics studies, and that were supplied as supplementary materials to a publication contain, 'autoformatted' (read _changed_) gene names. 
 
 In itself this 'autoformatting' is problematic enough, but when you have data containing time series or dates, things start to become really problematic when you use Excel.
@@ -243,7 +242,7 @@ Also, if only one record in a whole Excel file is changed to the wrong data-type
 
 We will practice a bit to see this happening live in an Exercise 
 
-## **EXERCISE; Reading a strangly formatted column from an Excel file**
+### **EXERCISE; Reading a strangly formatted column from an Excel file**
 
  A) In R, try downloading the following [file:](http://genesdev.cshlp.org/content/suppl/2009/06/11/gad.1806309.DC1/FancySuppTable2.xls)
  B) What problems do you encounter, when trying to import this Excel file using `{readxl}`?
@@ -294,7 +293,7 @@ bilodeau_supp <- readxl::read_xls(
 
 --------------- EXERCISE END ------------------------------
 
-## EXERCISE
+### EXERCISE
 
 The data for this exercise was kindly supplied by J. Louter (INT/ILC) and was derived from an experiment in which adult _C.elegans_ nematodes were exposed to varying concentrations of different compounds. The variables `RawData` (the outcome - number of offspring counted as an integer value, after incubation time), `compName` (the generic name of the compound/chemical), the `compConcentration` (the concentration of the compound), and the `expType` are the most important variables in this dataset.
 A typical analysis with this data would be to run a dose-response analysis using a log-logistic model with estimates for the maximal, the minimal, the IC50 concentration and the slope at IC50. We will not go into the details but a good package to run such computations and create graphs in R is the `{drc}` package. [See:](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0146021) [and:](https://cran.r-project.org/web/packages/drc/index.html). In the exercise below we will create some visualizations using `{ggplot2}`.
@@ -366,7 +365,7 @@ H) Why would you want to take the step under J?
 
 --------------- EXERCISE END ------------------------------
 
-## When things go terribly wrong
+### When things go terribly wrong
 
 In *[Brown, Kaiser & Allison, PNAS, 2018](https://doi.org/10.1073/pnas.1708279115)* we also read:
 
@@ -379,7 +378,7 @@ These are common mistakes and if no checks or tests are build in than the conclu
 How would you mitigate such a risk?
 We can start by doing everything we do in code via scripting. The preferred way to do this is, is by using literate programming such as is done when using RMarkdown. In this course we call this `RMarkdown driven development`
 
-## Programming is essential for Reproducible (Open) Science
+### Programming is essential for Reproducible (Open) Science
 Because we can only connect the data, the methods used to collect the data and the narratives, so how the results were obtained, by using code. And we can create a script and multiple types of output from a single script by using RMarkdown, it is the perfect tool for enabling Open Resproducible research.
 
  >- Only programming an analysis (or creation of a graph) records every step
@@ -394,7 +393,7 @@ Because we can only connect the data, the methods used to collect the data and t
 knitr::include_graphics(file.path(image_dir,"rmd_printscr.png"))
 ```
 
-## A short example of Reproducible (Open) Science
+### A short example of Reproducible (Open) Science
 
 Assume we have the following question:
 "Which of 4 types of chairs takes the least effort to arise from when seated in?"
@@ -407,13 +406,13 @@ We have the following setup:
 
 To analyze this experiment statistically, the model would need to include: the rating score as the **measured (or dependent) variable**, the type of chair as the **experimental factor** and the subject as the **blocking factor**
 
-## Mixed effects models
+#### Mixed effects models
 
 A typical analysis method for this type of randomized block design is a so-called 'multi-level' or also called 'mixed-effects' or 'hierarchical' models. An analysis method much used in clinical or biological scientific practice. 
  
 You could also use one-way ANOVA but I will illustrate why this is not a good idea 
 
-## What do we minimally need, to replicate the science of this experiment? 
+#### What do we minimally need, to replicate the science of this experiment? 
 
 I will show:
 
@@ -432,7 +431,7 @@ In the next paragraph, I will try to show you of the power of (literate) program
 
 <p style="font-size:14px">[Example reproduced from: Pinheiro and Bates, 2000, _Mixed-Effects Models in S and S-PLUS_, Springer, New York.](https://cran.r-project.org/web/packages/nlme/index.html)</p>
  
-## The data of the experiment
+#### The data of the experiment
 
 <p style="font-size:14px">[Wretenberg, Arborelius & Lindberg, 1993](https://doi.org/10.1080/00140139308967910)</p>
 The data is available as a `data.frame` in the `{nlme}` package, which is a much valued R package for running multi-level statistical models. Below we import the data as a `tibble` (glorified `data.frame`) 
@@ -443,7 +442,7 @@ ergoStool %>% as_tibble()
 ```
 <p style="font-size:18px">The `lme()` function is part of the [`{nlme}`](https://cran.r-project.org/web/packages/nlme/index.html) package for mixed effects modelling in R</p>
 
-## An exploratory graph
+#### An exploratory graph
 First step is (always) plot all the data that you have. Or, in case you have very much data, take a random sample and plot that. A scatter plot is a very good start. It provides you already with an idea on the spread of some variables (here we plot the dependent on the y-axis and some predictor variable on the x-axis). The seed is for reproducibility. Which function in the code below is dependent on a random number generator?
 ```{r}
 set.seed(123)
@@ -466,7 +465,7 @@ plot_ergo <- ergoStool %>%
 plot_ergo
 ```
 
-## EXERCISE; Mind the variability per subject, what do you see?
+#### EXERCISE; Mind the variability per subject, what do you see?
 
  A) Can you say something about within-subject variability (note 'Minster Blue')?
  B) Can you say something about between-subject variability (note 'Mister Green', vs 'Mister Black')?
@@ -475,7 +474,7 @@ plot_ergo
  
 --------------- EXERCISE END ------------------------------
 
-## The statistical questions
+#### The statistical questions
 When we look at the scientific question and the data, we can deduce a number of statistical questions
 
  1. Which chair type takes, on average the biggest effort to arise from?
@@ -484,7 +483,7 @@ When we look at the scientific question and the data, we can deduce a number of 
  4. Does variability between subjects play a role in determining the 'best' chair type (ANOVA / MEM, confidence intervals)
  5. What numbers can we appoint to the questions above? Numbers in statistics are usually called parameters.
 
-## The statistical model 
+#### The statistical model 
 Statistical models (in R) can be specified by a `model formula`. The left side of the formula is the dependent variable, the right side are the 'predictors'. Here we include a `fixed` and a `random` term to the model (as is common for mixed-effects models). The fixed and random terms in the model are terms that reflect here the randomization (over persons) and the inter-person variability we observe in the data.
 
 ```{r, echo=TRUE}
@@ -520,13 +519,13 @@ plot_ergo_slopes
 
 What do you think? Is the assumption for a fixed slope defensible?
 
-## The statistical results
+#### The statistical results
 ```{r}
 result <- ergo_model %>% summary() 
 result$tTable %>% as.data.frame() %>% knitr::kable()
 ```
 
-## Model diagnostics
+#### Model diagnostics
 
  >- Diagnostics of a fitted model is the most important step in a statistical analysis
  >- In most scientific papers the details are lacking 
@@ -539,12 +538,12 @@ A residual plot shows the 'residual' error ('unexplained variance') after fittin
  >1. Display no obvious 'patters'
  >1. Should display overall equal 'spread' above and below 0 ('assumption of equal variance')
  
-## Residual plot
+#### Residual plot
 ```{r, echo=TRUE}
 plot(ergo_model) ## type = 'pearson' (standardized residuals)
 ```
 
-## The conclusions in a plot
+#### The conclusions in a plot
 We will spend a whole lesson on creating 'publication worthy' graphs. Here is one that you could find a paper about the `ergoStool` experiment and the analysis we did above.
 ```{r}
 # install.packages("ggsignif")
@@ -598,7 +597,7 @@ plot_ergo
 ```
 
 
-## Example; The Open Science Framework [OSF](https://osf.io/)
+### Example; The Open Science Framework [OSF](https://osf.io/)
 To enable and facilitate the practice op Open Science, there are a number of organizations and foudations that support researchers. Below are a few examples. It is helpful to know about them if you are looking for places to get data, share data and code and to find good practices and examples.
 ```{r}
 knitr::include_graphics(
@@ -614,7 +613,7 @@ $Reproducible\ Science = P + D + C + OAcc + OSrc$
 
 <p style="font-size:14px">$P = Publication$, $D = Data$, $C = Code$, $OAcc = Open\ Access$, $OSrc = Open\ Source$ </p> 
 
-## OSF - Reproducible Project: Psychology
+#### OSF - Reproducible Project: Psychology
 
  >- 100 publications in Psychology journals
  >- Results from half of these publications could be reproduced
@@ -623,11 +622,11 @@ $Reproducible\ Science = P + D + C + OAcc + OSrc$
  >- [The submitted manuscript is available in OSF](http://pps.sagepub.com/content/7/6/657.abstract)
  >- [The R code used is available in OSF](https://osf.io/fkmwg/)  
  
-## Another journal that supports Open Science is F1000 Research
+#### Another journal that supports Open Science is F1000 Research
 The journal can be found [here](https://f1000research.com/).
 Have a look at the special Bioconductor channel: https://f1000research.com/gateways/bioconductor
 
-## EXERCISE; Open Peer Review
+### EXERCISE; Open Peer Review
 
 ## <mark>ASSIGNMENT; "Assing a reproducibility score for scientific literature"</mark> {-}
 
@@ -690,4 +689,8 @@ To complete this assignment you will have to follow steps A-
  - I) Generate an RMarkdown script that contains the details on the project you selected, the code you used to create the visualization and your score for reproducibility.
  
  
- 
+### Resources
+
+https://www.displayr.com/what-is-reproducible-research/
+
+https://book.fosteropenscience.eu/en/02OpenScienceBasics/04ReproducibleResearchAndDataAnalysis.html

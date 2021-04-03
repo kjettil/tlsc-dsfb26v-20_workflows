@@ -1,7 +1,5 @@
 # Lesson 3 - Introduction to Git and GitHub {#gitintro}
 
-DEZE NIET?
-
 ## Learning goals
 
 In this lesson, you will learn how to keep track of your file changes using Git. After this lesson:

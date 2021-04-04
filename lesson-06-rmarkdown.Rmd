@@ -1,103 +1,219 @@
 # Lesson 6 - RMarkdown - Syntax {#rmarkdownsyntax}
-```{r setuples}
+```{r setuples, include=FALSE}
 les <- 6
 ```
 
-_This chapter is best read in the source RMarkdown file_
-
 ## Lesson Contents
 
+<mark>
+update XXX
+ - Introduction (XXX)
  - Extended Markdown syntax (figures, links, html tags, LaTeX formulas)
  - Chunk options vs global settings (e.g. ggplot theme)
  - Output formats (slides, Word, Powerpoint, pdf, themes)
  - Publication grade reports (templates)
- 
-## Resources
-
-https://nceas.github.io/sasap-training/materials/reproducible_research_in_r_fairbanks/index.html
-
-https://guides.github.com/features/mastering-markdown/
-
-## Introduction
-
-Plain text is a great way to write information down. Plain text has some major advantages:
-
-- Works regardless of what time you're trying to read the file, i.e. computers have and will continue to speak plain text
-- Works perfectly with version control software like git. 
-- Easy to read, easy to write
-
-Markdown is a plain text format that allows for common typesetting features including:
-
-- Text formatting (bold, italic, etc.)
-- Links
-- Tables
-- In-line images
-
-Without the need for spending time typesetting which is tedious and usually unnecessary. So if we want those kinds of things, we might want to use Markdown.
-
-RMarkdown allows us to produce an output document (PDF, DOCX, website) based upon a mix of Markdown and R code.
-This lets us write analyses in R as we already do but also write our reports/papers/etc. in R.
-Instead of the usual loop:
-
-- Run analysis
-- Edit/update report
-- Commit changes to Git-repository
-- Push to Github
-
-The loop becomes:
-
-- Edit RMarkdown doc
-- Commit changes to Git-repository
-- Push to Github
-
-This workflow fits in a 'continuous integration' workflow
-
-...
-
-## To get an example of paramterized RMarkdown:
-Clone this repo and run the examples in the folder ~/work_flows/Rmd/
-https://github.com/uashogeschoolutrecht/work_flows
-
-To see an interactive Graph run the example:
-
-
-
-## Good resources:
-
-- [http://rmarkdown.rstudio.com/](http://rmarkdown.rstudio.com/)
-- [http://kbroman.org/knitr_knutshell/](http://kbroman.org/knitr_knutshell/)
+</mark>
 
 ## Learning Outcomes
 
-- Gain an awareness of Markdown and RMarkdown
-- Author a simple RMarkdown document in RStudio
+- You build on your RMarkdown skills from DAUR1 and are able to:
+  - produce publication-worthy figures
+  - use html, links, latex in your Rmd
+  - set chunk options
+  - generate different output formats
+  - use templates
+- You have an overview of the current possibilities with Rmarkdown
 
-## RMarkdown Principles:
+## Introduction
 
-### Chunks
+By now you are in your 3rd course using R, and you will have learned that R is an incredibly useful tool for data analysis and visualisation. You have used ggplot to clean your data, make graphs, find desciptive statistics and are able to do the most common statistical tests in R. In DAUR1, you learned how to generate a html-file using Rmarkdown. But those were just the basics.
 
-Chunks take options, see: https://yihui.name/knitr/options/
+When working in a lab or other bioinformatics / life science positions, an important part of the work will be communicating about your findings en progress. You will have to write reports, give presentations, maybe write manuals or give weekly updates.
 
-#### Echo and Include {-}
+Using Rmarkdown gives you the opportunity to 
+  A) automate part of these workflows (no copy-pasting graphs from excel to word, or typing p-values by hand)
+  B) easily change your reports when needed (your supervisor read your report and wants some change in outlier selection, which will result in different averages, different graphs, different p-values? Sure, just update a few lines of code and knit your report again!)
+  C) and do all this in an reproducible, open science way (you keep a direct connection between the data, analysis and communication, so everyone -including you in a few months time when you have forgotten- can easily see what you did)
 
-When writing a report, it's common to not want the R code to actually show up in the final document.
+Additionally, Rmarkdown is just plain text. A big advantage of plain text, is that it is really easy to work with. Github can use it for instance, and plain text is really easy to write compared to for instance html.
+
+### Jupyter Notebooks
+If you are starting to get to know the data science realm, you may have encountered people using Jupyter notebooks or Jupyter lab. These are web aplications that, like Rmarkdown combina data, analyses and text. They work with R as well, so that is neat for us! However, they are slightly more difficult to use. While Rmarkdown is in the end plain text, Jupyther notebooks are JSON documents. This is a useful format, but harder to combine with a workflow using git/github.
+
+### Python
+While we're on the subject, why aren't we teaching you Python? Not because we think there is some epic battle and you will either join the Python or the R side. We are not team R. In fact, most DSFB-teachers can write both. However, Python was developed by software engineers while R was developed by statisticians. So the workflows in using these tools for data science differ. You have some background in statistics but -usually- none in software development, R will for most of you feel more natural. As a consequence, R is used [more often](https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis) in the life science work field, academia in general, and for instance pharmaceuticals. 
+
+The top 3 most asked programming languages in job ads (vacatures) in English speaking countries are [Python, R and SQL](https://towardsdatascience.com/team-r-or-team-python-2f8cf04310e6). We will cover SQL in this course (SQL is a database language designed specifically for using data in relational databases). You have learned some R. If you need to switch from R to Python, this is easily done if you have enough experience in R. The languages are in fact rather similar. If you are comfortable using basic building blocks such as functions, for/while/if-loops and vectors/dataframes/lists/etc, learning to do this in a different language is quite easy. While the words differ a bit these building blocks still work in the same way.
+
+As an example, Alyanne started out doing data analysis in Mathematica, then Matlab, then R and additionally learned Python for experiment control. You aren't married to one language. This does illustrate the fact that you will have to keep learning throughout your career, data science for biology is not a static field.
+
+
+### Workflow
+
+You may have used a workflow like this in the capstone assignments in DAUR1 and 2:
+
+- labpartner 1 runs analyses and updates RMarkdown file
+- labpartner 2 tries to do some work furtheron in the analysis 
+- email .Rmd to lab partner
+- send whatsapp message to lab partner that you finished your part and that they may continue.
+- labpartner 2 copy pastes their scripting work into the .Rmd
+- and runs analyses and updates RMarkdown file
+- email to labpartner again
+- whatsapp that you found additional issues.
+- go through issues in an online meeting with one of you typing
+- the one typing emails the .Rmd to the labpartner
+- etc
+
+Now that you learned how to collaborate in github, you can use it to both work on the same Rmarkdown file.
+The loop becomes:
+
+- Edit RMarkdown file
+- Commit changes to Git-repository and push
+- merge your branch with main
+- report issues in github
+(- perhaps have a drink while doing a teams meeting, we do not want to discourage meeting each other)
+
+### continuous integration
+
+This workflow fits in a 'continuous integration' workflow. You can easily continue working on the same project with multiple people, and frequently integrate your work to see if there are any errors or you are accidentaly working on the same part of the project.
+
+For example, when making this reader, Bas, Marc and Alyanne work within their own branches. Usually, we make a branch per task we take on for the day. We make sure we branch of from the main, and at least once a day we merge our work back into the main branch (Continuous integration). Usually this is at the end of the day. We then make sure the main branch still knits to the html in this reader without crashing or otherwise messing up (Continuous testing). If we think the rest of the team would like to see an update, we publish the newest version of the reader to RSconnect, which publishes this reader as a website (Continuous deployment).
+
+...
+
+<!-- ### To get an example of paramterized RMarkdown: -->
+<!-- Clone this repo and run the examples in the folder ~/work_flows/Rmd/ -->
+<!-- https://github.com/uashogeschoolutrecht/work_flows -->
+
+<!-- To see an interactive Graph run the example: -->
+
+### Some basic advice and good practice
+
+  - first of all, think if you really want to use a Rmarkdown file for something. Are you running a quick analysis on something just for yourself? A script (File → New File → R Script) is faster. Do you plan om communicating about what you are doing in print/websites/a blog/a presentation/etc? Then you will want Rmarkdown. 
+  - do not forget lesson 2 on data management and all lessons on github
+  - You can run chunks (green triangle) or all the chunks up to that chunk (left of the green triangle). You don't need to knit the whole thing every time.
+  - Do not put all your R code into one big chunk. Split your code and provide text inbetween explaining methods or results. If you find you are building a .Rmd file with just one big chunk of code, you actually want a script. 
+  - Do everything within your .Rmd file. Don't export data, change some numbers in Excel en load them back in. This is breaking the reproducable workflow.
+  - That said, if you are working with very large datasets and loads of data wrangling steps, your .Rmd may get clunky and slow. You may consider using a script to do all the preparations on the data, save the data to a file, and load that file in your .Rmd. Do make sure that all these files are in the same project and the workflow is very clear!
+  - Do spend enough time on formatting the final result. You want something that looks nice and feels professional. Not some messy html full of unlabeled code chunks and text starting next to a figure somewhere in the middle of the page.
+
+
+
+
+
+mark>XXX opdracht: labjournaal in Rmd?</mark>
+
+<!-- _____________________ -->
+
+## Figures
+
+
+### pictures
+
+
+
+There are basically three ways to include an image from an existing file:
+
+ 1. In an RMarkdown code chunk
+ 1. As a direct link to an image file with the `![caption](link)` tag
+ 1. From embedded html code
+
+#### In an R-chunk call
+You can use the function from `{knitr}` `include_graphics()`
+
+Displays
+```{r, dpi=300, fig.cap="'Optimus Prime'; Leader of the Autobots"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "prime.jpeg"
+  )
+)
+```
+
+The advantage of this approach is that you can use all the chunk options for this code chunk, controlling e.g. the size and behavior of the image as you would normally do for a code-generated graphs. Setting the `dpi` option in the code chunk controls the size of the image displayed in the rendered output. To see more options run `?knitr::include_graphics()` in the R console. 
+
+If you would like to use the above chunk option -- I personally prefer this option because it is an R only solution -- you should know about the `{captioner}` package. This package helps you with numbering tables and figures and with it you can create standardized captions, or add captions to your figures from another source file. A good workflow would be to write all captions in a separate text file and add them to your R Markdown document using the `{captioner}`package. In this way you can more easily edit and revise captions separate from the main text. For more info on [`{captioner}`](https://cran.r-project.org/web/packages/captioner/vignettes/using_captioner.html)   
+
+#### 2. We can also use Markdown syntax like this
+See [this blog](https://medium.com/markdown-monster-blog/getting-images-into-markdown-documents-and-weblog-posts-with-markdown-monster-9ec6f353d8ec) for more details
+
+```
+![Megatron-Leader of the Decepticons](./images/megatron.jpeg){ width=20%}
+```
+Note that the path name is not a string
+
+!['Megatron'; Leader of the Decepticons](./images/megatron.jpeg){ width=20%}
+
+Setting `{ width=x%}` is a special control for Pandoc, which is the engine that converts RMarkdown to plain Markdown. This does not work for all Markdown dialects.
+
+The advantage of this approach is that it is written very fast. You can also include an image from a web url like this
+
+```
+![My personal favorite; 'Soundwave'](https://static.wikia.nocookie.net/transformers/images/8/89/Transformers_G1_Soundwave.jpg)
+```
+
+![My personal favorite; 'Soundwave'](https://static.wikia.nocookie.net/transformers/images/8/89/Transformers_G1_Soundwave.jpg)
+
+#### 3. You can also include a local (or web url linked) image using html.
+
+```
+<img src="https://static.wikia.nocookie.net/transformers/images/b/bf/Perceptorg1.jpg"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 20px;" />
+```
+
+<img src="https://static.wikia.nocookie.net/transformers/images/b/bf/Perceptorg1.jpg"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+
+The advantage of this latter option is obviously that you can tweak the apperance and the behavior of your image far better using embedded html. The disadvantge might be that you would have to learn html. This however is a very good idea if you intend to become a Data Scientist/Bioinformatician.
+
+### graphs
+
+
+### tables
+
+
+
+<!-- _____________________ -->
+
+## html, latex, links, cross-referencing
+
+### LaTeX
+You can write formulas in RMarkdown using LaTeX
+The formula for a straigth line with slope `a` and intercept `b`
+
+$Yi = aXi + b$
+
+To build more complex formula's you can use an online LaTeX . See 
+XXX
+
+### More chunck settings
+
+You learned some chunck settigns in DAUR1.
+
+XXX table DAUR1 hereXXX
+
+For instance, when writing a report, it's common to not want the R code to actually show up in the final document.
 Use the `echo` chunk option to do this:
 ```{r, echo = FALSE}
 plot(1:10)
 ```
+
 or if you want the code to run but not show anything, use `include`
 
 ```{r, include = FALSE}
 plot(1:10)
 ```
 
-#### Eval {-}
-
 Sometimes you may just want to show some R code with nice syntax highlighting but not evaluate it:
 
 ```{r, eval = FALSE}
 will_it_eval <- "eval?"
 ```
+
+You have used these options before. But there are more options you can give to chunks:
 
 #### Cache {-}
 
@@ -110,13 +226,59 @@ ggplot(mpg, aes(displ, hwy, color = class)) +
   geom_point() # Some really slow plot
 ```
 
-### Inline expressions in prose
+#### css styles
 
-You can include inline r-code in this way:
+#### figure sizes
 
-`r 2+2`
 
-It evaluates to: `r 2+2`
+#### labels
+
+
+<!-- _____________________ -->
+
+## output formats
+
+### Possibilities
+
+With Rmarkdown you can generate many different things. This reader was made in Rmarkdown. The DAUR1 capstone pdf? RMarkdown. The latest report Alyanne had to send to an ethical committee? Again RMarkdown. Every time we send you all very similar but slightly different emails with stuff like your server password? We generate those using Rmarkdown.
+
+These websites are examples too: [click](https://rmarkdown.rstudio.com/flexdashboard/), [click](https://www.r-graph-gallery.com/index.html).
+
+Have a look around on the following website to get a feeling for what is possible with Rmarkdown.
+
+- [https://r-markdown-gallery.com/index.html](https://r-markdown-gallery.com/index.html)
+- [https://bookdown.org/yihui/rmarkdown/basics-examples.html](https://bookdown.org/yihui/rmarkdown/basics-examples.html)
+
+### setting output format
+
+You can specifically choose which output format to render to with the RStudio "Knit" button in the toolbar, or with:
+
+```
+rmarkdown::render(...)
+```
+
+We can control which output format(s) knitting will produce and even customize the options for each format separately.
+To customize each output format, change the YAML frontmatter:
+
+e.g. customize HTML and PDF output
+
+```
+---
+title: "My document"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+  pdf_document:
+    fig_caption: false
+---
+
+
+
+
+
+<!-- _____________________ -->
+
 
 ### Plots
 
@@ -144,109 +306,9 @@ DT::datatable(head(mpg))
 
 https://rmarkdown.rstudio.com/lesson-7.html
 
-## Output formats
-
-RMarkdown documents can be converted into many formats, most often:
-
-- PDF
-- HTML
-- Microsoft Word
-- ioslides
-- beamer
-
-See more info here: http://rmarkdown.rstudio.com/lesson-9.html
-
-You can specifically choose which output format to render to with the RStudio "Knit" button in the toolbar, or with:
-
-```
-rmarkdown::render(...)
-```
-
-We can control which output format(s) knitting will produce and even customize the options for each format separately.
-To customize each output format, change the YAML frontmatter:
-
-e.g. customize HTML and PDF output
-
-```
----
-title: "My document"
-output:
-  html_document:
-    toc: true
-    toc_float: true
-  pdf_document:
-    fig_caption: false
----
-
-```
-
-## LaTeX
-You can write formulas in RMarkdown using LaTeX
-The formula for a straigth line with slope `a` and intercept `b`
-
-$Yi = aXi + b$
-
-To build more complex formula's you can use an online LaTeX . See 
 
 
-## Including images
 
-There are basically three ways to include an image from an existing file:
-
- 1. In an RMarkdown code chunk
- 1. As a direct link to an image file with the `![caption](link)` tag
- 1. From embedded html code
-
-### In an R-chunk call
-You can use the function from `{knitr}` `include_graphics()`
-
-Displays
-```{r, dpi=300, fig.cap="'Optimus Prime'; Leader of the Autobots"}
-knitr::include_graphics(
-  here::here(
-    "images",
-    "prime.jpeg"
-  )
-)
-```
-
-The advantage of this approach is that you can use all the chunk options for this code chunk, controlling e.g. the size and behavior of the image as you would normally do for a code-generated graphs. Setting the `dpi` option in the code chunk controls the size of the image displayed in the rendered output. To see more options run `?knitr::include_graphics()` in the R console. 
-
-If you would like to use the above chunk option -- I personally prefer this option because it is an R only solution -- you should know about the `{captioner}` package. This package helps you with numbering tables and figures and with it you can create standardized captions, or add captions to your figures from another source file. A good workflow would be to write all captions in a separate text file and add them to your R Markdown document using the `{captioner}`package. In this way you can more easily edit and revise captions separate from the main text. For more info on [`{captioner}`](https://cran.r-project.org/web/packages/captioner/vignettes/using_captioner.html)   
-
-### 2. We can also use Markdown syntax like this
-See [this blog](https://medium.com/markdown-monster-blog/getting-images-into-markdown-documents-and-weblog-posts-with-markdown-monster-9ec6f353d8ec) for more details
-
-```
-![Megatron-Leader of the Decepticons](./images/megatron.jpeg){ width=20%}
-```
-Note that the path name is not a string
-
-!['Megatron'; Leader of the Decepticons](./images/megatron.jpeg){ width=20%}
-
-Setting `{ width=x%}` is a special control for Pandoc, which is the engine that converts RMarkdown to plain Markdown. This does not work for all Markdown dialects.
-
-The advantage of this approach is that it is written very fast. You can also include an image from a web url like this
-
-```
-![My personal favorite; 'Soundwave'](https://static.wikia.nocookie.net/transformers/images/8/89/Transformers_G1_Soundwave.jpg)
-```
-
-![My personal favorite; 'Soundwave'](https://static.wikia.nocookie.net/transformers/images/8/89/Transformers_G1_Soundwave.jpg)
-
-### 3. You can also include a local (or web url linked) image using html.
-
-```
-<img src="https://static.wikia.nocookie.net/transformers/images/b/bf/Perceptorg1.jpg"
-     alt="Markdown Monster icon"
-     style="float: left; margin-right: 20px;" />
-```
-
-<img src="https://static.wikia.nocookie.net/transformers/images/b/bf/Perceptorg1.jpg"
-     alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px;" />
-
-The advantage of this latter option is obviously that you can tweak the apperance and the behavior of your image far better using embedded html. The disadvantge might be that you would have to learn html. This however is a very good idea if you intend to become a Data Scientist/Bioinformatician.
 
 ## Summary
 
@@ -319,3 +381,9 @@ For a complete manual on working with github pages, [see the gh-pages docs](http
 
 If you want to go for a full continuous integration workflow (which is highly recommended), you can follow these steps in [this blog](https://medium.com/@delucmat/how-to-publish-bookdown-projects-with-github-actions-on-github-pages-6e6aecc7331e)
 
+
+## Resources
+
+https://nceas.github.io/sasap-training/materials/reproducible_research_in_r_fairbanks/index.html
+
+https://guides.github.com/features/mastering-markdown/

@@ -130,8 +130,8 @@ knitr::include_graphics(
 As you can see from my own edits to these principles, quite a few are immediately applicable when using a programming Language like R and its Rmd format, that we use all the time. I will go over each principle below in more detail. But first an exercise.
 
 <div class="question">
-##### Exercise 1.2
-Imagine you recieve a file attached to an email from a researcher in your research group called: 
+##### Exercise 2
+Imagine you receive a file attached to an email from a researcher in your research group called: 
 
 `salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx`
 
@@ -139,7 +139,7 @@ The file is located in the course `./data` folder
 
 You are requested to run an analysis on the raw data in this file (sheet named 'All Cycles'). It contains data from a plate reader experiment where wells are measured over time. The researcher asks you to generate a plot per sample. No other information was provided in the original email. 
 
-Describe the following steps in an RMarkdown file. You do not need to write the R code for the actual analysis at this point - we will do that later in another exercise in this lesson. Save the 
+Describe the following steps in an RMarkdown file. You do not need to write the R code for the actual analysis at this point - we will do that later in another exercise in this lesson. Answer these questions in your markdown file with exercises.
 
  1. How would you prepare for this analysis in R/Rstudio?
  1. Look at the contents of the file, which Excel Worksheet do you need for the analysis? 
@@ -161,7 +161,7 @@ This principle is simple: storage costs are low these days so there is no need t
  1. Keep your files, you never know when you need them. The price for a storage units has dramatically dropped over the past years, so there is no need to delete files or clean up any more. Just save old files in an archive. 
  1. Store data that you actively work on in online-cloud storage. Usually, you will be better of storing data on a remote location in the cloud. This reduces the risk of data loss, when something happens to the local file system. Cloud storage is usually redundant. Which means copies of the same file are ditributed over mupltiple locations (even geographically if you want). When one disk fails, there is always a back up, so no real data loss if hardware dies.
  1. Protect yourself: do not click on attachments and spiffy emails, cyber criminals are getting smarter everyday. When installing open source software always check the checksums of the downloaded file. More on this toppic later in @\ref(checksums)
- 1. Create md5sums for important (source) data-files to ensure data integrity and data transfer validity
+ 1. Create md5sums for important (source) data-files to ensure data integrity and data transfer validity. A MD5 ‘hash’ or ‘checksum’ is a 128-bit summary of the file contents. Files with different MD5 sums are different. So you can use this to check whether a file has changed since you last used it.
  1. Agree on a storage system, share it, use it, stick to it
  
 ```{r, echo=FALSE}
@@ -172,6 +172,52 @@ knitr::include_graphics(
   )
 )
 ```
+
+MD5sumss are unique codes to identify a file. In the following example, we find the MD5sum for a .txt file in /data/md5_examples:
+
+```{r examplemd5}
+library(tools)
+md5_ex1_raw <- tools::md5sum(
+  here::here(
+    "data",
+    "md5_examples",
+    "MD5_exampledata_1.txt"
+  )
+)
+```
+
+Use enframe() to get atomic vectors or lists nice and tidy in a tibble:
+```{r}
+md5_ex1_raw %>% enframe() -> md5sums_ex1
+
+```
+
+<div class="question">
+##### Exercise 2
+
+There are 3 more datafiles in the folder /data/md5_examples. Find out which one is different from the other three using their MD5sums.
+If you want, `md5sum` can handle multiple files at the same time, but wants full paths for all of them.
+
+</div>
+
+<details><summary>Click for the answer</summary>
+```{r}
+#library(tools)
+
+myDir <- here::here(
+    "data",
+    "md5_examples")
+
+fileNames <- list.files(myDir, recursive = TRUE)
+
+tools::md5sum(file.path(myDir, fileNames)) %>% enframe() -> md5sums_all
+md5sums_all$filename <- fileNames
+md5sums_all %>% select(filename,value)
+
+```
+</details>
+
+
 
 ### Principle 2: Simple, visual project structures and conventions    
 This principle concerns the _organisation_ of files and folders on the file system. Because you usually do not work alone, but in a team, this is an important point to agree upon within your team. If you do not stick to the rules you agreed on playing by, you will find that playing the game is no fun at all. When organizing a classical project structure, people with no data science background tend to organize files and folders on the contextual, or categorical level. This means you would have something like this:
@@ -342,9 +388,11 @@ Take heed of these pointers:
 
 #### Let's demonstrate with COVID-19 example
 
+<mark> Example missing? ik snap m niet</mark>
+
  >- Imagine we want daily reports on the number of COVID-19 cases and caused deaths
  >- We want to be able to dynamically report data for different countries and dates to compare situations in the World
- >- The data is available (for manual and automated download) from the European Center for Disease Co=ntrol
+ >- The data is available (for manual and automated download) from the European Center for Disease Control
  >- The analysis can be coded completely from begin to end to result in the information we need
 
 <p style="font-size:14px">[A more extensive reproducible research COVID-19 example for NL](https://github.com/J535D165/CoronaWatchNL)</p> 
@@ -450,7 +498,7 @@ BostonHousing %>% as_tibble()
 The different variables are arranged in a side-by-side fashion. In this example the data is still tidy, but there are also examples of wide formatted data that is not tidy. When you want to work with this data, you first need to transform it in a stacked or so-called long format that works well for `{tidyverse}`. We will see an example in the next exercise
 
 <div class="question">
-##### Exercise 1.2
+##### Exercise 2
 Remember the well plate experiment in the exercise above. Here we will perform a transformation on the data to make the data suitable for analysis in R. We will also create a single graph showing all the data available for all samples over measured time in the experiment. 
 
 The data file for this exercise can be found here: `./data/salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx`
@@ -618,7 +666,7 @@ In our exercise above such README information would have saved us a lot of time 
 
 An example of a readme file is depicted below. 
  
-```{r, dpi = 50, echo=FALSE}
+```{r, dpi = 40, echo=FALSE}
 knitr::include_graphics(
   here::here(
     "images",
@@ -658,10 +706,10 @@ unique(data_penguins$Sex) ## we also call this factor levels
  
  - Use explicit encoding: male/female instead of `0`/`1`
  - Encodings can always be altered programmatically
- - Be consistent (see next graph)
+ - Be consistent <mark>(see next graph)</mark>
  - Write a code journal that explains encodings, including units and levels
  - Use factors if a variable has a set of discrete possible outcomes: `sex`, `species`, `marital_status` etc
- - Use an ordered factor if there is a hiarchy in the factor levels: `year`, `month`, `number_of_legs`
+ - Use an ordered factor if there is a hiearchy in the factor levels: `year`, `month`, `number_of_legs`
 
 ## Data-formats - Non-Proprietary {.build}
 When we store data for re-use, we need it to be in an interoperable form. This means that it can be read (also after a long time - let's say 30 years from now) into analysis software. This can be achieved by storing data in a so-called `non-proprietary` format. This means basically that the format source code is open and maintained by open source community or core development team.
@@ -677,13 +725,16 @@ These formats will remain readable, even if the format itself becomes obsolete
 
 **When storing a curated dataset for sharing or archiving it is always better, and sometimes enforced by the repository, to choose a non-proprietary format**
 
-<div class = "question>
-##### Exercise 1.2
-Applying the Guerrilla analytics framwork to your own project
- 
+<div class = "dagopdracht">
+
+**Dagopdracht: Applying the Guerrilla analytics framework to your own project.**
+
+(A) 
  1. Look at your RStudio project that you created for the DAUR-II final assignment
  1. Rearrange your project according the Guerilla principles explained above
  1. Add README files to the datasets 
- 1. Use the `{fs}` pacakge to share a screeshot of your folder tree in your portfolio, look [at:](https://www.tidyverse.org/blog/2018/01/fs-1.0.0/) for more info on how to use the `{fs}` package. 
+ 1. Use the `{fs}` package to share a screeshot of your folder tree in your portfolio, look [at:](https://www.tidyverse.org/blog/2018/01/fs-1.0.0/) for more info on how to use the `{fs}` package. 
 
+(B)
+Now clean up your work environment for this course (workflows) and the parallel course in DSFB2 (projecticum). Set up a folder structure that will accomodate future plans and collaboration on the projecticum. Provide readme-files or comments within the code where needed. 
 </div>

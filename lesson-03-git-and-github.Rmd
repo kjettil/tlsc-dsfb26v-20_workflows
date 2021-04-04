@@ -170,7 +170,8 @@ git pull origin main
 ```
 
 <div class="question">
-##### Exercise 2.2
+##### Exercise 3 
+**making a repo** {#thisrepo}
 
 a) Create a new Git repository on GitHub. Make sure that the Git repository contains a gitignore file for R.  
 b) Clone the Git repository to your computer using RStudio (hence creating an R Project on the fly).
@@ -213,9 +214,16 @@ b) Change the RMarkdown file. Check the changes using `git status`. What do you 
 c) Commit your changes and push the changes to GitHub using the command line. 
 </div>
 
-<div class="question">
-##### Exercise 2.2
+<div class="dagopdracht">
+**Dagopdracht: start your portfolio**
 
-Create a Git repository on GitHub for your portfolio. Subsequently, clone the GitHub repository to your computer and add your files. Commit/push the changes.
+(A)
+Create a Git repository on GitHub for your portfolio. Subsequently, clone the GitHub repository to your computer and add your dagopdracht-Rmd-files. Commit/push the changes.
+
+(B)
+Now start building your CV in Rmarkdown and keep using github for version control. Remember to commit often, and push your changes!
+
+You can look around online for examples of cv's (/resume). You can use Jekyll if you like it and are up to a challenge  [click](https://workwithcarolyn.com/blog/digital-cv-guide) but it does make rendering a little more difficult. There are also [packages](https://cran.r-project.org/web/packages/vitae/vignettes/vitae.html) to build cv's in Rmarkdown (of course there are). Or google "create resume rmarkdown". But diving into these is optional. You already know how to use Rmarkdown, which is enough to build a cv. Your cv will be part of your portfolio.
+
 </div>
 

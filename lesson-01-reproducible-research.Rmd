@@ -5,13 +5,12 @@ This lesson is about the 'movement' in science called 'Reproducible Research'. I
 ## Before you start! Exercise and assignment directives
 Within the lesson you will encounter a number of exercises. 
 
-Please answer all the assignments and exercises in an RMarkdown document. You learned how to make one in DAUR1. Save it somewhere in your course project. You will need to hand this in later in Github.com (the handing in part will be explained later).
+Please answer all the assignments and exercises in an RMarkdown document. You learned how to make one in DAUR1. Save it somewhere in your course project. You can use this later to build your portfolio.
 
-Lesson 1 consists of:
+At the end of every lesson, there is a large assignment (dagopdracht). You will work on this assignment for the rest of the day, after finishing the smaller exercises in the lesson. Save the dagopdrachten in separate Rmd files (as instructed within the dagopdrachten).
 
- - Part 1; Introducing Reproducible Research
- - Part 2; Managing your project files and data with 'Guerrilla Analytics'
- - Part 3; RMarkdown Driven Development 
+Please note that this is a 5 EC course, so count on about 140 hours of work in total. Part of this workload will be spread over the semester, to work on your portfolio. But we scheduled these lessons to ensure that you have most of the first 3 weeks in this semester available to finish the lessons in workflows. Use this time to you advantage! You will need the skills from this course within the projecticum. 
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
@@ -137,8 +136,7 @@ So we can conclude that
 $Reproducible\ (Open)\ Science = P + D + C + OAcc + OSrc$
 and 
 
-<div class="question">
-##### Exercise 1
+### hydroxychloroquine example
 
 Is (hydroxy)chloroquine really an option for treating COVID-19?
 As you probably know, hydroxychloroquine was repeatedly touted as a promising cure for COVID-19 by US President Donald Trump in 2020. 
@@ -168,6 +166,9 @@ knitr::include_graphics(
 ```
 
 <p style="font-size:14px">https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31180-6/fulltext</p>
+
+<div class="question">
+##### exercise 1
 
 **Answer the following questions (and save in your Rmarkdown file!)**
 
@@ -208,7 +209,7 @@ Would the Lancet have adopted the Reproducible (Open) Science framework:
 
 
 
-### Data, methods and logic {.build}
+## Data, methods and logic {.build}
 
 So in order to perform Reproducible Open Science we need to make a full connection between the data, the analysis and the narratives (the conclusions, the 'story', etc.)
 In *[Brown, Kaiser & Allison, PNAS, 2018](https://doi.org/10.1073/pnas.1708279115)*
@@ -242,12 +243,17 @@ Also, if only one record in a whole Excel file is changed to the wrong data-type
 
 We will practice a bit to see this happening live in an Exercise 
 
-### **EXERCISE; Reading a strangly formatted column from an Excel file**
+<div class="question">
 
- A) In R, try downloading the following [file:](http://genesdev.cshlp.org/content/suppl/2009/06/11/gad.1806309.DC1/FancySuppTable2.xls)
+##### exercise 1
+
+**Reading a strangly formatted column from an Excel file**
+
+ A) From within R, try downloading the following file: 
+ http://genesdev.cshlp.org/content/suppl/2009/06/11/gad.1806309.DC1/FancySuppTable2.xls
  B) What problems do you encounter, when trying to import this Excel file using `{readxl}`?
  C) Perform a manual download of this file by going [here:](http://genesdev.cshlp.org/content/suppl/2009/06/11/gad.1806309.DC1). You need the file under the link `Supp Table 2.xls`
- D) Why is manually downloading this file a problem?
+ D) Why is manually downloading this file a problem with regard to open science?
  E) Import the manually downloaded Excel file into R 
  F) Open the file and compare the contents of the file to the Supplementary table shown [here](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7#Sec1). What do you observe? Why do you think this is happening?
  G) Look at this article in the Microsoft help: https://support.microsoft.com/en-us/office/stop-automatically-changing-numbers-to-dates-452bd2db-cc96-47d1-81e4-72cec11c4ed8
@@ -290,12 +296,33 @@ bilodeau_supp <- readxl::read_xls(
 #   libxls error: Unable to open file
 ```
 
+</div>
 
---------------- EXERCISE END ------------------------------
+<div class="rstudio-tip">
+**TIPS** 
+I always have difficulty remembering how to rotate axis labels in R. That is why I wrote an R package that has a convenient function. The package can be installed by running:
+```
+devtools::install_github("uashogeschoolutrecht/toolboxr")
+## load the package
+library(toolboxr)
+```
+The function you need from `{toolboxr}` is `rotate_axis_labels()`. Type
+`?rotate_axis_labels()` in the R Console to see how to use this function. 
 
-### EXERCISE
+If you have any suggestions for a good convenience function to add to this package, create an issue on github.com for a feature request or clone/fork the repository, add the function you would like to add and create a pull request. You will learn how to take these steps in lesson 2 and 3.
+</div>
+
+
+<div class="question">
+
+##### exercise 1
+
+**c.elegans**
+
+(Again: work out this exercise in your markdown file. You will need this later to put in your portfolio)
 
 The data for this exercise was kindly supplied by J. Louter (INT/ILC) and was derived from an experiment in which adult _C.elegans_ nematodes were exposed to varying concentrations of different compounds. The variables `RawData` (the outcome - number of offspring counted as an integer value, after incubation time), `compName` (the generic name of the compound/chemical), the `compConcentration` (the concentration of the compound), and the `expType` are the most important variables in this dataset.
+
 A typical analysis with this data would be to run a dose-response analysis using a log-logistic model with estimates for the maximal, the minimal, the IC50 concentration and the slope at IC50. We will not go into the details but a good package to run such computations and create graphs in R is the `{drc}` package. [See:](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0146021) [and:](https://cran.r-project.org/web/packages/drc/index.html). In the exercise below we will create some visualizations using `{ggplot2}`.
 
 A) Review the following Excel file in the `./data/CE.LIQ.FLOW.062_Tidydata.xlsx`, by opening the file in Excel. See if you can spot anything peculiar about this file. Do not edit the file in any way. Just close it when you are done. (Annoyingly, Excel asks you to save your changes, even if you did not touch anything in the file: why is this cumbersome?)
@@ -320,19 +347,9 @@ map(celiqflow_062, typeof)
 
 D) Create a graph displaying a scatterplot for the `CE.LIQ.FLOW.062_Tidydata.xlsx` data, for the different compounds and the varying concentrations. Put the `compConcentration` on the x-axis, the `DataRaw` counts on the y-axis and assign a colour to each level in `compName`. Assign a different symbol (`shape = `) to each level in the `expType` variable. Try fixing the labels of the x-axis so that we can read them.
 
-**TIPS** 
-I always have difficulty remembering how to rotate axis labels in R. That is why I wrote an R package that has a convenient function. The package can be installed by running:
-```
-devtools::install_github("uashogeschoolutrecht/toolboxr")
-## load the package
-library(toolboxr)
-```
-The function you need from `{toolboxr}` is `rotate_axis_labels()`. Type
-`?rotate_axis_labels()` in the R Console to see how to use this function. 
 
-If you have any suggestions for a good convenience function to add to this package, create an issue on github.com for a feature request or clone/fork the repository, add the function you would like to add and create a pull request. You will learn how to take these steps in lesson 2 and 3.
 
-```{r}
+```{r, echo=F}
 celiqflow_062 %>%
   ggplot(aes(x = compConcentration, 
              y = RawData)) +
@@ -345,27 +362,29 @@ celiqflow_062 %>%
 E) When creating the plot under C), what happened with the ordering of the x-axis labels. Explain why this happens. Look at the data-type of the `compConcentration` column in the data again to find a clue.
 
 F) Correct the data-type of `compConcentration` to `numeric` and than look at the graph again. Use a log10 transformation on the x-axis to get a clear graph. Also, add a bit of `jitter` to the points in the graph so that points are not overlapping.  
-```{r}
-## TODO: add jitter, does not work
+```{r, echo=F}
+
 celiqflow_062 %>%
   mutate(compConcentration = as.numeric(compConcentration)) %>%
   ggplot(aes(x = log10(compConcentration + 0.001), 
              y = RawData)) +
   geom_point(aes(colour = compName,
-                 shape = expType)) +
+                 shape = expType),
+             position = position_jitter(w = 0.05, h = 0)) +
   toolboxr::rotate_axis_labels("x", 45)
 ```
 
 Fill in:
-G) The positive control for this experiments is .....
-H) The negative control for this experiment is .....
-I) Think about how you would analyze this experiment to learn whether there is indeed an effect of different concentrations on offspring count and whether the different compounds have a different curve (IC50). Write down you analysis as a step-wise plan 
-J) Normalize the data for the `controlNegative` in such a way that the mean value for `controlNegative` is exactly equal to 1 and that all other values are expressed as a fraction thereof. Rerun your graphs with the normalized data. 
-H) Why would you want to take the step under J?
 
---------------- EXERCISE END ------------------------------
+  G) The positive control for this experiments is .....
+  H) The negative control for this experiment is .....
+  I) Think about how you would analyze this experiment to learn whether there is indeed an effect of different concentrations on offspring count and whether the different compounds have a different curve (IC50). Write down you analysis as a step-wise plan 
+  J) Normalize the data for the `controlNegative` in such a way that the mean value for `controlNegative` is exactly equal to 1 and that all other values are expressed as a fraction thereof. Rerun your graphs with the normalized data. 
+  H) Why would you want to take the step under J?
 
-### When things go terribly wrong
+</div>
+
+## When things go terribly wrong
 
 In *[Brown, Kaiser & Allison, PNAS, 2018](https://doi.org/10.1073/pnas.1708279115)* we also read:
 
@@ -378,7 +397,7 @@ These are common mistakes and if no checks or tests are build in than the conclu
 How would you mitigate such a risk?
 We can start by doing everything we do in code via scripting. The preferred way to do this is, is by using literate programming such as is done when using RMarkdown. In this course we call this `RMarkdown driven development`
 
-### Programming is essential for Reproducible (Open) Science
+## Programming is essential for Reproducible (Open) Science
 Because we can only connect the data, the methods used to collect the data and the narratives, so how the results were obtained, by using code. And we can create a script and multiple types of output from a single script by using RMarkdown, it is the perfect tool for enabling Open Resproducible research.
 
  >- Only programming an analysis (or creation of a graph) records every step
@@ -393,9 +412,12 @@ Because we can only connect the data, the methods used to collect the data and t
 knitr::include_graphics(file.path(image_dir,"rmd_printscr.png"))
 ```
 
-### A short example of Reproducible (Open) Science
+## A short example of Reproducible (Open) Science
+
+<mark> XXX meer uitleg nodig, ze kennen repeated measures nog niet en dat tests gaan over het verklaren van variantie is meestal gemist </mark>
 
 Assume we have the following question:
+
 "Which of 4 types of chairs takes the least effort to arise from when seated in?"
 
 We have the following setup:
@@ -408,7 +430,7 @@ To analyze this experiment statistically, the model would need to include: the r
 
 #### Mixed effects models
 
-A typical analysis method for this type of randomized block design is a so-called 'multi-level' or also called 'mixed-effects' or 'hierarchical' models. An analysis method much used in clinical or biological scientific practice. 
+A typical analysis method for this type of repeated measures design is a so-called 'multi-level' or also called 'mixed-effects' or 'hierarchical' models. An analysis method much used in clinical or biological scientific practice. 
  
 You could also use one-way ANOVA but I will illustrate why this is not a good idea 
 
@@ -425,7 +447,7 @@ I will show:
  
 When preforming statistics, it is important to realize that no single model is the correct or best model. There are always multiple options and trade-offs to be made. The most important learning lesson here is: 
 
-**"In the end it matters more that insight is provided into what assumptions were made for the experiment/the data/the subject and the model, and not so much as which model is best."**. The way to do this is, is _again_ with writen a script that records all the steps and choices made. 
+**"In the end it matters more that insight is provided into what assumptions were made for the experiment/the data/the subject and the model, and not so much as which model is best."**. The way to do this is, is _again_ with writing a script that records all the steps and choices made. 
  
 In the next paragraph, I will try to show you of the power of (literate) programming to communicate such an analysis. 
 
@@ -465,14 +487,17 @@ plot_ergo <- ergoStool %>%
 plot_ergo
 ```
 
-#### EXERCISE; Mind the variability per subject, what do you see?
+<div class="question">
+##### Exercise 1
+
+**Mind the variability per subject, what do you see?**
 
  A) Can you say something about within-subject variability (note 'Minster Blue')?
  B) Can you say something about between-subject variability (note 'Mister Green', vs 'Mister Black')?
  C) Which chair type takes, on average the biggest effort to arise from?
  D) Looking at the code, why do you think the x-axis is not displaying the `Chair type` in a numeric order?
  
---------------- EXERCISE END ------------------------------
+</div>
 
 #### The statistical questions
 When we look at the scientific question and the data, we can deduce a number of statistical questions
@@ -597,7 +622,7 @@ plot_ergo
 ```
 
 
-### Example; The Open Science Framework [OSF](https://osf.io/)
+## Example; The Open Science Framework [OSF](https://osf.io/)
 To enable and facilitate the practice op Open Science, there are a number of organizations and foudations that support researchers. Below are a few examples. It is helpful to know about them if you are looking for places to get data, share data and code and to find good practices and examples.
 ```{r}
 knitr::include_graphics(
@@ -613,7 +638,7 @@ $Reproducible\ Science = P + D + C + OAcc + OSrc$
 
 <p style="font-size:14px">$P = Publication$, $D = Data$, $C = Code$, $OAcc = Open\ Access$, $OSrc = Open\ Source$ </p> 
 
-#### OSF - Reproducible Project: Psychology
+### OSF - Reproducible Project: Psychology
 
  >- 100 publications in Psychology journals
  >- Results from half of these publications could be reproduced
@@ -622,17 +647,17 @@ $Reproducible\ Science = P + D + C + OAcc + OSrc$
  >- [The submitted manuscript is available in OSF](http://pps.sagepub.com/content/7/6/657.abstract)
  >- [The R code used is available in OSF](https://osf.io/fkmwg/)  
  
-#### Another journal that supports Open Science is F1000 Research
+### Another journal that supports Open Science is F1000 Research
 The journal can be found [here](https://f1000research.com/).
 Have a look at the special Bioconductor channel: https://f1000research.com/gateways/bioconductor
 
-### EXERCISE; Open Peer Review
 
-## <mark>ASSIGNMENT; "Assing a reproducibility score for scientific literature"</mark> {-}
+## Dagopdracht: Open Peer Review
+<div class="dagopdracht">
 
-resource: https://www.researchgate.net/publication/340244621_Reproducibility_and_reporting_practices_in_COVID-19_preprint_manuscripts/fulltext/5e81f9fd92851caef4ae37ba/Reproducibility-and-reporting-practices-in-COVID-19-preprint-manuscripts.pdf
+<mark>ASSIGNMENT; "Assing a reproducibility score for scientific literature"</mark> {-}
 
-This exercise is about identifying reproducibility issues in a scientific publication. We use the criteria for reproduciblity that are publically available [via:](https://www.researchgate.net/deref/https%3A%2F%2Fwww.ripeta.com%2Fuploads%2F7%2F4%2F8%2F7%2F7487334%2Fripeta_approach_and_criteria_definitions.pdf)
+This exercise is about identifying reproducibility issues in a scientific publication. We use the criteria for reproduciblity that are publically available [via here](https://www.researchgate.net/deref/https%3A%2F%2Fwww.ripeta.com%2Fuploads%2F7%2F4%2F8%2F7%2F7487334%2Fripeta_approach_and_criteria_definitions.pdf)
 
 | Transparency Criteria| Definition       | Response Type|
 |---------|-------------------------------|----------|
@@ -648,7 +673,7 @@ Code Availability | Authors have shared access to the most updated code that the
 **Table clarification** The `Transparency Criteria` are criteria you need to score the article of your choice for. Read them carefully and discuss with another course participant if you do not understand them. 
 Each Tranparance criterion comes with a `Definition` that explains the criterion in more details. These descriptions are particularly helpful to understand what the criterium entails and what to look for in the article. The `Response Type` is the actual score  
 
-In this assisgment you need to find a scientific article yourself, using PubMed or another database or repository. Use only Open Access articles. Having an article in hand, go over the table above and score the article according the criteria. **<mark>Be sure to select a primary article that presents a study using data from a experimental work </mark>**. This can be laboratory experiments or _in silico_ experiments. Reviews and meta analysis are not suitable for this assignment     
+In this assisgment you need to find a scientific article yourself, using PubMed or another database or repository. Use only **Open Access** articles. Having an article in hand, go over the table above and score the article according the criteria. **<mark>Be sure to select a primary article that presents a study using data from a experimental work </mark>**. This can be laboratory experiments or _in silico_ experiments. Reviews and meta analysis are not suitable for this assignment     
 
 To guide your search you can choose between these topics
 
@@ -661,10 +686,10 @@ To guide your search you can choose between these topics
 
  - If you do not know where to start your literature search start here: https://www.biorxiv.org/
  - This assignment is not about the topic you select, so try to do that quickly
- - You may want to cheat and select an article that scores TRUE on the `Data Availability Statement`, beacause that enables you to use the this article again in one of the next assignments.
+ - You may want to cheat and select an article that scores TRUE on the `Data Availability Statement`, because that enables you to use the this article again in one of the next assignments.
  
 
-To complete the assignment, execute activity A to G  
+To complete the assignment, execute activity A to G 
  
  - A) Initiate an empty RMarkdown file in your RStudio enviroment and provide author and title (after the title of this exercise)
  - B) Search for a primary Open Access article on one of the above listed topics, using Pubmed Central
@@ -687,9 +712,13 @@ To complete this assignment you will have to follow steps A-
  - G) When you encounter errors or flaws in the script, try fixing them and record your changes.
  - H) Taken together on a scale from 1 (very hard) to 5 (very easy), how much effort did it take you to reproduce the visualization from the project, report or article
  - I) Generate an RMarkdown script that contains the details on the project you selected, the code you used to create the visualization and your score for reproducibility.
+
+
+resource: https://www.researchgate.net/publication/340244621_Reproducibility_and_reporting_practices_in_COVID-19_preprint_manuscripts/fulltext/5e81f9fd92851caef4ae37ba/Reproducibility-and-reporting-practices-in-COVID-19-preprint-manuscripts.pdf
+
+</div> 
  
- 
-### Resources
+#### Resources
 
 https://www.displayr.com/what-is-reproducible-research/
 

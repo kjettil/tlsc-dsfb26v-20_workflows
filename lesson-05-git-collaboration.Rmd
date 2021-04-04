@@ -71,13 +71,11 @@ https://github.com/tidyverse/dplyr/issues
 Read the description and the propsed solutions if any. Describe in your own words what the bug relates to. Discuss the bug with a fellow student.
 
 b) Review issue  `#5640` in the `{dplyr}` issues. Why was this issue closed? Was the issue resolved for the user who reported it?
+</div>
 
 ## Creating issues in your project repo
 
 When collaborating together on project repository, you can create issues to stay on track for the different actions that need to be undertaken. Issues can be related to adding functionality (code) to the project, but also to report a bug or to request the addition or improvement of documentation. You can create an issue by opening the `Issues` tab and creating a new issue by clicking the green `New issue` button. A form will open where you can add a title and further remarks to document your issue. The formatting of the `Leave a comment` field can be entered using Markdown formatting. When creating an issue, it is important to assign (preferable one) person to the issue. You can also choose a label, and if needed you can customize the label categories. When a Kanban/Project is also linked to the organization or repo, you can also add the issue to a Kanban board. More about Kanban here \@ref(kanban-and-automation). When creating a new issue, you can also add a `Milestone`. We will discuss this later \@ref(milestones) 
-
-</div>
-
 
 <div class="question">
 ##### Exercise `r les`
@@ -122,7 +120,7 @@ Milestones in Gihub can be sonsidered as Agile/SCRUM sprints. So each sprint is 
 To complete this exercise, you need to complete the following steps:
 
  1. Create at least 2 milestones for the first sprint of your projecticum project
- 1. Create a number of *issues that need to be resolved for these 2 milstones to be completed (link these issue to the approapriate milestone you created in the previous step)
+ 1. Create a number of *issues that need to be resolved for these 2 milestones to be completed (link these issue to the appropriate milestone you created in the previous step)
  1. Put these issues on the Kanban board in the 'In progress' column
  1. Create branch for each issue, you just created in Github
  1. Synchronize you local branches in RStudio, with the remote branches
@@ -134,8 +132,8 @@ To complete this exercise, you need to complete the following steps:
  1. Observe what happened on the Kanban board. Where did the issue you just resolved land? What happened to the milestone? 
  1. Delete the branch related to the issue you just resolved 
  
-*Remember: a good issue is so small that it can be tackled in approximately a day's work
-^An issue can basically be anything, but here we mean something than can be comited to a repo, such as a piece of code, a dataset or documentation
+*Remember: a good issue is so small that it can be tackled in approximately a day's work or less!
+^An issue can basically be anything, but here we mean something than can be comited to a repo, such as a piece of code, a dataset or documentation.
 
 ## Agile/Scrum {#agilescrum}
 
@@ -254,7 +252,8 @@ The backlog then consists of all items (issues) that have no `milestone` attache
 ## Working as an Agile team
 The follow up for this lesson will be an online demo provided by one the SCRUM masters at the HU. In this demo we will focus on the good practices when working in an Agile/SCRUM team and learn how to apply the baics in your own project work.
 
-## **EXERCISE; Github documentation**
+<div class="dagopdracht">
+## **Dagopdracht; Github documentation**
  A) Study the github documentation on "Project Boards" [here](https://docs.github.com/en/github/managing-your-work-on-github/managing-project-boards)
 
 
@@ -262,4 +261,7 @@ The follow up for this lesson will be an online demo provided by one the SCRUM m
  
  C) The teachers have created a specific repo for your projecticum project and have added you to them, Link this repo to the project you just created. 
 
+<mark> XXX uitbreiden! </mark>
+
+</div>
 

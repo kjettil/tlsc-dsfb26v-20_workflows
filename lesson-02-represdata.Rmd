@@ -1,4 +1,7 @@
 # Lesson 2 - Data management {#represdata}
+```{r setuples, include=FALSE}
+les <- 2
+```
 
 ```{r, dpi = 50, echo=FALSE}
 knitr::include_graphics(
@@ -130,7 +133,7 @@ knitr::include_graphics(
 As you can see from my own edits to these principles, quite a few are immediately applicable when using a programming Language like R and its Rmd format, that we use all the time. I will go over each principle below in more detail. But first an exercise.
 
 <div class="question">
-##### Exercise 2
+##### Exercise `r les`
 Imagine you receive a file attached to an email from a researcher in your research group called: 
 
 `salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx`
@@ -193,7 +196,7 @@ md5_ex1_raw %>% enframe() -> md5sums_ex1
 ```
 
 <div class="question">
-##### Exercise 2
+##### Exercise `r les`
 
 There are 3 more datafiles in the folder /data/md5_examples. Find out which one is different from the other three using their MD5sums.
 If you want, `md5sum` can handle multiple files at the same time, but wants full paths for all of them.
@@ -274,7 +277,7 @@ md5sums are
  1. There are many different types of hash functions [MD5, SHA256 are much used for data and software](https://en.wikipedia.org/wiki/List_of_hash_functions)
  
 <div class="question">
-##### Exercise 1.2
+##### Exercise `r les`
 Calculating and checking md5sums checksums in R
 
  (a) Determine the md5sums of the file. Save the checksums to a file [write a piece of R code] `./data/toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv`
@@ -498,7 +501,7 @@ BostonHousing %>% as_tibble()
 The different variables are arranged in a side-by-side fashion. In this example the data is still tidy, but there are also examples of wide formatted data that is not tidy. When you want to work with this data, you first need to transform it in a stacked or so-called long format that works well for `{tidyverse}`. We will see an example in the next exercise
 
 <div class="question">
-##### Exercise 2
+##### Exercise `r les`
 Remember the well plate experiment in the exercise above. Here we will perform a transformation on the data to make the data suitable for analysis in R. We will also create a single graph showing all the data available for all samples over measured time in the experiment. 
 
 The data file for this exercise can be found here: `./data/salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx`

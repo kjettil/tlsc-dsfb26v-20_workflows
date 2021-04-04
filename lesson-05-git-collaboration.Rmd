@@ -2,6 +2,7 @@
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+les <- 5
 ```
 
 ## Learning aims
@@ -37,9 +38,9 @@ Pull requests
 The workflow proposed below is documented [here:](https://guides.github.com/introduction/flow/) 
 
 <div class="question">
-##### Exercise 3.1
+##### Exercise `r les`
 Study the Github Flow Documentation site mentioned above
-In your own words: write a summary on how this flow works. Discuss it with your Projecticum partner. See to it that you two really understand all the steps of the flow mentioned in the documentation.
+In your own words: write a summary on how this flow works (remember to save all answers to questions in your .Rmd file). Discuss it with your Projecticum partner. See to it that you two really understand all the steps of the flow mentioned in the documentation.
 
 </div>
 
@@ -60,7 +61,7 @@ knitr::include_graphics(
 Posting an issue when you encounter an error or bug helps developers create robuster code and is the core driving force for developing new features or resolving problems in open source software. Opening issues is an easy way to start contributing to the open source community.
 
 <div class="question">
-##### Exercise 3.1
+##### Exercise `r les`
 **Looking at issues to learn from others**
 
 a) Review the first bug you can find on this page: 
@@ -79,7 +80,7 @@ When collaborating together on project repository, you can create issues to stay
 
 
 <div class="question">
-##### Exercise 3.1
+##### Exercise `r les`
 **The teachers have created a projecticum repository on github, use this repository for this exercise. If not, apply for one and ask to be added.**
 
 Follow these steps to complete this exercise:
@@ -117,7 +118,7 @@ When using a github project, you can setup a Kanban board to track issues. Issue
 Milestones in Gihub can be sonsidered as Agile/SCRUM sprints. So each sprint is associated with one or multiple milestones that need to be resolved at the end of each sprint.
 
 <div class="question">
-##### Exercise 3.1
+##### Exercise `r les`
 To complete this exercise, you need to complete the following steps:
 
  1. Create at least 2 milestones for the first sprint of your projecticum project

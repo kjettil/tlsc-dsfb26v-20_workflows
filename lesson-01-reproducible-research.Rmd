@@ -1,4 +1,7 @@
 # Lesson 1 - Reproducible Research {#represintro}
+```{r setuples, include=FALSE}
+les <- 1
+```
 
 This lesson is about the 'movement' in science called 'Reproducible Research'. It explains the principles of Open Science and connected terms such as Open Access, Open Source and Reproducible Research, Open Peer Review and Open Data. You will practice with workflows that enable working reproducible.
 
@@ -168,7 +171,7 @@ knitr::include_graphics(
 <p style="font-size:14px">https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31180-6/fulltext</p>
 
 <div class="question">
-##### exercise 1
+##### Exercise `r les`
 
 **Answer the following questions (and save in your Rmarkdown file!)**
 
@@ -245,7 +248,7 @@ We will practice a bit to see this happening live in an Exercise
 
 <div class="question">
 
-##### exercise 1
+##### Exercise `r les`
 
 **Reading a strangly formatted column from an Excel file**
 
@@ -315,7 +318,7 @@ If you have any suggestions for a good convenience function to add to this packa
 
 <div class="question">
 
-##### exercise 1
+##### Exercise `r les`
 
 **c.elegans**
 
@@ -488,7 +491,7 @@ plot_ergo
 ```
 
 <div class="question">
-##### Exercise 1
+##### Exercise `r les`
 
 **Mind the variability per subject, what do you see?**
 

@@ -1,4 +1,7 @@
 # Lesson 6 - RMarkdown - Syntax {#rmarkdownsyntax}
+```{r setuples}
+les <- 6
+```
 
 _This chapter is best read in the source RMarkdown file_
 
@@ -283,7 +286,7 @@ After this lesson you will be able to
 Each account on github can be associated to one or multiple websites that are hosted on Github.com. To setup a website on Github (also called `github-pages` or `gh-pages`), we need to create a repository with a special name. For this course we will require you to upload results from the exercises and assignments results to you personal github pages. **This is a hard requirement for passing this course. If you have no or an empty portfolio, you cannot pass this course**
 
 <div class="question">
-##### Exercise 4.0
+##### Exercise `r les`
 
  1. Execute the steps explained [here](https://guides.github.com/features/pages/) to setup a github-pages repository called `workflows-portfolio`
  1. Send the url to your public portfolio address to the teachers by personal chat. 

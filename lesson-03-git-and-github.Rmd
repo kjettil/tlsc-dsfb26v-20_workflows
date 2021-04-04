@@ -1,5 +1,7 @@
 # Lesson 3 - Introduction to Git and GitHub {#gitintro}
-
+```{r setuples, include=F}
+les <- 3
+```
 ## Learning goals
 
 In this lesson, you will learn how to keep track of your file changes using Git. After this lesson:
@@ -170,7 +172,7 @@ git pull origin main
 ```
 
 <div class="question">
-##### Exercise 3 
+##### Exercise `r les`
 **making a repo** {#thisrepo}
 
 a) Create a new Git repository on GitHub. Make sure that the Git repository contains a gitignore file for R.  
@@ -191,7 +193,7 @@ e) Add some extra lines to the RMarkdown file and change the title. Commit the c
 </div>
 
 <div class="question">
-##### Exercise 2.2
+##### Exercise `r les`
 
 Use the Git repository of the previous question for this question.
 
@@ -207,7 +209,7 @@ c) Change in the gitignore file the line `data/**` for `data/*.xls`. Now only th
 </details>
 
 <div class="question">
-##### Exercise 2.2
+##### Exercise `r les`
 
 a) Clone the Git repository that you created on GitHub (see question 2.2.1) to a folder on your computer using the command line.
 b) Change the RMarkdown file. Check the changes using `git status`. What do you see?

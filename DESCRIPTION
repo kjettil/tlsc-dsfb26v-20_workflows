@@ -28,7 +28,10 @@ Imports:
   utils,
   zoo,
   tinytex,
-  tidyverse
+  tidyverse,
+  ggridges,
+  viridis,
+  ggthemes
 Suggests:
   bookdown,
   rmarkdown,

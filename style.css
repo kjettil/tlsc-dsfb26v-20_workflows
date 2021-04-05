@@ -2,10 +2,20 @@ h1, .h1, h2, .h2, h3, .h3 {
     margin-top: 10px;
 }
 
+/*doesn't work
+h5:before { display: none; !important;}
+*/
+
 h3, .h3 {
  color: #1f5386;
+ font-size: 80%;
 }
 
+h4, .h4 {
+ color:#35699C;
+ font-size: 80%;
+ font-style: italic;
+}
 
 pre {
     border: 0px solid #cccccc;

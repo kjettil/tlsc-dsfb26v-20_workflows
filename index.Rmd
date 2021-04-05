@@ -6,7 +6,7 @@ site: bookdown::bookdown_site
 output: 
     bookdown::gitbook:
         css: style.css
-        number_sections: false
+        number_sections: true
         split_by: chapter
         config:
             sharing:
@@ -29,6 +29,7 @@ params:
   month: February March April May June July August September October November December
   year: 2020
 ---
+
 
 ```{r include=FALSE, eval=FALSE}
 # source(here::here("code", "get_rmd_dependencies.R"))
@@ -58,7 +59,7 @@ image_dir <- here::here(
 library(tidyverse)
 ```
 
-# Course introduction
+# Course introduction {.unnumbered}
 
 <mark>[   write general introduction on the course contents, we do not need a list because the contents can be derived from the table of contents, which will be the ground truth for the course contents]</mark>
  

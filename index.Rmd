@@ -6,7 +6,7 @@ site: bookdown::bookdown_site
 output: 
     bookdown::gitbook:
         css: style.css
-        number_sections: false
+        number_sections: true
         split_by: chapter
         config:
             sharing:
@@ -29,6 +29,7 @@ params:
   month: February March April May June July August September October November December
   year: 2020
 ---
+
 
 ```{r include=FALSE, eval=FALSE}
 # source(here::here("code", "get_rmd_dependencies.R"))
@@ -59,8 +60,10 @@ urls <- readr::read_csv(
 library(tidyverse)
 ```
 
-# Course introduction
+
+# Course introduction {.unnumbered}
 When you program, you seldom program in isolation. Usually, you are writing analyses, pieces of software or creating visualizations within a collaborative (research) project. Adopting a robust and reproducible workflow is key for managing your own work and that of others. Using a version control system, managing your data and other files in a structured way, deploying your software or analysis pipeline in a robust manner are all good practices you need to apply in your work as a bioinformatician or data analyst, translator or scientist.
+
 
 ## Purpose of this website
 This website is a `{bookdown}` project that forms the reader and learning content for this course 

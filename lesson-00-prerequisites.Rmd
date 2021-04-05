@@ -1,4 +1,7 @@
-# Prerequisites {#preparingforthecourse}
+# Prerequisites {.unnumbered #preparingforthecourse}
+
+<!-- unnumbered + label should work but it doesn't -->
+<!-- https://bookdown.org/yihui/rmarkdown-cookbook/unnumbered-sections.html -->
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

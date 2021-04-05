@@ -1,27 +1,28 @@
 # Lesson 6 - RMarkdown - Syntax {#rmarkdownsyntax}
 ```{r setuples, include=FALSE}
 les <- 6
+
+library(ggplot2)
 ```
 
 ## Lesson Contents
 
-<mark>
-update XXX
- - Introduction (XXX)
- - Extended Markdown syntax (figures, links, html tags, LaTeX formulas)
+ - Introduction 
+ - Extended Markdown syntax (figures, tables, links, html tags, LaTeX formulas)
  - Chunk options vs global settings (e.g. ggplot theme)
- - Output formats (slides, Word, Powerpoint, pdf, themes)
- - Publication grade reports (templates)
-</mark>
+ - Citations and footnotes
+ 
+ <!-- - Output formats (slides, Word, Powerpoint, pdf, themes) -->
+ <!-- - Publication grade reports (templates) -->
+
 
 ## Learning Outcomes
 
 - You build on your RMarkdown skills from DAUR1 and are able to:
-  - produce publication-worthy figures
+  - produce publication-worthy figures and tables
   - use html, links, latex in your Rmd
   - set chunk options
   - generate different output formats
-  - use templates
 - You have an overview of the current possibilities with Rmarkdown
 
 ## Introduction
@@ -38,48 +39,45 @@ Using Rmarkdown gives you the opportunity to
 Additionally, Rmarkdown is just plain text. A big advantage of plain text, is that it is really easy to work with. Github can use it for instance, and plain text is really easy to write compared to for instance html.
 
 ### Jupyter Notebooks
-If you are starting to get to know the data science realm, you may have encountered people using Jupyter notebooks or Jupyter lab. These are web aplications that, like Rmarkdown combina data, analyses and text. They work with R as well, so that is neat for us! However, they are slightly more difficult to use. While Rmarkdown is in the end plain text, Jupyther notebooks are JSON documents. This is a useful format, but harder to combine with a workflow using git/github.
+If you are starting to get to know the data science realm, you may have encountered people using Jupyter notebooks or Jupyter lab. These are web aplications that, like Rmarkdown combine data, analyses and text. They work with R as well, so that is neat for us! However, they are slightly more difficult to use. While Rmarkdown is in the end plain text, Jupyther notebooks are JSON documents. This is a useful format, but harder to combine with a workflow using git/github.
 
 ### Python
-While we're on the subject, why aren't we teaching you Python? Not because we think there is some epic battle and you will either join the Python or the R side. We are not team R. In fact, most DSFB-teachers can write both. However, Python was developed by software engineers while R was developed by statisticians. So the workflows in using these tools for data science differ. You have some background in statistics but -usually- none in software development, R will for most of you feel more natural. As a consequence, R is used [more often](https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis) in the life science work field, academia in general, and for instance pharmaceuticals. 
+While we're on the subject, why aren't we teaching you Python? Not because we think there is some epic battle and you will either join the Python or the R side. We are not team R. In fact, most DSFB-teachers can write both. However, Python was developed by software engineers while R was developed by statisticians. So the workflows in using these tools for data science differ. You have some background in statistics but -usually- none in software development, so R will for most of you feel more natural. R is also specifically tailored for data science. As a consequence, R is used [more often](https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis) in the life science work field, academia in general, and for instance pharmaceuticals. 
 
-The top 3 most asked programming languages in job ads (vacatures) in English speaking countries are [Python, R and SQL](https://towardsdatascience.com/team-r-or-team-python-2f8cf04310e6). We will cover SQL in this course (SQL is a database language designed specifically for using data in relational databases). You have learned some R. If you need to switch from R to Python, this is easily done if you have enough experience in R. The languages are in fact rather similar. If you are comfortable using basic building blocks such as functions, for/while/if-loops and vectors/dataframes/lists/etc, learning to do this in a different language is quite easy. While the words differ a bit these building blocks still work in the same way.
-
-As an example, Alyanne started out doing data analysis in Mathematica, then Matlab, then R and additionally learned Python for experiment control. You aren't married to one language. This does illustrate the fact that you will have to keep learning throughout your career, data science for biology is not a static field.
-
+The top 3 most asked programming languages in job ads (vacatures) in English speaking countries are [Python, R and SQL](https://towardsdatascience.com/team-r-or-team-python-2f8cf04310e6). We will cover SQL in this course (SQL is a database language designed for using data in relational databases). You have learned some R. If you need to switch from R to Python in the future, this is easily done if you have enough experience in R. The languages are in fact rather similar. If you are comfortable using basic building blocks such as functions, for/while/if-loops and vectors/dataframes/lists/etc, learning to do this in a different language is quite easy. While the words differ a bit these building blocks still work in the same way.
 
 ### Workflow
 
+Now that we had a look at the alternatives, let's go back to RMarkdown.
 You may have used a workflow like this in the capstone assignments in DAUR1 and 2:
 
 - labpartner 1 runs analyses and updates RMarkdown file
 - labpartner 2 tries to do some work furtheron in the analysis 
-- email .Rmd to lab partner
-- send whatsapp message to lab partner that you finished your part and that they may continue.
-- labpartner 2 copy pastes their scripting work into the .Rmd
+- labpartner 1 emails .Rmd to labpartner 2
+- 1 sends whatsapp message to 2 that  they finished their part and that 2 may continue.
+- 2 copy pastes their scripting work into the .Rmd
 - and runs analyses and updates RMarkdown file
-- email to labpartner again
-- whatsapp that you found additional issues.
-- go through issues in an online meeting with one of you typing
-- the one typing emails the .Rmd to the labpartner
+- 2 emails 1 again
+- and whatsapps that they found additional issues.
+- 1 and 2 go through issues in an online meeting with 2 typing
+- 2 emails the updated .Rmd to 1
 - etc
 
-Now that you learned how to collaborate in github, you can use it to both work on the same Rmarkdown file.
+In the previous lessons, you learned how to collaborate in github. So you can use it to both work on the same Rmarkdown file.
 The loop becomes:
 
 - Edit RMarkdown file
 - Commit changes to Git-repository and push
 - merge your branch with main
 - report issues in github
-(- perhaps have a drink while doing a teams meeting, we do not want to discourage meeting each other)
+- perhaps have a drink while doing a teams meeting, we do not want to discourage meeting each other
 
-### continuous integration
+### Continuous integration
 
-This workflow fits in a 'continuous integration' workflow. You can easily continue working on the same project with multiple people, and frequently integrate your work to see if there are any errors or you are accidentaly working on the same part of the project.
+This workflow fits in a 'continuous integration' workflow. You can continue working on the same project with multiple people, and frequently integrate your work to see if there are any errors or you are accidentally working on the same part of the project as a coworker.
 
-For example, when making this reader, Bas, Marc and Alyanne work within their own branches. Usually, we make a branch per task we take on for the day. We make sure we branch of from the main, and at least once a day we merge our work back into the main branch (Continuous integration). Usually this is at the end of the day. We then make sure the main branch still knits to the html in this reader without crashing or otherwise messing up (Continuous testing). If we think the rest of the team would like to see an update, we publish the newest version of the reader to RSconnect, which publishes this reader as a website (Continuous deployment).
+For example, when making this reader, Bas, Marc and Alyanne work within their own branches. Usually, we make a branch per task we take on for the day. We make sure we branch of from the main, and at least once a day we merge our work back into the main branch (Continuous integration). Usually this is at the end of the day. Two people may have worked on the same .Rmd file, but this is fine. Git merges them for us. We then make sure the main branch still knits to the html in this reader without crashing or otherwise messing up (Continuous testing). If we think the rest of the team would like to see an update, we publish the newest version of the reader to RSconnect, which publishes this reader as a website (Continuous deployment).
 
-...
 
 <!-- ### To get an example of paramterized RMarkdown: -->
 <!-- Clone this repo and run the examples in the folder ~/work_flows/Rmd/ -->
@@ -93,24 +91,20 @@ For example, when making this reader, Bas, Marc and Alyanne work within their ow
   - do not forget lesson 2 on data management and all lessons on github
   - You can run chunks (green triangle) or all the chunks up to that chunk (left of the green triangle). You don't need to knit the whole thing every time.
   - Do not put all your R code into one big chunk. Split your code and provide text inbetween explaining methods or results. If you find you are building a .Rmd file with just one big chunk of code, you actually want a script. 
-  - Do everything within your .Rmd file. Don't export data, change some numbers in Excel en load them back in. This is breaking the reproducable workflow.
+  - Do everything within your .Rmd file. Don't export data, change some numbers in Excel en load them back in. This is breaking the reproducable workflow. If you find a mistake in the raw data, fix it within the .Rmd and provide a comment explaining what you are doing.
   - That said, if you are working with very large datasets and loads of data wrangling steps, your .Rmd may get clunky and slow. You may consider using a script to do all the preparations on the data, save the data to a file, and load that file in your .Rmd. Do make sure that all these files are in the same project and the workflow is very clear!
+  - `knitr::purl("name_of_your_file.Rmd", documentation = 2)` to turn your .Rmd into a script.
+  - `knitr::spin("name_of_your_file.R", knit = FALSE, format = "Rmd")` to turn a script into an .Rmd. (Try these commands now)
   - Do spend enough time on formatting the final result. You want something that looks nice and feels professional. Not some messy html full of unlabeled code chunks and text starting next to a figure somewhere in the middle of the page.
 
 
-
-
-
-mark>XXX opdracht: labjournaal in Rmd?</mark>
-
 <!-- _____________________ -->
 
-## Figures
+## Figures and tables
 
+Roughly, your average deliverable will consist of text, figures and tables. Text is pretty easy in RMarkdown.
 
 ### pictures
-
-
 
 There are basically three ways to include an image from an existing file:
 
@@ -120,9 +114,21 @@ There are basically three ways to include an image from an existing file:
 
 #### In an R-chunk call
 You can use the function from `{knitr}` `include_graphics()`
+And give the chunk some settings for the width of the figure and the caption:
 
-Displays
-```{r, dpi=300, fig.cap="'Optimus Prime'; Leader of the Autobots"}
+````
+```{r examplefig,  out.width = "300px", fig.cap="'Optimus Prime'; Leader of the Autobots"}`r ''`
+knitr::include_graphics(
+  here::here(
+    "images",
+    "prime.jpeg"
+  )
+)
+```
+````
+
+
+```{r examplefig,  echo=FALSE, out.width = "300px", fig.cap="'Optimus Prime'; Leader of the Autobots"}
 knitr::include_graphics(
   here::here(
     "images",
@@ -158,138 +164,98 @@ The advantage of this approach is that it is written very fast. You can also inc
 #### 3. You can also include a local (or web url linked) image using html.
 
 ```
-<img src="https://static.wikia.nocookie.net/transformers/images/b/bf/Perceptorg1.jpg"
-     alt="Markdown Monster icon"
-     style="float: left; margin-right: 20px;" />
+<div style="display: table;">
+  <span>
+  <img src="https://static.wikia.nocookie.net/transformers/images/b/bf/Perceptorg1.jpg" 
+    style="   vertical-align: middle; 
+              display: table-cell;" />
+  </span>
+  <span style=" vertical-align: middle; 
+                display: table-cell; 
+                padding: 20px;">
+  The advantage of this latter option is obviously that you can tweak the appearance and the behavior of your image far better using embedded html. The disadvantage might be that you would have to learn html. This however is a very good idea if you intend to become a Data Scientist/Bioinformatician.
+  </span>
+</div>
 ```
 
-<img src="https://static.wikia.nocookie.net/transformers/images/b/bf/Perceptorg1.jpg"
-     alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px;" />
+<!-- <img src="https://static.wikia.nocookie.net/transformers/images/b/bf/Perceptorg1.jpg" -->
+<!--      alt="Markdown Monster icon" -->
+<!--      style="float: left; margin-right: 10px;" /> -->
 
-The advantage of this latter option is obviously that you can tweak the apperance and the behavior of your image far better using embedded html. The disadvantge might be that you would have to learn html. This however is a very good idea if you intend to become a Data Scientist/Bioinformatician.
+
+
+<!--html_preserve-->
+<div style="display: table;">
+  <span><img src="https://static.wikia.nocookie.net/transformers/images/b/bf/Perceptorg1.jpg" 
+    style="   vertical-align: middle; 
+              display: table-cell;" />
+  </span>
+  <span style=" vertical-align: middle; 
+                display: table-cell; 
+                padding: 20px;">
+  The advantage of this latter option is obviously that you can tweak the appearance and the behavior of your image far better using embedded html. The disadvantage might be that you would have to learn html. This however is a very good idea if you intend to become a Data Scientist/Bioinformatician.
+  </span>
+</div>
+<!--/html_preserve-->
+
+(Yes, you should use CSS if you are getting this deep into setting html div styles. We'll cover that later.)
+
 
 ### graphs
 
+Most tricks for making nice publication-worthy graphs themselves will be covered in a masterclass. And adding basic graphs to an RMarkdown is something you already learned in DSFB1.
 
-### tables
+To display your graphs, you again give the chunck in which you generate it some settings. Let's use a really visually pleasing graph for the occasion [source](https://adrienne-marshall.github.io/ggplot2_workshop/), using 3 additional packages! 
 
-
-
-<!-- _____________________ -->
-
-## html, latex, links, cross-referencing
-
-### LaTeX
-You can write formulas in RMarkdown using LaTeX
-The formula for a straigth line with slope `a` and intercept `b`
-
-$Yi = aXi + b$
-
-To build more complex formula's you can use an online LaTeX . See 
-XXX
-
-### More chunck settings
-
-You learned some chunck settigns in DAUR1.
-
-XXX table DAUR1 hereXXX
-
-For instance, when writing a report, it's common to not want the R code to actually show up in the final document.
-Use the `echo` chunk option to do this:
-```{r, echo = FALSE}
-plot(1:10)
-```
-
-or if you want the code to run but not show anything, use `include`
-
-```{r, include = FALSE}
-plot(1:10)
-```
-
-Sometimes you may just want to show some R code with nice syntax highlighting but not evaluate it:
-
-```{r, eval = FALSE}
-will_it_eval <- "eval?"
-```
-
-You have used these options before. But there are more options you can give to chunks:
-
-#### Cache {-}
-
-If you know a chunk will not need to change as other parts of the document are knitted, you can cache a chunk that contains a potentially long-running or slow command or commands:
-
-
-```{r, cache=TRUE}
+````
+```{r, echo=FALSE, fig.height = 5, fig.width = 5, fig.align = "center", fig.cap = "Cut and price of diamonds"}`r ''`
+#install.packages("ggridges")
+#install.packages("viridis")
+#install.packages("ggthemes")
+library(viridis)
 library(ggplot2)
-ggplot(mpg, aes(displ, hwy, color = class)) + 
-  geom_point() # Some really slow plot
+library(ggridges)
+library(ggthemes)
+ggplot(data = diamonds, 
+       aes(x = price, y = cut, color = cut, fill = cut)) +
+  geom_density_ridges(alpha = 0.8, scale = 5) +
+  scale_fill_viridis(option = "A", discrete = TRUE) +
+  scale_color_viridis(option = "A", discrete = TRUE) + 
+  theme_few()
+```
+````
+
+```{r, echo=FALSE, fig.height = 5, fig.width = 7, fig.align = "center", fig.cap = "Cut and price of diamonds"}
+#install.packages("ggridges")
+#install.packages("viridis")
+#install.packages("ggthemes")
+library(viridis)
+library(ggplot2)
+library(ggridges)
+library(ggthemes)
+ggplot(data = diamonds, 
+       aes(x = price, y = cut, color = cut, fill = cut)) +
+  geom_density_ridges(alpha = 0.8, scale = 5) +
+  scale_fill_viridis(option = "A", discrete = TRUE) +
+  scale_color_viridis(option = "A", discrete = TRUE) + 
+  theme_few()
 ```
 
-#### css styles
 
-#### figure sizes
+### colour schemes: colour blind options
 
+### add logo to graph?
 
-#### labels
+### animations: gganimate?
 
+XXX animations be here XX
 
-<!-- _____________________ -->
-
-## output formats
-
-### Possibilities
-
-With Rmarkdown you can generate many different things. This reader was made in Rmarkdown. The DAUR1 capstone pdf? RMarkdown. The latest report Alyanne had to send to an ethical committee? Again RMarkdown. Every time we send you all very similar but slightly different emails with stuff like your server password? We generate those using Rmarkdown.
-
-These websites are examples too: [click](https://rmarkdown.rstudio.com/flexdashboard/), [click](https://www.r-graph-gallery.com/index.html).
-
-Have a look around on the following website to get a feeling for what is possible with Rmarkdown.
-
-- [https://r-markdown-gallery.com/index.html](https://r-markdown-gallery.com/index.html)
-- [https://bookdown.org/yihui/rmarkdown/basics-examples.html](https://bookdown.org/yihui/rmarkdown/basics-examples.html)
-
-### setting output format
-
-You can specifically choose which output format to render to with the RStudio "Knit" button in the toolbar, or with:
-
-```
-rmarkdown::render(...)
-```
-
-We can control which output format(s) knitting will produce and even customize the options for each format separately.
-To customize each output format, change the YAML frontmatter:
-
-e.g. customize HTML and PDF output
-
-```
----
-title: "My document"
-output:
-  html_document:
-    toc: true
-    toc_float: true
-  pdf_document:
-    fig_caption: false
----
-
-
-
-
-
-<!-- _____________________ -->
-
-
-### Plots
-
-Base graphics: Just run `plot(1:10)`
-ggplot2: Run `ggplot(...))`
-
-Customize output sizing with chunk options: `fig.width`, `fig.height`, `dpi`, `out.width`
 
 ### Tables
 
-If you search around, there are tons of ways to do this. The most basic way and the way I almost always use is with the `kable` function from the `knitr` package:
+#### From tibble to table
+In DAUR1 you learned how to knit tibbles into tables:
+
 
 ```{r}
 library(ggplot2)
@@ -297,89 +263,578 @@ data("mpg")
 knitr::kable(head(mpg))
 ```
 
-or an interactive table
+But you can make them interactive if you like:
 ```{r}
 library(ggplot2)
 data("mpg")
 DT::datatable(head(mpg))
 ```
 
-https://rmarkdown.rstudio.com/lesson-7.html
+#### Formatting tables
+Of course we can generate and format more complex tables as well. The easiest way is to use the `kableExtra` package (Though check the `expss` package if some journal or person is insisting you should make APA-style tables)
 
+```{r}
+#install.packages("kableExtra")
+library(kableExtra)
+# take just a few columns and rows for demonstration purposes
+data_for_table <- mtcars[1:5, 1:6]
 
-
-
-
-## Summary
-
-- Markdown is a simple plain text format suitable for authoring rich documents
-- RMarkdown is a slight extention of the Markdown syntax that lets us mix code and prose together
-- RMarkdown is a key part of the R reproducible science scene
-- RStudio is a great way to author RMarkdown documents
-- Later on in this workshop, we'll see how to deal with citations so we can write academic manuscripts
-
-### <mark>**EXERCISE 1; Create a short report**</mark> {-}
-
- 1. Find a relevant dataset  that you recently found or are busy with at the moment*
- 1. Write a short Rmd report where you LOAD and VISUALIZE (create at least 3 different graphs) the data in an Rmd report.
- 1. Publish the exploratory analysis in your portfolio
- 
-*If you do nog have a dataset, you can use this one:
-"./data/API_AG.LND.FRST.K2_DS2_en_csv_v2_716262"
-
-**Place it on you github (portfolio) repo and send me the link.**
-
-
-## Setting up a bookdown project and publishing it online as course portfolio {#bookdownportfolio}
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Lesson aim
-After this lesson you will be able to
+If you do not define anything, kable_styling() will render you the same table as the default knitr::kable
+```{r}
+data_for_table %>%
+  kbl() %>%
+  kable_styling()
+```
 
- 1. Setup github pages
- 1. Create a bookdown project
- 1. Render a bookdown project to a local website
- 1. Add the rendered site to your github pages
- 
-## Github pages
-Each account on github can be associated to one or multiple websites that are hosted on Github.com. To setup a website on Github (also called `github-pages` or `gh-pages`), we need to create a repository with a special name. For this course we will require you to upload results from the exercises and assignments results to you personal github pages. **This is a hard requirement for passing this course. If you have no or an empty portfolio, you cannot pass this course**
+Within kable_styling() you can change the settings, such as colours depending on the values displayed, or footnotes and extra headers:
+
+```{r}
+kbl(data_for_table) %>%
+  kable_styling(bootstrap_options = "striped", 
+                full_width = F, 
+                position = "left")
+
+data_for_table %>%
+  kbl() %>%
+  kable_classic_2(full_width = F) %>%
+  row_spec(0, angle = -45) %>%
+  column_spec(2, color = spec_color(mtcars$mpg[1:5]),
+              link = "https://www.wikipedia.com") %>%
+  column_spec(5, color = "white",
+              background = spec_color(mtcars$hp[1:5], end = 0.7),
+              popover = paste("am:", mtcars$am[1:5]))
+
+kbl(data_for_table) %>%
+  kable_classic() %>%
+  add_header_above(c(" " = 1, "Group 1" = 2, "Group 2" = 2, "Group 3" = 2))%>%
+  footnote(general = "Here is a general footnote for the table.")
+
+```
+
+If you want something specific, check out the vignette for the `kableExtra` package [here](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
+
+
+
+#### Rmarkdown tables
+You can also write tables within RMarkdown:
+
+```
+| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
+```
+
+renders:
+
+| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
+
+Which is a lot of work, so you would usually use [this table generator](https://www.tablesgenerator.com/markdown_tables)
+
 
 <div class="question">
 ##### Exercise `r les`
 
- 1. Execute the steps explained [here](https://guides.github.com/features/pages/) to setup a github-pages repository called `workflows-portfolio`
- 1. Send the url to your public portfolio address to the teachers by personal chat. 
+Render a html-document with:
+
+Your 5 favorite Pokemon characters as images (or choose any theme you prefer as long as you include at least 5 images: Marvel, Firefly, Zelda, Jane Austen novels, your favorite Netflix shows, perhaps 13 images for 13 reasons why, whatever you like). Make sure all the images end up the same size in your html and are distributed nicely.
+
+Provide a table (note: a table is not the same as a tibble!) with some characteristics for these characters. Each pokemon should get a row in the table, with a different text colour.
+
+Provide a graph depicting your rating of them on a 1-10 scale.
+</div>
+
+
+
+<!-- _____________________ -->
+
+## Formatting
+
+### LaTeX
+You can write formulas in RMarkdown using LaTeX
+The formula for a straigth line with slope `a` and intercept `b`
+
+`$Y = aX + b$`
+
+will give you:
+
+$Y = aX + b$
+
+You can use more latex syntax, but not all of it will work when rendering html files. For instance:
+
+```
+\begin{equation}
+\label{eq-abc}
+a + b = c
+\end{equation}
+```
+Renders the equation, but not the label:
+
+\begin{equation}
+\label{eq-abc}
+a + b = c
+\end{equation}
+
+When rendering PDF, you can also use it to change appearance like font size:
+
+```
+\footnotesize
+tiny text! not tiny in html.
+\normalsize
+```
+For HTML, you will want to use CSS formatting.
+To build more complex formula's you can use an online LaTeX equation builder, for instance [this one](https://www.latex4technics.com/). 
+
+
+### HTML
+
+You will really want to start focusing on using RMarkdown for professional deliverables. To do so, sometimes you want to edit the default way RMarkdown renders your output.
+
+We already showed you can include images with html coding. You could use html syntax for everything in your RMarkdown, but then why are you using RMarkdown in the first place. However, there are a few html things that may come in handy. Do remember that these mainly work when rendering HTML files, and will break if you render pdf's. This may or may not be a major disadvantage depending on the project.
+
+To get a line break in RMarkdown, you can finish a line with 2 spaces, and then hit return. If you want more than one blank line, you can use html commands:
+
+![ ](./images/html_br.png){ width=40%}
+
+Will yield:
+
+> some text bla bla
+> <br>
+> <br>
+> <br>
+> some more text after 3 blank lines
+
+If you want to highlight something (for instance because you don't want to forget adding something later), you can include tags, eg:
+
+```
+<mark> XXX more html here </mark>
+```
+
+`<div>` tags work too, these define a division or a section in an HTML document. We will use them later.
+
+Use three or more `-` for a horizontal rule. For example,
+
+```
+text #mind the following blank line
+
+---
+```
+
+yields:
+
+---
+
+### Links
+
+You can include links like this:
+
+```
+[click here for the link](https://en.wikipedia.org/wiki/Open_science)
+```
+
+### More chunck settings
+
+You learned some chunck settings in DAUR1:
+
+Table with different chunk output options. **yes** means present in the output file. 
+
+Option |	Run code |	Show code |	Output |	Plots |	Message |	Warning
+:----|:-----|:---|:---|:---|:---|:---
+eval = FALSE |	no |	**yes** |	no |	no |	no |	no
+include = FALSE |	**yes** |	no |	no |	no 	| no |	no
+echo = FALSE | 	**yes** |	no |	**yes** |	**yes** |	**yes** |	**yes**
+results = "hide" |	**yes** |	**yes** |	no |	**yes** |	**yes** |	**yes**
+fig.show = "hide" |	**yes** |	**yes** |	**yes** |	no |	**yes** |	**yes**
+message = FALSE |	**yes** |	**yes** |	**yes** |	**yes** |	no 	| **yes**
+warning = FALSE |	**yes** |	**yes** |	**yes** |	**yes** |	**yes** |	no
+
+
+For instance, when writing a report, it's common to not want the R code to actually show up in the final document.
+Use the `echo` chunk option to do this:
+<!-- verbatim-code-chunks -->
+
+````
+```{r, echo=FALSE}`r ''`
+1 + 1
+```
+````
+
+or if you want the code to run but not show anything, use `include`
+
+````
+```{r, include=FALSE}`r ''`
+1 + 1
+```
+````
+
+Sometimes you may just want to show some R code with nice syntax highlighting but not evaluate it:
+
+````
+```{r, eval=FALSE}`r ''`
+1 + 1
+```
+````
+
+<div id="question">
+Hints:
+
+press `Ctrl + Alt + i` to insert a code chunk.
+
+select some text and press `Ctrl + Shift + C` to make part of your text a comment, which will not be included in the rendered output.
+</div>
+
+Don't forget you can use chunk names, to be able to easily find them:
+
+![ ](images/chunk_names.jpg){width=40%}
+
+You have used these options before. But there are more options you can give to chunks:
+
+#### Cache {-}
+
+If you know a chunk will not need to change as other parts of the document are knitted, you can cache a chunk that contains a potentially long-running or slow command or commands. Be aware that this means this chunk will not update if you change something to your data wrangling part.
+
+````
+```{r, cache=TRUE, echo=FALSE}`r ''`
+library(ggplot2)
+ggplot(mpg, aes(displ, hwy, color = class)) + 
+  geom_point() # Some really slow plot
+```
+````
+
+
+```{r, cache=TRUE, echo=FALSE}
+library(ggplot2)
+ggplot(mpg, aes(displ, hwy, color = class)) + 
+  geom_point() # Some really slow plot
+```
+
+#### Chunk sizing
+
+Customize output sizing with chunk options: `fig.width`, `fig.height`, `dpi`, `out.width`
+
+for example:
+
+````
+```{r, fig.width = 4, fig.height = 4, echo=FALSE}`r ''`
+ggplot(mpg, aes(displ, hwy, color = class)) + 
+  geom_point() 
+```
+````
+
+```{r, fig.width = 4, fig.height = 4, echo=FALSE}
+ggplot(mpg, aes(displ, hwy, color = class)) + 
+  geom_point() 
+```
+
+### css styles 
+
+If you are familiar with writing html, you will know that most styling is done with CSS. Cascading Style Sheets (CSS) is a simple mechanism for adding style (e.g., fonts, colors, spacing) to Web documents.
+
+By default, the HTML output of R Markdown includes the some predefined CSS classes for backgrounds: "bg-primary", "bg-success", "bg-info", "bg-warning", and "bg-danger".
+
+Here we use bg-danger for the code, and bg-warning for the output:
+
+````
+```{r class.source="bg-danger", class.output="bg-warning"}`r ''`
+mtcars[1:5, "mpg"]
+```
+````
+<mark> XXX This is not working. It should be. fix later. Vanwege externe style sheet in use misschien? </mark>
+
+```{r class.source="bg-danger", class.output="bg-warning"}
+mtcars[1:5, "mpg"]
+```
+
+But you can make your own styles as well:
+
+````
+```{css, echo=FALSE}`r ''`
+.watch-out {
+  background-color: lightpink;
+  border: 3px solid red;
+  font-weight: bold;
+}
+```
+````
+
+```{css, echo=FALSE}
+.watch-out {
+  background-color: lightpink;
+  border: 3px solid red;
+  font-weight: bold;
+}
+```
+
+Then we assign a class `watch-out` to the code chunk via the
+chunk option `class.source`.
+
+
+````
+```{r class.source="watch-out"}`r ''`
+mtcars[1:5, "mpg"]
+```
+````
+
+```{r class.source="watch-out"}
+mtcars[1:5, "mpg"]
+```
+
+But defining all your styling stuff within your .Rmd gets messy quite quickly. So you can put them in a separate .css file. Put this file in the same folder as your .Rmd
+To link one or multiple custom stylesheets to an Rmd document, you can use the css option in your YAML header:
+
+```
+output:
+  html_document:
+    css: "my-style-sheet.css"
+```
+
+Within your .css file, you then define all the styling you want. 
+
+For instance, define a class for text with borders:
+
+In the .css file
+```
+.bordershere {
+border-style: solid;
+border-width: 5px;
+border-color: purple;
+}
+```
+
+You are not restricted to code chuncks when using css. You can use html `<div>` tags to apply a css style to part of your .Rmd, which may contain anything: text, images, code, etc:
+
+In the .Rmd file
+```
+<div id="bordershere">
+text
+</div
+```
+
+Here is an example to get you started with an css file: [click](https://gist.github.com/eirikbakke/1059266/d81dba46c76169c2b253de0baed790677883c221)
+
+And if you really like formatting, check w3schools for loads of syntax:[click](https://www.w3schools.com/css/)
+
+
+<div class="question">
+
+##### Exercise `r les`
+
+Go back to your html file with the 5 favorite Pokemon (or other) images. 
+
+Make a css file, and use it to change all the body text to a nice colour, and all the headers to a different colour.
+
+Make a new class containing some styling rules, and apply it to a part of your file (so you will also have to make a `<div>` somewhere in your page. Perhaps a nice text box with [rainbow border](https://codepen.io/unnegative/pen/dVwYBq) containing a written statement of your love for these Pokemon)
+
+Include a link to the wikipedia page of your topic. Make sure the link changes to a pink colour [when you hover over it](https://www.w3schools.com/css/css_link.asp). 
 
 </div>
 
-## Bookdown
-The `{bookdown}` R package is basically a collection of RMarkdown files, collated into a website with nice formatting and the possibility to cross reference and add citations and visualizations. The author of the bookdown is also the main author of `{knitr}`.    
+## Cross referencing {#crossreffy}
 
-## A simple bookdown example
-To start with bookdown, there is a [good and free resource available](https://bookdown.org/yihui/bookdown/get-started.html). 
+If you label parts of your RMarkdown, you can refer to them later! For instance, if you give names to code chunks, you can refer to them:
 
-## Transform your current portfolio project to a bookdown site
-By now you should have collected several Rmd files for completing the exercises and assignments in the course thusfar. If everything went well, you have these files collected in your portfolio RStudio project, linked to a Github repo.
-To start building your bookdown project, use the minimal example you have seen above. Start by rendering your project using `bookdown::render()`. To the very least you should have an index.html file that contains the yaml definitions for your bookdown project. You can arrange the chapters by using an index in every Rmd file. Use indexes like `001_<file_name>.Rmd`. When you want to add a chapter in between two chapters, this makes it easier. to achieve this.
+See Figure `\@ref(fig:cars-plot)`
 
-## Render the book locally
-When you have build your `index.Rmd` file and have collected all files in the root of your project, be sure all depending data, scripts and other files such as images etc. are also present in the project. Use the guerrilla analytics logic to setup the project structure. Set the option `new_session: yes` in your `_bookdown.yml` or `index.Rmd` file. This prevent problems down the line. Render the book until all errors are solved. You can debud each file and error by looking at the line numbers where the rendering is causing problems.
+````
+```{r cars-plot, fig.cap="The cars data.", echo=FALSE}`r ''`
+par(mar = c(4, 4, .2, .1))
+plot(cars)  # a scatterplot
+```
+````
+
+See Figure \@ref(fig:cars-plot)
+
+```{r cars-plot, fig.cap="The cars data.", echo=FALSE}
+par(mar = c(4, 4, .2, .1))
+plot(cars)  # a scatterplot
+```
+
+<br>
+This also works with tables, e.g.:
+
+And see Table `\@ref(tab:mtcars)`.
 
 
-## Hosting the bookdown project in your github pages
+Section headers can also be cross references. For instance, clicking [here](#crossreffy) will take you back to the beginning of the paragraph on cross referencing. 
 
-**IMPORTANT NOTE ON CONFIDENTIALITY**
+We did this by giving the paragraph header a label:
 
-<mark>**When hosting you portfolio on a public web address, please make sure that there is no confidential information visable in your project. Data that falls under a non-disclosure agreement for example from your projecticum may not be shared. Also, be sure not to publish any personal secrets such as passwords and tokens, inside a github repo or webpage.**</mark> 
+`## cross referencing {#crossreffy}`
 
-Once you have sucefully rendered your bookdown to a full website, hosting can be achived by copying all html files to your Github-pages. The easiest way is to clone your github pages repo and add, commit and push all html files to your github pages repo. The website will be automatically updated after some time. You can also setup a theme for your github pages. See [here](https://docs.github.com/en/github/working-with-github-pages/adding-a-theme-to-your-github-pages-site-with-the-theme-chooser) for more info.
+and linking to the label like this:
 
-For a complete manual on working with github pages, [see the gh-pages docs](https://docs.github.com/en/github/working-with-github-pages/getting-started-with-github-pages) 
+`[here](#crossreffy)`
 
-If you want to go for a full continuous integration workflow (which is highly recommended), you can follow these steps in [this blog](https://medium.com/@delucmat/how-to-publish-bookdown-projects-with-github-actions-on-github-pages-6e6aecc7331e)
+You can also use the section number to refer to it:
+
+`See paragraph \@ref(crossreffy)`
+
+See paragraph \@ref(crossreffy)
+
+## Citations
+
+### Simple footnotes
+
+You can do footnotes by hand within RMarkdown[^smallnote]. Even multiline-footnotes.[^bignote] like this:
+
+[^smallnote]: You found the footnotes!
+
+[^bignote]: Here's one with multiple paragraphs and code.
+    In case you want to include whole novels in your footnotes.
+    Even code chunks work fine: `r seq(1:5)`
+    
+    And images:
+    ![You found me!](images/korok.jpg){width=20%}
+    
+    Please do not include novels in your footnotes by the way.
+
+```
+You can do simple footnotes within RMarkdown[^smallnote]. Even multiline-footnotes.[^bignote]
+
+[^smallnote]: footnote text
+
+[^bignote]: Here's one with multiple paragraphs and code.
+    text
+    code too `r seq(1:5)`
+    
+    And images:
+    ![caption](imagelocation)
+    
+    more text.
+```
+
+### Using a reference manager
+
+<mark> I should switch to Zotero now that Mendeley is owned by Elsevier :/ I will update when I have time. </mark>
+
+For this example, we will use Mendeley. Mendeley is a free reference manager. If you are not yet using a reference manager, you start doing so right now. It will save you a lot of time in the future.
+
+Go the [the Mendeley website](https://www.mendeley.com/download-desktop-new/), download and install Mendeley and open the program. (note: if you already use a reference manager, check if it provides BibTeX output. We need a .bib file later.)
+
+If this is your first time using Mendeley: you can simply drag and drop pdf files into Mendeley. It will automatically start searching the web for the meta data. If your pdf is a published paper, there will be a lot of meta data available. 
+
+<div class="question">
+
+##### Exercise `r les`
+Import some random paper from Pubmed into Mendeley (drag & drop the pdf into Mendeley). What metadata do you get? 
+
+Import some pdf you rendered yourself from RMarkdown into Mendeley. What metadata do you get? 
+
+Try making some notes and highlighting some text within Mendeley.
+
+</div>
+
+#### How to get Mendeley into RMarkdown
+Special thanks to [Rosanna van Hespen](https://rosannavanhespen.nl/rmarkdown/writing-your-thesis-with-r-markdown-2-text-citations-and-equations/) for sharing her workflow online!
+
+  1. First, start a new .Rmd file.
+
+  2. Next, we need a file with all the references Mendeley is currently managing for you. At least 1 random paper and 1 self-made pdf. Mendeley can make a file containing this information: a .bib file. You can have Mendeley automatically updating this file for you, but as we are already syncing stuff with github, we will not make things this complicated for now. So, you will need to repeat this step if you add new papers to Mendeley.
+  
+  - Click File --> Export all.
+  - select BibTeX
+  - choose an export location (the folder with your new .Rmd file)
+
+<mark> XXX screenshots be here </mark>
+
+  3. Go back to your .Rmd file and change the YAML header: write ‘bibliography: library.bib’ (or whatever is the name of your .bib file), so your header will look like something this:
+
+```
+title: "Untitled" 
+output: html_document 
+bibliography: library.bib
+```
+
+  4. Go back to Mendeley, and check the citation key of the random paper we downloaded. For example, suppose it is `@Author2000`
+
+<mark> XXX screenshots be here </mark>
+
+You can now cite papers it in your .Rmd using their citation key:
+  
+  ```
+  Lisa said something really smart [@Author2000].
+  ```
+or two people:
+
+  ```
+  Some people agree with her [@dehaan08; @vangestel18].
+  ```
+
+or include additional information:
+
+  ```
+  As do colleagues[see @teunis99, pp. 33-35; also @svanoef04, ch. 1].
+  
+  or inline:
+  
+  @smith04 [p. 33] says blah.
+  
+  ```
+
+Use a minus sign if you don't want to include the names:
+
+  ```
+Van der Ploeg says so too [-@vdploeg04].
+  ```
+  
+<div class="dagopdracht">
+
+**Dagopdracht**
+
+<mark>XXX uitwerken: is dit genoeg?</mark>
+
+  A) Make a new folder within Mendeley for the projecticum. Place all pdf's you used till now in your folder (if you did not use any papers as source yet, find 3 papers on Pubmed now that you could use for your introduction.). Copy your .bib file in the folder on your computer you are using for the Projecticum git repo.
+  B) Start a .Rmd named "introduction.Rmd" with a few lines introduction on your projecticum topic.
+  C) Include automatic inline references to the papers you used.
+  D) The bibliography will be placed at the end of the document. Provide an appropriate header.
+  E) Merge your work with that of your projecticum partner through github. Solve all the problems you encounter. If github does not want to merge .bib files and you want a merged one, try [here](https://caltechlibrary.github.io/bibtex/webapp/bibmerge.html).
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ## Summary -->
+
+<!-- - Markdown is a simple plain text format suitable for authoring rich documents -->
+<!-- - RMarkdown is a slight extention of the Markdown syntax that lets us mix code and prose together -->
+<!-- - RMarkdown is a key part of the R reproducible science scene -->
+<!-- - RStudio is a great way to author RMarkdown documents -->
+<!-- - Later on in this workshop, we'll see how to deal with citations so we can write academic manuscripts -->
+
+<!-- ### <mark>**EXERCISE 1; Create a short report**</mark> {-} -->
+
+<!--  1. Find a relevant dataset  that you recently found or are busy with at the moment* -->
+<!--  1. Write a short Rmd report where you LOAD and VISUALIZE (create at least 3 different graphs) the data in an Rmd report. -->
+<!--  1. Publish the exploratory analysis in your portfolio -->
+
+<!-- *If you do nog have a dataset, you can use this one: -->
+<!-- "./data/API_AG.LND.FRST.K2_DS2_en_csv_v2_716262" -->
+
+<!-- **Place it on you github (portfolio) repo and send me the link.** -->
 
 
 ## Resources

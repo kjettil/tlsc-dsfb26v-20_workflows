@@ -77,6 +77,13 @@ The course is build on these fundamental concepts and technologies.
  1. Literate Programming using R flavored Markdown (R Markdown)
  1. Interactive visualizations using Shiny
  1. Relational databases to improve data provenance, computational speed and traceability of observations 
+ 
+This is also (globally) the contents of the course. The course is further _enriched_ with four Masterclasses on relevant extra tools and concepts. In this edition of the course we will have the following Masterclasses:
+
+ 1. Tools for Reproducible Research: `conda`, `renv` and `Docker`
+ 1. Shiny; Getting started
+ 1. Shiny; Dashboards
+ 1. Visualizations; How to produce a publication grade graph with `{ggplot2}`
 
 ## Software, Laptop and RStudio server
 In order for you to be able to start applying what you have learned during the course, we require you to install the software needed for this course on your own computer. We do also offer an account on the RStudio Server that you used during the previous DSFB-2 course ("DAUR2"). For some exercises, you will need to login to the RStudio Sever with the account provided to you previously. The server can be found here `r as.character(unlist(urls[4,2]))`. If you do not have access to your account any more, please inform your teachers. The list of required software can be found here \@ref(softwarelist). 

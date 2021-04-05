@@ -3,68 +3,65 @@
 
 ## Credits
 
-For this course materials have been adapted from:
- 
-  - Wickham and Grolemund, "R for Data Science", 2017, O'Reily
-  - Field et. al., 2015, "Discovering Statistics Using R", Sage Publications Ltd.
-  - Sr. David Spiegelhalter, "The Art of Statistics", 2019, Pelican Books
+### General resources
+
+ - Wickham and Grolemund, "R for Data Science", 2017, O'Reily
+ - Field et. al., 2015, "Discovering Statistics Using R", Sage Publications Ltd.
+ - Sr. David Spiegelhalter, "The Art of Statistics", 2019, Pelican Books
   
 ## License resources
 
-- [Choose a License](https://choosealicense.com/). This website helps you to choose the best license for your project. 
-- [Using licenses on GitHub](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/licensing-a-repository). This GitHub documentation page provides information about how to add and apply licenses to your GitHub repositories.
+ - [Choose a License](https://choosealicense.com/). This website helps you to choose the best license for your project. 
+ - [Using licenses on GitHub](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/licensing-a-repository). This GitHub documentation page provides information about how to add and apply licenses to your GitHub repositories.
   
 ## Git resources
 
 ### Git command line
 
-- [Git - the simple guide](http://rogerdudler.github.io/git-guide/). This web resource provides a simple explanation of Git and its commands.
-- [Pro Git book](https://git-scm.com/book/en/v2). This book explains the principles behind Git and also provides a great introduction to the Git command line. 
+ - [Git - the simple guide](http://rogerdudler.github.io/git-guide/). This web resource provides a simple explanation of Git and its commands.
+ - [Pro Git book](https://git-scm.com/book/en/v2). This book explains the principles behind Git and also provides a great introduction to the Git command line. 
 
 ### Git and R(Studio)
 
-- [Collaboration and time travel using Git](https://rstudio.com/resources/webinars/collaboration-and-time-travel-version-control-with-git-github-and-rstudio/). In this video (approximately 45 minutes), R guru Hadley Wickham explains the concepts of Git collaboration and Git version control. 
-- [Happy Git with R book](https://happygitwithr.com/). This book is a nice resource for R users that want to use Git in their projects.
+ - [Collaboration and time travel using Git](https://rstudio.com/resources/webinars/collaboration-and-time-travel-version-control-with-git-github-and-rstudio/). In this video (approximately 45 minutes), R guru Hadley Wickham explains the concepts of Git collaboration and Git version  control. 
+ - [Happy Git with R book](https://happygitwithr.com/). This book is a nice resource for R users that want to use Git in their projects.
 
 ## Github / SCRUM
 
-https://github.com/features/project-management/
-https://github.com/jvandemo/github-scrum-workflow
-https://unito.io/blog/github-projects-agile/
-https://dev.to/ben/for-those-who-make-use-of-github-projectswhats-your-process--5f7c [practices]
-https://www.youtube.com/watch?v=idZyqNIrt84 [github automation and projects]
-https://www.youtube.com/watch?v=YxKhb3fxtsU [github automation and projects]
+ - https://github.com/features/project-management/
+ - https://github.com/jvandemo/github-scrum-workflow
+ - https://unito.io/blog/github-projects-agile/
+ - https://dev.to/ben/for-those-who-make-use-of-github-projectswhats-your-process--5f7c [practices]
+ - https://www.youtube.com/watch?v=idZyqNIrt84 [github automation and projects]
+ - https://www.youtube.com/watch?v=YxKhb3fxtsU [github automation and projects]
 
-
-## Resources:
-
-### Youtube
+## Youtube
  - https://www.youtube.com/watch?v=rz3_FDVt9eg 
  - https://www.youtube.com/watch?v=go5Au01Jrvs
  - https://www.youtube.com/watch?v=7UlWJWfZO9M
  - https://www.youtube.com/watch?v=GyNqlOjhPCQ
  - https://www.youtube.com/watch?v=1GmQ5BdAhG4
  
-### R-bloggers
+## R-bloggers
 
  - https://www.r-bloggers.com/how-to-learn-r-2/
  - https://digitheadslabnotebook.blogspot.com/2011/06/drawing-heatmaps-in-r.html?m=1
  
 
-### Bioconductor
+## Bioconductor
  
  - http://bioconductor.org/install/
  - http://bioconductor.org/help/package-vignettes/
  - http://bioconductor.org/packages/release/BiocViews.html#___Workflow
 
-### Cheatsheets
+## Cheatsheets
 
  - https://www.rstudio.com/resources/cheatsheets/
  - https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
  - https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf
  - https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf
 
-### Books 
+## Books 
 
  - http://r4ds.had.co.nz/
  - https://www.tidytextmining.com/
@@ -74,43 +71,24 @@ https://www.youtube.com/watch?v=YxKhb3fxtsU [github automation and projects]
  - https://github.com/jennybc
  - https://github.com/hadley
 
-### Github integration / CI
 
-
-### AGILE SCRUM
-
-
-### Github resource list
+## Github resource list
 
 There are many 'R resources lists' to be found on the internet. Here, I just mention three that I liked.
 
-https://paulvanderlaken.com/2017/08/10/r-resources-cheatsheets-tutorials-books/
-
-https://www.r-project.org/doc/bib/R-books.html
-
-https://github.com/oscarbaruffa/BigBookofR
+ - https://paulvanderlaken.com/2017/08/10/r-resources-cheatsheets-tutorials-books/
+ - https://www.r-project.org/doc/bib/R-books.html
+ - https://github.com/oscarbaruffa/BigBookofR
 
 ## Python in RStudio
 
-https://support.rstudio.com/hc/en-us/articles/360023654474-Installing-and-Configuring-Python-with-RStudio
-
-
+ - https://support.rstudio.com/hc/en-us/articles/360023654474-Installing-and-Configuring-Python-with-RStudio
 
 ## Databases
-https://www.r-bloggers.com/2013/07/r-and-postgresql-using-rpostgresql-and-sqldf/
-https://www.r-bloggers.com/2016/02/using-postgresql-in-r-a-quick-how-to/
-https://www.datacareer.de/blog/connect-to-postgresql-with-r-a-step-by-step-example/
-https://db.rstudio.com/dplyr/
-https://dbplyr.tidyverse.org/
 
-[database samples](https://wiki.postgresql.org/wiki/Sample_Databases)
-
-
-
-### DBeaver
-
-[DBeaver download]()
-
-[DBeaver-docs]()
-
-[RPostgreSQL]
+ - https://www.r-bloggers.com/2013/07/r-and-postgresql-using-rpostgresql-and-sqldf/
+ - https://www.r-bloggers.com/2016/02/using-postgresql-in-r-a-quick-how-to/
+ - https://www.datacareer.de/blog/connect-to-postgresql-with-r-a-step-by-step-example/
+ - https://db.rstudio.com/dplyr/
+ - https://dbplyr.tidyverse.org/
+ - [database samples](https://wiki.postgresql.org/wiki/Sample_Databases)

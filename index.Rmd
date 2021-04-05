@@ -1,6 +1,6 @@
 --- 
 title: "Course Workflows [HU OSIRIS: tlsc-dsfb26v-20_workflows]"
-author: "Alyanne de Haan, PhD; Bas van Gestel; Rene van der Ploeg, PhD; Chris van Oevelen, PhD; Marc Teunis, PhD"
+author: "Alyanne de Haan, PhD; Bas van Gestel; Marc Teunis, PhD"
 date: "`r Sys.time()`"
 site: bookdown::bookdown_site
 output: 
@@ -40,8 +40,6 @@ knitr::write_bib(c(
 
 ```
 
-
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, fig.width = 6, fig.height = 4,
                       warning = FALSE,
@@ -52,6 +50,9 @@ image_dir <- here::here(
   "images"
 )
 
+urls <- readr::read_csv(
+  here::here("urls")
+)
 ```
 
 
@@ -59,104 +60,83 @@ image_dir <- here::here(
 library(tidyverse)
 ```
 
+
 # Course introduction {.unnumbered}
-
-<mark>[   write general introduction on the course contents, we do not need a list because the contents can be derived from the table of contents, which will be the ground truth for the course contents]</mark>
- 
-<global setup of the course - REMOVE> 
-scrum: hoe moet dat en hoe gaan we dat deze cursus ondersteunen. scrum moeten ze toepassen op projecticum.
-
-Lesson 2 
-
-## Uitleg en opzetten eigen github
-
-o basic git workflow in commandline
-o Start github
-o Push en pull
-o clone
-o koppelen Rstudio
-
-git: toepassen: voorbeeld-cases, koppelen aan Rstudio
-o branching per fix en merging, braches pushen
-o backtracking?
-
-git: toepassen: groepsproject met bestanden projecticum
-o teamwork: hoe samenwerken met git (wijs hoofd merge requests aan)
-o github merge requests
-
-Rmarkdown: Uitleg en zelf doorwerken voorbeelden (let op aansluiting met eventuele rmarkdown in daur1)
-o Overzicht Formats (pdf, websites, books, dashboards)
-o Basic syntax
-
-o website online zetten via github 6. Rmarkdown: toepassen: o Meer syntax o rapporten (tekstbestanden) genereren (reproducible reports) 7. Rmarkdown: toepassen: o opzetten eigen Rmarkdown-homepage met informatie over ontwikkeling van student tijdens deze cursus. (projecticum, opdrachten SQL en GIT deze cursus)
-
-SQL: Uitleg en zelf doorwerken voorbeelden
-o mySQL?
-o syntax basics
-o toepassing basics
-SQL: toepassen:
-o SQL binnen Rstudio
-o voorbeeld-cases uit life sciences
-SQL: toepassen
-o op data projecticum (of indien ongeschikt zelf in te brengen casus) en online presenteren op Rmarkdown-homepage
+When you program, you seldom program in isolation. Usually, you are writing analyses, pieces of software or creating visualizations within a collaborative (research) project. Adopting a robust and reproducible workflow is key for managing your own work and that of others. Using a version control system, managing your data and other files in a structured way, deploying your software or analysis pipeline in a robust manner are all good practices you need to apply in your work as a bioinformatician or data analyst, translator or scientist.
 
 
 ## Purpose of this website
-This website is a `{bookdown}`project that forms the reader and learning content for the course 
+This website is a `{bookdown}` project that forms the reader and learning content for this course 
 
+## General course aim and content
+In this course we will focus on the tools that are available to adopt such good practices in your own work. Using examples and many exercises and assignments we will help you get to know the tools and **WORKFLOWS** that are available to you. The focus here will be on the tools that are freely and from open source available. We chose to limit the course tools to the use of open source applications exclusively. This will greatly facilitate the application and use of these tools also outside the course context. Furthermore, open source software is one of the key prerequisites for Open Science. We will start the course by explaining what Open Science is and how it (to our opinion) will lead to better science. We will use this framework to expand our knowledge on how to apply good practices from the software development industry to scientific applications and from there we will gradually start adding tools to your data science toolbox. 
 
-## Course contents & materials
+The course is build on these fundamental concepts and technologies. 
 
-<p style="font-size:18px">The complete source code for this reader can be found here:
-
-```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
-urls <- readr::read_csv(
-  here::here("urls")
-)
-
-urls[1,2] %>%
-  unlist() %>%
-  as.character() %>%
-  paste()
-
-```
-
-
-## Getting the materials
-To compile this website locally, first clone the website repository from 
-```{r, echo=FALSE}
-urls <- readr::read_csv(
-  here::here("urls")
-)
-
-urls[1,2]
-
-```
-
-then run `devtools::install(".")` from within the cloned repo directory. This will install all the dependent R-packages.
-
-To compile the book-site locally run `bookdown::render(".")` from inside the cloned repo. This repository can also be used to access the course materials directly in RStudio during the workshops.
-
-Last, you can also access all the functions that are associated with this project by running `devtools::build(".")`, to share or store the package `{workflows}` as a binary archive file.
+ 1. Open Science
+ 1. File management and formatting following the Guerrilla Analytics Principles
+ 1. Isolation of (code) projects in environments (`conda` & `Docker containers`) 
+ 1. Version control and Project management, using Github.com
+ 1. Literate Programming using R flavored Markdown (R Markdown)
+ 1. Interactive visualizations using Shiny
+ 1. Relational databases to improve data provenance, computational speed and traceability of observations 
  
-## Getting R and RStudio
-During the course you can still work on the server you used in DAUR1. The Cloud Computing Environment provides web access to R and RStudio via a Virtual Machine. This machine runs a server edition of RStudio and has the latest R version and all the required packages available. However, you will also often use your own local Rstudio environment and other software (see chapter prerequisites!). You should be comfortable with working and fixing issues with R by now, enough to keep your local environment up and running.
+This is also (globally) the contents of the course. The course is further _enriched_ with four Masterclasses on relevant extra tools and concepts. In this edition of the course we will have the following Masterclasses:
 
-<!-- In order to access the server you will need credentials, which you will recieve before the course starts. This is a convenient way to use R in a course and during the course we will only be using this environment. This is to ensure reproducibility and prevents a lot of trouble shooting from your side and the teacher's side. -->
+ 1. Tools for Reproducible Research: `conda`, `renv` and `Docker`
+ 1. Shiny; Getting started
+ 1. Shiny; Dashboards
+ 1. Visualizations; How to produce a publication grade graph with `{ggplot2}`
 
-The server can be found here `r as.character(unlist(urls[4,2]))`. You will get credentials for the server, before the course starts.
+## Software, Laptop and RStudio server
+In order for you to be able to start applying what you have learned during the course, we require you to install the software needed for this course on your own computer. We do also offer an account on the RStudio Server that you used during the previous DSFB-2 course ("DAUR2"). For some exercises, you will need to login to the RStudio Sever with the account provided to you previously. The server can be found here `r as.character(unlist(urls[4,2]))`. If you do not have access to your account any more, please inform your teachers. The list of required software can be found here \@ref(softwarelist). 
 
-If you want to use R and RStudio locally on your laptop, this is where you can download the software from:
+## Portfolio, assessments and course exam
+Each course day (lesson) you will be required to create an RMarkdown file and associated rendered (_knitted_) html file or some other tangible proof of your completion of the assignment (for example a github repo or a commit). During the flow of course you need to add this material to an online portfolio website. You can use the R package `{bookdown}` to build your portfolio. Failing to hand in an assignment will fail you the course. This means that you cannot compensate an assignment with another assingment, you will need to complete them all to pass the course.
 
-[RStudio](https://www.rstudio.com/products/rstudio/download/) 
+To successfully complete this course, you will need to pass these checks:
 
-[R](https://cran.r-project.org/)
+ 1. Add all required assignments and materials to your online portfolio
+ 1. Provide the teachers access to your online portfolio
+ 1. Meet the assignment minimal requirements
+ 1. Pass the live (online) assessment that will be held to grade your portfolio.
+
+For more detailed information on the requirements and rules for passing this course see \@ref(portfolioexam) 
+
+## Getting the course materials
+To compile this website locally, in RStudio, initatiate a new project from the website repository at:
+
+`r urls[1,2]`
+
+Run `devtools::install(".")` from within the cloned repo directory. This will install all the dependent R-packages.
+
+To compile the bookdown website locally run `bookdown::render(".")` from inside the cloned repo. This repository can also be used to access the course materials directly in RStudio during the workshops.
+
+## A future proof course
+No matter where you will go after this course, if you stay in the field of bioinformatics or data science, you will encounter and use many of the concepts that are dealt with in this course, in your daily work. Organizing your work in a **WORKFLOW** will reduce confusion, time spend debugging or tracing mistakes and will improve the robustness and reproducibility of your science. It will also require you to spend time to learn about these concepts. We believe it is well worth the investment, because it will pay off, not only for you personally, but for science in general. We have done our best to make this course enjoyable and educational at the same time. We sincerely hope you will have fun learning about this important (yet under-appreciated) aspect of data analysis and we hope you will take along many of the lessons learned to your future job. If you can, try to inspire others to adopt a 'reproducible research' mindset. If anything, at least you will have a nice portfolio to show off to your (possible) future boss.  
+
+Of course, we have carefully put together this reader to include example code, inspiring exercises and fulfilling day-assignments to be added to your portfolio. We have used many external resources to generate the content of this reader. We tried to pay proper credit to all of those resources. If you feel we have made a mistake somewhere, or did not pay proper respect to a source used, please let us know by reaching out to us via email or generate a pull request in the github repo, linked to this project (`r urls[1,2]`)
+
+The easiest way to get information about the authors is by using the `{desc}` package from within the reader bookdown project. Run the code below to get email-address information.
+
+```{r, eval=FALSE}
+#install.packages("desc")
+library(desc)
+desc <- description$new()
+desc$get_authors()
+```
+
+If you would like to cite our work, run:
+
+```
+devtools::install_github(`r urls[1,2]`)
+citation("workflows)
+```
 
 ## The `{bookdown}` package
 This website was created using the `{bookdown}` [@R-bookdown] package written by Yihui Xie. The package can be downloaded from CRAN. For more information see the [documentation](https://bookdown.org/yihui/bookdown/).
 
 The `{bookdown}` package can be installed from CRAN or Github:
-
 ```{r eval=FALSE}
 install.packages("bookdown")
 # or the development version

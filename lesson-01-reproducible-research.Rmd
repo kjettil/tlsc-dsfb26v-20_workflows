@@ -3,17 +3,18 @@
 les <- 1
 ```
 
+### **This lesson has two portfolio assignments**
+
 This lesson is about the 'movement' in science called 'Reproducible Research'. It explains the principles of Open Science and connected terms such as Open Access, Open Source and Reproducible Research, Open Peer Review and Open Data. You will practice with workflows that enable working reproducible.
 
 ## Before you start! Exercise and assignment directives
 Within the lesson you will encounter a number of exercises. 
 
-Please answer all the assignments and exercises in an RMarkdown document. You learned how to make one in DAUR1. Save it somewhere in your course project. You can use this later to build your portfolio.
+Please answer all the assignments and exercises in an RMarkdown document. You learned how to make one in DAUR1. Save it somewhere in your course project. You can use this later to build your portfolio. 
 
-At the end of every lesson, there is a large assignment (dagopdracht). You will work on this assignment for the rest of the day, after finishing the smaller exercises in the lesson. Save the dagopdrachten in separate Rmd files (as instructed within the dagopdrachten).
+At the end of every lesson, there is a larger _lesson assignment_ (dagopdracht). You will work on this assignment for the rest of the day, after finishing the smaller exercises in the lesson. Save all lesson assignments in separate Rmd files (as instructed within the assignments). Please create a separate RStudio project to complete all the lesson assignments. The colleaction of all the lesson assignments, plus the work you do for the projecticum will form your portfolio for this course. The portfolio is also the exam for this course. **You will need to pass all lesson assignments in order to pass the course**. See \@ref(portfolioexam) for more info. 
 
 Please note that this is a 5 EC course, so count on about 140 hours of work in total. Part of this workload will be spread over the semester, to work on your portfolio. But we scheduled these lessons to ensure that you have most of the first 3 weeks in this semester available to finish the lessons in workflows. Use this time to you advantage! You will need the skills from this course within the projecticum. 
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
@@ -24,33 +25,11 @@ knitr::opts_chunk$set(echo = TRUE,
 image_dir <- here::here(
   "images"
 )
-chapter_name <- "represintro"
-lesson_number <- c("1.1")
-
 ``` 
 
 ```{r loadpackages, include=F}
 library(tidyverse)
 library(nlme)
-```
-
-```{r, topic, include=FALSE}
-## add topics below to write them automatically to the course contents table
-topics <- c(
-  "Reproducible research",
-  "Open source",
-  "Guerilla analytics",
-  "software development",
-  "Literate programming",
-  "Programming vs GUI",
-  "R Markdown",
-  "R Markdwon Driven Development",
-  "R package development",
-  "Git/Github",
-  "Version Control"
-)
-
-
 ```
 
 ## Introducing Reproducible Research
@@ -109,12 +88,11 @@ knitr::include_graphics(
 )
 ```
 
-<p style="font-size:14px">**The file "./Rmd/steps_to_graph_from_excel_file.html" shows you how to do this using the programming language R. In webinar part 3, we will revisit this example.</p>
+<p style="font-size:14px">**The file "./Rmd/steps_to_graph_from_excel_file.html" shows you how to do this using the programming language R.</p>
 
 Maybe ~~videotape~~ tiktok-record your process and add .mp4 to your paper? Type out every step in a Word document? Both options seem rather silly. This is actually really hard!
 
-_"In fact, you can only do this sensibly using code, so it is (basically) impossible in a GUI"_**
-
+**"In fact, you can only do this sensibly using code, so it is (basically) impossible in GUI based software"**
 
 ### What you need for replication
 
@@ -131,7 +109,6 @@ To replicate a scientific study we need at least:
  > - Conclusions and academic scoping of the results [<mark>P</mark>, _C_]
  > - **Access to all of the above** [<mark>OAcc, OSrc</mark>]
 
-
 <p style="font-size:14px">$P = Publication$, $D = Data$, $C = Code$, $OAcc = Open\ Access$, $OSrc = Open\ Source$ </p> 
 
 So we can conclude that 
@@ -139,7 +116,7 @@ So we can conclude that
 $Reproducible\ (Open)\ Science = P + D + C + OAcc + OSrc$
 and 
 
-### hydroxychloroquine example
+### Hydroxychloroquine example
 
 Is (hydroxy)chloroquine really an option for treating COVID-19?
 As you probably know, hydroxychloroquine was repeatedly touted as a promising cure for COVID-19 by US President Donald Trump in 2020. 
@@ -155,8 +132,12 @@ knitr::include_graphics(
 
 <p style="font-size:14px">https://www.washingtonpost.com/politics/2020/04/07/trumps-promotion-hydroxychloroquine-is-almost-certainly-about-politics-not-profits/</p>
 
-
 But how are we really doing with (hydroxy)chloroquine as a treatment for COVID-19?
+We know by now that treating COVID-19 with hydroxycholoroquine is not an option. There is no scientific proof that it helps in reducing the severity of the disease. But back at the start of the pandemic in 2020, things were not so clear. If anything, it could worsen the outcome of the disease. It has severe side effects as well. See e.g. the reference below:
+Das S, Bhowmick S, Tiwari S, Sen S. An Updated Systematic Review of the
+Therapeutic Role of Hydroxychloroquine in Coronavirus Disease-19 (COVID-19).
+Clin Drug Investig. 2020 Jul;40(7):591-601. doi: 10.1007/s40261-020-00927-1.
+PMID: 32468425; PMCID: PMC7255448. 
 
 ```{r, echo=FALSE, message=FALSE }
 knitr::include_graphics(
@@ -165,17 +146,15 @@ knitr::include_graphics(
     "lancet_covid.png"
   )
 )
-
 ```
-
 <p style="font-size:14px">https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31180-6/fulltext</p>
 
 <div class="question">
 ##### Exercise `r les`
 
-**Answer the following questions (and save in your Rmarkdown file!)**
+**Answer the following questions**
 
-a) What was the reason for retracting this [paper](https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31180-6/fulltext)?
+(A) What was the reason for retracting this [paper](https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31180-6/fulltext)?
 
 ```{r, include=FALSE, eval=FALSE}
 # <p style="font-size:18px">_"Our independent peer reviewers informed us that Surgisphere would not transfer the full dataset, client contracts, and the full ISO audit report to their servers for analysis as such transfer would violate client agreements and confidentiality requirements"_</p>
@@ -187,7 +166,7 @@ a) What was the reason for retracting this [paper](https://www.thelancet.com/jou
 # <p style="font-size:14px">https://www.sciencemag.org/news/2020/06/two-elite-medical-journals-retract-coronavirus-papers-over-data-integrity-questions</p>
 ```
 
- B) Why is the retraction in itself a problem?
+(B) Why is the retraction in itself a problem?
 
 ```{r, include = FALSE, eval=FALSE}
  # >- Scientific conclusions get picked up by the media, retracting statements is difficult
@@ -197,10 +176,11 @@ a) What was the reason for retracting this [paper](https://www.thelancet.com/jou
  # >- The credibility of Science as a whole is at stake ('in the eye of the beholder')
 ```
 
- C)  In the sense that we defined above, does The Lancet adhere to Reproducible (Open) Science? Why does it / Why not, what is missing?
+(C)  In the sense that we defined above, does The Lancet adhere to Reproducible (Open) Science? Why does it / Why not, what is missing?
 
 </div>
 
+<details><summary>Click for the answer</summary>
 Would the Lancet have adopted the Reproducible (Open) Science framework:
 
  >- There would have been no publication, so no retraction necessary
@@ -210,12 +190,11 @@ Would the Lancet have adopted the Reproducible (Open) Science framework:
  >- Focus should be on the data and methods, not on the academic narratives and results ...
  >- In physics and bioinformatics this is already common practice
 
+</div>
 
+## Data, methods and logic
 
-## Data, methods and logic {.build}
-
-So in order to perform Reproducible Open Science we need to make a full connection between the data, the analysis and the narratives (the conclusions, the 'story', etc.)
-In *[Brown, Kaiser & Allison, PNAS, 2018](https://doi.org/10.1073/pnas.1708279115)*
+So in order to perform Reproducible Open Science we need to make a full connection between the data, the analysis and the narratives (the conclusions, the 'story', etc.). In *[Brown, Kaiser & Allison, PNAS, 2018](https://doi.org/10.1073/pnas.1708279115)*
 We read:
 
 "...in science, three things matter:
@@ -237,20 +216,30 @@ knitr::include_graphics(
 )
 ```
 
+ - The connection between the theoretical knowledge and the supporting data could get lost
+ - The integrity of the data can become compromised (the data can get corrupt)
+ - The steps from the (raw) data to the final conclusions are not well documented and cannot be traced or reproduced
+ - The tools that were used to generate the analysis results are unavailable to others (this problem arises when licensed software is used in stead of open source tools)
+ - The underlying mechanisms of algorithms used is unclear and not transparent  
+ - The data is not available for control or reuse
+ - The underlying assumptions for the data cannot be verified
+ ...
+
+I will illustrate this with the use of Excel in genome biology
+
 ### Why using Excel for Biology is a bad idea
-When you use Excel for data collection and especially for genetics and genomics studies, you risk losing and/or messing up your data. This is mainly due to the 'autoformatting' in Excel, but other problems could occur as well. This is nicely adressed in this [paper:](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7). The authors show, through an automated workflow, that many Excel files used for genomics studies, and that were supplied as supplementary materials to a publication contain, 'autoformatted' (read _changed_) gene names. 
+When you use Excel for data collection and especially for genetics and genomics studies, you risk losing and/or messing up your data. This is mainly due to the 'autoformatting' in Excel, but other problems could occur as well. This is nicely adressed in this [paper:](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7). The authors show, through an automated workflow, that many Excel files used for genomics studies, and that were supplied as supplementary materials to a publication contain, 'auto formatted' (read _changed_) gene names. 
 
-In itself this 'autoformatting' is problematic enough, but when you have data containing time series or dates, things start to become really problematic when you use Excel.
+In itself this 'auto formatting' behaviour is problematic enough, but when you have data containing time series or dates, things start to become really problematic when you use Excel.
 
-Also, if only one record in a whole Excel file is changed to the wrong data-type, R and other tools will parse this column most likely as a character. This stresses the need for thouroughly checking your data types, especially after importing Excel files into R.
+Also, if only one record in a whole Excel file is changed to the wrong data-type, R and other tools will parse this column most likely as a character. This stresses the need for thoroughly checking your data types, especially after importing Excel files into R.
 
-We will practice a bit to see this happening live in an Exercise 
+We will practice this a bit and see this happening live in an exercise 
 
 <div class="question">
-
 ##### Exercise `r les`
 
-**Reading a strangly formatted column from an Excel file**
+**Reading a strangely formatted column from an Excel file**
 
  A) From within R, try downloading the following file: 
  http://genesdev.cshlp.org/content/suppl/2009/06/11/gad.1806309.DC1/FancySuppTable2.xls
@@ -280,7 +269,6 @@ fancy_supp <- read_csv(
   )
 )
 
-
 url2 <- c("http://genesdev.cshlp.org/content/suppl/2009/11/03/23.21.2484.DC2/Bilodeau_Supp_Table_11.xls")
 
 download.file(
@@ -305,6 +293,7 @@ bilodeau_supp <- readxl::read_xls(
 **TIPS** 
 I always have difficulty remembering how to rotate axis labels in R. That is why I wrote an R package that has a convenient function. The package can be installed by running:
 ```
+# install.packages("devtools") ## if not already installed
 devtools::install_github("uashogeschoolutrecht/toolboxr")
 ## load the package
 library(toolboxr)
@@ -316,11 +305,10 @@ If you have any suggestions for a good convenience function to add to this packa
 </div>
 
 
-<div class="question">
+## Portfolio assignment `r paste0(les, ".1")`
+<div class="dagopdracht">
 
-##### Exercise `r les`
-
-**c.elegans**
+**_C. elegans_ plate experiment**
 
 (Again: work out this exercise in your markdown file. You will need this later to put in your portfolio)
 
@@ -328,9 +316,9 @@ The data for this exercise was kindly supplied by J. Louter (INT/ILC) and was de
 
 A typical analysis with this data would be to run a dose-response analysis using a log-logistic model with estimates for the maximal, the minimal, the IC50 concentration and the slope at IC50. We will not go into the details but a good package to run such computations and create graphs in R is the `{drc}` package. [See:](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0146021) [and:](https://cran.r-project.org/web/packages/drc/index.html). In the exercise below we will create some visualizations using `{ggplot2}`.
 
-A) Review the following Excel file in the `./data/CE.LIQ.FLOW.062_Tidydata.xlsx`, by opening the file in Excel. See if you can spot anything peculiar about this file. Do not edit the file in any way. Just close it when you are done. (Annoyingly, Excel asks you to save your changes, even if you did not touch anything in the file: why is this cumbersome?)
+(A) Review the following Excel file in the `./data/CE.LIQ.FLOW.062_Tidydata.xlsx`, by opening the file in Excel. See if you can spot anything peculiar about this file. Do not edit the file in any way. Just close it when you are done. (Annoyingly, Excel asks you to save your changes, even if you did not touch anything in the file: why is this cumbersome?)
  
-B) Open the file in R, using the `{readxl}` package.
+(B) Open the file in R, using the `{readxl}` package.
  
 ```{r, include=FALSE}
 celiqflow_062 <- readxl::read_xlsx(
@@ -341,18 +329,16 @@ celiqflow_062 <- readxl::read_xlsx(
 )
 ```
 
-C) Inspect the data types of columns `RawData`, `compName` and `compConcentration`. What types would you expect from the experimental description above. Have the data types been correctly assigned during the importing of the data into R?
+(C) Inspect the data types of columns `RawData`, `compName` and `compConcentration`. What types would you expect from the experimental description above. Have the data types been correctly assigned during the importing of the data into R?
 
 ```{r, include=FALSE}
 names(celiqflow_062)
 map(celiqflow_062, typeof)
 ```
 
-D) Create a graph displaying a scatterplot for the `CE.LIQ.FLOW.062_Tidydata.xlsx` data, for the different compounds and the varying concentrations. Put the `compConcentration` on the x-axis, the `DataRaw` counts on the y-axis and assign a colour to each level in `compName`. Assign a different symbol (`shape = `) to each level in the `expType` variable. Try fixing the labels of the x-axis so that we can read them.
+(D) Create a graph displaying a scatterplot for the `CE.LIQ.FLOW.062_Tidydata.xlsx` data, for the different compounds and the varying concentrations. Put the `compConcentration` on the x-axis, the `DataRaw` counts on the y-axis and assign a colour to each level in `compName`. Assign a different symbol (`shape = `) to each level in the `expType` variable. Try fixing the labels of the x-axis so that we can read them.
 
-
-
-```{r, echo=F}
+```{r,include=FALSE}
 celiqflow_062 %>%
   ggplot(aes(x = compConcentration, 
              y = RawData)) +
@@ -362,10 +348,10 @@ celiqflow_062 %>%
   
 ```
 
-E) When creating the plot under C), what happened with the ordering of the x-axis labels. Explain why this happens. Look at the data-type of the `compConcentration` column in the data again to find a clue.
+(E) When creating the plot under C), what happened with the ordering of the x-axis labels. Explain why this happens. Look at the data-type of the `compConcentration` column in the data again to find a clue.
 
-F) Correct the data-type of `compConcentration` to `numeric` and than look at the graph again. Use a log10 transformation on the x-axis to get a clear graph. Also, add a bit of `jitter` to the points in the graph so that points are not overlapping.  
-```{r, echo=F}
+(F) Correct the data-type of `compConcentration` to `numeric` and than look at the graph again. Use a log10 transformation on the x-axis to get a clear graph. Also, add a bit of `jitter` to the points in the graph so that points are not overlapping.  
+```{r, include=FALSE}
 
 celiqflow_062 %>%
   mutate(compConcentration = as.numeric(compConcentration)) %>%
@@ -378,12 +364,12 @@ celiqflow_062 %>%
 ```
 
 Fill in:
+(G) The positive control for this experiments is .....
+(H) The negative control for this experiment is .....
 
-  G) The positive control for this experiments is .....
-  H) The negative control for this experiment is .....
-  I) Think about how you would analyze this experiment to learn whether there is indeed an effect of different concentrations on offspring count and whether the different compounds have a different curve (IC50). Write down you analysis as a step-wise plan 
-  J) Normalize the data for the `controlNegative` in such a way that the mean value for `controlNegative` is exactly equal to 1 and that all other values are expressed as a fraction thereof. Rerun your graphs with the normalized data. 
-  H) Why would you want to take the step under J?
+(I) Think about how you would analyze this experiment to learn whether there is indeed an effect of different concentrations on offspring count and whether the different compounds have a different curve (IC50). Write down you analysis as a step-wise plan 
+(J) Normalize the data for the `controlNegative` in such a way that the mean value for `controlNegative` is exactly equal to 1 and that all other values are expressed as a fraction thereof. Rerun your graphs with the normalized data. 
+(H) Why would you want to take the step under J?
 
 </div>
 
@@ -416,8 +402,7 @@ knitr::include_graphics(file.path(image_dir,"rmd_printscr.png"))
 ```
 
 ## A short example of Reproducible (Open) Science
-
-<mark> XXX meer uitleg nodig, ze kennen repeated measures nog niet en dat tests gaan over het verklaren van variantie is meestal gemist </mark>
+The statistical model used in the example below is a so called mixed effects model. It is specifically good in modelling repeated measures, for example over time, or within a certain group or loacation, or as in this case from the same person. The R package that can be used to model this somewhat more complicated designs is the `{nlme}` package. The exact details for the model illustrated here are not so important. The example serves to show you how you would document a full analysis from begin to end, adhering to the Reproducible Research principles discussed in this chapter. If you would like to learn more about this type of analysis, [this is good starting point:](http://milton-the-cat.rocks/home/adventr.html#Contents_of_adventr) 
 
 Assume we have the following question:
 
@@ -431,13 +416,11 @@ We have the following setup:
 
 To analyze this experiment statistically, the model would need to include: the rating score as the **measured (or dependent) variable**, the type of chair as the **experimental factor** and the subject as the **blocking factor**
 
-#### Mixed effects models
+### Mixed effects models
 
-A typical analysis method for this type of repeated measures design is a so-called 'multi-level' or also called 'mixed-effects' or 'hierarchical' models. An analysis method much used in clinical or biological scientific practice. 
- 
-You could also use one-way ANOVA but I will illustrate why this is not a good idea 
+A typical analysis method for this type of repeated measures design is a so-called 'multi-level' or also called 'mixed-effects' or 'hierarchical' models. An analysis method much used in clinical or biological scientific practice. You could also use one-way ANOVA but I will illustrate why this is not a good idea 
 
-#### What do we minimally need, to replicate the science of this experiment? 
+### What do we minimally need, to replicate the science of this experiment? 
 
 I will show:
 
@@ -448,15 +431,15 @@ I will show:
  >- a model diagnostic (logic why this is suitable model)
  >- some conclusions 
  
-When preforming statistics, it is important to realize that no single model is the correct or best model. There are always multiple options and trade-offs to be made. The most important learning lesson here is: 
+When performing statistics, it is important to realize that no single model is the correct or best model. There are always multiple options and trade-offs to be made. The most important learning lesson here is: 
 
-**"In the end it matters more that insight is provided into what assumptions were made for the experiment/the data/the subject and the model, and not so much as which model is best."**. The way to do this is, is _again_ with writing a script that records all the steps and choices made. 
+**"In the end it matters more that insight is provided into what assumptions were made for the experiment/the data/the subject and the model, and not so much as which model is best."**. The way to do this is, is _again_ with writing a script that records all the steps and choices made. And of course, generating graphs also helps ;-)
  
-In the next paragraph, I will try to show you of the power of (literate) programming to communicate such an analysis. 
+In the next paragraph, I will try to show you the power of (literate) programming to communicate such an analysis. 
 
 <p style="font-size:14px">[Example reproduced from: Pinheiro and Bates, 2000, _Mixed-Effects Models in S and S-PLUS_, Springer, New York.](https://cran.r-project.org/web/packages/nlme/index.html)</p>
  
-#### The data of the experiment
+### The data of the experiment
 
 <p style="font-size:14px">[Wretenberg, Arborelius & Lindberg, 1993](https://doi.org/10.1080/00140139308967910)</p>
 The data is available as a `data.frame` in the `{nlme}` package, which is a much valued R package for running multi-level statistical models. Below we import the data as a `tibble` (glorified `data.frame`) 
@@ -467,7 +450,7 @@ ergoStool %>% as_tibble()
 ```
 <p style="font-size:18px">The `lme()` function is part of the [`{nlme}`](https://cran.r-project.org/web/packages/nlme/index.html) package for mixed effects modelling in R</p>
 
-#### An exploratory graph
+### An exploratory graph
 First step is (always) plot all the data that you have. Or, in case you have very much data, take a random sample and plot that. A scatter plot is a very good start. It provides you already with an idea on the spread of some variables (here we plot the dependent on the y-axis and some predictor variable on the x-axis). The seed is for reproducibility. Which function in the code below is dependent on a random number generator?
 ```{r}
 set.seed(123)
@@ -495,14 +478,14 @@ plot_ergo
 
 **Mind the variability per subject, what do you see?**
 
- A) Can you say something about within-subject variability (note 'Minster Blue')?
- B) Can you say something about between-subject variability (note 'Mister Green', vs 'Mister Black')?
- C) Which chair type takes, on average the biggest effort to arise from?
- D) Looking at the code, why do you think the x-axis is not displaying the `Chair type` in a numeric order?
+ (A) Can you say something about within-subject variability (note 'Minster Blue')?
+ (B) Can you say something about between-subject variability (note 'Mister Green', vs 'Mister Black')?
+ (C) Which chair type takes, on average the biggest effort to arise from?
+ (D) Looking at the code, why do you think the x-axis is not displaying the `Chair type` in a numeric order?
  
 </div>
 
-#### The statistical questions
+### The statistical questions
 When we look at the scientific question and the data, we can deduce a number of statistical questions
 
  1. Which chair type takes, on average the biggest effort to arise from?
@@ -511,7 +494,7 @@ When we look at the scientific question and the data, we can deduce a number of 
  4. Does variability between subjects play a role in determining the 'best' chair type (ANOVA / MEM, confidence intervals)
  5. What numbers can we appoint to the questions above? Numbers in statistics are usually called parameters.
 
-#### The statistical model 
+### The statistical model 
 Statistical models (in R) can be specified by a `model formula`. The left side of the formula is the dependent variable, the right side are the 'predictors'. Here we include a `fixed` and a `random` term to the model (as is common for mixed-effects models). The fixed and random terms in the model are terms that reflect here the randomization (over persons) and the inter-person variability we observe in the data.
 
 ```{r, echo=TRUE}
@@ -547,32 +530,34 @@ plot_ergo_slopes
 
 What do you think? Is the assumption for a fixed slope defensible?
 
-#### The statistical results
+### The statistical results
 ```{r}
 result <- ergo_model %>% summary() 
 result$tTable %>% as.data.frame() %>% knitr::kable()
 ```
 
-#### Model diagnostics
+### Model diagnostics
 
  >- Diagnostics of a fitted model is the most important step in a statistical analysis
- >- In most scientific papers the details are lacking 
- >- Did the authors omit to perform this step? Or did they not report it?
- >- If you do not want to include it in your paper, put it in an appendix, or even better, online!
+ >- In most scientific papers these details are lacking 
+ >- If no model diagnostics are present, the question arises: Did the authors omit to perform this step? Or did they just not report it?
+ >- If you do not want to include it in your paper, put it in an appendix, or even better, online together with the dat and the analysis script(s)!
  
 A residual plot shows the 'residual' error ('unexplained variance') after fitting the model. Under the Normality assumption standardized residuals should:
  
  >1. Be normally distributed around 0
  >1. Display no obvious 'patters'
  >1. Should display overall equal 'spread' above and below 0 ('assumption of equal variance')
+
+The details of the residual plot and the underlying theory do not matter much here. You only have to look at the plot and assess whether tha above assumptions are met or not.
  
-#### Residual plot
+### Residual plot
 ```{r, echo=TRUE}
 plot(ergo_model) ## type = 'pearson' (standardized residuals)
 ```
 
-#### The conclusions in a plot
-We will spend a whole lesson on creating 'publication worthy' graphs. Here is one that you could find a paper about the `ergoStool` experiment and the analysis we did above.
+### The conclusions in a plot
+We will spend a Masterclass on creating 'publication grade' graphs. Here is one that you could find in a paper about the `ergoStool` experiment and the analysis we did above.
 ```{r}
 # install.packages("ggsignif")
 library(ggsignif)
@@ -626,7 +611,7 @@ plot_ergo
 
 
 ## Example; The Open Science Framework [OSF](https://osf.io/)
-To enable and facilitate the practice op Open Science, there are a number of organizations and foudations that support researchers. Below are a few examples. It is helpful to know about them if you are looking for places to get data, share data and code and to find good practices and examples.
+To enable and facilitate the practice op Open Science, there are a number of organizations and foundations that support researchers. Below are a few examples. It is helpful to know about them if you are looking for places to get data, share data and code and to find good practices and examples.
 ```{r}
 knitr::include_graphics(
   here::here(
@@ -655,10 +640,10 @@ The journal can be found [here](https://f1000research.com/).
 Have a look at the special Bioconductor channel: https://f1000research.com/gateways/bioconductor
 
 
-## Dagopdracht: Open Peer Review
+## Portfolio assignment `r paste0(les, ".2")`
 <div class="dagopdracht">
 
-<mark>ASSIGNMENT; "Assing a reproducibility score for scientific literature"</mark> {-}
+**Open Peer Review**
 
 This exercise is about identifying reproducibility issues in a scientific publication. We use the criteria for reproduciblity that are publically available [via here](https://www.researchgate.net/deref/https%3A%2F%2Fwww.ripeta.com%2Fuploads%2F7%2F4%2F8%2F7%2F7487334%2Fripeta_approach_and_criteria_definitions.pdf)
 
@@ -676,7 +661,7 @@ Code Availability | Authors have shared access to the most updated code that the
 **Table clarification** The `Transparency Criteria` are criteria you need to score the article of your choice for. Read them carefully and discuss with another course participant if you do not understand them. 
 Each Tranparance criterion comes with a `Definition` that explains the criterion in more details. These descriptions are particularly helpful to understand what the criterium entails and what to look for in the article. The `Response Type` is the actual score  
 
-In this assisgment you need to find a scientific article yourself, using PubMed or another database or repository. Use only **Open Access** articles. Having an article in hand, go over the table above and score the article according the criteria. **<mark>Be sure to select a primary article that presents a study using data from a experimental work </mark>**. This can be laboratory experiments or _in silico_ experiments. Reviews and meta analysis are not suitable for this assignment     
+In this assisgment you need to find a scientific article yourself, using PubMed or another database or repository. Use only **Open Access** articles. Having an article in hand, go over the table above and score the article according the criteria. **<mark>Be sure to select a primary article that presents a study using data from experimental work </mark>**. This can be laboratory experiments or _in silico_ experiments. Reviews and meta analysis are not suitable for this assignment     
 
 To guide your search you can choose between these topics
 
@@ -690,38 +675,36 @@ To guide your search you can choose between these topics
  - If you do not know where to start your literature search start here: https://www.biorxiv.org/
  - This assignment is not about the topic you select, so try to do that quickly
  - You may want to cheat and select an article that scores TRUE on the `Data Availability Statement`, because that enables you to use the this article again in one of the next assignments.
+
+**PART 1**
+_To complete part 1, execute activity A to G_ 
  
+(A) Initiate an empty RMarkdown file in your RStudio environment and provide author and title (after the title of this exercise)
+(B) Search for a primary Open Access article on one of the above listed topics, using Pubmed Central
+(C) Read the article diagonally to check if is indeed a primary article describing emperical scientific findings. 
+(D) Include the reference to this article in your Rmd file
+(E) Score the article on the basis of the above 'Repita' criteria
+(F) Write an Rmarkdown report on your findings, including the table above and some information about the article such as general aim, short methods and results. If data is available, try including some  
+(G) Store the source Rmd and knitted HTML in a folder called 'Rmd' in your course RStudio project. You will need it again later in the course
 
-To complete the assignment, execute activity A to G 
- 
- - A) Initiate an empty RMarkdown file in your RStudio enviroment and provide author and title (after the title of this exercise)
- - B) Search for a primary Open Access article on one of the above listed topics, using Pubmed Central
- - C) Read the article diagonally to check if is indeed a primary article describing emperical scientific findings. 
- - D) Include the reference to this article in your Rmd file
- - E) Score the article on the basis of the above 'Repita' criteria
- - F) Write an Rmarkdown report on your findings, including the table above and some information about the article such as general aim, short methods and results. If data is available, try including some  
- - G) Store the source Rmd and knitted HTML in a folder called 'Rmd' in your course RStudio project. You will need it again later in the course
- 
-## <mark>Assignment</mark>
+**PART 2** 
+_To complete this assignment you will have to execute activity H to P_
 
-To complete this assignment you will have to follow steps A-
-
- - A) Using the [OSF website](https://osf.io/), select a project that addresses an aspect of the SARS-Cov-2 virus. 
- - B) Select a project that has a dataset and R-code shared in the project environment. 
- - C) Have a look at the code. Describe in your own words what the code intents to achieve.
- - D) In terms of readibility of the code, how would you grade (1(very bad)-5(very good)) the code available.
- - E) Download the code and the data to a new RStudio project
- - F) Run the script or code that is available to reproduce at least 1 figure
- - G) When you encounter errors or flaws in the script, try fixing them and record your changes.
- - H) Taken together on a scale from 1 (very hard) to 5 (very easy), how much effort did it take you to reproduce the visualization from the project, report or article
- - I) Generate an RMarkdown script that contains the details on the project you selected, the code you used to create the visualization and your score for reproducibility.
-
+(H) Using the [OSF website](https://osf.io/), select a project that addresses an aspect of the SARS-Cov-2 virus. 
+(I) Select a project that has a dataset and R-code shared in the project environment. 
+(J) Have a look at the code. Describe in your own words what the code intents to achieve.
+(K) In terms of readibility of the code, how would you grade (1(very bad)-5(very good)) the code available.
+(L) Download the code and the data to a new RStudio project
+(M) Run the script or code that is available to reproduce at least 1 figure
+(N) When you encounter errors or flaws in the script, try fixing them and record your changes.
+(O) Taken together on a scale from 1 (very hard) to 5 (very easy), how much effort did it take you to reproduce the visualization from the project, report or article
+(P) Generate an RMarkdown script that contains the details on the project you selected, the code you used to create the visualization and your score for reproducibility.
 
 resource: https://www.researchgate.net/publication/340244621_Reproducibility_and_reporting_practices_in_COVID-19_preprint_manuscripts/fulltext/5e81f9fd92851caef4ae37ba/Reproducibility-and-reporting-practices-in-COVID-19-preprint-manuscripts.pdf
 
 </div> 
  
-#### Resources
+## Resources
 
 https://www.displayr.com/what-is-reproducible-research/
 

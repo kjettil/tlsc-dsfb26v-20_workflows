@@ -389,32 +389,29 @@ Take heed of these pointers:
  >- Store scripts in a "./code" or "./inst" folder
  >- Store (R) functions in R in a "./R" folder, and document them with [Roxygen2](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html)
 
-#### Let's demonstrate with COVID-19 example
-
-<mark> Example missing? ik snap m niet</mark>
+<div class="question">
+##### Exercise `r les`
+Let's demonstrate this principle 3 with a COVID-19 reporting example
 
  >- Imagine we want daily reports on the number of COVID-19 cases and caused deaths
  >- We want to be able to dynamically report data for different countries and dates to compare situations in the World
  >- The data is available (for manual and automated download) from the European Center for Disease Control
  >- The analysis can be coded completely from begin to end to result in the information we need
 
-<p style="font-size:14px">[A more extensive reproducible research COVID-19 example for NL](https://github.com/J535D165/CoronaWatchNL)</p> 
- 
-A dedicated repo for the analysis with data from the ECDC:
-https://github.com/uashogeschoolutrecht/covid_demo
-
-<p style="font-size:14px">From: [Data Source - ECDC](https://opendata.ecdc.europa.eu/covid19/casedistribution/csv)</p> 
-
 Take a look at the source file in the [Github repo](https://raw.githubusercontent.com/uashogeschoolutrecht/covid_demo/master/app/covid_data.Rmd)
 
+Download this file to your RStudio environment and knit the file. What do you see in the rendered html? What happens if you change som of the paramters in the `yaml` header of the file?
+
+</div>
+
 #### Parameterization
-We will learn more on parameterizing RMarkdown files in lesson \@ref(rmarkdownparams)
+The above example in the exercise is an example of a so-called _parameterized_ script. In this case a parameterized RMarkdown. We will learn more on parameterizing RMarkdown files in lesson \@ref(rmarkdownparams)
 
  >- The covid Rmd is parameterized on date and country
  >- The script automatically includes the parameters in the title of the report and the captions of the figures
- >- The 'rendered' date is automatically set, for versioning
+ >- The 'rendered' date is automatically set, for tracking and versioning purposes
  >- Parameterization can used to automate reporting for many values of parameters
- >- Further automation is easy now (although the ECDC has regular 'changes' to their latest data available for download - and they do not use md5sums!! - This makes full automation and building in checks more difficult)
+ >- Further automation is easy now (although the ECDC has regular 'changes' to their latest data available for download - and they do not use md5sums!! - This makes full automation and building--in checks more difficult)
 
 ```{r, dpi = 60, echo=FALSE}
 knitr::include_graphics(here::here(
@@ -714,7 +711,7 @@ unique(data_penguins$Sex) ## we also call this factor levels
  - Use factors if a variable has a set of discrete possible outcomes: `sex`, `species`, `marital_status` etc
  - Use an ordered factor if there is a hiearchy in the factor levels: `year`, `month`, `number_of_legs`
 
-## Data-formats - Non-Proprietary {.build}
+## Data-formats - Non-Proprietary
 When we store data for re-use, we need it to be in an interoperable form. This means that it can be read (also after a long time - let's say 30 years from now) into analysis software. This can be achieved by storing data in a so-called `non-proprietary` format. This means basically that the format source code is open and maintained by open source community or core development team.
 Here are some examples: 
 
@@ -727,6 +724,115 @@ Here are some examples:
 These formats will remain readable, even if the format itself becomes obsolete
 
 **When storing a curated dataset for sharing or archiving it is always better, and sometimes enforced by the repository, to choose a non-proprietary format**
+
+## Data entry
+Data entry preferably, must be performed in a project template.  The template contains predefined information on the observations in the study. The blank information needs to be filled out by the person responsible for/or performing the data entry.
+
+Enter an “NA” for missing values, do not leave cells blank if there is a missing value. Use only “NA” and nothing else. If you want to add additional information on the “NA”, put that in the “remarks” column.
+
+After entry (and validation) of the filled-out template, NEVER change a value in the data. If you want to make changes, increment the version number of the file and document the change in the README.txt file or sheet in an Excel file (see below)
+
+## Data-log
+In the root of the folder `\data` an MS Excel file is being kept to track all the files present in this folder. Provide names and additional information here. Meta information for the `\data_raw` folder is best kept in that folder in a `README.txt` file.
+
+The folder `doc` contains documentation and can be basically everything concerning information about the project, not concerning the data. For example a PowerPoint presentation on the experimental design of a study, or a contract or something else. Data information goes in the “supporting’ folder that is in the same folder as where the data file it refers to is stored.
+
+Use versioning of data files. Decide on a versioning system for yourself, an stick to it.
+
+## README.txt or README sheet inside an Excel file
+Meta information like type of variables, ranges, units, number of observations or subjects in a study, type of analysis goes in a README.txt file or a sheet in the Excel file containing the data. Keep the readme information close to the data file.
+An example of a readme file is depicted below.
+
+```{r, dpi = 50, echo=FALSE}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "readme.png"))
+```
+
+A short example of a README.txt file. It does not need to be very long, but provides information on where the data (which project?) refers to, who the owners are, who to contact in case of questions and what are the contents of the data (variable description)
+
+A tidy data template is avaialable [here](https://github.com/uashogeschoolutrecht/efro-docs/blob/main/data/CE.LIQ.120_tidydata.xlsx)
+
+When using this template, please be aware the following pointers:
+
+For Excel users:
+
+ - Start your file in A1 of a clean new sheet.
+ - Use row 1 for variable names, use the rest of the rows for observations
+ - It is allowed to have existing sheets in the file. Label the new tidy formatted datasheet as "tidy"
+ - Do not fuse cells
+ - Provide one value per cell so e.g. put units in a separate column
+ - Adhere to the naming conventions for variable names (see above)
+ - Use cell validation for entered values. This is especially true if you have multiple categorical variables that need manual labeling in Excel. A typo is just around the corner.
+
+
+## Annotations and meta data in multiple files
+In order to reduce effort in generating a complete tidy table for your data it might be worthwhile to create a number of extra tables containing meta data.
+Typically this is how it would work:
+
+Assume we have wide data format originally created in Excel looking like this
+```{r}
+measured1 <- rbinom(100, size = 2, prob = 0.3)
+measured2 <- rnorm(100, mean = 5.3, sd = 0.1)
+measured3 <- rnbinom(100, size = 10, prob = 0.1)
+concentration <- rep(1:10, 10)
+data <- tibble::tibble(
+  `concentration (mMol/l)` = concentration,
+  `measured 1 (pg/ml)` = measured1,
+  `measured 2 (ng/ml)` = measured2,
+  `measured 3 (ng/ml)` = measured3
+)
+data
+```
+
+The `r names(data)` are the variable names as provided in Excel. As you can see they are not adherent in a few ways tot the aforementioned naming conventions. The `r names(data)[2:ncol(data)]` refer to three variables that were determined in some experiment. The units of measurements are (as is common in Excel files) mentioned between brackets in the column name.
+
+For compatibility and interoperability reasons this data format can be improved to a more machine readable format. There are two solutions that could be provided here. One is more laborious to achieve manually (solution 2) than the other (solution 1). If there is no expertise for scripting reformatting and cleaning up data is available in the research group, I recommend solution 2.
+
+### Solution 1 (requires programming skills)
+Add meta data and variable information to a separate table. The strategy is to keep all experimentally relevant data that is related to the experimental design in one sheet and all additional data (metadata or also called 'data about the data'). In this case, the unit information that is included in the variable names can be considered metadata. So as an example, I will include that information in a separate table that I will call coldata (short for column data)
+
+First we need to create a pivoted table where the first column represents the variable names of our `data` table. Than we need to add a row for each variable in our data. It is best if the variable names and the values in the meatdata table in column 1 excactly match (in term of spelling and typesetting). I will show how this looks for our data
+```{r}
+var_names <- names(data)
+metadata <- tibble::tibble(
+  varnames = var_names
+)
+metadata
+```
+
+We now have a `metadata` table with one column called `varnames`. However, we are not done. If we want to create a tidy format of our metadata table we need to separate the unit information from the variable names column. Let's extract the units into it's own column
+
+```{r}
+metadata %>%
+  mutate(
+    varnames = str_replace_all(
+      varnames,
+      pattern = " ",
+      replacement = "")) %>%
+  separate(
+    varnames,
+    into = c("varnames", "units"), sep = "\\(", remove = FALSE) %>%
+  mutate(
+    units = str_replace_all(
+      units,
+      pattern = "\\)",
+      replacement = "")) -> metadata_clean
+metadata_clean
+```
+
+We can now start adding additonal information such as remarks or methods to the the metadata column.
+
+```{r}
+methods <- c("dilution", "elisa", "lcms", "flow cytometry")
+remarks <- c(
+  "concentration of exposure compound",
+  "compound x is related to elevated blood pressure"
+  )
+```
+
+
 
 <div class = "dagopdracht">
 

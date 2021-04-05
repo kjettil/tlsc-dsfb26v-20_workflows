@@ -4,4 +4,26 @@
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Details
+## <mark>Plagiarism and copying work of others</mark>
+**It is not allowed to hand in a pre-existing analysis as your own work. It is allowed to let yourself be inspired by existing work and copy small pieces of code from pre-existing work, as long as you provide credit to the work you are using or changing. Pay respect to the associated licence if present. It is not allowed to let somebody else create your portfolio for you. All suspects or assessments of fraude or plagiarism will be reported to the Examcommittee of the Institute for Life Sciences & Chemistry**
+
+## Details on exam for this course
+As explained, the course will be completed with an assessment on your portfolio. 
+The portfolio needs to be hosted on a publicly accessible Gihub pages website. During a live assessment, the teacher and you will go over the portfolio together. The idea is that you provide clarifications on any questions that might arise 
+from your portfolio. Two teachers will be present during this assessment.
+
+## Assessment duration
+The assessment will be planned during a 20 minutes online video call. Enabling 
+your camera during this call is obligatory. The call will start on the planned 
+time, so be there on time. Showing up too late in the call without further notice will fail you the assessment. In case you fail the assessment, a new assessment 
+will be planned as a do-over. If you fail that do-over again, we will register a 'fail' for the course.
+
+## Portfolio ready before assessment
+Make sure that you have shared the public weblink to your portfolio **at least 3 days before the planned assessment**. WE need to have some time in advance to prepare. If, for some reason, you cannot make this deadline, let us know.
+
+## Getting help
+We are here to help you pass this course! If you need assistence on getting your portfolio in order, please let us know. We do not have all the answers though, sometimes we will merely be able to point you in a solutions direction. You can 
+get help also on fora, either on public fora such as Stack Overflow. Or on the course forum on Canvas. I can highly recommend posing a question on Stack Overflow yourself. If you stick to the forum rules, you will find that there are a lot of friendly fellow-programmers willing to aid you in your programming quest. 
+
+
+

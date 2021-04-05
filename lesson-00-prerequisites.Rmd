@@ -4,7 +4,7 @@
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Software
+## Software {#softwarelist}
 This course assumes you have a working installation and administrator access to the following software - Below we assume you have the ability to install the software on a local laptop. Please contact the teachers if you do not have this possibility. 
 
  1. [Docker Desktop](https://www.docker.com/get-started)
@@ -17,7 +17,7 @@ This course assumes you have a working installation and administrator access to 
  1. [CyberDuck](https://cyberduck.io/)
  1. [Microsoft Teams](https://www.microsoft.com/nl-nl/microsoft-teams/group-chat-software)
 
-For some exercises and assignment you need an RStudio Server account. You will get an account before the start of the course.
+For some exercises and assignment you need an Server account. You you can use your RStudio Server account from the previous DSFB2 ("DAUR2") course.
 
 ## Additional 'things'
 
@@ -27,7 +27,6 @@ Some additional things you need to take into account or that you will need for t
  - Next to this software we assume you also have an account set up in Github.com. You will need this to setup your portfolio, which will be the end-product for this course and which will be needed for passing the exam
  - We will use HU CANVAS to communicate with you and guide you through the exercises and assignments. The content of the course (reader, code, examples etc.)
  - During the course we will monitor you active participation in group or session chats, participation in the Q&A platform and your commits on github. We expect an active contribution and will take your activity into account when determining your score for the course. 
- 
 
 ## Online Sessions
 The online sessions require you to have an internet connection and an updated version of Microsoft Teams and sufficient bandwith to use audio and video during the sessions.
@@ -36,5 +35,5 @@ The online sessions require you to have an internet connection and an updated ve
 During this course we really invite you to seek interaction on the course contents, the exercises and assignments with fellow course participants and the instructors. In order to facilitate this we will have a specific Q&A platform ready for you. The details will be made known on CANVAS.
 
 ## Exam
-The credits for this course can be earned by handing in the final exam assignment. The details are described here \@ref(exam). In short: You will have to publish a bookdown project to the Course publication server (RStudio Connect). This page will function as a portfolio where you will post all the assignments and output products of the course. Only the lecturers of the course will have access to your portfolio products.  
+The credits for this course can be earned by handing in the final exam assignment. The details are described here \@ref(portfolioexam). In short: You will have to publish a bookdown project to github pages in your github account. This page will function as a portfolio where you will post all the assignments and output products of the course. Only the lecturers of the course will have access to your portfolio products.  
 

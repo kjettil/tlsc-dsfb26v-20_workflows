@@ -1,4 +1,4 @@
-# Lesson 1.3 - Tools {#represtools}
+# Masterclass 3 - Tools for Reproducible Research {#represtools}
 
 ```{r setup, include=FALSE}
 

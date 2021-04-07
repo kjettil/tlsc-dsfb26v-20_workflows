@@ -112,7 +112,7 @@ There are basically three ways to include an image from an existing file:
  1. As a direct link to an image file with the `![caption](link)` tag
  1. From embedded html code
 
-#### In an R-chunk call
+#### In an R-chunk call {-}
 You can use the function from `{knitr}` `include_graphics()`
 And give the chunk some settings for the width of the figure and the caption:
 
@@ -141,7 +141,8 @@ The advantage of this approach is that you can use all the chunk options for thi
 
 If you would like to use the above chunk option -- I personally prefer this option because it is an R only solution -- you should know about the `{captioner}` package. This package helps you with numbering tables and figures and with it you can create standardized captions, or add captions to your figures from another source file. A good workflow would be to write all captions in a separate text file and add them to your R Markdown document using the `{captioner}`package. In this way you can more easily edit and revise captions separate from the main text. For more info on [`{captioner}`](https://cran.r-project.org/web/packages/captioner/vignettes/using_captioner.html)   
 
-#### 2. We can also use Markdown syntax like this
+#### Markdown syntax {-} 
+We can also use Markdown syntax like this.
 See [this blog](https://medium.com/markdown-monster-blog/getting-images-into-markdown-documents-and-weblog-posts-with-markdown-monster-9ec6f353d8ec) for more details
 
 ```
@@ -161,7 +162,9 @@ The advantage of this approach is that it is written very fast. You can also inc
 
 ![My personal favorite; 'Soundwave'](https://static.wikia.nocookie.net/transformers/images/8/89/Transformers_G1_Soundwave.jpg)
 
-#### 3. You can also include a local (or web url linked) image using html.
+#### HTML {-} 
+
+You can also include a local (or web url linked) image using html.
 
 ```
 <div style="display: table;">
@@ -208,10 +211,10 @@ Most tricks for making nice publication-worthy graphs themselves will be covered
 To display your graphs, you again give the chunck in which you generate it some settings. Let's use a really visually pleasing graph for the occasion [source](https://adrienne-marshall.github.io/ggplot2_workshop/), using 3 additional packages! 
 
 ````
-```{r, echo=FALSE, fig.height = 5, fig.width = 5, fig.align = "center", fig.cap = "Cut and price of diamonds"}`r ''`
-#install.packages("ggridges")
-#install.packages("viridis")
-#install.packages("ggthemes")
+```{r figdiam, echo=FALSE, fig.height = 5, fig.width = 5, fig.align = "center", fig.cap = "Cut and price of diamonds"}`r ''`
+`#install.packages("ggridges")`
+`#install.packages("viridis")`
+`#install.packages("ggthemes")`
 library(viridis)
 library(ggplot2)
 library(ggridges)
@@ -225,7 +228,7 @@ ggplot(data = diamonds,
 ```
 ````
 
-```{r, echo=FALSE, fig.height = 5, fig.width = 7, fig.align = "center", fig.cap = "Cut and price of diamonds"}
+```{r figdiam, fig.cap = "Cut and price of diamonds", echo=FALSE, fig.height = 5, fig.width = 7, fig.align = "center", }
 #install.packages("ggridges")
 #install.packages("viridis")
 #install.packages("ggthemes")
@@ -241,36 +244,85 @@ ggplot(data = diamonds,
   theme_few()
 ```
 
+</mark> Waarom klopt figure number niet? </mark>
 
 ### colour schemes: colour blind options
 
-### add logo to graph?
+The default colours in ggplot are not equally visible for everyone. You may want to use colour blind friendlier palletes for your Rmarkdown documents, because you almost always are  making them for a larger public than just yourself. (Also, you might be colourblind yourself.) We can set colours manually:
 
-### animations: gganimate?
+```{r cbpgraph1, fig.cap="colourblind penguin masses by species"}
+cbp1 <- c("#999999", "#E69F00", "#56B4E9", "#009E73",
+          "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 
-XXX animations be here XX
+library(palmerpenguins)
+
+mass_hist <- ggplot(data = penguins, aes(x = body_mass_g)) +
+  geom_histogram(aes(fill = species),
+                 alpha = 0.8,
+                 position = "identity") +
+  scale_fill_manual(values = c("darkorange","purple","cyan4")) +
+  theme_minimal() +
+  labs(x = "Body mass (g)",
+       y = "Frequency",
+       title = "Penguin body mass")
+
+mass_hist + scale_fill_manual(values = cbp1)
+```
+
+But the Rcolorbrewer package has some options too:
+
+```{r}
+library(RColorBrewer)
+display.brewer.all(colorblindFriendly = TRUE)
+```
+
+```{r}
+# Box plot
+bp <- ggplot(iris, aes(Species, Sepal.Length)) + 
+  geom_boxplot(aes(fill = Species)) +
+  theme_minimal() +
+  theme(legend.position = "top")
+
+bp + scale_fill_brewer(palette = "Dark2")
+```
+
+
+```{r}
+sp <- ggplot(iris, aes(Sepal.Length, Sepal.Width)) + 
+  geom_point(aes(color = Species)) +
+  theme_minimal()+
+  theme(legend.position = "top")
+
+# Scatter plot
+sp + scale_color_brewer(palette = "Paired")
+```
+
+And you could check out the “viridis” and “magma” scales in the `viridis` package [here](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#the-color-scales)
+
+
+<!-- ### animations: gganimate? -->
+
+<!-- XXX animations be here given time XX -->
 
 
 ### Tables
 
-#### From tibble to table
+#### From tibble to table {-} 
 In DAUR1 you learned how to knit tibbles into tables:
 
 
 ```{r}
-library(ggplot2)
 data("mpg")
 knitr::kable(head(mpg))
 ```
 
 But you can make them interactive if you like:
 ```{r}
-library(ggplot2)
 data("mpg")
-DT::datatable(head(mpg))
+DT::datatable(mpg)
 ```
 
-#### Formatting tables
+#### Formatting tables {-} 
 Of course we can generate and format more complex tables as well. The easiest way is to use the `kableExtra` package (Though check the `expss` package if some journal or person is insisting you should make APA-style tables)
 
 ```{r}
@@ -317,7 +369,7 @@ If you want something specific, check out the vignette for the `kableExtra` pack
 
 
 
-#### Rmarkdown tables
+#### Rmarkdown tables {-} 
 You can also write tables within RMarkdown:
 
 ```
@@ -338,7 +390,7 @@ Which is a lot of work, so you would usually use [this table generator](https://
 
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-} 
 
 Render a html-document with:
 
@@ -507,26 +559,26 @@ ggplot(mpg, aes(displ, hwy, color = class)) +
 ````
 
 
-```{r, cache=TRUE, echo=FALSE}
+```{r slowplot, fig.cap = "Slow plot is slow", cache=TRUE, echo=FALSE}
 library(ggplot2)
 ggplot(mpg, aes(displ, hwy, color = class)) + 
   geom_point() # Some really slow plot
 ```
 
-#### Chunk sizing
+#### Chunk sizing {-} 
 
 Customize output sizing with chunk options: `fig.width`, `fig.height`, `dpi`, `out.width`
 
 for example:
 
 ````
-```{r, fig.width = 4, fig.height = 4, echo=FALSE}`r ''`
+```{r examplecars, fig.cap ="We made this graph smaller", fig.width = 4, fig.height = 4, echo=FALSE}`r ''`
 ggplot(mpg, aes(displ, hwy, color = class)) + 
   geom_point() 
 ```
 ````
 
-```{r, fig.width = 4, fig.height = 4, echo=FALSE}
+```{rexamplecars, fig.cap ="We made this graph smaller", fig.width = 4, fig.height = 4, echo=FALSE}
 ggplot(mpg, aes(displ, hwy, color = class)) + 
   geom_point() 
 ```
@@ -622,7 +674,7 @@ And if you really like formatting, check w3schools for loads of syntax:[click](h
 
 <div class="question">
 
-##### Exercise `r les`
+##### Exercise `r les` {-}
 
 Go back to your html file with the 5 favorite Pokemon (or other) images. 
 
@@ -720,7 +772,7 @@ If this is your first time using Mendeley: you can simply drag and drop pdf file
 
 <div class="question">
 
-##### Exercise `r les`
+##### Exercise `r les` {-}
 Import some random paper from Pubmed into Mendeley (drag & drop the pdf into Mendeley). What metadata do you get? 
 
 Import some pdf you rendered yourself from RMarkdown into Mendeley. What metadata do you get? 
@@ -729,7 +781,7 @@ Try making some notes and highlighting some text within Mendeley.
 
 </div>
 
-#### How to get Mendeley into RMarkdown
+#### How to get Mendeley into RMarkdown {-}
 Special thanks to [Rosanna van Hespen](https://rosannavanhespen.nl/rmarkdown/writing-your-thesis-with-r-markdown-2-text-citations-and-equations/) for sharing her workflow online!
 
   1. First, start a new .Rmd file.
@@ -784,7 +836,7 @@ Van der Ploeg says so too [-@vdploeg04].
   
 <div class="dagopdracht">
 
-**Dagopdracht**
+**Portfolio assignment 6**
 
 <mark>XXX uitwerken: is dit genoeg?</mark>
 

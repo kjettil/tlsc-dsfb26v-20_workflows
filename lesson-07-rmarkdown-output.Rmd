@@ -3,21 +3,16 @@
 les <- 7
 ```
 
-_This chapter is best read in the source RMarkdown file_
+## Lesson aim
+After this lesson you will be able to
 
+ 1. have an overview of different output formates for RMarkdown and render those formates.
+ 1. Setup github pages
+ 1. Create a bookdown project
+ 1. Render a bookdown project to a local website
+ 1. Add the rendered site to your github pages
 
-## There are multiple RMarkdown outputs
-
- - pdf
- - MS Office Word
- - MS Office Powerpoint
- - Slide shows (`ioslides_presention`, `beamer`)
-
-
-
-## output formats
-
-### Possibilities
+## Output possibilities
 
 With Rmarkdown you can generate many different things. This reader was made in Rmarkdown. The DAUR1 capstone pdf? RMarkdown. The latest report Alyanne had to send to an ethical committee? Again RMarkdown. Every time we send you all very similar but slightly different emails with stuff like your server password? We generate those using Rmarkdown.
 
@@ -28,29 +23,44 @@ Have a look around on the following website to get a feeling for what is possibl
 - [https://r-markdown-gallery.com/index.html](https://r-markdown-gallery.com/index.html)
 - [https://bookdown.org/yihui/rmarkdown/basics-examples.html](https://bookdown.org/yihui/rmarkdown/basics-examples.html)
 
+The options include:
+
+  - documents
+    - pdf
+    - Word
+    - html (also: blogs)
+    - handouts
+    - books
+  - interactive documents
+    - html widgets
+    - dashboards
+    - shiny applications
+  - presentations
+    - slides (Beamer, ioslides, Slidy etc)
+    - Powerpoint presentation
+
 ### Setting output format
 
 You can specifically choose which output format to render to with the RStudio "Knit" button in the toolbar, or with:
 
 ```
-rmarkdown::render(...)
+rmarkdown::render("your_file_name.Rmd", output_format = "word_document")
 ```
 
-We can control which output format(s) knitting will produce and even customize the options for each format separately.
-To customize each output format, change the YAML frontmatter:
-(toc is the table of contents)
+But usually, you use the YAML header to control which output format(s) knitting will produce and even customize the options for each format separately.
+To customize each output format, you can alter the YAML header output argument:
 
 ```
 ---
 title: "My document"
 output:
   html_document:
-    toc: true
-    toc_float: true
 ---
 ```
 
-e.g. customize HTML and PDF output both:
+You can change **html_document** to for instance **pdf_document** or **word_document**.
+
+Or customize HTML and PDF output both, this is useful if you want to render multiple types of output.:
 
 ```
 ---
@@ -66,36 +76,96 @@ output:
 
 <div class="question">
 
-##### Exercise `r les`
+##### Exercise `r les` {-}
 
 [exercise from r4ds here](https://r4ds.had.co.nz/r-markdown.html#exercises-71)
 
 Create one new R Markdown document for each of the three built-in formats: HTML, PDF and Word. Knit each of the three example documents. How does the output differ? How does the input differ? (You may need to install LaTeX in order to build the PDF output — RStudio will prompt you if this is necessary.)
 </div>
+
+### Output options
+
+The YAML header can contain a lot more settings for your output. For instance, you may want to add a table of contents (TOC) to you html page, in this example a floating one:
+
+```
+---
+title: "My document"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+```
+
+Other settings can just be added below html_document:
+
+#### Tabbed sections {-}
+
+You can organize content using tabs by applying the .tabset class attribute to headers within a document. This will cause all sub-headers of the header with the .tabset attribute to appear within tabs rather than as standalone sections. For example:
+
+```
+## Quarterly Results {.tabset}
+
+### By Product
+
+(tab content)
+
+### By Region
+
+(tab content)
+```
+
+#### Themes {-}
+
+One nice setting is applying themes. You learned how to specify you own formatting with css last lesson. But RMarkdown has some [preset themes](https://www.datadreaming.org/post/r-markdown-theme-gallery/). And of course, you can download packages with more themes.
+
+---
+title: "Stuff"
+output:
+  html_document:
+    theme: united
+---
+
+
+
+<div class="question">
+
+##### Exercise `r les` {-}
+
+  A) What is a floating TOC?
+  B) Download Lorem.Rmd [here](XXX) and add a TOC
+  C) Gove the TOC a set depth (toc_depth) and see what happens if you change it. (for instance `toc_depth = 2` can be set just as you set `toc_float: true` earlier.)
+  D) Also try `code_folding: hide` and `number_sections: FALSE`.
+  E) Google how to put two authors on one .Rmd, with affiliations. Put your and your labpartners name as authors.
+  F) Apply a theme you like, but not "united".
+  G) try tabbed sections
+
+</div>
+
  
- 
-## LaTeX installation 
-
-
-
 ## Interactivity {#rmarkdowninteractive}
 
 
 
+## PDF 
 
-## Setting up a bookdown project and publishing it online as course portfolio {#bookdownportfolio}
+XXX PDF themes.
+quirks
+
+
+## Bookdown {#bookdownportfolio}
+
+XXX intro bookdown
+
+You have generated a couple of .Rmd files for your portfolio by now. The next task will be to bundle them into one portfolio website, hosted by github.
+
+We will be setting up a bookdown project and publishing it online as course portfolio 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Lesson aim
-After this lesson you will be able to
 
- 1. Setup github pages
- 1. Create a bookdown project
- 1. Render a bookdown project to a local website
- 1. Add the rendered site to your github pages
  
 ## Github pages
 Each account on github can be associated to one or multiple websites that are hosted on Github.com. To setup a website on Github (also called `github-pages` or `gh-pages`), we need to create a repository with a special name. For this course we will require you to upload results from the exercises and assignments results to you personal github pages. **This is a hard requirement for passing this course. If you have no or an empty portfolio, you cannot pass this course**

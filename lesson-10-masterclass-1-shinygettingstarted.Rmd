@@ -1,5 +1,9 @@
 # Masterclass 1 - Shiny, getting started {#shinygettingstarted}
 
+```{r, setuples, include=FALSE}
+les <- 10
+```
+
 ## Aim of this lesson
 
 This lesson is about building Shiny apps to create interactive visualizations, apps and dashbords. We will build a small Shiny app and Dashboard to get you started with `{shiny}`. Thirdly, we will also have a look at how to increase interactivity even more by creating interactive visualizations.
@@ -28,8 +32,8 @@ runExample("01_hello")
 This will show a histogram of the famous 'faithful' dataset in a pop-up window. The slider can be used to generate multiple versions of this histogram with different number of bins.
 So a shiny app is in principle a reactive piece of R code that is run from the input the user specifies. 
 
-##### <div class="question">
-Exercise 4.5
+<div class="question">
+##### Exercise `r les`
 
 Go over the following steps to complete this exercise  
 
@@ -51,14 +55,16 @@ runExample("03_reactivity")
 Look at the app source code to understand what the `reactive()` part of the code does in this case.
 
 
-##### <div class="question">
-Exercise 4.5
+<div class="question">
+##### Exercise `r les`
 
 Go over the following steps to complete this exercise  
 
  1. Study the source code of the build in shiny app example called "04_mpg"
  1. Look at the overall app structure, what is the input and output? Explain in your own words
  1. Look at the `reactive()` part of the server code, what does it do?
+
+</div>
 
 <details><summary>Click for the answer</summary>
 ```{r, eval=FALSE}
@@ -69,8 +75,8 @@ runExample("04_mpg")
 
 </details>
 
-##### <div class="question">
-Assignment 
+<div class="dagopdracht">
+##### Portfolio Assignment `r les`
 
 Complete the following steps to finish this assingment. Upload the resulting `app.R` file in your portfolio github project.
 

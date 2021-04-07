@@ -304,9 +304,9 @@ The function you need from `{toolboxr}` is `rotate_axis_labels()`. Type
 If you have any suggestions for a good convenience function to add to this package, create an issue on github.com for a feature request or clone/fork the repository, add the function you would like to add and create a pull request. You will learn how to take these steps in lesson 2 and 3.
 </div>
 
-
-## Portfolio assignment `r paste0(les, ".1")`
 <div class="dagopdracht">
+##### Portfolio assignment `r les`
+
 
 **_C. elegans_ plate experiment**
 
@@ -639,9 +639,8 @@ $Reproducible\ Science = P + D + C + OAcc + OSrc$
 The journal can be found [here](https://f1000research.com/).
 Have a look at the special Bioconductor channel: https://f1000research.com/gateways/bioconductor
 
-
-## Portfolio assignment `r paste0(les, ".2")`
 <div class="dagopdracht">
+##### Portfolio assignment `r les`
 
 **Open Peer Review**
 

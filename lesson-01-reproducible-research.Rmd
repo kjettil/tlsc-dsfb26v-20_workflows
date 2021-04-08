@@ -102,20 +102,24 @@ Maybe ~~videotape~~ tiktok-record your process and add .mp4 to your paper? Type 
 
 To replicate a scientific study we need at least:
 
- > - **Context** Scientific context! Research questions, related publications..
- > - **Methods** Exactly how the data was gathered
-    - in what model or population? (e.g. some cell line, some knockout mouse etc)
-    - *Exact* (experimental) design of the study
- > - **Data** Actually the raw data itself, to check if you find something similar
- > - **Meta data** which is data about the data. For instance who gathered it, when, where, licence information, keywords...)
- > - **Data analysis** All steps in data analysis
-    - Exploratory data analysis of the data 
-    - data mangling decisisons, such as fitering and outlier selection
-    - Which inductive statistical tests or inference was done and how.
- >  **Interpretation** How the data was interpreted
-    - All choices made in the interpretation of the data (there is usually not one possible way to interpret results..)
-    - Conclusions and academic scoping of the results
+> - **Context** Scientific context! Research questions, related publications.. [<mark>P<mark/>]
+> - **Methods** Exactly how the data was gathered [<mark>P</mark>, _D_, <mark>C</mark>]
+    + In what model or population? (e.g. some cell line, some knockout mouse etc)
+    + *Exact* (experimental) design of the study
+> - **Data** Actually the raw data itself, to check if you find something similar [<mark>D</mark>] 
+> - **Meta data** which is data about the data. For instance who gathered it, when, where, licence information, keywords...)[<mark>D</mark>, _C_] 
+> - **Data analysis** All steps in data analysis [_P_, <mark>C</mark>]
+    + Exploratory data analysis of the data 
+    + data mangling decisisons, such as fitering and outlier selection
+    + Which inductive statistical tests or inference was done and how.
+> - **Interpretation** How the data was interpreted [<mark>P</mark>, _C_]
+    + All choices made in the interpretation of the data (there is usually not one possible way to interpret results..)
+    + Conclusions and academic scoping of the results
+> - **Access to all of the above!** [<mark>OAcc, OSrc</mark>]
 
+<p style="font-size:14px">$P = Publication$, $D = Data$, $C = Code$, $OAcc = Open\ Access$, $OSrc = Open\ Source$ </p>
+
+So we can conclude that:
 
 $Reproducible\ (Open)\ Science = P + D + C + OAcc + OSrc$
 
@@ -171,7 +175,7 @@ knitr::include_graphics(
 <p style="font-size:14px">https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31180-6/fulltext</p>
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-}
 
 **Answer the following questions**
 
@@ -211,7 +215,7 @@ Would the Lancet have adopted the Reproducible (Open) Science framework:
  >- Focus should be on the data and methods, not on the academic narratives and results ...
  >- In physics and bioinformatics this is already common practice
 
-</div>
+</details>
 
 ## Data, methods and logic
 
@@ -258,7 +262,7 @@ Also, if only one record in a whole Excel file is changed to the wrong data-type
 We will practice this a bit and see this happening live in an exercise 
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-}
 
 **Reading a strangely formatted column from an Excel file**
 
@@ -326,7 +330,7 @@ If you have any suggestions for a good convenience function to add to this packa
 </div>
 
 
-## Portfolio assignment `r paste0(les, ".1")`
+## Portfolio assignment `r paste0(les, ".1")`  {-}
 <div class="dagopdracht">
 
 **_C. elegans_ plate experiment**
@@ -495,7 +499,7 @@ plot_ergo
 ```
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-}
 
 **Mind the variability per subject, what do you see?**
 
@@ -661,7 +665,7 @@ The journal can be found [here](https://f1000research.com/).
 Have a look at the special Bioconductor channel: https://f1000research.com/gateways/bioconductor
 
 
-## Portfolio assignment `r paste0(les, ".2")`
+## Portfolio assignment `r paste0(les, ".2")` {-}
 <div class="dagopdracht">
 
 **Open Peer Review**

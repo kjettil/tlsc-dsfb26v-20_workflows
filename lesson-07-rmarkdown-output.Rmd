@@ -14,8 +14,54 @@ After this lesson you will be able to
  1. Add the rendered site to your github pages
 
 ## Meta data
+<mark> XXX </mark>
+
+### Reminder reproducible research
+<mark> XXX </mark>
+
+### Why should we care again?
+<mark> XXX </mark>
+
+**For everybobdy**
+
+**For fellow biologists**
+
+**For yourself!**
+
+### What do we need for reproducing a result?
+
+example graph
 
 
+<div class="question">
+##### Exercise `r les`
+
+Which information would you need to have if you want to reproduce this figure?
+</div>
+
+<details><summary>Click for the answer</summary>
+
+  1. The raw data
+  1. The code
+    - readable
+    - comments/documentation so that you can figure out what the code does
+    - what / why choices were made 
+    - what software was used
+  1. Metadata!
+  
+</details>
+
+We have discussed code quite extensively by now. We discussed data file management in lesson 2. But what about metadata?
+
+### What is meta data
+
+<mark> XXX </mark>
+
+### YAML header
+<mark> XXX </mark>
+
+### How to save more metadata
+<mark> XXX </mark>
 
 ## Output possibilities
 
@@ -140,7 +186,7 @@ output:
 
   A) What is a floating TOC?
   B) Use Lorem.Rmd again and add a TOC
-  C) Gove the TOC a set depth (toc_depth) and see what happens if you change it. (for instance `toc_depth = 2` can be set just as you set `toc_float: true` earlier.)
+  C) Give the TOC a set depth (toc_depth) and see what happens if you change it. (for instance `toc_depth = 2` can be set just as you set `toc_float: true` earlier.)
   D) Also try `code_folding: hide` and `number_sections: FALSE`.
   E) Google how to put two authors on one .Rmd, with affiliations. Put your and your labpartners name as authors.
   F) Apply a theme you like, but not "united".
@@ -151,7 +197,7 @@ output:
  
 ## Interactivity {#rmarkdowninteractive}
 
-
+<mark> XXX </mark>
 
 ## PDF 
 
@@ -161,7 +207,7 @@ quirks
 
 ## Bookdown {#bookdownportfolio}
 
-XXX intro bookdown
+XXX intro bookdown<mark> XXX </mark>
 
 You have generated a couple of .Rmd files for your portfolio by now. The next task will be to bundle them into one portfolio website, hosted by github.
 
@@ -204,7 +250,7 @@ When you have build your `index.Rmd` file and have collected all files in the ro
 
 <mark>**When hosting you portfolio on a public web address, please make sure that there is no confidential information visable in your project. Data that falls under a non-disclosure agreement for example from your projecticum may not be shared. Also, be sure not to publish any personal secrets such as passwords and tokens, inside a github repo or webpage.**</mark> 
 
-Once you have sucefully rendered your bookdown to a full website, hosting can be achived by copying all html files to your Github-pages. The easiest way is to clone your github pages repo and add, commit and push all html files to your github pages repo. The website will be automatically updated after some time. You can also setup a theme for your github pages. See [here](https://docs.github.com/en/github/working-with-github-pages/adding-a-theme-to-your-github-pages-site-with-the-theme-chooser) for more info.
+Once you have succesfully rendered your bookdown to a full website, hosting can be achieved by copying all html files to your Github-pages. The easiest way is to clone your github pages repo and add, commit and push all html files to your github pages repo. The website will be automatically updated after some time. You can also setup a theme for your github pages. See [here](https://docs.github.com/en/github/working-with-github-pages/adding-a-theme-to-your-github-pages-site-with-the-theme-chooser) for more info.
 
 For a complete manual on working with github pages, [see the gh-pages docs](https://docs.github.com/en/github/working-with-github-pages/getting-started-with-github-pages) 
 

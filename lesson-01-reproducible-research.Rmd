@@ -330,8 +330,9 @@ If you have any suggestions for a good convenience function to add to this packa
 </div>
 
 
-## Portfolio assignment `r paste0(les, ".1")`  {-}
 <div class="dagopdracht">
+## Portfolio assignment `r paste0(les, ".1")`  {-}
+
 
 **_C. elegans_ plate experiment**
 
@@ -665,8 +666,8 @@ The journal can be found [here](https://f1000research.com/).
 Have a look at the special Bioconductor channel: https://f1000research.com/gateways/bioconductor
 
 
-## Portfolio assignment `r paste0(les, ".2")` {-}
 <div class="dagopdracht">
+## Portfolio assignment `r paste0(les, ".2")` {-}
 
 **Open Peer Review**
 

@@ -532,7 +532,9 @@ Sometimes you may just want to show some R code with nice syntax highlighting bu
 ```
 ````
 
-<div id="question">
+---
+
+<div id="rstudio-tip">
 Hints:
 
 press `Ctrl + Alt + i` to insert a code chunk.

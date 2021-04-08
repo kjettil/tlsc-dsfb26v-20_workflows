@@ -6,11 +6,16 @@ les <- 7
 ## Lesson aim
 After this lesson you will be able to
 
- 1. have an overview of different output formates for RMarkdown and render those formates.
+ 1. Provide meta data for a project
+ 1. Have an overview of different output formates for RMarkdown and render those formats.
  1. Setup github pages
  1. Create a bookdown project
  1. Render a bookdown project to a local website
  1. Add the rendered site to your github pages
+
+## Meta data
+
+
 
 ## Output possibilities
 
@@ -80,7 +85,9 @@ output:
 
 [exercise from r4ds here](https://r4ds.had.co.nz/r-markdown.html#exercises-71)
 
-Create one new R Markdown document for each of the three built-in formats: HTML, PDF and Word. Knit each of the three example documents. How does the output differ? How does the input differ? (You may need to install LaTeX in order to build the PDF output — RStudio will prompt you if this is necessary.)
+Download Lorem.Rmd [here](XXX).
+
+From this .Rmd, knit one new document for each of the three built-in formats: HTML, PDF and Word. How does the output differ? How does the input differ? (You may need to install LaTeX in order to build the PDF output — RStudio will prompt you if this is necessary.)
 </div>
 
 ### Output options
@@ -117,7 +124,7 @@ You can organize content using tabs by applying the .tabset class attribute to h
 
 #### Themes {-}
 
-One nice setting is applying themes. You learned how to specify you own formatting with css last lesson. But RMarkdown has some [preset themes](https://www.datadreaming.org/post/r-markdown-theme-gallery/). And of course, you can download packages with more themes.
+You learned how to specify you own formatting with css last lesson. But RMarkdown has some [preset themes](https://www.datadreaming.org/post/r-markdown-theme-gallery/) you can use as well. And of course, you can download packages with more themes.
 
 ---
 title: "Stuff"
@@ -127,13 +134,12 @@ output:
 ---
 
 
-
 <div class="question">
 
 ##### Exercise `r les` {-}
 
   A) What is a floating TOC?
-  B) Download Lorem.Rmd [here](XXX) and add a TOC
+  B) Use Lorem.Rmd again and add a TOC
   C) Gove the TOC a set depth (toc_depth) and see what happens if you change it. (for instance `toc_depth = 2` can be set just as you set `toc_float: true` earlier.)
   D) Also try `code_folding: hide` and `number_sections: FALSE`.
   E) Google how to put two authors on one .Rmd, with affiliations. Put your and your labpartners name as authors.

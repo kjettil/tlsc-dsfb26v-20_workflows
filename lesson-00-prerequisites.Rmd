@@ -38,5 +38,24 @@ The online sessions require you to have an internet connection and an updated ve
 During this course we really invite you to seek interaction on the course contents, the exercises and assignments with fellow course participants and the instructors. In order to facilitate this we will have a specific Q&A platform ready for you. The details will be made known on CANVAS.
 
 ## Exam
-The credits for this course can be earned by handing in the final exam assignment. The details are described here \@ref(portfolioexam). In short: You will have to publish a bookdown project to github pages in your github account. This page will function as a portfolio where you will post all the assignments and output products of the course. Only the lecturers of the course will have access to your portfolio products.  
+The credits for this course can be earned by handing in the final portfolio. The details are described here \@ref(portfolioexam). In short: You will have to publish a bookdown project to github pages in your github account. This page will function as a portfolio where you will post all the assignments and output products of the course. Only the lecturers of the course will have access to your portfolio products. Bookdown and github will be covered within this course.
+
+
+## Exercise and assignment directives
+Within the lesson you will encounter a number of exercises. 
+
+Please answer all the assignments and exercises in an RMarkdown document. You learned how to make one in DAUR1. Save it somewhere in your course project. 
+
+At the end of every lesson (and sometimes in the middle), there is a larger _portfolio assignment_. You will work on this assignment for the rest of the day, after finishing the smaller exercises in the lesson. Save all portfolio assignments in separate Rmd files! Please create a separate RStudio project to complete all the portfolio assignments. The collection of all the portfolio assignments will form the main part of your portfolio for this course. The portfolio is also the exam for this course. **You will need to pass all portfolio assignments in order to pass the course!**. See \@ref(portfolioexam) for more info. 
+
+As your work on the projecticum is probably your first real data science / bioinformatics project, your portfolio is the logical place to display it. Therefore, the work you do for the projecticum will also be part of your potfolio. However, the projecticum is only graded for the projecticum. 
+
+Please also note that this is a 5 EC course, so count on about 140 hours of work in total. Part of this workload will be spread over the semester, to work on your portfolio. But we scheduled these lessons to ensure that you have most of the first 3 weeks in this semester available to finish the lessons in workflows. Use this time to you advantage! You will need the skills from this course within the projecticum. 
+
+
+## failing or passing the course
+
+This course is about the workflows that are available to adopt good practices in data science for biology. This is a field in which you rarely work alone. Participating and contributing to a data science community is an important skill to practice! Active participation is therefore conditional for getting a grade on your portfolio. 
+
+Your final exam, as mentioned is your portfolio. After passing the course, you can convert this portfolio into your own personal digital CV.
 

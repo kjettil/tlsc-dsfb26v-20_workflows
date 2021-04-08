@@ -532,7 +532,7 @@ Sometimes you may just want to show some R code with nice syntax highlighting bu
 ```
 ````
 
-<div id="question">
+<div class="rstudio-tip">
 Hints:
 
 press `Ctrl + Alt + i` to insert a code chunk.
@@ -894,3 +894,6 @@ Van der Ploeg says so too [-@vdploeg04].
 https://nceas.github.io/sasap-training/materials/reproducible_research_in_r_fairbanks/index.html
 
 https://guides.github.com/features/mastering-markdown/
+
+
+

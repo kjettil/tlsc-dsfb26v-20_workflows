@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## <mark>Plagiarism and copying work of others</mark>
-**It is not allowed to hand in a pre-existing analysis as your own work. It is allowed to let yourself be inspired by existing work and copy small pieces of code from pre-existing work, as long as you provide credit to the work you are using or changing. Pay respect to the associated licence if present. It is not allowed to let somebody else create your portfolio for you. All suspects or assessments of fraude or plagiarism will be reported to the Examcommittee of the Institute for Life Sciences & Chemistry**
+**It is not allowed to hand in a pre-existing analysis as your own work. It is allowed to let yourself be inspired by existing work and copy a few lines of code from pre-existing work, as long as you provide credit to the work you are using or changing. Pay respect to the associated license if present. It is not allowed to let somebody else create your portfolio for you. All suspects or assessments of fraude or plagiarism will be reported to the Examcommittee of the Institute for Life Sciences & Chemistry**
 
 ## Details on exam for this course
 As explained, the course will be completed with an assessment on your portfolio. 
@@ -25,8 +25,9 @@ will be planned as a do-over. If you fail that do-over again, we will register a
 Make sure that you have shared the public weblink to your portfolio **at least 3 days before the planned assessment**. WE need to have some time in advance to prepare. If, for some reason, you cannot make this deadline, let us know.
 
 ## Getting help
-We are here to help you pass this course! If you need assistence on getting your portfolio in order, please let us know. We do not have all the answers though, sometimes we will merely be able to point you in a solutions direction. You can 
-get help also on fora, either on public fora such as Stack Overflow. Or on the course forum on Canvas. I can highly recommend posing a question on Stack Overflow yourself. If you stick to the forum rules, you will find that there are a lot of friendly fellow-programmers willing to aid you in your programming quest. 
+We are here to help you pass this course! If you need assistance on getting your portfolio in order, please let us know. We do not have all the answers though, sometimes we will merely be able to point you in a solutions direction. Make sure to look around on the internet, usually other people have encountered very similar problems and have shared how they solved them. Or they were solved on a forum and you can look at it for inspiration. 
+
+<!-- Nemen ze echt te letterlijk. Geen spoortje van excuses geven om opdrachten te outsourcen. You can get help also on fora, either on public fora such as Stack Overflow. Or on the course forum on Canvas. I can highly recommend posing a question on Stack Overflow yourself. If you stick to the forum rules, you will find that there are a lot of friendly fellow-programmers willing to aid you in your programming quest.  -->
 
 ## Setting up a bookdown project and publishing it online as course portfolio {#bookdownportfolio}
 

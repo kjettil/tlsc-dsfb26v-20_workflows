@@ -3,18 +3,22 @@
 les <- 1
 ```
 
-### **This lesson has two portfolio assignments**
-
 This lesson is about the 'movement' in science called 'Reproducible Research'. It explains the principles of Open Science and connected terms such as Open Access, Open Source and Reproducible Research, Open Peer Review and Open Data. You will practice with workflows that enable working reproducible.
 
 ## Before you start! Exercise and assignment directives
 Within the lesson you will encounter a number of exercises. 
 
-Please answer all the assignments and exercises in an RMarkdown document. You learned how to make one in DAUR1. Save it somewhere in your course project. You can use this later to build your portfolio. 
+Please answer all the assignments and exercises in an RMarkdown document. You learned how to make one in DAUR1. Save it somewhere in your course project. 
 
-At the end of every lesson, there is a larger _lesson assignment_ (dagopdracht). You will work on this assignment for the rest of the day, after finishing the smaller exercises in the lesson. Save all lesson assignments in separate Rmd files (as instructed within the assignments). Please create a separate RStudio project to complete all the lesson assignments. The colleaction of all the lesson assignments, plus the work you do for the projecticum will form your portfolio for this course. The portfolio is also the exam for this course. **You will need to pass all lesson assignments in order to pass the course**. See \@ref(portfolioexam) for more info. 
+**This lesson has two portfolio assignments!**
+Save those as separate .Rmd files in a portfolio-project.
 
-Please note that this is a 5 EC course, so count on about 140 hours of work in total. Part of this workload will be spread over the semester, to work on your portfolio. But we scheduled these lessons to ensure that you have most of the first 3 weeks in this semester available to finish the lessons in workflows. Use this time to you advantage! You will need the skills from this course within the projecticum. 
+<div, class="tip">
+So, you will have at least 3 R projects (file --> new project...) going on this semester: one for all the regular exercises in the lessons. One for your portfolio. A third one for projecticum. 
+
+</div>
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
@@ -79,7 +83,7 @@ Most people would agree that this seems to be a good practice. Let's all do open
 
 However, how would you 'describe' the steps of an analysis or creation of a graph when you use GUI based software? 
 
-```{r messysteps, dpi = 80}
+```{r messysteps, dpi = 80, echo=F}
 knitr::include_graphics(
   file.path(
     image_dir,
@@ -98,23 +102,44 @@ Maybe ~~videotape~~ tiktok-record your process and add .mp4 to your paper? Type 
 
 To replicate a scientific study we need at least:
 
- > - Scientific context, research questions and state of the art [<mark>P<mark/>]
- > - (Experimental) model or characteristics of population or matter studied [<mark>P</mark>]
- > - Data that was generated and corresponding meta data [<mark>D</mark>, _C_]
- > - **Exact** (experimental) design of the study [<mark>P</mark>, _D_, <mark>C</mark>]
- > - Exploratory data analysis of the data [_P_, <mark>C</mark>]
- > - **Exact** methods that were used to conduct any formal inference [_P_, <mark>C</mark>]
- > - Model diagnostics [_C_]
- > - Interpretations of the (statistical) model results/model fitting process [_P_, _C_]
- > - Conclusions and academic scoping of the results [<mark>P</mark>, _C_]
- > - **Access to all of the above** [<mark>OAcc, OSrc</mark>]
+> - **Context** Scientific context! Research questions, related publications.. [<mark>P<mark/>]
+> - **Methods** Exactly how the data was gathered [<mark>P</mark>, _D_, <mark>C</mark>]
+    + In what model or population? (e.g. some cell line, some knockout mouse etc)
+    + *Exact* (experimental) design of the study
+> - **Data** Actually the raw data itself, to check if you find something similar [<mark>D</mark>] 
+> - **Meta data** which is data about the data. For instance who gathered it, when, where, licence information, keywords...)[<mark>D</mark>, _C_] 
+> - **Data analysis** All steps in data analysis [_P_, <mark>C</mark>]
+    + Exploratory data analysis of the data 
+    + data mangling decisisons, such as fitering and outlier selection
+    + Which inductive statistical tests or inference was done and how.
+> - **Interpretation** How the data was interpreted [<mark>P</mark>, _C_]
+    + All choices made in the interpretation of the data (there is usually not one possible way to interpret results..)
+    + Conclusions and academic scoping of the results
+> - **Access to all of the above!** [<mark>OAcc, OSrc</mark>]
 
-<p style="font-size:14px">$P = Publication$, $D = Data$, $C = Code$, $OAcc = Open\ Access$, $OSrc = Open\ Source$ </p> 
+<p style="font-size:14px">$P = Publication$, $D = Data$, $C = Code$, $OAcc = Open\ Access$, $OSrc = Open\ Source$ </p>
 
-So we can conclude that 
+So we can conclude that:
 
 $Reproducible\ (Open)\ Science = P + D + C + OAcc + OSrc$
-and 
+
+<!--  > - Scientific context, research questions and state of the art [<mark>P<mark/>] -->
+<!--  > - (Experimental) model or characteristics of population or matter studied [<mark>P</mark>] -->
+<!--  > - Data that was generated and corresponding meta data [<mark>D</mark>, _C_] -->
+<!--  > - **Exact** (experimental) design of the study [<mark>P</mark>, _D_, <mark>C</mark>] -->
+<!--  > - Exploratory data analysis of the data [_P_, <mark>C</mark>] -->
+<!--  > - **Exact** methods that were used to conduct any formal inference [_P_, <mark>C</mark>] -->
+<!--  > - Model diagnostics [_C_] -->
+<!--  > - Interpretations of the (statistical) model results/model fitting process [_P_, _C_] -->
+<!--  > - Conclusions and academic scoping of the results [<mark>P</mark>, _C_] -->
+<!--  > - **Access to all of the above** [<mark>OAcc, OSrc</mark>] -->
+
+<!-- <p style="font-size:14px">$P = Publication$, $D = Data$, $C = Code$, $OAcc = Open\ Access$, $OSrc = Open\ Source$ </p>  -->
+
+<!-- So we can conclude that  -->
+
+<!-- $Reproducible\ (Open)\ Science = P + D + C + OAcc + OSrc$ -->
+<!-- and  -->
 
 ### Hydroxychloroquine example
 
@@ -150,7 +175,7 @@ knitr::include_graphics(
 <p style="font-size:14px">https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31180-6/fulltext</p>
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-}
 
 **Answer the following questions**
 
@@ -190,7 +215,7 @@ Would the Lancet have adopted the Reproducible (Open) Science framework:
  >- Focus should be on the data and methods, not on the academic narratives and results ...
  >- In physics and bioinformatics this is already common practice
 
-</div>
+</details>
 
 ## Data, methods and logic
 
@@ -237,7 +262,7 @@ Also, if only one record in a whole Excel file is changed to the wrong data-type
 We will practice this a bit and see this happening live in an exercise 
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-}
 
 **Reading a strangely formatted column from an Excel file**
 
@@ -304,8 +329,9 @@ The function you need from `{toolboxr}` is `rotate_axis_labels()`. Type
 If you have any suggestions for a good convenience function to add to this package, create an issue on github.com for a feature request or clone/fork the repository, add the function you would like to add and create a pull request. You will learn how to take these steps in lesson 2 and 3.
 </div>
 
+
 <div class="dagopdracht">
-##### Portfolio assignment `r les`
+## Portfolio assignment `r paste0(les, ".1")`  {-}
 
 
 **_C. elegans_ plate experiment**
@@ -474,7 +500,7 @@ plot_ergo
 ```
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-}
 
 **Mind the variability per subject, what do you see?**
 
@@ -639,8 +665,9 @@ $Reproducible\ Science = P + D + C + OAcc + OSrc$
 The journal can be found [here](https://f1000research.com/).
 Have a look at the special Bioconductor channel: https://f1000research.com/gateways/bioconductor
 
+
 <div class="dagopdracht">
-##### Portfolio assignment `r les`
+## Portfolio assignment `r paste0(les, ".2")` {-}
 
 **Open Peer Review**
 

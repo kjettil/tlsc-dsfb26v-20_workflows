@@ -38,7 +38,8 @@ library(readxl)
 ## Aim of this lesson
 After this lesson you will be familiar with the most important data management guidelines and principles: 
 
- 1. Using version control
+<mark>
+ 1. Proper file naming strategies
  1. Guerrilla Analytics principles
  1. Files and folders / Project structure
  1. Data-formats & Data shapes / Tidy data
@@ -48,15 +49,9 @@ After this lesson you will be familiar with the most important data management g
  1. Column names and file names
  1. Checking data validity/integrity using checksums
  1. Proprietary vs non-proprietary formats
+</mark>
 
-## Resources
-
- - [F1000 'Data guidelines'](https://f1000research.com/for-authors/data-guidelines)
- - [Guerrilla Analytics](https://guerrilla-analytics.net/the-principles/)
- - [Guerrilla Analytics 'slides'](https://www.slideshare.net/guerrillaanalytics/2014-10-newcastle-university-02web)
- - [F1000 'Preparing your data for sharing'](https://f1000research.com/for-authors/data-guidelines#prepareyourdata)
-
-## Using version control
+## File names
 
 **Do you recognize this?**
 ```{r, dpi=50, echo=FALSE}
@@ -76,10 +71,10 @@ A good file name is:
 
  1. Unique in a folder (prevent duplicated names)
  1. Is short, but descriptive (if you need it to be longer to be descriptive enough, choose that)
- 1. Does not contain any special characters* except for `_` and a `.` before the extension. Having mupltiple dots (`.`) in a file name can be confusing but sometimes is required. For example for an archive we sometimes see `<file_name>.tar.gz`
+ 1. Does not contain any special characters* except for `_` and a `.` before the extension. Having multiple dots (`.`) in a file name can be confusing but sometimes is required. For example for an archive we sometimes see `<file_name>.tar.gz`
  1. The typeface of a file name is ideally set in lowercase only. If you want to deviate from this use `UpperFirst` camelcase instead.
  1. The most important thing about naming files is to be consistent. This is also the hardest part!
- 1. If you recieve a file from somebody else: **Never change the file name, also if it does not meet the aboev requirements**. Changing  a file name causes a breakage between the file and the source it came from. If you change a file name you recieved from a person or downloaded from the internet, the person who send the file will not know about the new name
+ 1. If you receive a file from somebody else: **Never change the file name, even if it does not meet the above requirements**. Changing  a file name causes a breakage between the file and the source it came from. If you change a file name you recieved from a person or downloaded from the internet, the person who send the file will not know about the new name.
 
 *The special characters you should avoid in a file name:
 ```
@@ -101,7 +96,7 @@ knitr::include_graphics(
 ```
 
 Below, I show an example of badly formatted file name and column names to make the point.
-```{r, dpi = 80}
+```{r, dpi = 80, echo=FALSE}
 knitr::include_graphics(
   file.path(image_dir, "bad_formatting_file_name_and_headers.jpg")
 )
@@ -133,7 +128,7 @@ knitr::include_graphics(
 As you can see from my own edits to these principles, quite a few are immediately applicable when using a programming Language like R and its Rmd format, that we use all the time. I will go over each principle below in more detail. But first an exercise.
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-}
 Imagine you receive a file attached to an email from a researcher in your research group called: 
 
 `salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx`
@@ -150,7 +145,7 @@ Describe the following steps in an RMarkdown file. You do not need to write the 
  1. Which steps do you need to take in reshaping the file to make the dataformat match the requirement for using `{ggplot}
  1. Think of a better file name
  1. Write a conceptual and kind and friendly, but clear reply email (in English) to the researcher, where you address the changes that the researcher needs to make to the file in order for you to be able to analyze this data in R.
- 1. Add the resulting RMarkdown to your RStudio project portfolio project for this course (see prerequisites chapter \@ref(preparingforthecourse)), you will need to ad this file to your bookdown portfolio later in lesson \@ref(bookdownportfolio)
+ 1. Add the resulting RMarkdown to your RStudio project portfolio project for this course (see prerequisites), you will need to ad this file to your bookdown portfolio later in lesson \@ref(bookdownportfolio)
  
 </div> 
  
@@ -163,7 +158,8 @@ This principle is simple: storage costs are low these days so there is no need t
 
  1. Keep your files, you never know when you need them. The price for a storage units has dramatically dropped over the past years, so there is no need to delete files or clean up any more. Just save old files in an archive. 
  1. Store data that you actively work on in online-cloud storage. Usually, you will be better of storing data on a remote location in the cloud. This reduces the risk of data loss, when something happens to the local file system. Cloud storage is usually redundant. Which means copies of the same file are ditributed over mupltiple locations (even geographically if you want). When one disk fails, there is always a back up, so no real data loss if hardware dies.
- 1. Protect yourself: do not click on attachments and spiffy emails, cyber criminals are getting smarter everyday. When installing open source software always check the checksums of the downloaded file. More on this toppic later in @\ref(checksums)
+ 1. Protect yourself: do not click on attachments and spiffy emails, cyber criminals are getting smarter everyday. 
+ <!-- When installing open source software always check the checksums of the downloaded file. More on this topic later in @\ref(checksums) -->
  1. Create md5sums for important (source) data-files to ensure data integrity and data transfer validity. A MD5 ‘hash’ or ‘checksum’ is a 128-bit summary of the file contents. Files with different MD5 sums are different. So you can use this to check whether a file has changed since you last used it.
  1. Agree on a storage system, share it, use it, stick to it
  
@@ -196,7 +192,7 @@ md5_ex1_raw %>% enframe() -> md5sums_ex1
 ```
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-}
 
 There are 3 more datafiles in the folder /data/md5_examples. Find out which one is different from the other three using their MD5sums.
 If you want, `md5sum` can handle multiple files at the same time, but wants full paths for all of them.
@@ -248,8 +244,8 @@ So when managing files in projects adhere to the following guidelines
 
  1. Create a separate folder for each analytics project (in RStudio -> RStudio Project). Keep the unit of a project small. So a larger research project can usually be subdivided into smaller projects. Create an analysis project for each sub-project. Don't try to fit it all together.
  1. Do not deeply nest folders (max 2-3 levels)
- 1. Keep information about the data, close to the data. So store descriptions about variables for example in a README.txt file and store that README.txt file in the same folder as where the dat lives that it describes. When using Excel files, you may choose to store the README information in a separate worksheet. More on this later \@ref(metadata)
- 1. Store each dataset in its own sub-folder. I usually work like the example below. Each dataset I receive goes in a numbered folder in the `data-raw` folder. If I recieve an updated file, I add the old file to a new folder called `v01` inside the orginal `D..` folder. The updated file replaces the `v01` file. If then you recieve yet another update, you can repeat this trick with a `v02` folder inside the `D..` folder. In this way, the file directly in the `D..` folder is always the latest updated version. The README.txt file containing data about the data (see \@ref(metadata)) lives also in the root of the `D..` folder.
+ 1. Keep information about the data, close to the data. So store descriptions about variables for example in a README.txt file and store that README.txt file in the same folder as where the dat lives that it describes. When using Excel files, you may choose to store the README information in a separate worksheet. More on this later \@ref(metadata1)
+ 1. Store each dataset in its own sub-folder. I usually work like the example below. Each dataset I receive goes in a numbered folder in the `data-raw` folder. If I recieve an updated file, I add the old file to a new folder called `v01` inside the orginal `D..` folder. The updated file replaces the `v01` file. If then you recieve yet another update, you can repeat this trick with a `v02` folder inside the `D..` folder. In this way, the file directly in the `D..` folder is always the latest updated version. The README.txt file containing data about the data (see \@ref(metadata1)) lives also in the root of the `D..` folder.
  1. Do not change file names or move them. As explained before, never change a file name of a file you recieve or download from the internet. If you need to change the file for analysis reasons (sometimes bioinformatics pipelines require specially formatted file names and than you do not have a choice, but to rename them), record your changes in the README.txt file!
  1. Do not manually edit data source files. **Never, ever change a value inside a file**. You can (_almost_) always solve this using code. 
  1. In code, use relative paths
@@ -259,7 +255,8 @@ How to organize data files
 fs::dir_tree(here::here("data-raw"))
 ```
 
-#### Data integrity {#checksums}
+#### Data integrity {-} 
+<!-- {#checksums} -->
 When receiving a file from a laboratory that has performed a sequencing analysis, the files you receive are usually in `.fastq.gz` or `fasta.gz` format. Because these files can be big, they are usually accompanied by a small file containing a hash-like string looking something like this:
 
 `r tools::md5sum(here::here("data", "tidy_Kopie van salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx"))`
@@ -277,7 +274,7 @@ md5sums are
  1. There are many different types of hash functions [MD5, SHA256 are much used for data and software](https://en.wikipedia.org/wiki/List_of_hash_functions)
  
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les`{-}
 Calculating and checking md5sums checksums in R
 
  (a) Determine the md5sums of the file. Save the checksums to a file [write a piece of R code] `./data/toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv`
@@ -368,11 +365,11 @@ serverside$value == local$value[2]
 
 </details>
 
-#### Sharing data
+### Sharing data 
 When you share data with someone else, consider taking these steps: 
 
  >- Remove sensitive data from each file by pseudoencoding or anonymizing or removing
- >- Encoding sensitive data can be done from within R. [See](https://stackoverflow.com/questions/21686645/how-to-create-md5-hash-of-a-column-in-r)
+ >- Encoding sensitive data can be done from within R. [See here ](https://stackoverflow.com/questions/21686645/how-to-create-md5-hash-of-a-column-in-r)
  >- Agree on a file naming convention within a team, before the work starts
  >- Agree on where data is stored and who has access
  >- Suppress the impulse to store multiple copies of the data in different locations
@@ -387,10 +384,12 @@ Take heed of these pointers:
  >- Store clean curated datasets in the "data" folder, with md5sums and a README.txt
  >- Use literate programming (RMarkdown or Jupyter Notebook) for full analysis
  >- Store scripts in a "./code" or "./inst" folder
- >- Store (R) functions in R in a "./R" folder, and document them with [Roxygen2](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html)
+ <!-- >- Store (R) functions in R in a "./R" folder, and document them with [Roxygen2](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html) -->
+
+<!-- XXX heel graag, maar dan moeten we dat uitleggen in de cursus. Voor nu doorgeschoven naar volgend jaar. -->
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-}
 Let's demonstrate this principle 3 with a COVID-19 reporting example
 
  >- Imagine we want daily reports on the number of COVID-19 cases and caused deaths
@@ -398,13 +397,17 @@ Let's demonstrate this principle 3 with a COVID-19 reporting example
  >- The data is available (for manual and automated download) from the European Center for Disease Control
  >- The analysis can be coded completely from begin to end to result in the information we need
 
-Take a look at the source file in the [Github repo](https://raw.githubusercontent.com/uashogeschoolutrecht/covid_demo/master/app/covid_data.Rmd)
+Take a look at the source file in this [Github repo (click)](https://raw.githubusercontent.com/uashogeschoolutrecht/covid_demo/master/app/covid_data.Rmd)
 
-Download this file to your RStudio environment and knit the file. What do you see in the rendered html? What happens if you change som of the paramters in the `yaml` header of the file?
+Download this file to your RStudio environment and knit the file. 
+
+What do you see in the rendered html? 
+
+What happens if you change som of the parameters in the `yaml` header of the file?
 
 </div>
 
-#### Parameterization
+#### Parameterization {-}
 The above example in the exercise is an example of a so-called _parameterized_ script. In this case a parameterized RMarkdown. We will learn more on parameterizing RMarkdown files in lesson \@ref(rmarkdownparams)
 
  >- The covid Rmd is parameterized on date and country
@@ -468,7 +471,7 @@ Now that we have a framework with which we can build our work flows in a data sc
 
 ## Data formatting
 During the different R courses we have been working with data in the `tidy` format frequently. 
-```{r}
+```{r, echo=FALSE}
 knitr::include_graphics(
   file.path(image_dir, "tidy-1.png")
 )
@@ -482,7 +485,7 @@ knitr::include_graphics(
 
 Although this is a optimized format for working with the `{tidyverse}` tools it is not the only suitable data format. We already encountered an important other structure that is much used in Bioinformatics: `SummarizedExperiment`. This class of data format is optimized for working with `Bioconductor` packages and work flows. 
 
-```{r}
+```{r, echo=FALSE}
 knitr::include_graphics(
   here::here(
     "images",
@@ -498,8 +501,8 @@ BostonHousing %>% as_tibble()
 The different variables are arranged in a side-by-side fashion. In this example the data is still tidy, but there are also examples of wide formatted data that is not tidy. When you want to work with this data, you first need to transform it in a stacked or so-called long format that works well for `{tidyverse}`. We will see an example in the next exercise
 
 <div class="question">
-##### Exercise `r les`
-Remember the well plate experiment in the exercise above. Here we will perform a transformation on the data to make the data suitable for analysis in R. We will also create a single graph showing all the data available for all samples over measured time in the experiment. 
+##### Exercise `r les` {-}
+Remember the well plate experiment from last lesson. Here we will perform a transformation on the data to make the data suitable for analysis in R. We will also create a single graph showing all the data available for all samples over measured time in the experiment. 
 
 The data file for this exercise can be found here: `./data/salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx`
 
@@ -660,13 +663,13 @@ data_tidy_time %>%
 
 </details>
 
-## Metadata
+## Metadata {#metadata1}
 Meta information like type of variable, ranges, units, number of observations or subjects in a study, type of analysis or experimental design goes in a README.txt file or a sheet in the Excel file containing the data. Keep the readme information close to the data file. Also, information about who is the owner of the data or who performed the experiment when and where and with what type of device or reagents is very useful to include.
 In our exercise above such README information would have saved us a lot of time figuring out what is what in the Excel file don't you think?
 
 An example of a readme file is depicted below. 
  
-```{r, dpi = 40, echo=FALSE}
+```{r, dpi = 30, echo=FALSE}
 knitr::include_graphics(
   here::here(
     "images",
@@ -676,6 +679,13 @@ knitr::include_graphics(
 A short example of a README.txt file. It does not need to be very long, but provides information on where the data (which project?) refers to, who the owners are, who to contact in case of questions and what are the contents of the data (variable description) 
 
 ## Variable encodings
+ 
+ - Use explicit encoding: male/female instead of `0`/`1`
+ - Encodings can always be altered programmatically
+ - Be consistent <mark>(see next graph)</mark>
+ - Write a code journal that explains encodings, including units and levels
+ - Use factors if a variable has a set of discrete possible outcomes: `sex`, `species`, `marital_status` etc
+ - Use an ordered factor if there is a hiearchy in the factor levels: `year`, `month`, `number_of_legs`
 
 Here we use the `{palmerpenguins}` dataset as an example to show you how to deal with encoding variables.
 
@@ -689,12 +699,16 @@ data_penguins <- palmerpenguins::penguins_raw
 data_penguins
 ```
 
-### Exploratory data Analysis - missingness
-```{r, dpi = 130}
-naniar::vis_miss(data_penguins)
-```
+### How to add variable encodings
+<mark> XXX </mark>
 
-## Factor levels
+
+
+
+### Factor levels
+
+R (unlike SPSS) does not mind if you use descriptive words instead of numbers as categorical variable values: 
+
 ```{r, echo=TRUE}
 data_penguins %>%
   ggplot(aes(x = Sex, y = `Flipper Length (mm)`)) +
@@ -702,14 +716,6 @@ data_penguins %>%
 unique(data_penguins$Sex) ## we also call this factor levels
 ```
 
-## Variable encodings
- 
- - Use explicit encoding: male/female instead of `0`/`1`
- - Encodings can always be altered programmatically
- - Be consistent <mark>(see next graph)</mark>
- - Write a code journal that explains encodings, including units and levels
- - Use factors if a variable has a set of discrete possible outcomes: `sex`, `species`, `marital_status` etc
- - Use an ordered factor if there is a hiearchy in the factor levels: `year`, `month`, `number_of_legs`
 
 ## Data-formats - Non-Proprietary
 When we store data for re-use, we need it to be in an interoperable form. This means that it can be read (also after a long time - let's say 30 years from now) into analysis software. This can be achieved by storing data in a so-called `non-proprietary` format. This means basically that the format source code is open and maintained by open source community or core development team.
@@ -726,9 +732,14 @@ These formats will remain readable, even if the format itself becomes obsolete
 **When storing a curated dataset for sharing or archiving it is always better, and sometimes enforced by the repository, to choose a non-proprietary format**
 
 ## Data entry
-Data entry preferably, must be performed in a project template.  The template contains predefined information on the observations in the study. The blank information needs to be filled out by the person responsible for/or performing the data entry.
+Data entry preferably, must be performed in a project template. The template contains predefined information on the observations in the study. The blank information needs to be filled out by the person responsible for/or performing the data entry. Or in other words: think about how you will enter your data before gathering it, and if there are multiple people gathering the data, make sure that everyone uses the exact same way of entering the data (template).
 
 Enter an “NA” for missing values, do not leave cells blank if there is a missing value. Use only “NA” and nothing else. If you want to add additional information on the “NA”, put that in the “remarks” column.
+
+(By the way, you can visualise missing dtaa like this in R: )
+```{r, dpi = 130}
+naniar::vis_miss(data_penguins)
+```
 
 After entry (and validation) of the filled-out template, NEVER change a value in the data. If you want to make changes, increment the version number of the file and document the change in the README.txt file or sheet in an Excel file (see below)
 
@@ -833,17 +844,24 @@ remarks <- c(
 ```
 
 
-
+## Portfolio assignment `r paste0(les, " ")` {-}
 <div class = "dagopdracht">
 
-**Dagopdracht: Applying the Guerrilla analytics framework to your own project.**
+**Applying the Guerrilla analytics framework to your own project.**
 
 (A) 
  1. Look at your RStudio project that you created for the DAUR-II final assignment
  1. Rearrange your project according the Guerilla principles explained above
  1. Add README files to the datasets 
- 1. Use the `{fs}` package to share a screeshot of your folder tree in your portfolio, look [at:](https://www.tidyverse.org/blog/2018/01/fs-1.0.0/) for more info on how to use the `{fs}` package. 
+ 1. Use the `{fs}` package to share a screenshot of your folder tree in your portfolio, look [at:](https://www.tidyverse.org/blog/2018/01/fs-1.0.0/) for more info on how to use the `{fs}` package. 
 
 (B)
 Now clean up your work environment for this course (workflows) and the parallel course in DSFB2 (projecticum). Set up a folder structure that will accomodate future plans and collaboration on the projecticum. Provide readme-files or comments within the code where needed. 
 </div>
+
+## Resources
+
+ - [F1000 'Data guidelines'](https://f1000research.com/for-authors/data-guidelines)
+ - [Guerrilla Analytics](https://guerrilla-analytics.net/the-principles/)
+ - [Guerrilla Analytics 'slides'](https://www.slideshare.net/guerrillaanalytics/2014-10-newcastle-university-02web)
+ - [F1000 'Preparing your data for sharing'](https://f1000research.com/for-authors/data-guidelines#prepareyourdata)

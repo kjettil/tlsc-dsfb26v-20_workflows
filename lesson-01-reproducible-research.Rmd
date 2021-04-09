@@ -5,15 +5,17 @@ les <- 1
 
 This lesson is about the 'movement' in science called 'Reproducible Research'. It explains the principles of Open Science and connected terms such as Open Access, Open Source and Reproducible Research, Open Peer Review and Open Data. You will practice with workflows that enable working reproducible.
 
-## Before you start! Exercise and assignment directives
+## Before you start! 
+A reminder of the exercise and assignment directives.
+
 Within the lesson you will encounter a number of exercises. 
 
-Please answer all the assignments and exercises in an RMarkdown document. You learned how to make one in DAUR1. Save it somewhere in your course project. 
+Please answer all the assignments and exercises in an RMarkdown document. You learned how to make one in DAUR1. Save it somewhere in your **course project**. 
 
 **This lesson has two portfolio assignments!**
-Save those as separate .Rmd files in a portfolio-project.
+Save those as separate .Rmd files in a **portfolio-project**.
 
-<div, class="tip">
+<div class="tip">
 So, you will have at least 3 R projects (file --> new project...) going on this semester: one for all the regular exercises in the lessons. One for your portfolio. A third one for projecticum. 
 
 </div>
@@ -330,13 +332,12 @@ If you have any suggestions for a good convenience function to add to this packa
 </div>
 
 
-<div class="dagopdracht">
 ## Portfolio assignment `r paste0(les, ".1")`  {-}
+<div class="dagopdracht">
 
+**_C. elegans_ plate experiment** 
 
-**_C. elegans_ plate experiment**
-
-(Again: work out this exercise in your markdown file. You will need this later to put in your portfolio)
+(Again: work out this exercise in a Rmarkdown file in your portfolio-project. You will need this later to put in your portfolio)
 
 The data for this exercise was kindly supplied by J. Louter (INT/ILC) and was derived from an experiment in which adult _C.elegans_ nematodes were exposed to varying concentrations of different compounds. The variables `RawData` (the outcome - number of offspring counted as an integer value, after incubation time), `compName` (the generic name of the compound/chemical), the `compConcentration` (the concentration of the compound), and the `expType` are the most important variables in this dataset.
 
@@ -666,8 +667,8 @@ The journal can be found [here](https://f1000research.com/).
 Have a look at the special Bioconductor channel: https://f1000research.com/gateways/bioconductor
 
 
-<div class="dagopdracht">
 ## Portfolio assignment `r paste0(les, ".2")` {-}
+<div class="dagopdracht">
 
 **Open Peer Review**
 

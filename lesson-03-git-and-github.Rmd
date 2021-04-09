@@ -64,7 +64,7 @@ In this section, we will give you a detailed protocol for working with Git using
 
 Before you can track your file changes using Git, you first need to set up your Git repository. It is best practice to create your Git repository on GitHub and then download a copy of the Git repository to your computer. We explain these two steps in detail below.
 
-#### Step 1: Creating a new Git repository on GitHub
+#### Step 1: Creating a new Git repository on GitHub {-}
 
 To set up your Git repository, you go to the [GitHub login page](https://github.com/login) and log in with your credentials. You are then taken to the home page. On the left side, you can find a panel with your repositories (if you have any). Here, you can click on 'New' to create a new repository (see figure below, top panel). 
 
@@ -81,7 +81,7 @@ Once you click on 'New', you will be taken to a menu were you can specify the de
 knitr::include_graphics('images/lesson22_1_createRepo.png')
 ```
 
-#### Step 2: Downloading the Git repository to your computer (cloning)
+#### Step 2: Downloading the Git repository to your computer (cloning) {-}
 
 Once you have created a new Git repository on GitHub, you can download the repository to your computer. Downloading a Git repository is called **cloning**. The steps for cloning a Git repository are as follows:
 
@@ -102,7 +102,7 @@ knitr::include_graphics('images/lesson22_2_downloadRepo.png')
 
 OK, you are ready to go! You have created your first Git repository and you can now start to add files and track their changes. In this part, we will show you how to commit your changes and how to push your changes to the Git repository on GitHub. 
 
-#### Getting started with Git in RStudio
+#### Getting started with Git in RStudio {-}
 
 We start by creating a new R script and saving it in the directory of the Git repository. In the right upper corner of RStudio, you can find a submenu called 'Git'. If you open this menu, you can see the changes you have made to the repository (see figure below). These changes may be new files that you just added to the repository, but they also can be changes to the content of pre-existing files. 
 
@@ -112,7 +112,7 @@ knitr::include_graphics('images/lesson22_3_gitmenu.PNG')
 
 In this Git menu, you can perform all your Git actions, including committing your changes, pushing your changes to GitHub or pulling GitHub changes to your computer. We will now discuss these steps in detail. 
 
-#### Saving a new version of your file (commit)
+#### Saving a new version of your file (commit) {-}
 
 You just created a new R script. In addition, by cloning your Git repository from GitHub, you created a new R Project file. These changes need to be stored in the Git repository. In other words, you need to commit the changes to the Git repository. You can do this by clicking on the 'Commit' button in the Git menu. A new window will then open. In this window, you can select the changes you want to commit to the Git repository (see figure below, left upper corner). Note that by selecting a file, you can see the changes in the bottom panel of the window (in which lines in green are new/added lines and lines in red are old/removed lines). After selecting the files you want to commit, you can write a commit message in the upper right panel. This commit message is necessary to later on easily distinguish the different commits in GitHub. It is therefore important to write commit messages that clearly indicate the changes you made in the commit. Finally, you can commit your changes by pressing the 'Commit' button. You can now close the commit window (also the other window that pops up after pressing the 'Commit' button).  
 
@@ -120,7 +120,7 @@ You just created a new R script. In addition, by cloning your Git repository fro
 knitr::include_graphics('images/lesson22_4_commitmenu.PNG')
 ```
 
-#### Updating the GitHub repository (push)
+#### Updating the GitHub repository (push) {-}
 
 After committing your changes, you have to update the GitHub repository. You can do this by pushing the recent commit(s) to GitHub using the 'Push' button (with the green, upward pointing arrow) in the Git menu. After pushing your changes, you can see the new/changed files in GitHub (you may need to refresh your page to see the changes). GitHub also offers a nice interface to see the exact file changes for each commit. In the main menu of your repository, you can click on the 'commits' link and subsequently select your most recent commit. You will then see all file changes that were committed during that commit (see figure below). 
 
@@ -128,7 +128,7 @@ After committing your changes, you have to update the GitHub repository. You can
 knitr::include_graphics('images/lesson22_5_commitsGitHub.png')
 ```
 
-### Ignore files for version control (gitignore)
+### Ignore files for version control (gitignore) {-}
 
 Some file changes do not have to be tracked by Git. These include file changes to files that are generated automatically by R (such as .RData and .Rhistory files) or other software. You can indicate to Git to ignore these files by creating a **gitignore** file in the Git repository. This is just a simple text file that is saved as '.gitignore' in the Git repository. In this file, you store the names of the files you want to ignore. You can also ignore entire directories or files with a certain file extension (see [this page](https://git-scm.com/docs/gitignore#_pattern_format) for the syntax). 
 
@@ -172,8 +172,8 @@ git pull origin main
 ```
 
 <div class="question">
-##### Exercise `r les`
-**making a repo** {#thisrepo}
+##### Exercise `r les` {-}
+**making a repo** 
 
 a) Create a new Git repository on GitHub. Make sure that the Git repository contains a gitignore file for R.  
 b) Clone the Git repository to your computer using RStudio (hence creating an R Project on the fly).
@@ -193,7 +193,8 @@ e) Add some extra lines to the RMarkdown file and change the title. Commit the c
 </div>
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-}
+**gitignore**
 
 Use the Git repository of the previous question for this question.
 
@@ -209,28 +210,27 @@ c) Change in the gitignore file the line `data/**` for `data/*.xls`. Now only th
 </details>
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-}
+**Clone & commit**
 
-a) Clone the Git repository that you created on GitHub (see question 2.2.1) to a folder on your computer using the command line.
+a) Clone the Git repository that you created on GitHub (the same one again) to a folder on your computer using the command line.
 b) Change the RMarkdown file. Check the changes using `git status`. What do you see?
 c) Commit your changes and push the changes to GitHub using the command line. 
 </div>
 
-
-## <mark> something on big datasets and how to use them while using github!! </mark>
-
-
-
+## Portfolio assignment `r paste0(les, " ")` {-}
 <div class="dagopdracht">
-**Dagopdracht: start your portfolio**
+**start your portfolio with a CV**
 
 (A)
-Create a Git repository on GitHub for your portfolio. Subsequently, clone the GitHub repository to your computer and add your dagopdracht-Rmd-files. Commit/push the changes.
+Create a Git repository on GitHub for your portfolio. 
+
+Subsequently, clone the GitHub repository to your computer and add your portfolio-Rmd-files. Commit/push the changes.
 
 (B)
-Now start building your CV in Rmarkdown and keep using github for version control. Remember to commit often, and push your changes!
+Now start building your CV in a new Rmarkdown file and keep using github for version control. Remember to commit often, and push your changes!
 
-You can look around online for examples of cv's (/resume). You can use Jekyll if you like it and are up to a challenge  [click](https://workwithcarolyn.com/blog/digital-cv-guide) but it does make rendering a little more difficult. There are also [packages](https://cran.r-project.org/web/packages/vitae/vignettes/vitae.html) to build cv's in Rmarkdown (of course there are). Or google "create resume rmarkdown". But diving into these is optional. You already know how to use Rmarkdown, which is enough to build a cv. Your cv will be part of your portfolio.
+You can look around online for examples of cv's (/resume). You can use Jekyll if you like it and are up to a challenge  [click](https://workwithcarolyn.com/blog/digital-cv-guide) but it does make rendering a little more difficult. There are also [packages](https://cran.r-project.org/web/packages/vitae/vignettes/vitae.html) to build cv's in Rmarkdown (of course there are). Or google "create resume rmarkdown". But diving into these is completely optional. You already know how to use Rmarkdown, which is enough to build a cv. Your cv will be part of your portfolio.
 
 </div>
 

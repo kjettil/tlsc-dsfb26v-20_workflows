@@ -6,14 +6,17 @@ les <- 7
 ## Lesson aim
 After this lesson you will be able to
 
- 1. Provide meta data for a project
+ 1. Provide metadata for a project
  1. Have an overview of different output formates for RMarkdown and render those formats.
  1. Setup github pages
  1. Create a bookdown project
  1. Render a bookdown project to a local website
  1. Add the rendered site to your github pages
 
-## Meta data
+## Metadata {metadata2}
+
+We have met metadata before (\@ref(metadata1)).
+
 <mark> XXX </mark>
 
 ### Reminder reproducible research

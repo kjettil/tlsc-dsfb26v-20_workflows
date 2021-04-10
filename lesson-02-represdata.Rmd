@@ -49,7 +49,7 @@ After this lesson you will be familiar with the most important data management g
  1. Proprietary vs non-proprietary formats
 
 
-## File names
+## File names {#namingconv}
 
 **Do you recognize this?**
 ```{r, dpi=50, echo=FALSE}
@@ -146,7 +146,9 @@ Imagine you receive a file attached to an email from a researcher in your resear
 
 `salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx`
 
-The file is located in the course `./data` folder
+The file is located in the course `./data` folder.
+
+<a href="https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/data/salmonella%20CFU%20kinetics%20OD600%20in%20LB%20van%20ipecs%208okt2020%20kleur.xlsx" download> Download it here.</a>
 
 You are requested to run an analysis on the raw data in this file (sheet named 'All Cycles'). It contains data from a plate reader experiment where wells are measured over time. The researcher asks you to generate a plot per sample. No other information was provided in the original email. 
 
@@ -228,7 +230,7 @@ md5_ex1_raw %>% enframe() -> md5sums_ex1
 
 There are actually 4 very similar files lying around. 
 
-<a href="https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/data/md5_examples/md5_examples.zip" download> Download the data here.</a>
+<a href="https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/data/md5_examples/md5_examples.zip" download> Download the data here.</a>
 
 Find out which one is different from the other three using their MD5sums.
 If you want, `md5sum` can handle multiple files at the same time, but wants full paths for all of them.
@@ -258,9 +260,11 @@ md5sums_all %>% select(filename,value)
 ##### Exercise `r les`{-}
 **Calculating and checking md5sums checksums in R**
 
+<a href="https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/data/toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv" download> Download a new datafile here.</a>
 
- (a) Determine the md5sums of the file. Save the checksums to a file [write a piece of R code] `./data/toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv`
- 
+
+ (a) Determine the md5sums of the file. Save the checksums to a file [write a piece of R code] 
+
 <details><summary>Click for the answer</summary>
 ```{r}
 
@@ -288,33 +292,30 @@ md5sums_toxref %>% # write as dataframe for easy access
 
 </details>
 
- (b) Download this file to your own laptop from the RStudio Server
- 
- (c) Using the command line (in Windows, use Git bash for Windows or Windos Powershell, in Mac or Linus, use the Terminal), determine the md5sums of the file you just downloaded. Again, save the resulting md5sums in a file
+ (b) Upload the file to the [server](https://datascience.hu.nl/rstudio/tlsc-dsfb16v-20-21/) and check again. Again, save the resulting md5sums in a file. Do the md5sums you calculated on the server and the md5sums of the local file match?
  
 <details><summary>Click for the answer</summary>
-
-```
-# (b)
-# I recommend using Git Bah for Windows [Could not make it work on Win-PowerShell]
-# see: https://stackoverflow.com/questions/478722/what-is-the-best-way-to-calculate-a-checksum-for-a-file-that-is-on-my-machine
-# https://stackoverflow.com/questions/10521061/how-to-get-an-md5-checksum-in-powershell
-## In GitBash for Windows, this worked:
-
-CertUtil -hashfile toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv MD5 > toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE_LOCAL.md5
-
-# Mac/Linux
-md5sum <pathToFileToCheck> > <pathToFileToCheck.md5>
-
-```
-</div> 
- 
- (d) Do the md5sums you calculated on the server and the md5sums of the local file match?
-
-``
 You should get `r md5sums_toxref$value` as md5sums on both the server and locally
+</details>
  
- (e) Can you think of a way to check this in an R script? Write the script and save it in a .R file
+<!-- <details><summary>Click for the answer</summary> -->
+
+<!-- ``` -->
+<!-- # (b) -->
+<!-- # I recommend using Git Bah for Windows [Could not make it work on Win-PowerShell] -->
+<!-- # see: https://stackoverflow.com/questions/478722/what-is-the-best-way-to-calculate-a-checksum-for-a-file-that-is-on-my-machine -->
+<!-- # https://stackoverflow.com/questions/10521061/how-to-get-an-md5-checksum-in-powershell -->
+<!-- ## In GitBash for Windows, this worked: -->
+
+<!-- CertUtil -hashfile toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv MD5 > toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE_LOCAL.md5 -->
+
+<!-- # Mac/Linux -->
+<!-- md5sum <pathToFileToCheck> > <pathToFileToCheck.md5> -->
+
+<!-- ``` -->
+<!-- </div>  -->
+
+ (c) Download the md5 file you just generated on the server (or upload the one you generated locally). Can you think of a way to check in an R script whether they are the same? Write the script and save it in a .R file
 
 <details><summary>Click for the answer</summary>
 ```{r}
@@ -348,7 +349,6 @@ serverside$value == local$value[2]
 </details>
 
 
-
 ### Principle 2: Simple, visual project structures and conventions    
 This principle concerns the _organisation_ of files and folders on the file system. Because you usually do not work alone, but in a team, this is an important point to agree upon within your team. If you do not stick to the rules you agreed on playing by, you will find that playing the game is no fun at all. When organizing a classical project structure, people with no data science background tend to organize files and folders on the contextual, or categorical level. This means you would have something like this:
 
@@ -373,15 +373,16 @@ fs::dir_tree(here::here("wrong_structure"))
 
 So when managing files in projects adhere to the following guidelines
 
- 1. Create a separate folder for each analytics project (in RStudio -> RStudio Project). Keep the unit of a project small. So a larger research project can usually be subdivided into smaller projects. Create an analysis project for each sub-project. Don't try to fit it all together.
- 1. Do not deeply nest folders (max 2-3 levels)
- 1. Keep information about the data, close to the data. So store descriptions about variables for example in a README.txt file and store that README.txt file in the same folder as where the dat lives that it describes. When using Excel files, you may choose to store the README information in a separate worksheet. More on this later \@ref(metadata1)
- 1. Store each dataset in its own sub-folder. I usually work like the example below. Each dataset I receive goes in a numbered folder in the `data-raw` folder. If I recieve an updated file, I add the old file to a new folder called `v01` inside the orginal `D..` folder. The updated file replaces the `v01` file. If then you recieve yet another update, you can repeat this trick with a `v02` folder inside the `D..` folder. In this way, the file directly in the `D..` folder is always the latest updated version. The README.txt file containing data about the data (see \@ref(metadata1)) lives also in the root of the `D..` folder.
- 1. Do not change file names or move them. As explained before, never change a file name of a file you recieve or download from the internet. If you need to change the file for analysis reasons (sometimes bioinformatics pipelines require specially formatted file names and than you do not have a choice, but to rename them), record your changes in the README.txt file!
- 1. Do not manually edit data source files. **Never, ever change a value inside a file**. You can (_almost_) always solve this using code. 
- 1. In code, use relative paths
+ 1. **Create a separate folder for each analytics project** . Keep the unit of a project small. So a larger research project can usually be subdivided into smaller projects. Create an analysis project for each sub-project. Don't try to fit it all together.
+ 1. **Do not deeply nest folders** (max 2-3 levels, so no *project/documentation/applications/metc/first_communication/input/stuff/morestuff/mail.txt*)
+ 1. **Keep information about the data, close to the data**. So store descriptions about variables for example in a README.txt file and store that README.txt file in the same folder as where the dat lives that it describes. When using Excel files, you may choose to store the README information in a separate worksheet. More on this later \@ref(metadata1)
+ 1. **Store each dataset in its own sub-folder.** I usually work like the example below. Each dataset I receive goes in a numbered folder in the `data-raw` folder. If I recieve an updated file, I add the old file to a new folder called `v01` inside the orginal `D..` folder. The updated file replaces the `v01` file. If then you recieve yet another update, you can repeat this trick with a `v02` folder inside the `D..` folder. In this way, the file directly in the `D..` folder is always the latest updated version. The README.txt file containing data about the data (see \@ref(metadata1)) lives also in the root of the `D..` folder.
+ 1. **Do not change file names or move them.** As explained before, never change a file name of a file you recieve or download from the internet. If you need to change the file for analysis reasons (sometimes bioinformatics pipelines require specially formatted file names and than you do not have a choice, but to rename them), record your changes in the README.txt file!
+ 1. **Do not manually edit data source files.** in fact **Never, ever change a value inside a file**. You can (_almost_) always solve this using code. 
+ 1. **In code, use relative paths** (here::here etc)
+ 1. **Use one R project per project** (in RStudio -> RStudio Project) Don't work outside of projects, and don't reuse projects for other stuff.
 
-How to organize data files
+How to organise data files
 ```{r}
 fs::dir_tree(here::here("data-raw"))
 ```
@@ -406,9 +407,10 @@ Take heed of these pointers:
  >- Store clean curated datasets in the "data" folder, with md5sums and a README.txt
  >- Use literate programming (RMarkdown or Jupyter Notebook) for full analysis
  >- Store scripts in a "./code" or "./inst" folder
- <!-- >- Store (R) functions in R in a "./R" folder, and document them with [Roxygen2](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html) -->
+ >- Store (R) functions in R in a "./R" folder 
+  <!--and document them with [Roxygen2](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html) -->
 
-<!-- XXX heel graag, maar dan moeten we dat uitleggen in de cursus. Voor nu doorgeschoven naar volgend jaar. -->
+<!-- XXX Roxygen2 heel graag, maar dan moeten we dat uitleggen in de cursus. Voor nu doorgeschoven naar volgend jaar. -->
 
 <div class="question">
 ##### Exercise `r les` {-}
@@ -419,13 +421,13 @@ Let's demonstrate this principle 3 with a COVID-19 reporting example
  >- The data is available (for manual and automated download) from the European Center for Disease Control
  >- The analysis can be coded completely from begin to end to result in the information we need
 
-Take a look at the source file in this [Github repo (click)](https://raw.githubusercontent.com/uashogeschoolutrecht/covid_demo/master/app/covid_data.Rmd)
+Take a look at the source file in this [Github repo (click)](https://raw.githubusercontent.com/uashogeschoolutrecht/covid_demo/master/app/covid_data.Rmd){target="_blank"}
 
 Download this file to your RStudio environment and knit the file. 
 
 What do you see in the rendered html? 
 
-What happens if you change som of the parameters in the `yaml` header of the file?
+What happens if you change some of the parameters in the `yaml` header of the file, in particular country_code or from_to_date?
 
 </div>
 
@@ -448,7 +450,9 @@ knitr::include_graphics(here::here(
 
 ### Principle 4: Link `stored data`, to data in the `analytics environment`, to data in `work products`
 
-Basically this can be done with literate programming with R or Python in RStudio or Jupyter:
+Read this paragraph header again and make sure you understand the difference between "stored data", "data in the analytics environdment" and "data in work products".
+
+Basically this is what you are doing with literate programming (e.g. RMarkdown) with R or Python in RStudio or Jupyter:
 
  - The data is stored on disk or in the Cloud
  - The `analytics environment` is the Global Environment (where variables and R-objects live)
@@ -470,28 +474,34 @@ knitr::include_graphics(
  >- Hence: When you do data analysis, you should use Git & Github 
  >- Git/Github is 'track-changes for code'
 
-You will learn more on using the git/github workflow in data science in lesson 3 and 4 (\@ref(gitintro), \@ref(gitrstudio), \@ref(gitbranchmerge), \@ref(gitcollaboration)). 
+You will learn more on using the git/github workflow in data science in later lessons (\@ref(gitintro), \@ref(gitrstudio), \@ref(gitbranchmerge), \@ref(gitcollaboration)). 
 
 ### Principle 6: Consolidate team knowledge 
-When working together it is vital to come to an agreement on how you work together. I hope the Guerrilla Analytics framework provides a starting point. Hopefully, you will learn during your projecticum work how vital this actually is when working together on a data project or any project for that matter. Here are some pointers:  
+AKA communicate! When working together it is vital to come to an agreement on how you work together. I hope the Guerrilla Analytics framework provides a starting point. Hopefully, you will learn during your projecticum work how vital this actually is when working together on a data project or any project for that matter. Here are some pointers:  
 
- >- Make guidelines on datamanagement, storage places and workflows
+ >- Make guidelines on data management, storage places and workflows
  >- Agree within the team on them
- >- Stick to them! And be frank about it when things go wrong or people misbehave. An honest and open collaborative envrionment is encouraging. It is usually hard for people to change their way of working. 
+ >- Stick to them! And be frank about it when things go wrong or people misbehave. An honest and open collaborative environment is encouraging. It is usually hard for people to change their way of working. 
  >- Work together in a virtual collaboration environment.
  >- Work together on code using Github or some other version control based repository system (e.g. Gitlab / Bitbucket).
  >- Provide for education and share best practices within the organization, the department and/or the team (this is what we try to achieve with this course).
 
 ### Principle 7: Prefer analytics code that runs from start to finish
 
- - Create work products in RMarkdown or Jupyter notebooks
- - [In R, create an R-package](https://github.com/UtrechtUniversity/R-data-cafe/tree/master/themes/start_with_rmd). Once you have a fully functional RMarkdown file, it is quite easy to rebase that code into an R Package. I call this the "Start with Rmd" - workflow. The demo in the link shows you an example.
+ - Create work products in RMarkdown (or Jupyter notebooks if you like)
  - Write functions that isolate code and can be recycled. When writing a function, think about how to generalize this function so that you can recycle it in other projects. This saves time and adds robustness.
  - Use iterations to prevent repetition. Write clear and compact loops, for example in R by using the map-family of functions from the `{purrr}` package. I prefer these above writing `for()` loops because they focus on the object that is being changed, not on the computation that is done.
+  - For the future: [In R, create an R-package](https://github.com/UtrechtUniversity/R-data-cafe/tree/master/themes/start_with_rmd). Once you have a fully functional RMarkdown file, it is quite easy to rebase that code into an R Package. I call this the "Start with Rmd" - workflow. The demo in the link shows you an example, you don't need to do the demo now, but use it in the future if you like.
+
+
+## What your data should look like
 
 Now that we have a framework with which we can build our work flows in a data science project we can start working and collaborating. Below I resume some key concepts that are useful when working in a data science team.  
 
-## Data formatting
+### Data formatting
+
+This information is not new, but DAUR1 is a while ago, so we'll repeat it: data can be formatted in different ways.
+
 During the different R courses we have been working with data in the `tidy` format frequently. 
 ```{r, echo=FALSE}
 knitr::include_graphics(
@@ -520,15 +530,20 @@ For machine learning purposes, data is often formatted in the `wide` format. We 
 data(package = "mlbench", dataset = "BostonHousing")
 BostonHousing %>% as_tibble()
 ```
-The different variables are arranged in a side-by-side fashion. In this example the data is still tidy, but there are also examples of wide formatted data that is not tidy. When you want to work with this data, you first need to transform it in a stacked or so-called long format that works well for `{tidyverse}`. We will see an example in the next exercise
+The different variables are arranged in a side-by-side fashion. In this example the data is still tidy, but there are also examples of wide formatted data that is not tidy. When you want to work with this data, you generally need to transform it in a stacked or so-called long format that works well for `{tidyverse}`. We will see an example in the next exercise
 
 <div class="question">
 ##### Exercise `r les` {-}
-Remember the well plate experiment from last lesson. Here we will perform a transformation on the data to make the data suitable for analysis in R. We will also create a single graph showing all the data available for all samples over measured time in the experiment. 
+
+**Transforming data in a reproducible way**
+
+Remember the well plate experiment? Here we will perform a transformation on the data to make the data suitable for analysis in R. We will also create a single graph showing all the data available for all samples over measured time in the experiment. 
 
 The data file for this exercise can be found here: `./data/salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx`
 
-Go over the following steps to complete this exercise. Add the resulting RMarkdown to your portfolio bookdown project (see \@ref(bookdownportfolio).
+<a href="https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/data/salmonella%20CFU%20kinetics%20OD600%20in%20LB%20van%20ipecs%208okt2020%20kleur.xlsx" download> Download it here if you've lost it </a> and take a good look at your file management...
+
+Go over the following steps to complete this exercise. Add the resulting RMarkdown to your portfolio bookdown project (see \@ref(bookdownportfolio)).
 
  1. Review your answers to the previous exercise where we used this file in this lesson.
  1. Try reading the sheet called `All Cycles` in the Excel file. 
@@ -538,7 +553,7 @@ Go over the following steps to complete this exercise. Add the resulting RMarkdo
  1. Write a piece of code that creates a tidy format of this data. You also need to take a look a the sheet called `layout` to get information on the samples. Try generating a manual data frame that has 96 rows and a code for each sample. The experiment has been performed in duplo, so for each experimental condition there are two samples. 
  1. Now join your `sample data` dataframe to the raw data.
  1. Export the data as a .csv file.
- 1. Write an appropriate README.txt file that accompanies this exported csv file. Save both in your `data` folder of your bookdown portfolio project.
+ 1. Write an appropriate README.txt file that accompanies this exported csv file. Save both in your `data` folder of your course project. (make this folder if you don't have it yet). 
  
 **TIPS:
 
@@ -685,31 +700,18 @@ data_tidy_time %>%
 
 </details>
 
-## Metadata {#metadata1}
-Meta information like type of variable, ranges, units, number of observations or subjects in a study, type of analysis or experimental design goes in a README.txt file or a sheet in the Excel file containing the data. Keep the readme information close to the data file. Also, information about who is the owner of the data or who performed the experiment when and where and with what type of device or reagents is very useful to include.
-In our exercise above such README information would have saved us a lot of time figuring out what is what in the Excel file don't you think?
 
-An example of a readme file is depicted below. 
- 
-```{r, dpi = 30, echo=FALSE}
-knitr::include_graphics(
-  here::here(
-    "images",
-    "readme.png"))
-```
- 
-A short example of a README.txt file. It does not need to be very long, but provides information on where the data (which project?) refers to, who the owners are, who to contact in case of questions and what are the contents of the data (variable description) 
 
-## Variable encodings
+### Variable encodings
  
  - Use explicit encoding: male/female instead of `0`/`1`
  - Encodings can always be altered programmatically
- - Be consistent <mark>(see next graph)</mark>
+ - Be consistent (see Figure \@ref(fig:flipperplot))
  - Write a code journal that explains encodings, including units and levels
  - Use factors if a variable has a set of discrete possible outcomes: `sex`, `species`, `marital_status` etc
  - Use an ordered factor if there is a hiearchy in the factor levels: `year`, `month`, `number_of_legs`
 
-Here we use the `{palmerpenguins}` dataset as an example to show you how to deal with encoding variables.
+Here we use the `{palmerpenguins}` dataset as an example to show you how they dealt with encoding variables.
 
 <p style="font-size:14px">[palmerpenguins](https://github.com/allisonhorst/palmerpenguins)</p> 
 
@@ -721,25 +723,42 @@ data_penguins <- palmerpenguins::penguins_raw
 data_penguins
 ```
 
-### How to add variable encodings
-<mark> XXX </mark>
+Make sure you are consistent in entering the data!
+```{r flipperplot, message=FALSE, error=FALSE, fig.cap="Example of inconsistent data entry"}
+library(ggplot2)
+
+# simulating inconsistent data entry
+penguinswrong <- penguins
+levels(penguinswrong$species) <- c(levels(penguinswrong$species), "adelie")
+penguinswrong$species[1:5]<-"adelie"
+
+# make a box plot of flipper length showing a/Adelie as separate species
+flipper_box <- ggplot(data = penguinswrong, aes(x = species, y = flipper_length_mm)) +
+  geom_boxplot(aes(color = species), width = 0.3, show.legend = FALSE) +
+  geom_jitter(aes(color = species), alpha = 0.5, show.legend = FALSE, position = position_jitter(width = 0.2, seed = 0)) +
+  scale_color_manual(values = c("darkorange","purple","cyan4","red")) +
+  theme_minimal() +
+  labs(x = "Species",
+       y = "Flipper length (mm)")
+
+flipper_box
 
 
-
+```
 
 ### Factor levels
 
-R (unlike SPSS) does not mind if you use descriptive words instead of numbers as categorical variable values: 
+R (unlike SPSS) does not mind if you use descriptive words instead of numbers as categorical variable values. This increases reproducility! GGplot doesn't mind either. (Machine learning workflows may mind, but we're not doing machine learning here.) The different possible options for such a variable are called the levels of this factor:
 
-```{r, echo=TRUE}
+```{r, echo=TRUE, fig.cap="Graph displaying the flipper length per factor level of Sex"}
 data_penguins %>%
   ggplot(aes(x = Sex, y = `Flipper Length (mm)`)) +
   geom_point(aes(colour = Species), position = "jitter", show.legend = FALSE)
-unique(data_penguins$Sex) ## we also call this factor levels
+unique(data_penguins$Sex) ## we call these factor levels
 ```
 
 
-## Data-formats - Non-Proprietary
+### Data-formats - Non-Proprietary
 When we store data for re-use, we need it to be in an interoperable form. This means that it can be read (also after a long time - let's say 30 years from now) into analysis software. This can be achieved by storing data in a so-called `non-proprietary` format. This means basically that the format source code is open and maintained by open source community or core development team.
 Here are some examples: 
 
@@ -753,41 +772,24 @@ These formats will remain readable, even if the format itself becomes obsolete
 
 **When storing a curated dataset for sharing or archiving it is always better, and sometimes enforced by the repository, to choose a non-proprietary format**
 
-## Data entry
+### Data entry
 Data entry preferably, must be performed in a project template. The template contains predefined information on the observations in the study. The blank information needs to be filled out by the person responsible for/or performing the data entry. Or in other words: think about how you will enter your data before gathering it, and if there are multiple people gathering the data, make sure that everyone uses the exact same way of entering the data (template).
 
 Enter an “NA” for missing values, do not leave cells blank if there is a missing value. Use only “NA” and nothing else. If you want to add additional information on the “NA”, put that in the “remarks” column.
 
-(By the way, you can visualise missing dtaa like this in R: )
-```{r, dpi = 130}
+(By the way, you can visualise missing data like this in R with the naniar package: )
+```{r, dpi = 100}
 naniar::vis_miss(data_penguins)
 ```
 
+Or check out a ggplot method [here.](https://towardsdatascience.com/missing-value-visualization-with-tidyverse-in-r-a9b0fefd2246)
+
 After entry (and validation) of the filled-out template, NEVER change a value in the data. If you want to make changes, increment the version number of the file and document the change in the README.txt file or sheet in an Excel file (see below)
 
-## Data-log
-In the root of the folder `\data` an MS Excel file is being kept to track all the files present in this folder. Provide names and additional information here. Meta information for the `\data_raw` folder is best kept in that folder in a `README.txt` file.
+### Tidy template
+A tidy data template you may want to use is available [here](https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/data/CE.LIQ.FLOW.062_Tidydata.xlsx)
 
-The folder `doc` contains documentation and can be basically everything concerning information about the project, not concerning the data. For example a PowerPoint presentation on the experimental design of a study, or a contract or something else. Data information goes in the “supporting’ folder that is in the same folder as where the data file it refers to is stored.
-
-Use versioning of data files. Decide on a versioning system for yourself, an stick to it.
-
-## README.txt or README sheet inside an Excel file
-Meta information like type of variables, ranges, units, number of observations or subjects in a study, type of analysis goes in a README.txt file or a sheet in the Excel file containing the data. Keep the readme information close to the data file.
-An example of a readme file is depicted below.
-
-```{r, dpi = 50, echo=FALSE}
-knitr::include_graphics(
-  here::here(
-    "images",
-    "readme.png"))
-```
-
-A short example of a README.txt file. It does not need to be very long, but provides information on where the data (which project?) refers to, who the owners are, who to contact in case of questions and what are the contents of the data (variable description)
-
-A tidy data template is avaialable [here](https://github.com/uashogeschoolutrecht/efro-docs/blob/main/data/CE.LIQ.120_tidydata.xlsx)
-
-When using this template, please be aware the following pointers:
+When you are planning to use this template, please be aware the following pointers:
 
 For Excel users:
 
@@ -799,17 +801,80 @@ For Excel users:
  - Adhere to the naming conventions for variable names (see above)
  - Use cell validation for entered values. This is especially true if you have multiple categorical variables that need manual labeling in Excel. A typo is just around the corner.
 
+## Metadata {#metadata1}
 
-## Annotations and meta data in multiple files
+Meta data is data about the data, such as for instance the type of variables, number of observations, experimental design and who gathered the data. This is quite often not reliably documented (or at least not easily accessible) but very important: data without context loses some of its purpose. 
+
+Take a look at this [Wikipedia image of cocoa pods](https://commons.wikimedia.org/wiki/File:Cocoa_Pods.JPG) and scroll down. As you can see, Wikipedia stores a lot of metadata on file usage, licence, author, date, source, file size... Even the original meta data from the camera is included (scroll to the bottom).
+
+Meta information for data files, like type of variables, ranges, units, number of observations or subjects in a study, type of analysis or experimental design often goes in a README.txt file or a sheet in the Excel file containing the data. Keep the readme information close to the data file. Also, information about who is the owner of the data or who performed the experiment when and where and with what type of device or reagents is very useful to include.
+In our exercise above such README information would have saved us a lot of time figuring out what is what in the Excel file, don't you think?
+
+An example of a readme file is depicted below. 
+ 
+```{r, dpi = 30, echo=FALSE, fig.cap="A short example of a README.txt file"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "readme.png"))
+```
+ 
+It does not need to be very long, but provides information on where the data (which project?) refers to, who the owners are, who to contact in case of questions and what are the contents of the data (variable description) 
+
+### YAML header
+Rmd files include a metadata section themselves: the YAML header. At the very least, specify the title, author and date here.
+
+### saving metadata
+
+Save at the very least in your Readme.txt:
+
+ - General information
+    - title 
+    - information about the authors (name, institution, email address)
+    - date of data collection
+    - location of data collection
+ - license information
+ - a data log with for each data file:
+    - short description
+    - date the file was created
+    - variable list (full names and explanations)
+    - units of measurements
+    - definition for missing data (NA)
+ - methodological information
+    - description of methods (you can link to piublications or protocols)
+    - description of data processing (link to RMarkdown file)
+    - any software or specific instruments used
+    - Describe details that may influence reuse or replication efforts
+
+
+Here is a nice example file by the university of Bath for [bioinformatics projects](https://researchdata.bath.ac.uk/91/19/ReadMe.txt), another more general template [available for download](https://library.bath.ac.uk/ld.php?content_id=32074262), and here [another template for experimental data](https://library.bath.ac.uk/ld.php?content_id=32652573)
+
+This may seem to be a bit too much for your current projects, but try and see how much you could fill in and keep the template for future projects! Remember that any metadata is better than none.
+ 
+#### Data-log
+This is an overview of all datafiles in a project.
+
+Keep an MS Excel file (called "data_log.xlsx") in the root of the folder `\data` of each project and keep it up to date to track all the files present in this folder. Provide names and additional information here. Meta information for the `\data_raw` folder is best kept in that folder in a `README.txt` file.
+
+Use versioning of data files. Decide on a versioning system for yourself (we showed you an exampole before, but you are free to look for other options), an stick to it.
+
+### Annotations and meta data in multiple files
+Some metadata is most useful if you have it available in the code directly.
+
 In order to reduce effort in generating a complete tidy table for your data it might be worthwhile to create a number of extra tables containing meta data.
 Typically this is how it would work:
 
-Assume we have wide data format originally created in Excel looking like this
+Assume we have wide data format originally created in Excel looking like this:
+(Actually, we will ask R to generate some data that looks like it was imported from excel instead, because we [didn't feel like](https://im.indiatimes.in/photogallery/2015/Mar/1328016_1437683070.jpg?w=1200&h=900&cc=1) copy-pasting 4x100 numbers to make an excelfile...)
+
 ```{r}
+# generate some dummy data for the example
 measured1 <- rbinom(100, size = 2, prob = 0.3)
 measured2 <- rnorm(100, mean = 5.3, sd = 0.1)
 measured3 <- rnbinom(100, size = 10, prob = 0.1)
 concentration <- rep(1:10, 10)
+
+# put it in a tibble
 data <- tibble::tibble(
   `concentration (mMol/l)` = concentration,
   `measured 1 (pg/ml)` = measured1,
@@ -819,14 +884,20 @@ data <- tibble::tibble(
 data
 ```
 
-The `r names(data)` are the variable names as provided in Excel. As you can see they are not adherent in a few ways tot the aforementioned naming conventions. The `r names(data)[2:ncol(data)]` refer to three variables that were determined in some experiment. The units of measurements are (as is common in Excel files) mentioned between brackets in the column name.
+The `r names(data)` are the variable names as provided in Excel. As you can see they are not adherent in a few ways tot the aforementioned naming conventions ( \@ref(namingconv)). The `r names(data)[2:ncol(data)]` refer to three variables that were determined in some experiment. The units of measurements are (as is common in Excel files) mentioned between brackets in the column name.
 
-For compatibility and interoperability reasons this data format can be improved to a more machine readable format. There are two solutions that could be provided here. One is more laborious to achieve manually (solution 2) than the other (solution 1). If there is no expertise for scripting reformatting and cleaning up data is available in the research group, I recommend solution 2.
+For compatibility and inter-operability reasons this data format can be improved to a more machine readable format: 
 
-### Solution 1 (requires programming skills)
-Add meta data and variable information to a separate table. The strategy is to keep all experimentally relevant data that is related to the experimental design in one sheet and all additional data (metadata or also called 'data about the data'). In this case, the unit information that is included in the variable names can be considered metadata. So as an example, I will include that information in a separate table that I will call coldata (short for column data)
+<!-- There are two solutions that could be provided here. One is more laborious to achieve manually (solution 2) than the other (solution 1). If there is no expertise for scripting reformatting and cleaning up data is available in the research group, I recommend solution 2. -->
 
-First we need to create a pivoted table where the first column represents the variable names of our `data` table. Than we need to add a row for each variable in our data. It is best if the variable names and the values in the meatdata table in column 1 excactly match (in term of spelling and typesetting). I will show how this looks for our data
+<!-- ### Solution 1 (requires programming skills) -->
+
+
+<!-- Add meta data and variable information to a separate table. The strategy is to keep all experimentally relevant data that is related to the experimental design in one sheet and all additional data (metadata or also called 'data about the data').  -->
+
+In this case, the unit information that is included in the variable names can be considered metadata. So you can put that information in a separate table. In the example below, I will call it coldata (short for column data)
+
+First we need to create a pivoted table where the first column represents the variable names of our `data` table. Then we need to add a row for each variable in our data. It is best if the variable names and the values in the meatdata table in column 1 excactly match (in term of spelling and typesetting). I will show how this looks for our data
 ```{r}
 var_names <- names(data)
 metadata <- tibble::tibble(
@@ -865,6 +936,17 @@ remarks <- c(
   )
 ```
 
+## Study documentation
+
+The folder `\doc` contains documentation and can be basically everything concerning information about the project, not concerning the data. For example a PowerPoint presentation on the experimental design of a study, or a contract or something else. Data information goes in the “supporting’ folder that is in the same folder as where the data file it refers to is stored.
+
+<div class="question">
+##### Exercise `r les` {-}
+
+Make `/doc` and `/data` and `data_raw` folders now for all (at least) 3 of your projects this semester. Add a `data_log.xlsx` for the projecticum folder.
+
+While you are at it, add `/code` folders for any scripts you write (outside of the RMarkdown files) and `/R` folders for any functions you write.
+</div>
 
 ## Portfolio assignment `r paste0(les, " ")` {-}
 <div class = "dagopdracht">
@@ -879,6 +961,9 @@ remarks <- c(
 
 (B)
 Now clean up your work environment for this course (workflows) and the parallel course in DSFB2 (projecticum). Set up a folder structure that will accomodate future plans and collaboration on the projecticum. Provide readme-files or comments within the code where needed. 
+
+For the projecticum folder, make sure you do this together with your lab partner.
+
 </div>
 
 ## Resources

@@ -20,58 +20,7 @@ Read the following blog post. While you can see that we (the teachers) may have 
 https://www.springboard.com/blog/27-essential-r-interview-questions-with-answers/
 </mark>
 
-## Metadata {metadata2}
 
-We have met metadata before (\@ref(metadata1)).
-
-<mark> XXX </mark>
-
-### Reminder reproducible research
-<mark> XXX </mark>
-
-### Why should we care again?
-<mark> XXX </mark>
-
-**For everybobdy**
-
-**For fellow biologists**
-
-**For yourself!**
-
-### What do we need for reproducing a result?
-
-example graph
-
-
-<div class="question">
-##### Exercise `r les` {-}
-
-Which information would you need to have if you want to reproduce this figure?
-</div>
-
-<details><summary>Click for the answer</summary>
-
-  1. The raw data
-  1. The code
-    - readable
-    - comments/documentation so that you can figure out what the code does
-    - what / why choices were made 
-    - what software was used
-  1. Metadata!
-  
-</details>
-
-We have discussed code quite extensively by now. We discussed data file management in lesson 2. But what about metadata?
-
-### What is meta data
-
-<mark> XXX </mark>
-
-### YAML header
-<mark> XXX </mark>
-
-### How to save more metadata
-<mark> XXX </mark>
 
 ## Output possibilities
 

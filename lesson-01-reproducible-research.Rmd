@@ -348,7 +348,7 @@ The data for this exercise was kindly supplied by J. Louter (INT/ILC) and was de
 
 A typical analysis with this data would be to run a dose-response analysis using a log-logistic model with estimates for the maximal, the minimal, the IC50 concentration and the slope at IC50. We will not go into the details but a good package to run such computations and create graphs in R is the `{drc}` package. [See:](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0146021) [and:](https://cran.r-project.org/web/packages/drc/index.html). In the exercise below we will create some visualizations using `{ggplot2}`.
 
-(A) Review the following Excel file in the `./data/CE.LIQ.FLOW.062_Tidydata.xlsx`, by opening the file in Excel. See if you can spot anything peculiar about this file. Do not edit the file in any way. Just close it when you are done. (Annoyingly, Excel asks you to save your changes, even if you did not touch anything in the file: why is this cumbersome?)
+(A) Review the following Excel file in the `./data/CE.LIQ.FLOW.062_Tidydata.xlsx` <a href="https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/data/CE.LIQ.FLOW.062_Tidydata.xlsx" download> (it's here)</a>, by opening the file in Excel. See if you can spot anything peculiar about this file. Do not edit the file in any way. Just close it when you are done. (Annoyingly, Excel asks you to save your changes, even if you did not touch anything in the file: why is this cumbersome?)
  
 (B) Open the file in R, using the `{readxl}` package.
  

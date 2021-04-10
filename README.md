@@ -15,7 +15,7 @@ install.packages("bookdown")
 bookdown::render_book(".")
 ```
 
-## The contents of the course
+## The contents of the course (to be updated)
 
 From the notes on the course:
 

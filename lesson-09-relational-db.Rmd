@@ -1,4 +1,4 @@
-# Lesson 9 - Working with relational data & databases {#relationaldb}
+# Working with relational data & databases {#relationaldb}
 
 ```{r setup, include=FALSE}
 les <- 9

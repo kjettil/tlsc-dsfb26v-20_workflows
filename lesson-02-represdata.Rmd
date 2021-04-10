@@ -1,4 +1,4 @@
-# Lesson 2 - Data management {#represdata}
+# Data management {#represdata}
 ```{r setuples, include=FALSE}
 les <- 2
 ```

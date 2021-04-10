@@ -1,4 +1,4 @@
-# Lesson 3 - Introduction to Git and GitHub {#gitintro}
+# Introduction to Git and GitHub {#gitintro}
 ```{r setuples, include=F}
 les <- 3
 ```

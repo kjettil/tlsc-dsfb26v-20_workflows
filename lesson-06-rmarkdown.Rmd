@@ -1,4 +1,4 @@
-# Lesson 6 - RMarkdown - Syntax {#rmarkdownsyntax}
+# RMarkdown - Syntax {#rmarkdownsyntax}
 ```{r setuples, include=FALSE}
 les <- 6
 

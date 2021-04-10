@@ -1,4 +1,4 @@
-# Lesson 5 - Git collaboration {#gitcollaboration}
+# Git collaboration {#gitcollaboration}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

@@ -4,13 +4,12 @@ params:
   month: February March April May June July August September October November December
   year: 2020
 ---
-# Lesson 8 - RMarkdown - parameters {#rmarkdownparams}
+# RMarkdown - parameters {#rmarkdownparams}
 ```{r, setuples, include=FALSE}
 les <- 8
 ```
 
 
-_This chapter is best read from the source RMarkdown file_
 
 ## Lesson Contents
 

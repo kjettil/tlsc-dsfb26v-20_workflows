@@ -1,4 +1,4 @@
-# Lesson 7 - RMarkdown - Output formats {#rmarkdownoutput}
+# RMarkdown - Output formats {#rmarkdownoutput}
 ```{r setuples, include=FALSE}
 les <- 7
 ```
@@ -12,6 +12,13 @@ After this lesson you will be able to
  1. Create a bookdown project
  1. Render a bookdown project to a local website
  1. Add the rendered site to your github pages
+
+## job interviews
+
+Read the following blog post. While you can see that we (the teachers) may have a slightly different opinion in some aspects (tidyverse!), it gives a nice checklist for you to scan on any ommissions in your general R knowledge.
+<mark>
+https://www.springboard.com/blog/27-essential-r-interview-questions-with-answers/
+</mark>
 
 ## Metadata {metadata2}
 

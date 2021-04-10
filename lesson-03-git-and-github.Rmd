@@ -58,7 +58,7 @@ Pulling is only important if other persons contributed to the repository. In par
 ## Git and RStudio {#gitrstudio}
 
 
-In this section, we will give you a detailed protocol for working with Git using RStudio. This protocol assumes that **you are the only person that contributes to the Git repository**. If you work together with other persons, you will need additional tools than the ones presented here. You will learn more about these tools in part three of this lesson.   
+In this section, we will give you a detailed protocol for working with Git using RStudio. This protocol assumes that **you are the only person that contributes to the Git repository**. If you work together with other persons, you will need additional tools than the ones presented here. You will learn more about these tools in the next lessons.   
 
 ### Creating a new Git repository
 
@@ -122,7 +122,19 @@ knitr::include_graphics('images/lesson22_4_commitmenu.PNG')
 
 #### Updating the GitHub repository (push) {-}
 
-After committing your changes, you have to update the GitHub repository. You can do this by pushing the recent commit(s) to GitHub using the 'Push' button (with the green, upward pointing arrow) in the Git menu. After pushing your changes, you can see the new/changed files in GitHub (you may need to refresh your page to see the changes). GitHub also offers a nice interface to see the exact file changes for each commit. In the main menu of your repository, you can click on the 'commits' link and subsequently select your most recent commit. You will then see all file changes that were committed during that commit (see figure below). 
+After committing your changes, you have to update the GitHub repository. You can do this by pushing the recent commit(s) to GitHub using the 'Push' button (with the green, upward pointing arrow) in the Git menu.
+
+The first time you push commits to GitHub from a repository in RStudio, you will be prompted for your user name and password. Likely, Rstudio will save your credentials, so that you will not have to enter them again. If it doesn't, do the following:
+
+<mark> XXX  Wat is ook al weer die linux code hiervoor? Bas? </mark>
+
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+
+<mark>  Of moet daar nog password bij? </mark>
+
+
+After pushing your changes, you can see the new/changed files in GitHub (you may need to refresh your page to see the changes). GitHub also offers a nice interface to see the exact file changes for each commit. In the main menu of your repository, you can click on the 'commits' link and subsequently select your most recent commit. You will then see all file changes that were committed during that commit (see figure below). 
 
 ```{r echo=FALSE, out.width='80%', fig.align='center', fig.cap='Check out your commits in GitHub.'}
 knitr::include_graphics('images/lesson22_5_commitsGitHub.png')
@@ -218,19 +230,42 @@ b) Change the RMarkdown file. Check the changes using `git status`. What do you 
 c) Commit your changes and push the changes to GitHub using the command line. 
 </div>
 
+<div class="question">
+##### Exercise `r les` {-}
+**Mess around**
+
+Try changing some stuff, committing and pushing again. 
+
+Take some time to get used to this workflow.
+
+Click around in github and get to know the site. We will discuss branches next lesson and issues and projects the lesson after.
+
+What could you do if github doesn't accept your push command from Rstudio anymore?
+
+</div>
+
+<details><summary>Click for the answer</summary>
+
+If things get so messy that you are not able to upload a changed file, just download a new clone of your repo (file --> new project --> version control --> etc). Then copy your changed file into this new folder, commit and push.
+
+You could also check if your mess up is listed [here](https://ohshitgit.com/) or if you prefer, the same site without swears [here](https://dangitgit.com/en).
+
+</details>
+
+
 ## Portfolio assignment `r paste0(les, " ")` {-}
 <div class="dagopdracht">
-**start your portfolio with a CV**
+**Start your portfolio with a CV**
 
 (A)
 Create a Git repository on GitHub for your portfolio. 
 
-Subsequently, clone the GitHub repository to your computer and add your portfolio-Rmd-files. Commit/push the changes.
+Subsequently, clone the GitHub repository to your computer. Copy paste your portfolio-Rmd-files to this folder. You will see the new files showing up in the "git" window in the upper right of the screen in Rstudio. Commit/push the changes to your repo.
 
 (B)
-Now start building your CV in a new Rmarkdown file and keep using github for version control. Remember to commit often, and push your changes!
+Now start building your [CV](https://resumegenius.com/blog/resume-help/one-page-resume) in a new Rmarkdown file and keep using github for version control. Remember to commit often, and push your changes! Build something that you would want to sent to a possible future bioinformatics internship position, or when job hunting. So it needs to be complete and professional looking.
 
-You can look around online for examples of cv's (/resume). You can use Jekyll if you like it and are up to a challenge  [click](https://workwithcarolyn.com/blog/digital-cv-guide) but it does make rendering a little more difficult. There are also [packages](https://cran.r-project.org/web/packages/vitae/vignettes/vitae.html) to build cv's in Rmarkdown (of course there are). Or google "create resume rmarkdown". But diving into these is completely optional. You already know how to use Rmarkdown, which is enough to build a cv. Your cv will be part of your portfolio.
+You can look around online for examples of cv's (/resume). Your cv will be part of your portfolio.
 
 </div>
 

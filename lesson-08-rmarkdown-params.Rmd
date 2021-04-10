@@ -62,7 +62,7 @@ Most of the time an analysis will depend on several parameters that yoy might wa
  - Groups in the data that represent a subset of the data. Imagine you have data of a transcriptome analysis for a large population of cancer patients. The type of cancer is a grouping variable that could be a meaningful parameter to use to generate a per cancer type report.  
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-}
 
 To learn how to build a parameterized RMarkdown, go over [this tutorial](https://rmarkdown.rstudio.com/lesson-6.html). 
 The Rmd file of this tutorial can be found in the course folder: `./Rmd/ocean_floor.Rmd`
@@ -78,9 +78,9 @@ Go over the following steps to complete the exercise
 The most obvious use of paramterization is creating a parameter for different data inputs. Here we will examine an example using the European Center for Disease Control (ECDC) COVID-19 case data as an examples. 
 
 <div class="question">
-#### Assignment 4.4
+##### Exercise `r les` {-}
 
-The aim of this assignment is to create an RMardown file containing a pramterized report for the COVID-19 cases as can be downloaded from the ECDC. The Rmd should include at least three parameters:
+The aim of this assignment is to create an RMardown file containing a paramterized report for the COVID-19 cases as can be downloaded from the ECDC. The Rmd should include at least three parameters:
 
  1. The country to which the report applies to
  1. The year that the reported data applies to 
@@ -107,5 +107,5 @@ Here are some pointers to get your started:
 Now that we have a parameterized report written in Rmd, we can use this Rmd file a template to generate multiple static reports, where we vry the values for the parameters. I will illustrate this using the ocean floor example. Then you will have to complete the final assignment of this lesson in which we will apply these principles on the covid-19 report you created in the previous assignment.  
 
 
-
+## Portfolio assignment `r paste0(les, " ")` {-}
 

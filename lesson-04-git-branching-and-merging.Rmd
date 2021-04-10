@@ -104,7 +104,7 @@ You have updated the Git repository on GitHub and on your laptop. You have also 
 The circle is closed: you have made some changes to the project using a development branch and merged this branch into the main branch. If you want to make some new changes, you can create a new branch and follow the same steps for these new changes. 
 
 <div class="question">
-##### Exercise 3
+##### Exercise `r les` {-}
 
 Use the Git repository that you created in the first exercise of the Lesson 3 here: \@ref(thisrepo) (the repository with the markdown file). 
 
@@ -122,12 +122,15 @@ d) After resolving the pull request on GitHub and pulling the changes to your co
 e) You can delete the branch on your computer using the command `git branch -d <branch-name>`.
 </details>
 
+## Portfolio assignment `r paste0(les, " ")` {-}
 <div class="dagopdracht">
-**Dagopdracht: projecticum repository**
+**Projecticum repository**
 
 Create one shared Git repository on GitHub for your Projecticum project. Make sure that the repository is shared and that your group member(s) can contribute. Subsequently, clone the GitHub repository to your computer and add your files using a development branch. Commit/push the changes and add the files to the main branch with a pull request.
 
 Try working on the same files at the same time, and merge your branches to the main branch. Solve the issues you encounter.
+
+Try renaming a file and merge your branches to the main branch. Solve the issues you encounter.
 
 <mark> XXX uitbreiden </mark>
 

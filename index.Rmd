@@ -1,5 +1,5 @@
 --- 
-title: "Course Workflows [HU OSIRIS: tlsc-dsfb26v-20_workflows]"
+title: "Course Workflows (HU OSIRIS: tlsc-dsfb26v-20_workflows)"
 author: "Alyanne de Haan, PhD; Bas van Gestel; Marc Teunis, PhD"
 date: "`r Sys.time()`"
 site: bookdown::bookdown_site
@@ -17,7 +17,7 @@ output:
             toc:
                 collapse: section
                 scroll_highlight: yes
-                before: <li class="toc-logo"><a href="./"><img style="float:left;" src="images/voorbeeldlogo2.png"></a> <h4 class=".paddingtitel ">Workflows </h2></li>
+                before: <li class="toc-logo"><a href="./"><img style="float:left;" src="images/voorbeeldlogo2.png"></a> <h2 class=".paddingtitel ">Workflows </h2></li>
 bibliography: [references.bib]
 biblio-style: apalike
 link-citations: yes
@@ -62,7 +62,7 @@ library(tidyverse)
 
 
 
-# Course introduction {.unnumbered}
+# Course introduction {-}
 When you program, you seldom program in isolation. Usually, you are writing analyses, pieces of software or creating visualizations within a collaborative (research) project. Adopting a robust and reproducible workflow is key for managing your own work and that of others. Using a version control system, managing your data and other files in a structured way, deploying your software or analysis pipeline in a robust manner are all good practices you need to apply in your work as a bioinformatician or data analyst, translator or scientist.
 
 ## Osiris

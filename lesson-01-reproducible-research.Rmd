@@ -1,4 +1,4 @@
-# Lesson 1 - Reproducible Research {#represintro}
+# Reproducible Research {#represintro}
 ```{r setuples, include=FALSE}
 les <- 1
 ```
@@ -255,6 +255,11 @@ knitr::include_graphics(
 I will illustrate this with the use of Excel in genome biology
 
 ### Why using Excel for Biology is a bad idea
+
+Start with reading the following news article in The Guardian: [click](https://www.theguardian.com/politics/2020/oct/05/how-excel-may-have-caused-loss-of-16000-covid-tests-in-england)
+
+That was a proper mess...
+
 When you use Excel for data collection and especially for genetics and genomics studies, you risk losing and/or messing up your data. This is mainly due to the 'autoformatting' in Excel, but other problems could occur as well. This is nicely adressed in this [paper:](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7). The authors show, through an automated workflow, that many Excel files used for genomics studies, and that were supplied as supplementary materials to a publication contain, 'auto formatted' (read _changed_) gene names. 
 
 In itself this 'auto formatting' behaviour is problematic enough, but when you have data containing time series or dates, things start to become really problematic when you use Excel.

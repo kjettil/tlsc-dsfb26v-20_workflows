@@ -1,6 +1,6 @@
 book_filename: "data_science_for_biology_2-workflows"
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: "Lesson "
 delete_merged_file: true
 new_session: yes

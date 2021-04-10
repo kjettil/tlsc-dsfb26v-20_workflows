@@ -1,14 +1,16 @@
-# Lesson 4 - Git Branching and Merging {#gitbranchmerge}
+# Git Branching and Merging {#gitbranchmerge}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+
+les <- 4
 ```
 
 In part two of this lesson you learned how to use Git if you are the only person working on a project. However, often you are **working together with other persons**. Git offers some additional tools to promote collaboration. We will introduce these additional tools in this part.
 
 **before you do anything, make a local backup of your github repositories now**
 Most likely, you will have the local clone(s) on your computer. Just backup this folder. 
-Github collaborating can be tricky and you will be messing around in github today. While you can most of the time recover previous work, you will want to have the peace of mind that you won't lose anything while learning. Please really take the oppertunity to try and see what happens if you mess things up while working with 2 people on the same repo, and see if you can fix it.
+Github collaborating can be tricky and you will be messing around in github today. While you can most of the time recover previous work, you will want to have the peace of mind that you won't lose anything while learning. This gives you the opportunity to really try and see what happens if you mess things up while working with 2 people on the same repo, and see if you can fix it. We mean it, try to break stuff! We are here now to help you fix it, and you have the time now to learn. You don't want to have your first github mess-up when working on a deadline in your internship...
 
 ## The extended Git workflow: branching & merging
 
@@ -104,9 +106,9 @@ You have updated the Git repository on GitHub and on your laptop. You have also 
 The circle is closed: you have made some changes to the project using a development branch and merged this branch into the main branch. If you want to make some new changes, you can create a new branch and follow the same steps for these new changes. 
 
 <div class="question">
-##### Exercise 3
+##### Exercise `r les` {-}
 
-Use the Git repository that you created in the first exercise of the Lesson 3 here: \@ref(thisrepo) (the repository with the markdown file). 
+Use the Git repository that you created in the first exercise of the the last lesson. (the repository with the markdown file). 
 
 a) Create a new branch in RStudio. 
 b) Modify the markdown file by adding some additional text. Save the changes and commit/push the changes to GitHub. Go to GitHub and try to find the commits of the new branch. 
@@ -122,12 +124,15 @@ d) After resolving the pull request on GitHub and pulling the changes to your co
 e) You can delete the branch on your computer using the command `git branch -d <branch-name>`.
 </details>
 
+## Portfolio assignment `r paste0(les, " ")` {-}
 <div class="dagopdracht">
-**Dagopdracht: projecticum repository**
+**Projecticum repository**
 
 Create one shared Git repository on GitHub for your Projecticum project. Make sure that the repository is shared and that your group member(s) can contribute. Subsequently, clone the GitHub repository to your computer and add your files using a development branch. Commit/push the changes and add the files to the main branch with a pull request.
 
 Try working on the same files at the same time, and merge your branches to the main branch. Solve the issues you encounter.
+
+Try renaming a file and merge your branches to the main branch. Solve the issues you encounter.
 
 <mark> XXX uitbreiden </mark>
 

@@ -1,4 +1,4 @@
-# Lesson 9 - Working with relational data & databases {#relationaldb}
+# Working with relational data & databases {#relationaldb}
 
 ```{r setup, include=FALSE}
 les <- 9
@@ -61,7 +61,7 @@ In order
 On the server th
 
 
-
+##### Exercise `r les` {-}
 ## <mark> EXERCISE 1 </mark> {-} 
  
 **TIPS**
@@ -91,4 +91,4 @@ On the server th
     Maak een aantal visualisatie op basis van de joined data met ggplot2 etc...
 
 
-
+## Portfolio assignment `r paste0(les, " ")` {-}

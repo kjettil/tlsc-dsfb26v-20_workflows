@@ -1,4 +1,4 @@
-# Lesson 6 - RMarkdown - Syntax {#rmarkdownsyntax}
+# RMarkdown - Syntax {#rmarkdownsyntax}
 ```{r setuples, include=FALSE}
 les <- 6
 
@@ -833,7 +833,8 @@ Use a minus sign if you don't want to include the names:
   ```
 Van der Ploeg says so too [-@vdploeg04].
   ```
-  
+
+## Portfolio assignment `r paste0(les, " ")` {-}  
 <div class="dagopdracht">
 
 **Portfolio assignment 6**

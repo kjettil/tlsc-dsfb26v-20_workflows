@@ -1,4 +1,4 @@
-# Lesson 2 - Data management {#represdata}
+# Data management {#represdata}
 ```{r setuples, include=FALSE}
 les <- 2
 ```
@@ -38,18 +38,16 @@ library(readxl)
 ## Aim of this lesson
 After this lesson you will be familiar with the most important data management guidelines and principles: 
 
-<mark>
  1. Proper file naming strategies
  1. Guerrilla Analytics principles
  1. Files and folders / Project structure
- 1. Data-formats & Data shapes / Tidy data
- 1. Preparing your data for sharing
- 1. Encoding variables & Exploratory Data Analysis
- 1. Annotations and meta data
- 1. Column names and file names
  1. Checking data validity/integrity using checksums
+ 1. Data-formats & Data shapes / Tidy data
+ 1. metadata
+ 1. Encoding variables & Exploratory Data Analysis
+ 1. Preparing your data for sharing
  1. Proprietary vs non-proprietary formats
-</mark>
+
 
 ## File names
 
@@ -64,6 +62,18 @@ knitr::include_graphics(
 
 ```
 https://medium.com/@jameshoareid/final-pdf-finalfinal-pdf-actualfinal-pdf-cae61ab1d94c
+
+And this?
+
+```{r, out.width = "300px", echo=FALSE}
+knitr::include_graphics(
+  file.path(
+  image_dir,
+    "final.jpg"
+  )
+)
+
+```
 
 The use of version control abolishes the need for inventing a file name every time you save it. You will learn more about using version control (git and github.com) in lesson 2 and 3. With the use of git version control you only have to think about naming a file just once with a good name. But what entitles a 'good' file name?
 
@@ -102,7 +112,10 @@ knitr::include_graphics(
 )
 ```
 
-_what is wrong with this file name and its headers? can you spot another problem with the data sheet?_
+<div class="question">
+##### Exercise `r les` {-} 
+what is wrong with this file name and its headers? can you spot another problem with the data sheet?
+</div>
 
 ## The Guerrilla Analytics Principles
 To help you build a thorough data management process for yourself that you can start using and expanding when needed, we need a framework. In this course we use the `Guerrilla Analytics` framework, as described by Enda Ridge in [this booklet](https://www.elsevier.com/books/T/A/9780128002186). If you are pursuing a career in Data Science, I highly recommend getting a copy! This booklet describes in a very practical, and hands-on way, how to establish a data management workflow. Either when you work all by yourself or in a team, the pointers in this book will be applicable in both situations. Once you get to know this framework, you will discover that you used to do it wrong (like me...). 
@@ -145,7 +158,6 @@ Describe the following steps in an RMarkdown file. You do not need to write the 
  1. Which steps do you need to take in reshaping the file to make the dataformat match the requirement for using `{ggplot}
  1. Think of a better file name
  1. Write a conceptual and kind and friendly, but clear reply email (in English) to the researcher, where you address the changes that the researcher needs to make to the file in order for you to be able to analyze this data in R.
- 1. Add the resulting RMarkdown to your RStudio project portfolio project for this course (see prerequisites), you will need to ad this file to your bookdown portfolio later in lesson \@ref(bookdownportfolio)
  
 </div> 
  
@@ -172,7 +184,27 @@ knitr::include_graphics(
 )
 ```
 
-MD5sumss are unique codes to identify a file. In the following example, we find the MD5sum for a .txt file in /data/md5_examples:
+
+#### Data integrity {-} 
+<!-- {#checksums} -->
+When receiving a file from a laboratory that has performed a sequencing analysis, the files you receive are usually in `.fastq.gz` or `fasta.gz` format. Because these files can be big, they are usually accompanied by a small file containing a hash-like string looking something like this:
+
+`r tools::md5sum(here::here("data", "tidy_Kopie van salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx"))`
+
+This is the md5sums checksums for the file used earlier: `./data/salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx`. When the file changes the checksums also changes, like we will see in the following exercise.
+
+There are a number of different algorithms with which we can calculate such so-called `sumchecks`. Here we use the md5sums, which is a popular hashing algorithm.
+
+md5sums are
+
+ 1. A unique code to identify a file
+ 1. Can be used to verify the integrity or the version of a file
+ 1. Can be genarated from Windows, MacOS, Linux or from within e.g. R/Python/Bash
+ 1. md5sums are also used for safety: checking an md5sum ensures that the code is valid and has not changed (e.g. [Anaconda](https://www.digitalocean.com/community/tutorials/how-to-install-anaconda-on-ubuntu-18-04-quickstart))
+ 1. There are many different types of hash functions [MD5, SHA256 are much used for data and software](https://en.wikipedia.org/wiki/List_of_hash_functions)
+
+
+In the following example, we find the MD5sum for a .txt file in /data/md5_examples:
 
 ```{r examplemd5}
 library(tools)
@@ -194,7 +226,11 @@ md5_ex1_raw %>% enframe() -> md5sums_ex1
 <div class="question">
 ##### Exercise `r les` {-}
 
-There are 3 more datafiles in the folder /data/md5_examples. Find out which one is different from the other three using their MD5sums.
+There are actually 4 very similar files lying around. 
+
+<a href="https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/data/md5_examples/md5_examples.zip" download> Download the data here.</a>
+
+Find out which one is different from the other three using their MD5sums.
 If you want, `md5sum` can handle multiple files at the same time, but wants full paths for all of them.
 
 </div>
@@ -217,65 +253,11 @@ md5sums_all %>% select(filename,value)
 </details>
 
 
-
-### Principle 2: Simple, visual project structures and conventions    
-This principle concerns the _organisation_ of files and folders on the file system. Because you usually do not work alone, but in a team, this is an important point to agree upon within your team. If you do not stick to the rules you agreed on playing by, you will find that playing the game is no fun at all. When organizing a classical project structure, people with no data science background tend to organize files and folders on the contextual, or categorical level. This means you would have something like this:
-
-```{r, echo=FALSE}
-knitr::include_graphics(
-  here::here(
-    "images",
-    "project_structure_categorical.png"
-  )
-)
-```
-
-This makes sense but has at least two major drawbacks: 
-
- 1. Deep nesting of files in folder causes the absolute path to a file to grow. The path length on some file systems (especially in the cloud like OneDrive or GoogleDrive have a limit to the length of a path size. When copying a file or folder, this may cause the file or folder not be copied. Usually this error is silent. Meaning, you will not know about it, before it is too late and you discover years later that a complete folder is empty - trust me, it happens, I've been there!)
- 1. Categories and projects evolve. So at the time of putting the structure in place this may seem like a logical structure, but things will change. There will be new categories and new types of files, you had not thought of before. Where will these go?
-
-See for my own bad example on how not to do it:
-```{r}
-fs::dir_tree(here::here("wrong_structure"))
-```
-
-So when managing files in projects adhere to the following guidelines
-
- 1. Create a separate folder for each analytics project (in RStudio -> RStudio Project). Keep the unit of a project small. So a larger research project can usually be subdivided into smaller projects. Create an analysis project for each sub-project. Don't try to fit it all together.
- 1. Do not deeply nest folders (max 2-3 levels)
- 1. Keep information about the data, close to the data. So store descriptions about variables for example in a README.txt file and store that README.txt file in the same folder as where the dat lives that it describes. When using Excel files, you may choose to store the README information in a separate worksheet. More on this later \@ref(metadata1)
- 1. Store each dataset in its own sub-folder. I usually work like the example below. Each dataset I receive goes in a numbered folder in the `data-raw` folder. If I recieve an updated file, I add the old file to a new folder called `v01` inside the orginal `D..` folder. The updated file replaces the `v01` file. If then you recieve yet another update, you can repeat this trick with a `v02` folder inside the `D..` folder. In this way, the file directly in the `D..` folder is always the latest updated version. The README.txt file containing data about the data (see \@ref(metadata1)) lives also in the root of the `D..` folder.
- 1. Do not change file names or move them. As explained before, never change a file name of a file you recieve or download from the internet. If you need to change the file for analysis reasons (sometimes bioinformatics pipelines require specially formatted file names and than you do not have a choice, but to rename them), record your changes in the README.txt file!
- 1. Do not manually edit data source files. **Never, ever change a value inside a file**. You can (_almost_) always solve this using code. 
- 1. In code, use relative paths
-
-How to organize data files
-```{r}
-fs::dir_tree(here::here("data-raw"))
-```
-
-#### Data integrity {-} 
-<!-- {#checksums} -->
-When receiving a file from a laboratory that has performed a sequencing analysis, the files you receive are usually in `.fastq.gz` or `fasta.gz` format. Because these files can be big, they are usually accompanied by a small file containing a hash-like string looking something like this:
-
-`r tools::md5sum(here::here("data", "tidy_Kopie van salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx"))`
-
-This is the md5sums checksums for the file used earlier: `./data/salmonella CFU kinetics OD600 in LB van ipecs 8okt2020 kleur.xlsx`. When the file changes the checksums also changes, like we will see in the following exercise.
-
-There are a number of different algorithms with which we can calculate such so-called `sumchecks`. Here we use the md5sums, which is a popular hashing algorithm.
-
-md5sums are
-
- 1. A unique code to identify a file
- 1. Can be used to verify the integrity or the version of a file
- 1. Can be genarated from Windows, MacOS, Linux or from within e.g. R/Python/Bash
- 1. md5sums are also used for safety: checking an md5sum ensures that the code is valid and has not changed (e.g. [Anaconda](https://www.digitalocean.com/community/tutorials/how-to-install-anaconda-on-ubuntu-18-04-quickstart))
- 1. There are many different types of hash functions [MD5, SHA256 are much used for data and software](https://en.wikipedia.org/wiki/List_of_hash_functions)
  
 <div class="question">
 ##### Exercise `r les`{-}
-Calculating and checking md5sums checksums in R
+**Calculating and checking md5sums checksums in R**
+
 
  (a) Determine the md5sums of the file. Save the checksums to a file [write a piece of R code] `./data/toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv`
  
@@ -364,6 +346,46 @@ serverside$value == local$value[2]
 ```
 
 </details>
+
+
+
+### Principle 2: Simple, visual project structures and conventions    
+This principle concerns the _organisation_ of files and folders on the file system. Because you usually do not work alone, but in a team, this is an important point to agree upon within your team. If you do not stick to the rules you agreed on playing by, you will find that playing the game is no fun at all. When organizing a classical project structure, people with no data science background tend to organize files and folders on the contextual, or categorical level. This means you would have something like this:
+
+```{r, echo=FALSE}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "project_structure_categorical.png"
+  )
+)
+```
+
+This makes sense but has at least two major drawbacks: 
+
+ 1. Deep nesting of files in folder causes the absolute path to a file to grow. The path length on some file systems (especially in the cloud like OneDrive or GoogleDrive have a limit to the length of a path size. When copying a file or folder, this may cause the file or folder not be copied. Usually this error is silent. Meaning, you will not know about it, before it is too late and you discover years later that a complete folder is empty - trust me, it happens, I've been there!)
+ 1. Categories and projects evolve. So at the time of putting the structure in place this may seem like a logical structure, but things will change. There will be new categories and new types of files, you had not thought of before. Where will these go?
+
+See for my own bad example on how not to do it:
+```{r}
+fs::dir_tree(here::here("wrong_structure"))
+```
+
+So when managing files in projects adhere to the following guidelines
+
+ 1. Create a separate folder for each analytics project (in RStudio -> RStudio Project). Keep the unit of a project small. So a larger research project can usually be subdivided into smaller projects. Create an analysis project for each sub-project. Don't try to fit it all together.
+ 1. Do not deeply nest folders (max 2-3 levels)
+ 1. Keep information about the data, close to the data. So store descriptions about variables for example in a README.txt file and store that README.txt file in the same folder as where the dat lives that it describes. When using Excel files, you may choose to store the README information in a separate worksheet. More on this later \@ref(metadata1)
+ 1. Store each dataset in its own sub-folder. I usually work like the example below. Each dataset I receive goes in a numbered folder in the `data-raw` folder. If I recieve an updated file, I add the old file to a new folder called `v01` inside the orginal `D..` folder. The updated file replaces the `v01` file. If then you recieve yet another update, you can repeat this trick with a `v02` folder inside the `D..` folder. In this way, the file directly in the `D..` folder is always the latest updated version. The README.txt file containing data about the data (see \@ref(metadata1)) lives also in the root of the `D..` folder.
+ 1. Do not change file names or move them. As explained before, never change a file name of a file you recieve or download from the internet. If you need to change the file for analysis reasons (sometimes bioinformatics pipelines require specially formatted file names and than you do not have a choice, but to rename them), record your changes in the README.txt file!
+ 1. Do not manually edit data source files. **Never, ever change a value inside a file**. You can (_almost_) always solve this using code. 
+ 1. In code, use relative paths
+
+How to organize data files
+```{r}
+fs::dir_tree(here::here("data-raw"))
+```
+
 
 ### Sharing data 
 When you share data with someone else, consider taking these steps: 

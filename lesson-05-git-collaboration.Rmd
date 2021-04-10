@@ -1,4 +1,4 @@
-# Lesson 5 - Git collaboration {#gitcollaboration}
+# Git collaboration {#gitcollaboration}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -38,7 +38,7 @@ Pull requests
 The workflow proposed below is documented [here:](https://guides.github.com/introduction/flow/) 
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-}
 Study the Github Flow Documentation site mentioned above
 In your own words: write a summary on how this flow works (remember to save all answers to questions in your .Rmd file). Discuss it with your Projecticum partner. See to it that you two really understand all the steps of the flow mentioned in the documentation.
 
@@ -61,7 +61,7 @@ knitr::include_graphics(
 Posting an issue when you encounter an error or bug helps developers create robuster code and is the core driving force for developing new features or resolving problems in open source software. Opening issues is an easy way to start contributing to the open source community.
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-}
 **Looking at issues to learn from others**
 
 a) Review the first bug you can find on this page: 
@@ -78,7 +78,7 @@ b) Review issue  `#5640` in the `{dplyr}` issues. Why was this issue closed? Was
 When collaborating together on project repository, you can create issues to stay on track for the different actions that need to be undertaken. Issues can be related to adding functionality (code) to the project, but also to report a bug or to request the addition or improvement of documentation. You can create an issue by opening the `Issues` tab and creating a new issue by clicking the green `New issue` button. A form will open where you can add a title and further remarks to document your issue. The formatting of the `Leave a comment` field can be entered using Markdown formatting. When creating an issue, it is important to assign (preferable one) person to the issue. You can also choose a label, and if needed you can customize the label categories. When a Kanban/Project is also linked to the organization or repo, you can also add the issue to a Kanban board. More about Kanban here \@ref(kanban-and-automation). When creating a new issue, you can also add a `Milestone`. We will discuss this later \@ref(milestones) 
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-}
 **The teachers have created a projecticum repository on github, use this repository for this exercise. If not, apply for one and ask to be added.**
 
 Follow these steps to complete this exercise:
@@ -116,7 +116,7 @@ When using a github project, you can setup a Kanban board to track issues. Issue
 Milestones in Gihub can be sonsidered as Agile/SCRUM sprints. So each sprint is associated with one or multiple milestones that need to be resolved at the end of each sprint.
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise `r les` {-}
 To complete this exercise, you need to complete the following steps:
 
  1. Create at least 2 milestones for the first sprint of your projecticum project
@@ -252,8 +252,10 @@ The backlog then consists of all items (issues) that have no `milestone` attache
 ## Working as an Agile team
 The follow up for this lesson will be an online demo provided by one the SCRUM masters at the HU. In this demo we will focus on the good practices when working in an Agile/SCRUM team and learn how to apply the baics in your own project work.
 
+## Portfolio assignment `r paste0(les, " ")` {-}
 <div class="dagopdracht">
-## **Dagopdracht; Github documentation**
+**Github documentation**
+
  A) Study the github documentation on "Project Boards" [here](https://docs.github.com/en/github/managing-your-work-on-github/managing-project-boards)
 
 

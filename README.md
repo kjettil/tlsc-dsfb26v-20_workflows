@@ -18,11 +18,7 @@ bookdown::render_book(".")
 ## The contents of the course
 
 From the notes on the course:
-Hallo Marc,
 
-Ja, leuk idee!
-We hebben een hele les om dat nog in te stoppen, meteen aan het begin.
-We hadden een soort van overzicht gemaakt bij een meeting, ik heb dat inmiddels voorlopig aangevuld:
 
 10 lessen in twee weken:
 1x startcollege
@@ -59,16 +55,17 @@ Indeling lessen:
     Rmarkdown: Uitleg en zelf doorwerken voorbeelden (let op aansluiting met eventuele rmarkdown in daur1)
     o Overzicht Formats (pdf, websites, books, dashboards)
     o Basic syntax
+    o website online zetten via github
+    
+    Rmarkdown: toepassen:
+    o Meer syntax
+    o rapporten (tekstbestanden) genereren (reproducible reports)
 
-o website online zetten via github
-6. Rmarkdown: toepassen:
-o Meer syntax
-o rapporten (tekstbestanden) genereren (reproducible reports)
-7. Rmarkdown: toepassen:
-o opzetten eigen Rmarkdown-homepage met informatie over ontwikkeling van student tijdens deze cursus. (projecticum, opdrachten SQL en GIT deze cursus)
+    Rmarkdown: toepassen:
+    o opzetten eigen Rmarkdown-homepage met informatie over ontwikkeling van student tijdens deze cursus. (projecticum, opdrachten SQL en GIT deze cursus)
 
     SQL: Uitleg en zelf doorwerken voorbeelden
-    o mySQL?
+    o DBeaver
     o syntax basics
     o toepassing basics
     SQL: toepassen:

@@ -51,13 +51,13 @@ knitr::include_graphics(
  - Your portfolio is a `{bookdown}` project
  - You portfolio is appealing and written in proper English
  - Your portfolio contains a short reading guide, introduction and table of contents
- - At the end of the portfolio, include a short reflection paragraphg
+ - At the end of the portfolio, include a short reflection paragraph
  
 ## Reflection and where to go next
 
-
+The last paragraph of your portfolio needs to include some reflection on what you have learned during this course. Include a few phrases on where you want to go next with your learning path on data science. 
  
- All information you need to perform these steps is included in the course reader
+ All information you need to perform to build your `{bookdown}` portfolio are included in the course reader.
  
 ## Course reader
 
@@ -82,9 +82,10 @@ We planned long sessions to:
 
 ## Presence
 
- - We require you to be present during the online session to maximize interaction.  - We will keep track of your presence during this course.
+ - We require you to be present during the online session to maximize interaction.
+ - We will keep track of your presence during this course.
  - Feel free to bring up issues or topics that are related to the course or the project work (Projecticum).
- - We kindly ask you to switch on your video when interaction with other course participants and instructors
+ - We kindly ask you to switch on your video when in interaction with other course participants or instructors
 
 ## Link with Data Science Projecticum 
 

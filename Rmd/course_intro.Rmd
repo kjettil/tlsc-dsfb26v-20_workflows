@@ -1,0 +1,115 @@
+---
+title: "Data Science Workflows Course" 
+subtitle: "HU OSIRIS: tlsc-dsfb26v-20_workflows"
+author: "Alyanne de Haan, PhD; Bas van Gestel; Marc Teunis, PhD"
+date: "11-4-2021"
+output: 
+  ioslides_presentation:
+     widescreen: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Reproducible Research
+
+```{r, echo = FALSE, out.width=1000}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "research_comic_phd.gif"
+    )
+  
+)
+```
+
+
+## Course contents
+
+ - Open Science (lessons 1)
+ - Data management (lesson 2)
+ - Using Git/Github (lesson 3 - 5)
+ - Advanced RMarkdown (lesson 6 - 8)
+ - Databases (lesson 9)
+ 
+## Exercises & Course Exam
+
+ - Each lesson has multiple Exercises
+ - Some exercises do not have answers available
+ - Some exercises need to be done together with you class mates
+ - Do the group exercises in your Projecticum group
+ - Each lesson has one or more portfolio assignments ('dagopdrachten')
+ - Complete all portfolio assignments in separate Rmd files
+ - Build a bookdown project from all these files
+ - Host the bookdown on github, via github pages
+
+## Requirements for the exam
+ 
+ - You need to hand in **all assignments** to pass the course. You cannot compensate an assignment with another. 
+ - Your portfolio is hosted on a public Github pages website
+ - Your portfolio is a `{bookdown}` project
+ - You portfolio is appealing and written in proper English
+ - Your portfolio contains a short reading guide, introduction and table of contents
+ - At the end of the portfolio, include a short reflection paragraphg
+ 
+## Reflection and where to go next
+
+
+ 
+ All information you need to perform these steps is included in the course reader
+ 
+## Course reader
+
+The course<sup>**$**</sup> reader can be found here:
+
+https://datascience.hu.nl/rsconnect/dsfb2-workflows-reader/
+ 
+The source<sup>**\***</sup> for the reader can be found here:
+
+https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows
+ 
+_\$This is the first time that we run this course_ <br/>
+_\*You are invited to work together with us to improve the reader_
+
+## Lessons
+
+We planned long sessions to:
+
+ - Enable you to spend time on the exercises and portfolio assignments
+ - Seek interaction with your class mates and instructors
+ - Tackle any technical issues
+
+## Presence
+
+ - We require you to be present during the online session to maximize interaction.  - We will keep track of your presence during this course.
+ - Feel free to bring up issues or topics that are related to the course or the project work (Projecticum).
+ - We kindly ask you to switch on your video when interaction with other course participants and instructors
+
+## Link with Data Science Projecticum 
+
+The _Data Science for Biology 2_ course consists of two parts:
+
+ 1. "Workflows for Data Science Course" (tlsc-dsfb26v-20_workflows)
+ 2. "Research Project - Data Science Projecticum (tlsc-dsfb26v-20_projecticum)
+ 
+ You need to apply what you learned in workflows to your research project
+
+## Questions and Issues
+
+If you have questions during the online-sessions, reach out to your classmates or instructors. Instructors are available when online, or via the chat 
+
+Technical issues or issues with the reader content? Create a new Github issue here:
+
+https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows
+
+## Good luck!
+
+```{r, echo=FALSE, out.width=1000}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "automated.gif"
+  )
+)
+```

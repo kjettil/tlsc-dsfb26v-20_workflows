@@ -1,5 +1,6 @@
 --- 
-title: "Course Workflows (HU OSIRIS: tlsc-dsfb26v-20_workflows)"
+title: "Data Science Workflows Course" 
+subtitle: "HU OSIRIS: tlsc-dsfb26v-20_workflows"
 author: "Alyanne de Haan, PhD; Bas van Gestel; Marc Teunis, PhD"
 date: "`r Sys.time()`"
 site: bookdown::bookdown_site
@@ -22,8 +23,8 @@ bibliography: [references.bib]
 biblio-style: apalike
 link-citations: yes
 always_allow_html: yes
-github-repo: "uashogeschoolutrecht/tlsc-dsfb26v-20_workflows"
-description: "This is the course on managing and setting up workflows for collaboration, data analysis pipelines and reporting"
+github-repo: "DataScienceILC/tlsc-dsfb26v-20_workflows"
+description: "This is the course on managing and setting up workflows for data science collaboration, building data analysis pipelines and reproducible research"
 params:
   geo_id: NL BE
   month: February March April May June July August September October November December

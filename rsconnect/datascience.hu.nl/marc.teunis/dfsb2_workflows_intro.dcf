@@ -1,0 +1,13 @@
+name: dfsb2_workflows_intro
+title: dfsb2_workflows_intro
+username: marc.teunis
+account: marc.teunis
+server: datascience.hu.nl
+hostUrl: https://datascience.hu.nl/rsconnect/__api__
+appId: 76
+bundleId: 378
+url: https://datascience.hu.nl:443/rsconnect/content/76/
+when: 1618129339.48429
+asMultiple: FALSE
+asStatic: TRUE
+ignoredFiles: course_intro.Rmd|flipbook_mtcars.html|flipbook_mtcars.Rmd|ocean_floor.Rmd|steps_to_graph_from_excel_file.Rmd|libs/remark-css-0.0.1/default.css|libs/remark-css-0.0.1/hygge.css|libs/remark-css-0.0.1/ninjutsu.css|flipbook_mtcars_files

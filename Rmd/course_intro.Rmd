@@ -49,7 +49,7 @@ knitr::include_graphics(
  - You need to hand in **all portfolio assignments** to pass the course. You cannot compensate an assignment with another. 
  - Your portfolio is hosted on a public Github pages website
  - Your portfolio is a `{bookdown}` project
- - You portfolio is appealing and written in proper English
+ - Your portfolio is appealing and written in proper English
  - Your portfolio contains a short reading guide, introduction and table of contents
  - At the end of the portfolio, include a short reflection paragraph
  

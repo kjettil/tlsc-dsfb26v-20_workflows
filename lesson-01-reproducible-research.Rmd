@@ -104,20 +104,20 @@ Maybe ~~videotape~~ tiktok-record your process and add .mp4 to your paper? Type 
 
 To replicate a scientific study we need at least:
 
-> - **Context** Scientific context! Research questions, related publications.. [<mark>P<mark/>]
-> - **Methods** Exactly how the data was gathered [<mark>P</mark>, _D_, <mark>C</mark>]
+- **Context** Scientific context! Research questions, related publications.. [<mark>P<mark/>]
+- **Methods** Exactly how the data was gathered [<mark>P</mark>, _D_, <mark>C</mark>]
     + In what model or population? (e.g. some cell line, some knockout mouse etc)
     + *Exact* (experimental) design of the study
-> - **Data** Actually the raw data itself, to check if you find something similar [<mark>D</mark>] 
-> - **Meta data** which is data about the data. For instance who gathered it, when, where, licence information, keywords...)[<mark>D</mark>, _C_] 
-> - **Data analysis** All steps in data analysis [_P_, <mark>C</mark>]
+- **Data** Actually the raw data itself, to check if you find something similar [<mark>D</mark>] 
+- **Meta data** which is data about the data. For instance who gathered it, when, where, licence information, keywords...)[<mark>D</mark>, _C_] 
+- **Data analysis** All steps in data analysis [_P_, <mark>C</mark>]
     + Exploratory data analysis of the data 
     + data mangling decisisons, such as fitering and outlier selection
     + Which inductive statistical tests or inference was done and how.
-> - **Interpretation** How the data was interpreted [<mark>P</mark>, _C_]
+- **Interpretation** How the data was interpreted [<mark>P</mark>, _C_]
     + All choices made in the interpretation of the data (there is usually not one possible way to interpret results..)
     + Conclusions and academic scoping of the results
-> - **Access to all of the above!** [<mark>OAcc, OSrc</mark>]
+- **Access to all of the above!** [<mark>OAcc, OSrc</mark>]
 
 <p style="font-size:14px">$P = Publication$, $D = Data$, $C = Code$, $OAcc = Open\ Access$, $OSrc = Open\ Source$ </p>
 

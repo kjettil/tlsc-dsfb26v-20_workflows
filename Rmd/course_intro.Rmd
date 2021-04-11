@@ -39,14 +39,14 @@ knitr::include_graphics(
  - Some exercises do not have answers available
  - Some exercises need to be done together with you class mates
  - Do the group exercises in your Projecticum group
- - Each lesson has one or more portfolio assignments ('dagopdrachten')
+ - Each lesson has one or more portfolio assignments ('portfolio assignments')
  - Complete all portfolio assignments in separate Rmd files
  - Build a bookdown project from all these files
  - Host the bookdown on github, via github pages
 
 ## Requirements for the exam
  
- - You need to hand in **all assignments** to pass the course. You cannot compensate an assignment with another. 
+ - You need to hand in **all portfolio assignments** to pass the course. You cannot compensate an assignment with another. 
  - Your portfolio is hosted on a public Github pages website
  - Your portfolio is a `{bookdown}` project
  - You portfolio is appealing and written in proper English

@@ -1,0 +1,223 @@
+---
+title: "Reproducible research" 
+subtitle: "HU OSIRIS: tlsc-dsfb26v-20_workflows"
+author: "Alyanne de Haan, PhD; Bas van Gestel; Marc Teunis, PhD"
+date: "12-4-2021"
+output: 
+  ioslides_presentation:
+     widescreen: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Reproducible Research
+
+```{r, echo = FALSE, out.width=600}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "Data-Repositories.png"
+    )
+  
+)
+```
+
+## First: Open science
+
+"In a nutshell, **Open Science** is transparent and accessible knowledge that is shared and developed through collaborative networks" (Vicente-Sáez & Martínez-Fuentes 2018).
+
+Bekendst is **open access**:
+
+Open Access not only questions the multiple barriers to equitable knowledge making and circulation, 
+
+it also raises important questions about power and inequality, such as 
+
+whose knowledge counts, 
+
+who has the power to set research agendas, and 
+
+how knowledge is legitimized.
+
+([Leslie Chan](https://www.openlibhums.org/news/314/))
+
+## Open science and reproducible research
+
+Lijken hetzelfde maar zijn verschillende bewegingen:
+
+Reproducibility: Experimenten moeten repliceerbaar zijn zodat je resultaten kunt verifieren (exacte methoden open)
+
+Open science: Uitbreiden van openheid en transparantie naar de hele onderzoekscyclus, focus op samenwerking en vooruitgang. Open science wil een verandering in hoe de scientific community werkt.
+
+## transparency
+
+Obviously gelinked: verbeteren van scientific practice door transparantie in reactie op:
+
+ - Replication crisis (veel studies blijken slecht repliceerbaar)
+ - Wens om publiek vertrouwen in wetenschap (weer) te vergroten
+ - Betere technische mogelijkheden
+ 
+```{r, echo = FALSE, out.width=500}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "openscience_principles.png"
+    )
+  
+)
+```
+*(figure: probably Caterina Penone)*
+
+## Reproducible vs  replicable
+
+Jullie zijn getrained in *repliceerbaarheid* van methoden: anderen moeten je experiment op basis van je methodensectie exact kunnen herhalen.
+
+Stel ze krijgen je data gewoon? Komen ze dan op dezelfde **resultaten**?
+
+Wat zouden ze daarvoor nodig hebben? 
+
+```{r, echo = FALSE, out.width=400}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "understanding_science_repetition.gif"
+    )
+  
+)
+```
+
+
+
+<!-- You have been trained in making your work replicable: other people should be able to repeat the exact same experiment based on your report (methods section). -->
+<!-- But would they reach the exact same results? -->
+<!-- What would they need to have to get the same results?  -->
+
+## Reproducible vs  replicable (2)
+
+*Wat hebben ze nodig om tot hetzelfde resultaat te komen?*
+
+ - De data.
+    - Jouw ruwe data 
+    - meta data (les 2)
+        - data over data, zorgt dat we data effectief kunnen gebruiken
+ - De exacte methoden
+ - De code! --> welke stappen zaten er tussen data en resultaat?
+    - leesbaar, runbaar
+    - keuzes mbt modellen en/of statistiek
+    - welke versies van software / packages
+
+
+<!-- *What would they need to have to get the same results?* -->
+<!--  - The data. -->
+<!--     - Your raw data  -->
+<!--     - or their own, gathered by exactly replicating your experiment -->
+<!--     - meta data (lesson 2) -->
+<!--  - The code! what steps were inbetween-->
+
+## Reproducible vs  replicable (3)
+
+*Maar ook:*
+
+ - Context (onderzoeksvraag, eerdere studies etc)
+ - Keuzes in interpretatie, bijvoorbeeld:
+    - vinden we iets "veel" of "weinig"? 
+    - Is een trend van belang of niet? 
+    - Welke manier van statistiek kiezen we?
+ - Conclusies: hoe wordt de interpretatie samengevat als antwoord op de onderzoeksvraag?
+
+## Voorbeeld: andere conclusies, zelfde data
+
+<div class="columns-2">
+```{r, echo = FALSE, out.width=340}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "crownsource.jpg"
+    )
+)
+```
+
+Silberzahn R, Uhlmann EL. Crowdsourced research: Many hands make tight work. *Nature*. 2015 Oct 8;526(7572):189-91. 
+
+doi: 10.1038/526189a. 
+
+PMID: 26450041.
+</div>
+
+## Voorbeeld: andere conclusies, zelfde data (2)
+
+ - Vroegen 29 onderzoeksteams dezelfde vraag met dezelfde (grote) dataset met veel variabelen.
+ - "are football (soccer) referees more likely to give red cards to players with dark skin than to players with light skin?"
+
+```{r, echo = FALSE, out.width=340, fig.cap="Mario Balotelli, playing for Manchester City, is shown a red card during a match against Arsenal. (Michael Regan/Getty)"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "card.jpg"
+    )
+)
+```
+ 
+
+## Voorbeeld: andere conclusies, zelfde data (3)
+
+ - onderzoeksteams mochten de data analyseren en resultaat+methode terugsturen
+ - die werden anoniem verspreid en besproken in alle groepen
+ - hierna mochten alle teams hun eigen analyses aanpassen
+ - en discussieren over wat de beste methode zou zijn
+ 
+  - Maakt de leeftijd van de voetballer uit? Positie op het veld? Land van de club? Hoeveel gele kaarten de voetballer kreeg? Welke voetballers zijn outliers? Wat voor statistiek zou je moeten doen?
+
+## Voorbeeld: andere conclusies, zelfde data (3)
+
+ - de groepen bereikten geen concensus over wat "de beste oplossing" zou zijn
+ - 20 teams vonden een significant effect, 9 niet.
+
+![results Silberzahn & Uhlmann 2015](https://www.nature.com/news/polopoly_fs/7.30039.1444135233!/image/nature_graph_redcard_08.09.15-web1.png_gen/derivatives/landscape_630/nature_graph_redcard_08.09.15-web1.png){width=60%}
+ 
+ 
+<!-- ## Data/analyse-matrix -->
+
+<!-- ```{r, echo = FALSE, out.width=800} -->
+<!-- knitr::include_graphics( -->
+<!--   here::here( -->
+<!--     "images", -->
+<!--     "laderast_ReproducibleMatrix.jpg" -->
+<!--     ) -->
+<!-- ) -->
+<!-- ``` -->
+
+
+## Is science dus onbetrouwbaar?
+
+Nou nee, dit is gewoon de realiteit:
+
+De wereld is complexer dan een simpele lineaire regressie.
+
+Daarom: heel belangrijk om zoveel mogelijk informatie te delen!
+
+
+## What to do
+
+ - Weet wat je aan het doen bent met data 
+ (PAST: o.a. BID, DSFB1)
+ - Gebruik Reprodicible workflows (PRESENT: deze cursus) 
+ - Zet je in voor open science (FUTURE...)
+    - Deel je data
+    - Geef metadata
+    - Zoek actief naar open science mogelijkheden (bijv bij license issues: dummy data)
+
+<!-- (check the Turing way) -->
+
+## Challenges
+ 
+ - Onzekerheid (imposter syndrome)
+    - well yeah.. 
+ - Tijd. Maar: 
+    - gewoonte maken van open science workflows
+    - programmeren (R) en niet klikken (SPSS)
+ - Commercieel belang: "wordt mijn data niet gejat?" / Privacygevoelige data
+    - Als problematisch: (voorlopig) dummy/synthetic data open beschikbaar maken 
+ - Werkgevers/opdrachtgevers/politiek die belang niet inzien
+    - help mee open science de norm te maken

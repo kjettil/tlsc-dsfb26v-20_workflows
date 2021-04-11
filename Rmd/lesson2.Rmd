@@ -1,0 +1,57 @@
+---
+title: "Data management" 
+subtitle: "HU OSIRIS: tlsc-dsfb26v-20_workflows"
+author: "Alyanne de Haan, PhD; Bas van Gestel; Marc Teunis, PhD"
+date: "14-4-2021"
+output: 
+  ioslides_presentation:
+     widescreen: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data management
+
+
+## Metadata
+
+```{r, echo = FALSE, out.width=800}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "laderast_metadata.png"
+    )
+)
+```
+
+## Examples metadata:
+
+ - date experiment was done
+ - time of measurements
+ - who did the data collection
+ - who did the analysis
+ - who paid for the research
+ - etc etc
+
+## Discuss metadata:
+
+Stel je voor: we willen twee datasets combineren van twee instellingen die hetzelde experiment hebben uitgevoerd: A) Theme hospital B) bejaardentehuis Avondrood. 
+
+In het experiment werd getest of een bepaald medicijn ervoor zorgt dat mensen afvallen, in vergelijking met een placebo. Deelnemers zijn gewogen voor en na behandeling.
+
+Welke metadata zou je willen hebben als je de datasets wilt combineren? 
+
+Denk aan details op experiment-niveau, niet deelnemer-niveau (dus bijvoorbeeld: wat was de dosis van het medicijn? Was dat op beide locaties hetzelfde?)
+
+*(dank aan Ted Laderas voor de opdracht)*
+
+## What to do
+
+
+
+## Challenges
+ 
+ - 
+

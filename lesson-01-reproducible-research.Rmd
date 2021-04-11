@@ -18,6 +18,16 @@ Save those as separate .Rmd files in a **portfolio-project**.
 <div class="tip">
 So, you will have at least 3 R projects (file --> new project...) going on this semester: one for all the regular exercises in the lessons. One for your portfolio. A third one for projecticum. 
 
+We suggest to call them:
+
+ 1. `dsfb2_workflows_exercises`
+ 2. `dsfb2_workflows_portfolio`
+ 3. `dsfb2_research_project`
+ 
+**Start by setting these projects up in your RStudio environment (server or local)**  
+
+Once you are done doing this, you are ready to start this course!
+
 </div>
 
 

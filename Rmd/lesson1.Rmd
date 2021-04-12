@@ -46,11 +46,13 @@ how knowledge is legitimized.
 
 Lijken hetzelfde maar zijn verschillende bewegingen:
 
-Reproducibility: Experimenten moeten repliceerbaar zijn zodat je resultaten kunt verifieren (exacte methoden open)
+Reproducibility: Met dezelfde data dezelfde uitkomsten (resultaten, conclusies) bereiken. 
+
+Replicability: Experimenten moeten repliceerbaar zijn zodat je resultaten kunt verifieren (exacte methoden open).
 
 Open science: Uitbreiden van openheid en transparantie naar de hele onderzoekscyclus, focus op samenwerking en vooruitgang. Open science wil een verandering in hoe de scientific community werkt.
 
-## transparency
+## Transparency
 
 Obviously gelinked: verbeteren van scientific practice door transparantie in reactie op:
 
@@ -58,7 +60,7 @@ Obviously gelinked: verbeteren van scientific practice door transparantie in rea
  - Wens om publiek vertrouwen in wetenschap (weer) te vergroten
  - Betere technische mogelijkheden
  
-```{r, echo = FALSE, out.width=500}
+```{r, echo = FALSE, out.width=400}
 knitr::include_graphics(
   here::here(
     "images",
@@ -202,7 +204,7 @@ Daarom: heel belangrijk om zoveel mogelijk informatie te delen!
 
  - Weet wat je aan het doen bent met data 
  (PAST: o.a. BID, DSFB1)
- - Gebruik Reprodicible workflows (PRESENT: deze cursus) 
+ - Gebruik Reproducible workflows (PRESENT: deze cursus) 
  - Zet je in voor open science (FUTURE...)
     - Deel je data
     - Geef metadata

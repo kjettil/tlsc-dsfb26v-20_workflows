@@ -53,6 +53,16 @@ knitr::include_graphics(
  - Your portfolio contains a short reading guide, introduction and table of contents
  - At the end of the portfolio, include a short reflection paragraph
  
+## Original work
+
+ - Not allowed to hand in a pre-existing analysis as your own work. 
+ - Allowed to let yourself be inspired by existing work and copy a few lines of code from pre-existing work.
+ - Provide credit to the work you are using or changing. 
+ - Pay respect to the associated license if present. 
+ - Not allowed to let somebody else create your portfolio for you. 
+ - Assessments of fraude or plagiarism will be reported to the Exam committee of the Institute for Life Sciences & Chemistry.
+ 
+ 
 ## Reflection and where to go next
 
 The last paragraph of your portfolio needs to include some reflection on what you have learned during this course. Include a few phrases on where you want to go next with your learning path on data science. 

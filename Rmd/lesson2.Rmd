@@ -12,10 +12,109 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## file management in general
+
+```{r, echo = FALSE, out.width=1000, fig.cap="http://phdcomics.com/comics.php?f=1531"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "phd_final1.png"
+    )
+)
+```
+
+<!-- Jullie kennen dit waarschijnlijk -->
+
+
+## file management in general
+
+```{r, echo = FALSE, out.width=1000, fig.cap="PhD comics by Jorge Cham"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "phd_final2.png"
+    )
+)
+```
+
+## file management in general
+
+```{r, echo = FALSE, out.width=1000, fig.cap="Version control --> lesson 3"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "phd_final3.png"
+    )
+)
+```
+
+<!-- Ontspoort vrij makkelijk richting dit. Les 3 gaat over version control-->
+
 ## Data management
 
+![file names true story](http://www.phdcomics.com/comics/archive/phd052810s.gif)
 
+<!-- Maar gaat met data niet heel anders. wat kan je doen om dat te voorkomen? -->
+
+## FAIR data
+```{r, echo = FALSE, out.width=780, fig.cap="Europese commissie volgens mij"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "EC_FAIR_data.png"
+    )
+)
+```
+
+<!-- Want voorbeeld van net is niet heel fair, reproducibility wordt een zooitje -->
+
+## Hoe dan?
+
+```{r, echo = FALSE, out.width=780, fig.cap="ICSU/IAP:TWAS/ISSC: it is not just a technology challenge. (Open data in a Big Data World, 2016)"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "open_data_challenges.png"
+    )
+)
+```
+
+<!-- Mogelijkheden scheppen is niet genoeg, mensen moeten het zelf doen! -->
+
+## Les 2: data management
+
+ - identifiers
+ - data formats
+ - meta data
+ - folder structure
+ 
+ - Guerrilla Analytics Principles als kapstok
+
+## Licensing
+
+ - net als alles wat je maakt kan je aan je data een kaartje hangen met uitleg over wat mensen er van jou wel en niet mee mogen doen.
+
+    - commercial
+    - creative commons
+    - public domain
+
+## creative commons
+```{r, echo = FALSE, out.width=550, fig.cap="source unclear"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "Understanding-Creative-Commons-Licenses-20.png"
+    )
+)
+```
+
+<!-- Deze cursus: nog X mailtjes heen en weer of we de reader buiten canvas op internet mogen zetten. Van wie is deze cursus? Van ons omdat we hem schreven? Van de hogeschool omdat ze ons betaalden? Van iedereen omdat de hogeschool overheidsgeld krijgt? -->
+
+ <!-- It's complicated, maar ga niet zomaar akkoord met "niet open, want we hebben er niet over nagedacht en het klinkt eng" -->
+ 
 ## Metadata
+
+Maar alleen de data is niet genoeg. 
 
 ```{r, echo = FALSE, out.width=800}
 knitr::include_graphics(
@@ -47,11 +146,5 @@ Denk aan details op experiment-niveau, niet deelnemer-niveau (dus bijvoorbeeld: 
 
 *(dank aan Ted Laderas voor de opdracht)*
 
-## What to do
-
-
-
-## Challenges
- 
- - 
+## Les 2: have fun
 

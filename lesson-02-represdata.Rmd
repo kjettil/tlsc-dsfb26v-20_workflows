@@ -335,7 +335,7 @@ serverside <- read_csv(
 local <- read_lines(
   here::here(
     "data",
-    "toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE_local.md5"
+    "toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE_LOCAL.md5"
   )
 ) %>%
   enframe()

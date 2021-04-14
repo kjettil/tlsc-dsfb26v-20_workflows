@@ -1,0 +1,12 @@
+name: workflows_reader
+title: workflows_reader
+username: bas.vangestel
+account: bas.vangestel
+server: datascience.hu.nl
+hostUrl: https://datascience.hu.nl/rsconnect/__api__
+appId: 88
+bundleId: 425
+url: https://datascience.hu.nl:443/rsconnect/content/88/
+when: 1618416022.5317
+asMultiple: FALSE
+asStatic: TRUE

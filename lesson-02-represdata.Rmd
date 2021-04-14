@@ -120,11 +120,11 @@ what is wrong with this file name and its headers? can you spot another problem 
 ## The Guerrilla Analytics Principles
 To help you build a thorough data management process for yourself that you can start using and expanding when needed, we need a framework. In this course we use the `Guerrilla Analytics` framework, as described by Enda Ridge in [this booklet](https://www.elsevier.com/books/T/A/9780128002186). If you are pursuing a career in Data Science, I highly recommend getting a copy! This booklet describes in a very practical, and hands-on way, how to establish a data management workflow. Either when you work all by yourself or in a team, the pointers in this book will be applicable in both situations. Once you get to know this framework, you will discover that you used to do it wrong (like me...). 
 
-To build the framework, let's look ath the core 7 Guerrilla Analytics Principles:
+To build the framework, let's look at the core 7 Guerrilla Analytics Principles:
 
  >1. Space is cheap, confusion is expensive
  >1. Use simple, visual project structures and conventions
- >3. Automate (_everything - my adittion_) with program code
+ >3. Automate (_everything - my addition_) with program code
  >4. Link  stored data to data in the analytics environment to data in work products (_literate programming with RMarkdown - my addition_)
  >5. Version control changes to data and analytics code (Git/Github.com)
  >6. Consolidate team knowledge (agree on guidelines and stick to it as a team)  
@@ -450,7 +450,7 @@ knitr::include_graphics(here::here(
 
 ### Principle 4: Link `stored data`, to data in the `analytics environment`, to data in `work products`
 
-Read this paragraph header again and make sure you understand the difference between "stored data", "data in the analytics environdment" and "data in work products".
+Read this paragraph header again and make sure you understand the difference between "stored data", "data in the analytics environment" and "data in work products".
 
 Basically this is what you are doing with literate programming (e.g. RMarkdown) with R or Python in RStudio or Jupyter:
 

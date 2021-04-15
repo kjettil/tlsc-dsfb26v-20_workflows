@@ -1,0 +1,32 @@
+---
+title: "Reproducible research" 
+subtitle: "HU OSIRIS: tlsc-dsfb26v-20_workflows"
+author: "Alyanne de Haan, PhD; Bas van Gestel; Marc Teunis, PhD"
+date: "12-4-2021"
+output: 
+  ioslides_presentation:
+     widescreen: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Reproducible Research
+
+geen sheets. plan les start:
+
+  - waar is iedereen
+  - callback naar start les 2: version control is needed.
+
+  - https://www.youtube.com/watch?v=PhyUy7z4S-M 
+ eerste 5.30 minuut
+
+  - rondleiding github repo deze reader
+  - laten zien : verandering in Readme.md, commit - push
+  - laten zien: issues aanmaken
+  - waarschuwen voor melding github account eerste keer committen: moet in terminal, niet in console
+
+halverwege"
+
+ - wijzen op dat je comments moet geven bij je commit: metadata van je verandering!

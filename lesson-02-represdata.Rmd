@@ -335,7 +335,7 @@ serverside <- read_csv(
 local <- read_lines(
   here::here(
     "data",
-    "toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE_LOCAL.md5"
+    "toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE_local.md5"
   )
 ) %>%
   enframe()
@@ -375,7 +375,7 @@ So when managing files in projects adhere to the following guidelines
 
  1. **Create a separate folder for each analytics project** . Keep the unit of a project small. So a larger research project can usually be subdivided into smaller projects. Create an analysis project for each sub-project. Don't try to fit it all together.
  1. **Do not deeply nest folders** (max 2-3 levels, so no *project/documentation/applications/metc/first_communication/input/stuff/morestuff/mail.txt*)
- 1. **Keep information about the data, close to the data**. So store descriptions about variables for example in a README.txt file and store that README.txt file in the same folder as where the dat lives that it describes. When using Excel files, you may choose to store the README information in a separate worksheet. More on this later \@ref(metadata1)
+ 1. **Keep information about the data, close to the data**. So store descriptions about variables for example in a README.txt file and store that README.txt file in the same folder as where the data lives that it describes. When using Excel files, you may choose to store the README information in a separate worksheet. More on this later \@ref(metadata1)
  1. **Store each dataset in its own sub-folder.** I usually work like the example below. Each dataset I receive goes in a numbered folder in the `data-raw` folder. If I recieve an updated file, I add the old file to a new folder called `v01` inside the orginal `D..` folder. The updated file replaces the `v01` file. If then you recieve yet another update, you can repeat this trick with a `v02` folder inside the `D..` folder. In this way, the file directly in the `D..` folder is always the latest updated version. The README.txt file containing data about the data (see \@ref(metadata1)) lives also in the root of the `D..` folder.
  1. **Do not change file names or move them.** As explained before, never change a file name of a file you recieve or download from the internet. If you need to change the file for analysis reasons (sometimes bioinformatics pipelines require specially formatted file names and than you do not have a choice, but to rename them), record your changes in the README.txt file!
  1. **Do not manually edit data source files.** in fact **Never, ever change a value inside a file**. You can (_almost_) always solve this using code. 

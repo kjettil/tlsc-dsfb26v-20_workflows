@@ -12,6 +12,48 @@ In part two of this lesson you learned how to use Git if you are the only person
 Most likely, you will have the local clone(s) on your computer. Just backup this folder. 
 Github collaborating can be tricky and you will be messing around in github today. While you can most of the time recover previous work, you will want to have the peace of mind that you won't lose anything while learning. This gives you the opportunity to really try and see what happens if you mess things up while working with 2 people on the same repo, and see if you can fix it. We mean it, try to break stuff! We are here now to help you fix it, and you have the time now to learn. You don't want to have your first github mess-up when working on a deadline in your internship...
 
+<div class="question">
+##### Exercise `r les` {-}
+
+Let's create a conflict in case you haven't gotten one yet.
+
+(1)
+
+First, **if you have no practice github repository yet** do the following:
+ - If you haven't got one yet: Create a private github repository for the normal (=not portfolio) exercises in the lessons.
+ - Create a new version controlled R project linked to this github, and copy your exercise results from the previous lessons to this folder.
+ - commit and push the changes.
+
+(2) 
+
+Everyone now has a repository to save your regular (not portfolio) exercises, and practise with github. Now let's create a conflict:
+
+ - Change 2 lines in your README.md locally (on your own computer)
+ - Create one commit for each change:
+    - Select the changes you want to commit and click commit
+    - Add a commit message and click Commit
+ - **Do NOT push (yet)**
+
+(3)
+Go to github online and open README.md. Make a change on the exact same line you just edited locally, and commit this change online.
+
+(4)
+
+Back in Rstudio, push your local changes.
+Git will give you a warning and will not change the file!
+
+
+(5)
+
+Click Pull to download the changes from Github
+
+Git will tell you there is a **conflict** and that you will have to resolve it first.
+
+
+
+</div>
+
+
 ## The extended Git workflow: branching & merging
 
 Suppose Bas and Marc are working together on a (data analysis) project. For this project, Bas created one shared Git repository on GitHub in which Bas and Marc can store the scripts for the project. Bas and Marc both cloned this repository to their laptops. Every now and then Bas and Marc make changes to the scripts. You can imagine that this may go wrong: Bas and Marc are both adding/deleting things from the Git repository at the same time from different computers and this can result in conflicts. For example, Bas may decide to add an extra line to script1 and commit/push the changes to GitHub. Marc, who still works on the old version, then removes some lines from script1. When Marc now commits/pushes the changes to GitHub an error will occur, because Marc's changes are not in line with Bas' changes. 

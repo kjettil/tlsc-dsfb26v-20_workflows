@@ -5,9 +5,13 @@ knitr::opts_chunk$set(echo = TRUE)
 les <- 5
 ```
 
-## Learning aims
 
 In this lesson you will get to know many useful tools for collaboration in Github. You are required to apply them in your `Data Science Projecticum`
+
+
+## Learning aims
+
+After this lesson you can do the following tasks with github and Rstudio:
 
 Issues
 
@@ -22,6 +26,7 @@ Kanban & automation
  - Labels
  - Milestones
  - Projects
+ - using am agile workflow in general
  
 Branches
 
@@ -68,7 +73,7 @@ a) Review the first bug you can find on this page:
 
 https://github.com/tidyverse/dplyr/issues
 
-Read the description and the propsed solutions if any. Describe in your own words what the bug relates to. Discuss the bug with a fellow student.
+Read the description and the proposed solutions if any. Describe in your own words what the bug relates to. Discuss the bug with a fellow student.
 
 b) Review issue  `#5640` in the `{dplyr}` issues. Why was this issue closed? Was the issue resolved for the user who reported it?
 </div>
@@ -79,7 +84,7 @@ When collaborating together on project repository, you can create issues to stay
 
 <div class="question">
 ##### Exercise `r les` {-}
-**The teachers have created a projecticum repository on github, use this repository for this exercise. If not, apply for one and ask to be added.**
+**The teachers have created a projecticum organisation on github, use the repository you have made here for this exercise.** 
 
 Follow these steps to complete this exercise:
 
@@ -263,7 +268,6 @@ The follow up for this lesson will be an online demo provided by one the SCRUM m
  
  C) The teachers have created a specific repo for your projecticum project and have added you to them, Link this repo to the project you just created. 
 
-<mark> XXX uitbreiden! </mark>
 
 </div>
 

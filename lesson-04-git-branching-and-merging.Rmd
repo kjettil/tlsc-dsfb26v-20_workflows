@@ -482,7 +482,7 @@ The backlog then consists of all items (issues) that have no `milestone` attache
 
 
 <div class = "dagopdracht">
-This lesson has no portfolio assignment. The nexercises within this lesson of course help build your portfolio.
+This lesson has no portfolio assignment. The exercises within this lesson of course help build your portfolio.
 </div>
 
 ## Git resources

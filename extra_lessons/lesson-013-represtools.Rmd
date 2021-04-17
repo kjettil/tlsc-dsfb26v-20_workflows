@@ -1,0 +1,275 @@
+# Lesson 1.3 - Tools {#represtools}
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(
+  echo = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  error = FALSE
+  , 
+  fig.width = 6,
+  fig.height = 4
+)
+
+image_dir <- here::here(
+  "images"
+)
+
+chapter_name <- "represtools"
+lesson_number <- "1.3"
+```
+
+
+## Lesson aims
+
+After taking this lesson you will be acquainted with:
+
+ - Open Source Software and Communities (CRAN, Bioconductor, R Open Sci)
+ - Bioconductor Workflows (Docker: - How to use RStudio Docker images
+ )
+ - Open Peer Review (F1000)
+ - RMarkdown driven development
+ - `{renv}`
+ - Anaconda
+
+## Packages
+```{r}
+library(tidyverse)
+## packages
+library(ggExtra)
+
+```
+
+```{r, topics, eval=FALSE}
+## add topics below to write them automatically to the course contents table
+topics <- c(
+  "Open source",
+  "software development",
+  "Bioconductor",
+  "{renv}",
+  "R Markdown",
+  "R Markdown Driven Development",
+  "R package development",
+  "Git/Github",
+  "Version Control",
+  "Docker"
+)
+
+tibble(
+  Lesson_Number = lesson_number,
+  Lesson_Name = chapter_name,
+  Topics = topics
+  ) %>% 
+  write_csv(
+    file = "course_contents.csv", 
+    append = TRUE)
+
+```
+
+## Resources
+
+
+## Introduction
+The tools that enable Open Reproducible Research are plenty. Typically they consist of programming tools that are available open source and that have user community driven development cycle.
+Basically we can discriminate betwee tools that:
+
+ 1. Relate to programming languages or integrative development environments
+ 2. Relate to data science infrastructure & software
+ 3. Relate to learning tools and documentation
+
+Below are a couple of examples for each category, of which some will be explained in this course.
+
+1 - Data Science programming languages
+
+```{r, dpi = 80}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "data_science_languages",
+    "InkedDia1_LI.jpg"
+  )
+)
+```
+
+
+## Tools to enable Open Science (2/3)
+
+2 - Data Science infrastructure & software
+
+```{r, dpi = 80}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "data_science_languages",
+    "Dia2.jpg"
+  )
+)
+```
+
+## Tools to enable Open Science (3/3)
+
+3 - Data Science learning tools
+
+```{r, dpi = 80}
+knitr::include_graphics(
+  file.path(
+    image_dir,
+    "data_science_languages",
+    "Dia3.jpg"
+  )
+)
+```
+
+
+## Introducing workflows
+Workflows basically are processes that help you go through your data analysis and programming flow in a reproducible and transparent manner. We already saw that when we apply the Guerrilla Analytics principle: "Do everything in code". This already in itself makes an analysis transparent, but is not yet a workflow. Workflows are definitions on how you (and your collaborators should work on code, analysis, tracking issues, resolving bugs, generating output, defining names for files). Basically everything you (as a bioinformatician or data scientist/analyst do) on a day-to-day basis. A typical workflow has the following characteristics:
+
+ - It follows the logic that is compatible with the tool or tools that you frequently use
+ - It's description is simple (the underlying structure could be complicated)
+ - It uses version control in  every element and step for tracibility
+ - It uses envionments for computational reproducibility
+
+
+## Environments
+The year is 2023:
+Imagine you are programming a transcriptome analysis for one of the PhD students at the lab where you work as a programmer/bioinformatician. You are using version 5.4.6 of R and version 5.0 of Bioconductor. The experiment you are anlyzing is the first transcriptome experiment of many to come...
+The year is 2026: 
+You have been analyzing about a 100 transcriptome samples by now and your code lives in a github repository. You are running the analyses on the groups analysis server for computational reasons. There is a major update for R version 6.0.0 and the R kernel has been significantly overhauled. This revisons of base R has caused the reverse-dependency for EdgeR and DESeq2 to break for this R version. This means that running your existing code does not work for this new version of R. The IT department, in charge of maintenance has already updated the server to R version 6.0.0.
+How do you solve this? How would you be able to still run your code. From the processes and tools used in software development, there are a number of solutions to the problem.
+
+ 1. **Projects**
+ When you work with packages that need to be installed in your analysis environment it is good practice to create separate environments for each project. How you define a project can have multiple aspects. Usually a project is defined by the data being related to a single research question or research project. Using an RStudio project, linked to a git repository is a good way to start.   
+ 
+ 1. **Package environments**
+ When you need (and you almost allways need) to install additional packages (R) or libraries (Python) on top of the base installation it is best ot create a package environment in your project. In this course we will show you how to do this for R. We will also provide a demo on how to do this for a complete analysis pipeline (metagenomics - `Qiime2`). We will run this Qiime2 pipeline in a conda environment.
+ 
+ 1. **Containers**
+ Container technology has revolutionized the way we use resources for computation. Having application run in containers has the advantage that you can isolate tasks and applications from the operating system. A container is meant to run temporarily (also called ephemeral in IT jargon). It can be quicly brought up, do the thing it is supposed to and than brought down again. The absolute advantage of this is that the available resources are used much more efficiently: A container will only use resources during it's life time. One it disappears, the resources it consumes are free again. We will see how we can isolate R Studio in a Docker container and than run a transcriptome analysis in it. A container can share folder on the host file system, so you can easily load files into and write files out of a container.
+ 
+ 1. **Version control**
+ Software that can be used to track changes in code and data such as git and subversion are must-haves when you are programming and writing code. Simple: There is no other way to track changes or collaborate on code than using a repository with code under version control. In this course, you will get to know the ins and outs on using git in conjunction with github.com for working on code, managing versions, retracing your steps or fix errors and collaboration.
+ 
+ 1. **Building an R package**
+ 
+**## EXERCISE; RStudio Projects, start with an empty or existing git repo**
+
+ A) Start this exercise by watching these videos on RStudio resources:
+  - https://rstudio.com/resources/webinars/managing-part-1-projects-in-rstudio/
+  - https://rstudio.com/resources/webinars/managing-part-2-github-and-rstudio/
+  
+ B) We will start with an existing github repo. Clone [this github repo](https://github.com/stemangiola/bioc_2020_tidytranscriptomics/) to a new RStudio project. If you forgot how to do [that:](https://rstudio.com/resources/webinars/managing-part-1-projects-in-rstudio/)
+
+ C) In this new project called 'bioc_2020_tidytranscriptomics', open the file "./tidytranscriptomics.Rmd", and run all the code chunks --> You will get some errors, why? What do you need to do before you are able to run this Rmd?
+ 
+ 
+**## EXERCISE `{renv}` Environments for R**
+
+Go over [this tutorial](https://rstudio.github.io/renv/articles/renv.html). Run the `{renv}` tutorial inside your 'EpiForBioWorkshop2020' project. Write down a number of clear advantages for using `{renv}`
+
+
+**## EXERCISE RStudio Docker container (`VSC-Terminal -> R`)**
+
+ A) Install (if you have not already done so) Microsoft Visual Studio Code. You can find the software [here:](https://code.visualstudio.com/) 
+ 
+ B) Install the Docker plugin in your Visual Studio Code. [See here](https://code.visualstudio.com/docs/containers/overview). For the Docker plugin to work, you need [Docker Desktop](https://docs.docker.com/get-docker/).
+ 
+ C) Go over [this](https://code.visualstudio.com/docs/remote/containers-tutorial) tutorial to learn how to use Docker in Visual Studio Code
+ 
+ D) Run the Docker container for the 'bioc_2020_tidytranscriptomics' by running the command below in your Terminal (Not the R Console!):
+ 
+ ```
+ ## run this command in your Visual Studio Code Terminal
+docker run -e PASSWORD=abc -p 8787:8787 stemangiola/bioc_2020_tidytranscriptomics:bioc2020
+``` 
+ 
+ The container will be available in Visual Studio Code. You can access the container by right-clicking the container named `stemangiola/bioc_2020_tidytranscriptomics`. Choose `Open in Browser`. Alternatively, go to the website in your browser: `http://localhost:8787/`. You will get an RStudio Login screen. Username: 'rstudio' and passwd: 'abc'.
+ 
+ D) Once you get the hang of using Docker, what benefits do you see? Write them down.
+ 
+**EXERCISE; R package in a Docker container (`R`)** 
+In stead of building a Docker file for your project (for which you need to learn a bit more bout Docker), you can also create an R package. Usually packages are build and linked to a github repo. 
+
+Install the R package `bioc2020tidytranscriptomics` by following the instruction in [this](https://github.com/stemangiola/bioc_2020_tidytranscriptomics) github repo. 
+
+ A) Compare this workflow to the workflow of Docker. Write a short essay (300 words) on the advantages and disadvantages for both methods. Add why the combination of Docker and an R package in Github is even better?
+
+
+## **EXERCISE; Building a simple R package (`R`)**
+
+Clone the [repo](https://github.com/UtrechtUniversity/R-data-cafe)
+Open the folder /themes/start_with_rmd as a new RStudio project
+
+Go over the file /Rmd/start_with_rmd.Rmd
+If all goes well you just build your first package called 'bumblebee' with one function.
+
+To learn more about packages
+
+## **EXERCISE Conda environments (`Terminal`)**
+For this Exercise we will start by installing Miniconda in you RStudio server account, to have an envrironment where we can experiment with `conda`.
+
+Go over these steps to complete this exercise:
+ 
+ 1. Initiate an empty RStudio project in your RStudio online environment (RStudio Server) called "conda_experiments"
+ 
+ 2. Install **Miniconda** following [these](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html) instructions. 
+ 
+ **TIPS**
+ - If the installer asks you to add miniconda to the PATH, choose 'yes'. 
+ - Choose the Miniconda version for the latest version of Python (64-bit).
+ - Download the installer using `wget`. Do not forget
+ - Check the sha256 sums if the file (you can find the hash on the installer page) - [see also](https://conda.io/projects/conda/en/latest/user-guide/install/download.html#cryptographic-hash-verification)
+
+```{bash, include=FALSE, eval=FALSE}
+## in your project run from terminal
+mkdir tmp
+cd tmp
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+## when asked for adding to PATH -> 'yes'
+
+```
+
+ 3. To test if the installation went well run
+ ```
+ conda list
+ ```
+ You should see a bunch of packages as output. 
+ 
+ 4. Update conda and all packages and install wget inside conda using:  
+ 
+ ```
+ conda update -n base conda
+ conda update --all
+ conda install wget
+ ```
+ I
+ 5. Qiime is a workflow for analyzing metagenomics (16S and Amplicon sequencing). You can use conda to characterize and classify microbial composition of samples. Let's install the (latest at time of writing) `qiime2` workflow in a new `qiime2-2020.11` conda environment. Can you think of why adding the version number of the conda environment name is a good idea here?
+ 
+ ```
+ cd /tmp
+ wget https://data.qiime2.org/distro/core/qiime2-2020.11-py36-linux-conda.yml
+ conda env create -n qiime2-2020.11 --file qiime2-2020.11-py36-linux-conda.yml
+ # OPTIONAL CLEANUP
+ rm qiime2-2020.11-py36-linux-conda.yml
+ ```
+ 
+ 6. Take a look at the ./tmp/qiime2-2020.11-py36-linux-conda.yml you just downloaded. What do you think about this file. What does it do? 
+
+## **Exercise; Now it's Time for Biology!! (`Terminal`)**
+To complete this exercise, you need a working `qiime2-2020.11` environment. We will go over one of the tutorials of the `Qiime2` pipeline to get an idea on how it works and what you can do with it. 
+ 
+ 1. Visit the Qiime2 website and [read this page as an introduction](https://docs.qiime2.org/2020.11/concepts/). This course will not go into the details on 16/18S and amplicon sequencing, but we will hand you the tools to start learning and applying your comuter skills to analyze data from metagenomics experiments.
+ 
+ [To learn more about the Theory:](http://readiab.org/). You can read the static version of this course material, or run an interactive Jupyter Notebook on Binder.
+ 
+ 2. From your `conda_experiment` RStudio project: Launch your newly created conda environment containing the latest Qiime2 conda installation using the `conda activate env_name` command (you created this env in the previous exercise). If goes well you will see something like this at your Linux Terminal prompt
+ 
+ `(<conda_qiime_env_name>) <your.name>@<server_name>:~/conda_experiment$` 
+
+ 3. Write an RMarkdown file where you record all the steps of [this](https://docs.qiime2.org/2020.11/tutorials/moving-pictures/) tutorial for the Qiime2 worlflow. Go over all the steps yourself. Include the code as code chunks (bash). Set eval = FALSE to prevent the code from actually running when you knit the document. Include the rendered version in your portfolio site on github.
+
+ 
+
+
+

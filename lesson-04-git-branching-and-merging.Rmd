@@ -266,6 +266,26 @@ Discuss it with your Projecticum partner. See to it that you two really understa
 
 </div>
 
+### Github projects
+
+You can have several projects running within one repository. For the projecticum, you will probably have just one project.
+We will try to be consist in calling github projects **github** projects, as you should also be working in a project in Rstudio (if not, do so now!).
+
+<div class="question">
+##### Exercise `r les` {-}
+
+**Github documentation**
+
+ A) Study the github documentation on "Project Boards" [here](https://docs.github.com/en/github/managing-your-work-on-github/managing-project-boards)
+
+
+ B) Setup a github project for your projecticum in your github account.
+ 
+ C) Use the repo within the projecticum organisation, Link this repo to the github project you just created. 
+
+
+</div>
+
 
 ### Issues
 
@@ -310,13 +330,12 @@ When collaborating together on project repository, you can create issues to stay
 Follow these steps to complete this exercise:
 
  1. Add your first issue to the issue list in your **projecticum**: This issue has to be related to adding valuable project documentation to your repository. For example: start with editing the README.md file to contain information on the project and the repo.
- 1. Ensure that the issue is also visible on the Kanban board of the project
  1. Assign the issue to your co worker (agree on an issue first, so make this exercise together with your project companion)
  1. Assign the issue to the Github project linked to the repo (if you have no project, create it and ad the repo as a linked repo to the github project)
  1. Create a new branch in the repo that you call issue_<issue_number>
  1. Clone (or pull if you already cloned the repo) the new branch to your RStudio projecticum project environment
  1. Solve the issue in your 'local' version of the repo
- 1. Write a commit that adresses the issue solved and that also includes this phrase: "fixes #<issue_number>". Replace the `<issue_number>` part with the issue number that you are trying to push.
+ 1. Write a commit that addresses the issue solved and that also includes this phrase: "fixes #<issue_number>". Replace the `<issue_number>` part with the issue number that you are trying to push.
  1. Generate a pull request and merge the pull request to the main branch
  1. Check the issue list to see if the issue was automatically closed
  1. Check the issue on the project Kanban board to see if it was automatically put in the `closed` column.
@@ -341,7 +360,7 @@ When working together in git/github, this flow is extremely important to agree u
 <div class="question">
 ##### Exercise `r les` {-}
 
- - you will have plenty of things you still want to do for your portfolio. Finish that first exercise, push the working code to the repo, finish your cv... Put all these things as issues in your **portfolio** repository.
+ - You will have plenty of things you still want to do for your portfolio. Finish that first exercise, push the working code to the repo, finish your cv... Put all these things as issues in your **portfolio** repository.
 
 </div>
 
@@ -374,7 +393,7 @@ We have discussed the Agile workflow in the demo.
 ### Milestones
 Milestones in Gihub can be considered as Agile/SCRUM sprints. So each sprint is associated with one or multiple milestones that need to be resolved at the end of each sprint.
 
-### Project boards
+### Project boards {#kanban-and-automation}
 
 When using a github project, you can setup a project to track issues. Project boards are a github Kanban board, and will keep track of the issues, pull requests and notes, and will display them as cards in columns, similar to for instance trello or MSteams planners. But they are in fact the same issues as we have seen and used before, Issues on the Kanban are also resolved when you close an issue, either manually or through a pull request.
 
@@ -462,30 +481,18 @@ The backlog then consists of all items (issues) that have no `milestone` attache
 - [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)
 
 
-<div class="question">
+<div class = "question">
 ##### Exercise `r les` {-}
-
-**Github documentation**
-
- A) Study the github documentation on "Project Boards" [here](https://docs.github.com/en/github/managing-your-work-on-github/managing-project-boards)
-
-
- B) Setup a project for your projecticum in your github account.
- 
- C) Use the repo within the projecticum organisation, Link this repo to the project you just created. 
-
- D) Fill your backlog with all the tasks that you forsee in the projecticum. Devide them into smalle tasks: at most an estimated 8 hours of work per task. 
- 
- E) Set the tasks for the coming sprint of 2 weeks.
+ - Fill your backlog with all the tasks that you foresee in the projecticum. Make relatively small tasks: at most an estimated 8 hours of work per task. Give them labels.
+ - Discuss which tasks will selected to finish in the next two weeks. Assign those to a milestone.
 
 </div>
-
 
 <div class = "dagopdracht">
 This lesson has no portfolio assignment. The exercises within this lesson of course help build your portfolio.
 </div>
 
-## Git resources
+## Resources
 
 ### Git command line
 

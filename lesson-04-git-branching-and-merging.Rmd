@@ -401,21 +401,25 @@ When using a github project, you can setup a project to track issues. Project bo
 ##### Exercise `r les` {-}
 To complete this exercise, you need to complete the following steps:
 
- 1. Create at least 2 milestones for the first sprint of your projecticum project (*note: if you find you have little issues to solve yet for the projecticum, you can do this exercise with your portfolio repository instead.*)
- 1. Create a number of *issues that need to be resolved for these 2 milestones to be completed (link these issue to the appropriate milestone you created in the previous step)
+ 1. Create at least 1 milestones for the first sprint of your projecticum project 
+ 1. Create a number of issues that need to be resolved for these 2 milestones to be completed (link these issue to the appropriate milestone you created in the previous step) 
+    - Remember: a good issue is so small that it can be tackled in approximately a day's work or less! 
+    - If you find you have little issues to solve yet for the projecticum, discuss with your partner and add more issues.
+    - An issue can basically be anything, but here we mean something than can be commited to a repo, such as a piece of code, a new .bib file, a dataset or documentation.
  1. Put these issues on the Kanban board in the 'In progress' column
- 1. Create branch for each issue, you just created in Github
+ 1. Each of you chooses a small issue to work on now. Choose issues that you think you could solve in max. 60 minutes for this assignment.
+ 1. Create branch for both (or all three) issues. You can choose to work on the same issue if you prefer, but we would recommend still making two branches and have github do the merging for you.
  1. Synchronize you local branches in RStudio, with the remote branches
- 1. Switch to a branch of an issue you want to work on
- 1. Start working and solving an issue
- 1. When you are done with the issue: comit your changes, firt to you local issue-branch, than puch the commit to the remote (remember to use the 'fixes #<issue_number>' phrase in your commit
- 1. Create a pull request to the 'main'branch
+ 1. Switch to a branch of the issue you want to work on
+ 1. Start working and solving an issue (or spend max. 60 minutes working on it)
+ 1. Commit your changes, first to you local issue-branch, than push the commit to the remote (remember to use the 'fixes #<issue_number>' phrase in your commit if you fixed it)
+ 1. Create a pull request to the main branch
  1. Merge the pull request into main
  1. Observe what happened on the Kanban board. Where did the issue you just resolved land? What happened to the milestone? 
  1. Delete the branch related to the issue you just resolved 
  
-*Remember: a good issue is so small that it can be tackled in approximately a day's work or less!
-^An issue can basically be anything, but here we mean something than can be comited to a repo, such as a piece of code, a dataset or documentation.
+
+
 
 
 ### How it works in Detail
@@ -484,7 +488,7 @@ The backlog then consists of all items (issues) that have no `milestone` attache
 <div class = "question">
 ##### Exercise `r les` {-}
  - Fill your backlog with all the tasks that you foresee in the projecticum. Make relatively small tasks: at most an estimated 8 hours of work per task. Give them labels.
- - Discuss which tasks will selected to finish in the next two weeks. Assign those to a milestone.
+ - Discuss which tasks will be selected to finish in the next two weeks. Assign those to a milestone.
 
 </div>
 

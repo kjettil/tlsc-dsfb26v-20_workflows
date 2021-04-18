@@ -149,8 +149,16 @@ output:
 
 ## PDF 
 
-XXX PDF themes.
-quirks
+Rendering pdf files does not differ much from html. Themes work as well. There are few things you can set in the YAML header for pdf files. Note that these options do not get an indent, but rather need to be defined at the same level as title, author, output etc.
+
+```
+---
+title: "My document"
+output: pdf_document
+fontsize: 11pt
+geometry: margin=1in
+---
+```
 
 
 ## Interactivity {#rmarkdowninteractive}
@@ -357,8 +365,8 @@ fig
 ```
 
 
-### Flex Dashboards
-
+<!-- ### Flex Dashboards -->
+<!-- I don't like them -->
 
 
 ## Bookdown {#bookdownportfolio}

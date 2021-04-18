@@ -329,6 +329,7 @@ knitr::kable(head(mpg))
 But you can make them interactive if you like:
 ```{r}
 data("mpg")
+library(DT)
 DT::datatable(mpg)
 ```
 

@@ -84,7 +84,7 @@ output:
 
 [exercise from r4ds here](https://r4ds.had.co.nz/r-markdown.html#exercises-71)
 
-Download Lorem.Rmd [here](XXX).
+Download Lorem.Rmd [here](https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/blob/main/Rmd/lorem.Rmd).
 
 From this .Rmd, knit one new document for each of the three built-in formats: HTML, PDF and Word. How does the output differ? How does the input differ? (You may need to install LaTeX in order to build the PDF output — RStudio will prompt you if this is necessary.)
 </div>
@@ -141,21 +141,117 @@ output:
   B) Use Lorem.Rmd again and add a TOC
   C) Give the TOC a set depth (toc_depth) and see what happens if you change it. (for instance `toc_depth = 2` can be set just as you set `toc_float: true` earlier.)
   D) Also try `code_folding: hide` and `number_sections: FALSE`.
-  E) Google how to put two authors on one .Rmd, with affiliations. Put your and your labpartners name as authors.
+  E) Google how to put two authors on one .Rmd, with affiliations. Put your and your labpartner's names as authors.
   F) Apply a theme you like, but not "united".
   G) try tabbed sections
 
 </div>
 
- 
-## Interactivity {#rmarkdowninteractive}
-
-<mark> XXX </mark>
 
 ## PDF 
 
 XXX PDF themes.
 quirks
+
+
+## Interactivity {#rmarkdowninteractive}
+
+Until now, we discussed static output formats. But RMarkdown files can also render interactive content! There are two main types of content to render: html widgets and shiny apps. Shiny apps will be covered in two masterclasses in the projecticum. Shiny uses actual R code to render the interactivity. This gives you a very broad range of options, but also means that it requires a live R session running somewhere.
+
+Html widgets use JavaScript libraries to produce for instance interactive graphs, using R syntax! These will work without an R session, in any web brwoser.They will still only work in html though, you can't suddenly make pdf files interactive.
+
+### Tables
+We actually already showed you how to make interactive tables with `datatable()` in a previous lesson:
+
+```{r}
+library(DT)
+datatable(iris, options = list(pageLength = 5))
+```
+
+### Plotly and related packages
+
+But you can do similar interactivity with graphs and figures. Generally, these packages link R to a javascript packages.Check the possibilities [here](http://www.htmlwidgets.org/showcase_leaflet.html). These packages actually do most of the work for you.
+
+Let's try a few:
+
+#### Maps 
+
+The leaflet package let's you use maps (klik on the dot!)
+
+```{r, fig.cap = "You are here! But not in 2021, in 2021 we are at home"}
+library(leaflet)
+
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lat=52.084036170323024, lng=5.173630727235891, popup="Here be HL7!") 
+# get coordinates from google maps
+
+m  # Print the map
+```
+
+You can change map colours if you like. type `names(providers)` for all the options.
+
+```{r, fig.cap="Apparently we have horse racing tracks here?"}
+m %>% addProviderTiles(providers$Stamen.Toner)
+```
+
+Suppose you want to show all locations where you catched rabbits for your ongoing study on rabbit ear length at the Uithof:
+
+```{r, fig.cap="Here be rabbits"}
+# Show first 20 rows from the `quakes` dataset
+
+library(tidyverse)
+
+rabbit_locations <- tibble( rabbitnr = c(1:5),
+                            lat  = c(52.0852,52.0832,52.08247,52.0834,52.08309),
+                            long = c(5.171109,5.171248,5.171248,5.176055,5.17268) )
+
+leaflet(data = rabbit_locations) %>% addTiles() %>% addProviderTiles(providers$Stamen.Toner) %>%
+  addMarkers(~long, ~lat, popup = ~as.character(rabbitnr), label = ~as.character(rabbitnr))
+```
+
+Want more? Check out this website [here](http://rstudio.github.io/leaflet/)
+
+<div class="question">
+##### Exercise `r les` {-} 
+
+**rabbits!**
+
+Change the markers in the example above to little icons of rabbits! See [here](http://rstudio.github.io/leaflet/markers.html) how to do this.
+</div>
+
+#### 3d figures
+
+Sometimes 2 axes don't cut it. 
+
+```{r, fig.cap="But with 3 axes you may want to be able to rotate the graph."}
+library(threejs)
+library(palmerpenguins)
+z <- penguins$bill_length_mm
+x <- penguins$flipper_length_mm
+y <- penguins$body_mass_g
+N = length(levels(penguins$species))
+scatterplot3js(x,y,z, color=rainbow(N)[penguins$species])
+
+
+```
+
+
+<div class="question">
+##### Exercise `r les` {-} 
+
+**principal components of genomic variant data**
+
+Try to reproduce the figure [here](http://bwlewis.github.io/1000_genomes_examples/PCA.html)
+
+Start by downloading data from the [International Genome Sample Resource](https://www.internationalgenome.org/), we will use the same dataset as in the example: 
+
+Change the markers in the example above to little icons of rabbits! See [here](http://rstudio.github.io/leaflet/markers.html) how to do this.
+</div>
+
+
+### Flex Dashboards
+
 
 
 ## Bookdown {#bookdownportfolio}

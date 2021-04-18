@@ -84,7 +84,7 @@ output:
 
 [exercise from r4ds here](https://r4ds.had.co.nz/r-markdown.html#exercises-71)
 
-Download Lorem.Rmd [here](XXX).
+Download Lorem.Rmd [here](https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/blob/main/Rmd/lorem.Rmd).
 
 From this .Rmd, knit one new document for each of the three built-in formats: HTML, PDF and Word. How does the output differ? How does the input differ? (You may need to install LaTeX in order to build the PDF output — RStudio will prompt you if this is necessary.)
 </div>
@@ -125,13 +125,12 @@ You can organize content using tabs by applying the .tabset class attribute to h
 
 You learned how to specify you own formatting with css last lesson. But RMarkdown has some [preset themes](https://www.datadreaming.org/post/r-markdown-theme-gallery/) you can use as well. And of course, you can download packages with more themes.
 
----
+```
 title: "Stuff"
 output:
   html_document:
     theme: united
----
-
+```
 
 <div class="question">
 
@@ -141,21 +140,233 @@ output:
   B) Use Lorem.Rmd again and add a TOC
   C) Give the TOC a set depth (toc_depth) and see what happens if you change it. (for instance `toc_depth = 2` can be set just as you set `toc_float: true` earlier.)
   D) Also try `code_folding: hide` and `number_sections: FALSE`.
-  E) Google how to put two authors on one .Rmd, with affiliations. Put your and your labpartners name as authors.
+  E) Google how to put two authors on one .Rmd, with affiliations. Put your and your labpartner's names as authors.
   F) Apply a theme you like, but not "united".
   G) try tabbed sections
 
 </div>
 
- 
-## Interactivity {#rmarkdowninteractive}
-
-<mark> XXX </mark>
 
 ## PDF 
 
-XXX PDF themes.
-quirks
+Rendering pdf files does not differ much from html. Themes work as well. There are few things you can set in the YAML header for pdf files. Note that these options do not get an indent, but rather need to be defined at the same level as title, author, output etc.
+
+```
+---
+title: "My document"
+output: pdf_document
+fontsize: 11pt
+geometry: margin=1in
+---
+```
+
+
+## Interactivity {#rmarkdowninteractive}
+
+Until now, we discussed static output formats. But RMarkdown files can also render interactive content! There are two main types of content to render: html widgets and shiny apps. Shiny apps will be covered in two masterclasses in the projecticum. Shiny uses actual R code to render the interactivity. This gives you a very broad range of options, but also means that it requires a live R session running somewhere.
+
+Html widgets use JavaScript libraries to produce for instance interactive graphs, using R syntax! These will work without an R session, in any web brwoser.They will still only work in html though, you can't suddenly make pdf files interactive.
+
+### Tables
+We actually already showed you how to make interactive tables with `datatable()` in a previous lesson:
+
+```{r, message=F, error=F, warning=F,}
+library(DT)
+datatable(iris, options = list(pageLength = 5))
+```
+
+### Javascript packages
+
+You can do similar interactivity with graphs and figures. Generally, these packages link R to a javascript packages. Check the possibilities [here](http://www.htmlwidgets.org/showcase_leaflet.html). These packages actually do most of the work for you.
+
+Let's try a few:
+
+#### Maps 
+
+The leaflet package let's you use maps (click on the dot and try moving the map)
+
+```{r, message=F, error=F, warning=F, fig.cap = "You are here! But not in 2021, in 2021 we are at home"}
+library(htmlwidgets)
+library(leaflet)
+
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lat=52.084036170323024, lng=5.173630727235891, popup="Here be HL7!") 
+# get coordinates from google maps
+
+m  # Print the map
+```
+
+<!-- You can change map colours if you like. type `names(providers)` for all the options. -->
+<!-- No you can't in bookdown see https://github.com/rstudio/bookdown/issues/15 -->
+
+<!-- ```{r, fig.cap="Apparently we have horse racing tracks here?"} -->
+<!-- m %>% addProviderTiles(providers$Stamen.Toner) -->
+<!-- ``` -->
+
+Suppose you want to show all locations where you catched rabbits for your ongoing study on rabbit ear length at the Uithof:
+
+```{r, message=F, error=F, warning=F, fig.cap="Here be rabbits"}
+library(leaflet)
+library(tidyverse)
+
+rabbit_locations <- tibble( rabbitnr = c(1:5),
+                            lat  = c(52.0852,52.0832,52.08247,52.0834,52.08309),
+                            long = c(5.171109,5.171248,5.171248,5.176055,5.17268) )
+
+leaflet(data = rabbit_locations) %>% addTiles() %>% 
+  addMarkers(~long, ~lat, popup = ~as.character(rabbitnr), label = ~as.character(rabbitnr))
+```
+
+Want more? Check out this website [here](http://rstudio.github.io/leaflet/)
+
+<div class="question">
+##### Exercise `r les` {-} 
+
+**rabbits!**
+
+Change the markers in the example above to little icons of rabbits! See [here (click)](http://rstudio.github.io/leaflet/markers.html) how to do this.
+</div>
+
+#### 3d figures
+
+Sometimes 2 axes don't cut it. 
+
+```{r, message=F, error=F, warning=F, fig.cap="With 3 axes you may want to be able to rotate the graph."}
+library(threejs)
+library(palmerpenguins)
+z <- penguins$bill_length_mm
+x <- penguins$flipper_length_mm
+y <- penguins$body_mass_g
+N = length(levels(penguins$species)) # we want 3 colours
+scatterplot3js(x,y,z, color=rainbow(N)[penguins$species])
+
+
+```
+
+See some more examples, if you like, here: [click](https://bwlewis.github.io/rthreejs/)
+
+<!-- <div class="question"> -->
+<!-- ##### Exercise `r les` {-}  -->
+
+<!-- **principal components of genomic variant data** -->
+<!-- http://bwlewis.github.io/1000_genomes_examples/PCA.html#fn1 -->
+<!-- Voor volgend jaar, memory issues -->
+<!-- kleinere vcf here https://github.com/vcflib/vcflib/blob/master/samples/1kg-phaseIII-v5a.20130502.genotypes.chr22-16-16.5mb.vcf.gz -->
+<!-- </div> -->
+
+#### time series
+
+This rabbit ear experiment has been going for quite a while. Let's say you started catching rabbits about 10 years ago and calculated average ear length every three weeks. The graph below shows the average ear length per 3 weeks. It also shows the time frame of the mysterious long ear disease (LED) outbreak of 2018:
+
+```{r, message=F, error=F, warning=F, fig.cap="Average rabbit ear length at the uithof per 3 weeks for the last 10 years."}
+
+# Libraries
+library(dygraphs)
+library(xts) 
+
+# get some data
+# Your time column MUST be a time format or numbers
+rabbitdata <- data.frame(
+  time=seq(from=Sys.Date()-(10*365), to=Sys.Date(), by=21 ), 
+  oorlengte=runif((10*365)/21+1,min = 6, max = 10)
+)
+
+rabbitdata$oorlengte[120:138]<-rabbitdata$oorlengte[120:138]+4
+
+# create xts format because dygraph() only eats xts
+rabbitdata.xts <- xts(x = rabbitdata$oorlengte, order.by = rabbitdata$time)
+
+# plot
+dygraph(rabbitdata.xts) %>% 
+  dySeries(label="average ear length (cm)", color="black") %>%
+  dyShading(from=rabbitdata$time[120], to=rabbitdata$time[138], color="#FFE6E6") %>%
+  dyRangeSelector(dateWindow = c(rabbitdata$time[90], rabbitdata$time[150]))
+
+
+```
+
+See some more examples, if you like, here: [click](http://rstudio.github.io/dygraphs/)
+
+#### Plotly
+And most famously, [plotly](https://plotly.com/r/). This package can turn any ggplot2 graph into an interactive plotly graph. Mousing over a point displays information about that point. Clicking on a legend point removes that class from the plot. Clicking on it again returns it.
+
+<!-- ####  rCharts -->
+<!-- https://bookdown.org/BaktiSiregar/data-science-for-beginners/Advanced-Visualizations.html#interactive-graphs -->
+<!-- shiny..hier nog maar niet, voor de masterclass -->
+
+Plotly can just make your scatterplot zoom-able with labels for the data points:
+
+
+```{r}
+library(plotly)
+
+fig <- plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length)
+
+fig
+```
+
+```{r}
+#box plots
+plot_ly(                  #creates first box plot
+  y = rnorm(50),          #choose numeric variable for first plot
+  type = "box") %>%       #specifies plot type is box plot
+  
+  add_trace(              #creates second box plot
+    y = rnorm(50, 1))     #choose numeric variable for second plot
+```
+
+
+Basically, if you think "Hey, I have this ggplot graph and it is nice, but it could be clearer if it had osme interactive options..." take a look at the [plotly examples here](https://plotly.com/r/). It is also rather usefull when you want subplots in your figure, like this:
+
+```{r}
+library(plotly)
+fig1 <- plot_ly(economics, x = ~date, y = ~unemploy)
+fig1 <- fig1 %>% add_lines(name = ~"unemploy")
+fig2 <- plot_ly(economics, x = ~date, y = ~uempmed)
+fig2 <- fig2 %>% add_lines(name = ~"uempmed")
+fig <- subplot(fig1, fig2)
+
+fig
+```
+
+It can do Sankey diagrams. Sankey diagrams are what the cool kids do nowadays, it seems. A Sankey Diagram is a visualisation technique that allows to display flows. 
+
+```{r}
+fig <- plot_ly(
+    type = "sankey",
+    orientation = "h",
+
+    node = list(
+      label = c("A1", "A2", "B1", "B2", "C1", "C2"),
+      color = c("blue", "blue", "purple", "purple", "darkred", "darkred"),
+      pad = 15,
+      thickness = 20,
+      line = list(
+        color = "black",
+        width = 0.5
+      )
+    ),
+
+    link = list(
+      source = c(0,1,0,2,3,3),
+      target = c(2,3,3,4,4,5),
+      value =  c(8,4,2,8,4,2)
+    )
+  )
+fig <- fig %>% layout(
+    title = "Basic Sankey Diagram",
+    font = list(
+      size = 10
+    )
+)
+
+fig
+```
+
+
+<!-- ### Flex Dashboards -->
+<!-- I don't like them -->
 
 
 ## Bookdown {#bookdownportfolio}

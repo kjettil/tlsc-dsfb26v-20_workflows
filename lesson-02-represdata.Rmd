@@ -811,12 +811,13 @@ Meta information for data files, like type of variables, ranges, units, number o
 In our exercise above such README information would have saved us a lot of time figuring out what is what in the Excel file, don't you think?
 
 An example of a readme file is depicted below. 
+
  
-```{r, dpi = 30, echo=FALSE, fig.cap="A short example of a README.txt file"}
+```{r,  dpi=100, echo=FALSE, fig.cap="A short example of a README.txt file"}
 knitr::include_graphics(
   here::here(
     "images",
-    "readme.png"))
+    "readme_updated.png"))
 ```
  
 It does not need to be very long, but provides information on where the data (which project?) refers to, who the owners are, who to contact in case of questions and what are the contents of the data (variable description) 

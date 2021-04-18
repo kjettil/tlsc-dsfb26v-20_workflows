@@ -1,32 +1,26 @@
 # RMarkdown - Output formats {#rmarkdownoutput}
 ```{r setuples, include=FALSE}
-les <- 7
+les <- 6
 ```
 
-## Lesson aim
+## Learning outcome:
 After this lesson you will be able to
 
- 1. Provide metadata for a project
  1. Have an overview of different output formates for RMarkdown and render those formats.
  1. Setup github pages
  1. Create a bookdown project
- 1. Render a bookdown project to a local website
+ 1. Render a bookdown project to a local website (aka html pages)
  1. Add the rendered site to your github pages
 
-## job interviews
+## Easy start: job interviews
 
-Read the following blog post. While you can see that we (the teachers) may have a slightly different opinion in some aspects (tidyverse!), it gives a nice checklist for you to scan on any ommissions in your general R knowledge.
-<mark>
-https://www.springboard.com/blog/27-essential-r-interview-questions-with-answers/
-</mark>
-
-
+Before we start diving into RMarkdown again, read the following blog post. While you can see that we (the teachers) may have a slightly different opinion in some aspects (tidyverse!), it gives a nice checklist for you to scan on any omissions in your general R knowledge.[click](https://www.springboard.com/blog/27-essential-r-interview-questions-with-answers/)
 
 ## Output possibilities
 
-With Rmarkdown you can generate many different things. This reader was made in Rmarkdown. The DAUR1 capstone pdf? RMarkdown. The latest report Alyanne had to send to an ethical committee? Again RMarkdown. Every time we send you all very similar but slightly different emails with stuff like your server password? We generate those using Rmarkdown.
+With Rmarkdown you can generate many different things. This reader was made in Rmarkdown. The DAUR1 capstone pdf? RMarkdown. The latest report Alyanne had to send to an ethical committee? Again RMarkdown. 
 
-These websites are examples too: [click](https://rmarkdown.rstudio.com/flexdashboard/), [click](https://www.r-graph-gallery.com/index.html).
+These websites are examples too: [click](https://holtzy.github.io/Pimp-my-rmd/), [click](https://www.r-graph-gallery.com/index.html).
 
 Have a look around on the following website to get a feeling for what is possible with Rmarkdown.
 

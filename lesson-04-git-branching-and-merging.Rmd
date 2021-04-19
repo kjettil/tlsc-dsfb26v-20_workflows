@@ -106,7 +106,7 @@ aThis is the bookdown course etc... # the local change
 
 Save README.md, commit and push. Now it will update!
 
-
+(If it won't and give you an error about unfinsihed commits, try adding another line in the README.md locally, commit and push.)
 
 
 

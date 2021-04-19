@@ -1,6 +1,6 @@
 # RMarkdown - Syntax {#rmarkdownsyntax}
 ```{r setuples, include=FALSE}
-les <- 6
+les <- 5
 
 library(ggplot2)
 ```
@@ -19,10 +19,10 @@ library(ggplot2)
 ## Learning Outcomes
 
 - You build on your RMarkdown skills from DAUR1 and are able to:
-  - produce publication-worthy figures and tables
-  - use html, links, latex in your Rmd
-  - set chunk options
-  - generate different output formats
+  - Produce publication-worthy figures and tables
+  - Use html, links, latex in your Rmd
+  - Set chunk options
+  - Generate different output formats
 - You have an overview of the current possibilities with Rmarkdown
 
 ## Introduction
@@ -74,9 +74,9 @@ The loop becomes:
 
 ### Continuous integration
 
-This workflow fits in a 'continuous integration' workflow. You can continue working on the same project with multiple people, and frequently integrate your work to see if there are any errors or you are accidentally working on the same part of the project as a coworker.
+This method fits in a 'continuous integration' workflow. You can continue working on the same project with multiple people, and frequently integrate your work to see if there are any errors or you are accidentally working on the same part of the project as a coworker.
 
-For example, when making this reader, Bas, Marc and Alyanne work within their own branches. Usually, we make a branch per task we take on for the day. We make sure we branch of from the main, and at least once a day we merge our work back into the main branch (Continuous integration). Usually this is at the end of the day. Two people may have worked on the same .Rmd file, but this is fine. Git merges them for us. We then make sure the main branch still knits to the html in this reader without crashing or otherwise messing up (Continuous testing). If we think the rest of the team would like to see an update, we publish the newest version of the reader to RSconnect, which publishes this reader as a website (Continuous deployment).
+For example, when making this reader, Bas, Marc and Alyanne work within their own branches. Usually, we make a branch per task we take on for the day. We make sure we branch of from the main, and at least once a day we merge our work back into the main branch (Continuous integration). Usually this is at the end of the day. Two people may have worked on the same .Rmd file, but this is fine. Git merges them for us. We then make sure the main branch still knits to the html in this reader without crashing or otherwise messing up (Continuous testing). If we think the rest of the team would like to see an update, we publish the newest version of the reader to RSconnect, which publishes this reader as a website (Continuous deployment). You will have noticed that we update this reader frequently to change any issues you or we have found.
 
 
 <!-- ### To get an example of paramterized RMarkdown: -->
@@ -87,11 +87,13 @@ For example, when making this reader, Bas, Marc and Alyanne work within their ow
 
 ### Some basic advice and good practice
 
-  - first of all, think if you really want to use a Rmarkdown file for something. Are you running a quick analysis on something just for yourself? A script (File → New File → R Script) is faster. Do you plan om communicating about what you are doing in print/websites/a blog/a presentation/etc? Then you will want Rmarkdown. 
+In this lesson we will focus a bit more on RMarkdown, as it offers a reproducible pathway from data to analysis to communication. Keep the following things in mind when starting an RMarkdown file:
+
+  - first of all, think if you really want to use a Rmarkdown file for something. Are you running a quick analysis on something just for yourself? A script (File → New File → R Script) is faster. Do you plan om communicating about what you are doing in print/websites/a blog/a presentation/etc? Or do you want to work reproducible? Then you will want Rmarkdown. 
   - do not forget lesson 2 on data management and all lessons on github
   - You can run chunks (green triangle) or all the chunks up to that chunk (left of the green triangle). You don't need to knit the whole thing every time.
-  - Do not put all your R code into one big chunk. Split your code and provide text inbetween explaining methods or results. If you find you are building a .Rmd file with just one big chunk of code, you actually want a script. 
-  - Do everything within your .Rmd file. Don't export data, change some numbers in Excel en load them back in. This is breaking the reproducable workflow. If you find a mistake in the raw data, fix it within the .Rmd and provide a comment explaining what you are doing.
+  - Do not put all your R code into one big chunk. Split your code and provide text inbetween, explaining methods or results. If you find you are building a .Rmd file with just one big chunk of code, you actually want a script. 
+  - Do everything within your .Rmd file. Don't export data, change some numbers in Excel en load them back in. This is breaking the reproducible workflow. If you find a mistake in the raw data, fix it within the .Rmd and provide a comment explaining what you are doing.
   - That said, if you are working with very large datasets and loads of data wrangling steps, your .Rmd may get clunky and slow. You may consider using a script to do all the preparations on the data, save the data to a file, and load that file in your .Rmd. Do make sure that all these files are in the same project and the workflow is very clear!
   - `knitr::purl("name_of_your_file.Rmd", documentation = 2)` to turn your .Rmd into a script.
   - `knitr::spin("name_of_your_file.R", knit = FALSE, format = "Rmd")` to turn a script into an .Rmd. (Try these commands now)
@@ -102,7 +104,7 @@ For example, when making this reader, Bas, Marc and Alyanne work within their ow
 
 ## Figures and tables
 
-Roughly, your average deliverable will consist of text, figures and tables. Text is pretty easy in RMarkdown.
+Roughly, your average deliverable will consist of text, figures and tables. Text is pretty easy in RMarkdown. Just type. We believe in you.
 
 ### pictures
 
@@ -139,7 +141,7 @@ knitr::include_graphics(
 
 The advantage of this approach is that you can use all the chunk options for this code chunk, controlling e.g. the size and behavior of the image as you would normally do for a code-generated graphs. Setting the `dpi` option in the code chunk controls the size of the image displayed in the rendered output. To see more options run `?knitr::include_graphics()` in the R console. 
 
-If you would like to use the above chunk option -- I personally prefer this option because it is an R only solution -- you should know about the `{captioner}` package. This package helps you with numbering tables and figures and with it you can create standardized captions, or add captions to your figures from another source file. A good workflow would be to write all captions in a separate text file and add them to your R Markdown document using the `{captioner}`package. In this way you can more easily edit and revise captions separate from the main text. For more info on [`{captioner}`](https://cran.r-project.org/web/packages/captioner/vignettes/using_captioner.html)   
+If you would like to use the above chunk option -- We usually personally prefer this option because it is an R only solution -- you should know about the `{captioner}` package. This package helps you with numbering tables and figures and with it you can create standardized captions, or add captions to your figures from another source file. A good workflow would be to write all captions in a separate text file and add them to your R Markdown document using the `{captioner}`package. In this way you can more easily edit and revise captions separate from the main text. For more info on [`{captioner}`](https://cran.r-project.org/web/packages/captioner/vignettes/using_captioner.html)   
 
 #### Markdown syntax {-} 
 We can also use Markdown syntax like this.
@@ -206,7 +208,7 @@ You can also include a local (or web url linked) image using html.
 
 ### graphs
 
-Most tricks for making nice publication-worthy graphs themselves will be covered in a masterclass. And adding basic graphs to an RMarkdown is something you already learned in DSFB1.
+Adding basic graphs to an RMarkdown is something you already learned in DSFB1.
 
 To display your graphs, you again give the chunck in which you generate it some settings. Let's use a really visually pleasing graph for the occasion [source](https://adrienne-marshall.github.io/ggplot2_workshop/), using 3 additional packages! 
 
@@ -228,7 +230,7 @@ ggplot(data = diamonds,
 ```
 ````
 
-```{r figdiam, fig.cap = "Cut and price of diamonds", echo=FALSE, fig.height = 5, fig.width = 7, fig.align = "center", }
+```{r figdiam, message=FALSE, error=FALSE, fig.cap = "Cut and price of diamonds", echo=FALSE, fig.height = 5, fig.width = 7, fig.align = "center", }
 #install.packages("ggridges")
 #install.packages("viridis")
 #install.packages("ggthemes")
@@ -244,13 +246,13 @@ ggplot(data = diamonds,
   theme_few()
 ```
 
-</mark> Waarom klopt figure number niet? </mark>
+(Note that previous figures without captions were not included in the numbering)
 
 ### colour schemes: colour blind options
 
 The default colours in ggplot are not equally visible for everyone. You may want to use colour blind friendlier palletes for your Rmarkdown documents, because you almost always are  making them for a larger public than just yourself. (Also, you might be colourblind yourself.) We can set colours manually:
 
-```{r cbpgraph1, fig.cap="colourblind penguin masses by species"}
+```{r cbpgraph1,message=FALSE, error=FALSE, warning=FALSE, fig.cap="Colourblind penguin masses by species. Are penguins colourblind? It's all snow anyway.."}
 cbp1 <- c("#999999", "#E69F00", "#56B4E9", "#009E73",
           "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 
@@ -271,7 +273,7 @@ mass_hist + scale_fill_manual(values = cbp1)
 
 But the Rcolorbrewer package has some options too:
 
-```{r}
+```{r, fig.height=7, fig.width=5}
 library(RColorBrewer)
 display.brewer.all(colorblindFriendly = TRUE)
 ```
@@ -297,8 +299,16 @@ sp <- ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
 sp + scale_color_brewer(palette = "Paired")
 ```
 
-And you could check out the “viridis” and “magma” scales in the `viridis` package [here](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#the-color-scales)
+And you could check out the “viridis” and “magma” scales in the `viridis` package [here](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#the-color-scales).
 
+If you are seriously interested in making figures for colourblind people, check [this website](https://jfly.uni-koeln.de/color/), especially figure 16.
+
+
+<div class="question">
+##### Exercise `r les` {-} 
+Generate a graph with ggplot (any graph you like, here are some [examples](https://www.r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html)) and try some options to make it colourblind-friendly.
+Test your figure [here](https://www.color-blindness.com/coblis-color-blindness-simulator/) (Take a screenshot and upload the screenshot to this website.)
+</div>
 
 <!-- ### animations: gganimate? -->
 
@@ -319,11 +329,12 @@ knitr::kable(head(mpg))
 But you can make them interactive if you like:
 ```{r}
 data("mpg")
+library(DT)
 DT::datatable(mpg)
 ```
 
 #### Formatting tables {-} 
-Of course we can generate and format more complex tables as well. The easiest way is to use the `kableExtra` package (Though check the `expss` package if some journal or person is insisting you should make APA-style tables)
+Of course we can generate and format more complex tables as well. The easiest way is to use the `kableExtra` package (Though check the `expss` package if some journal or person is insisting you should make APA-style tables). 
 
 ```{r}
 #install.packages("kableExtra")
@@ -422,14 +433,14 @@ You can use more latex syntax, but not all of it will work when rendering html f
 ```
 \begin{equation}
 \label{eq-abc}
-a + b = c
+ \binom{n}{k} = \frac{n!}{k!(n-k)!}
 \end{equation}
 ```
 Renders the equation, but not the label:
 
 \begin{equation}
 \label{eq-abc}
-a + b = c
+ \binom{n}{k} = \frac{n!}{k!(n-k)!}
 \end{equation}
 
 When rendering PDF, you can also use it to change appearance like font size:
@@ -439,9 +450,8 @@ When rendering PDF, you can also use it to change appearance like font size:
 tiny text! not tiny in html.
 \normalsize
 ```
-For HTML, you will want to use CSS formatting.
+For HTML, you will want to use CSS formatting, we will discuss this later in this lesson.
 To build more complex formula's you can use an online LaTeX equation builder, for instance [this one](https://www.latex4technics.com/). 
-
 
 ### HTML
 
@@ -578,7 +588,7 @@ ggplot(mpg, aes(displ, hwy, color = class)) +
 ```
 ````
 
-```{rexamplecars, fig.cap ="We made this graph smaller", fig.width = 4, fig.height = 4, echo=FALSE}
+```{r examplecars, fig.cap ="We made this graph smaller", fig.width = 4, fig.height = 4, echo=FALSE}
 ggplot(mpg, aes(displ, hwy, color = class)) + 
   geom_point() 
 ```
@@ -589,18 +599,13 @@ If you are familiar with writing html, you will know that most styling is done w
 
 By default, the HTML output of R Markdown includes the some predefined CSS classes for backgrounds: "bg-primary", "bg-success", "bg-info", "bg-warning", and "bg-danger".
 
-Here we use bg-danger for the code, and bg-warning for the output:
+Here we use bg-danger for the code, and bg-warning for the output. Try them out to see what they look like
 
 ````
 ```{r class.source="bg-danger", class.output="bg-warning"}`r ''`
 mtcars[1:5, "mpg"]
 ```
 ````
-<mark> XXX This is not working. It should be. fix later. Vanwege externe style sheet in use misschien? </mark>
-
-```{r class.source="bg-danger", class.output="bg-warning"}
-mtcars[1:5, "mpg"]
-```
 
 But you can make your own styles as well:
 
@@ -614,14 +619,6 @@ But you can make your own styles as well:
 ```
 ````
 
-```{css, echo=FALSE}
-.watch-out {
-  background-color: lightpink;
-  border: 3px solid red;
-  font-weight: bold;
-}
-```
-
 Then we assign a class `watch-out` to the code chunk via the
 chunk option `class.source`.
 
@@ -632,12 +629,9 @@ mtcars[1:5, "mpg"]
 ```
 ````
 
-```{r class.source="watch-out"}
-mtcars[1:5, "mpg"]
-```
 
-But defining all your styling stuff within your .Rmd gets messy quite quickly. So you can put them in a separate .css file. Put this file in the same folder as your .Rmd
-To link one or multiple custom stylesheets to an Rmd document, you can use the css option in your YAML header:
+But defining all your styling stuff within your .Rmd gets messy quite quickly. So you can put them in a separate .css file. Put this file in the same folder as your .Rmd file.
+To link one or multiple custom stylesheets to an Rmd document, you use the css option in your YAML header:
 
 ```
 output:
@@ -662,7 +656,7 @@ You are not restricted to code chuncks when using css. You can use html `<div>` 
 
 In the .Rmd file
 ```
-<div id="bordershere">
+<div class="bordershere">
 text
 </div
 ```
@@ -671,6 +665,7 @@ Here is an example to get you started with an css file: [click](https://gist.git
 
 And if you really like formatting, check w3schools for loads of syntax:[click](https://www.w3schools.com/css/)
 
+Note: if you use your own .css file, the predefined CSS classes (bg-danger etc) won't work anymore. But they are not the prettiest anyway.
 
 <div class="question">
 
@@ -682,7 +677,7 @@ Make a css file, and use it to change all the body text to a nice colour, and al
 
 Make a new class containing some styling rules, and apply it to a part of your file (so you will also have to make a `<div>` somewhere in your page. Perhaps a nice text box with [rainbow border](https://codepen.io/unnegative/pen/dVwYBq) containing a written statement of your love for these Pokemon)
 
-Include a link to the wikipedia page of your topic. Make sure the link changes to a pink colour [when you hover over it](https://www.w3schools.com/css/css_link.asp). 
+Include a link to the wikipedia page of your topic. Make the link change to a green colour [when you hover over it](https://www.w3schools.com/css/css_link.asp). 
 
 </div>
 
@@ -762,7 +757,7 @@ You can do simple footnotes within RMarkdown[^smallnote]. Even multiline-footnot
 
 ### Using a reference manager
 
-<mark> I should switch to Zotero now that Mendeley is owned by Elsevier :/ I will update when I have time. </mark>
+<!-- I should switch to Zotero now that Mendeley is owned by Elsevier :/ I will update when I have time.  -->
 
 For this example, we will use Mendeley. Mendeley is a free reference manager. If you are not yet using a reference manager, you start doing so right now. It will save you a lot of time in the future.
 
@@ -786,30 +781,47 @@ Special thanks to [Rosanna van Hespen](https://rosannavanhespen.nl/rmarkdown/wri
 
   1. First, start a new .Rmd file.
 
-  2. Next, we need a file with all the references Mendeley is currently managing for you. At least 1 random paper and 1 self-made pdf. Mendeley can make a file containing this information: a .bib file. You can have Mendeley automatically updating this file for you, but as we are already syncing stuff with github, we will not make things this complicated for now. So, you will need to repeat this step if you add new papers to Mendeley.
+  2. Next, we need a file with all the references Mendeley is currently managing for you. At least 1 random paper and 1 self-made pdf. Mendeley can make a file containing this information: a .bib file. You can have Mendeley automatically updating this file for you, but as we are already syncing stuff with github, we will not make things this complicated for now. **So, you will need to repeat this step if you add new papers to Mendeley.**
   
-  - Click File --> Export all.
-  - select BibTeX
+  - Select the citations you want to include 
+  - Click File --> Export
+  - Select the BibTeX format and give your file a name
   - choose an export location (the folder with your new .Rmd file)
 
-<mark> XXX screenshots be here </mark>
-
-  3. Go back to your .Rmd file and change the YAML header: write ‘bibliography: library.bib’ (or whatever is the name of your .bib file), so your header will look like something this:
+  3. Go back to your .Rmd file and change the YAML header: write ‘bibliography: library_projecticum.bib’ (or whatever is the name of your .bib file), so your header will look like something this:
 
 ```
 title: "Untitled" 
 output: html_document 
-bibliography: library.bib
+bibliography: library_projecticum.bib
 ```
 
-  4. Go back to Mendeley, and check the citation key of the random paper we downloaded. For example, suppose it is `@Author2000`
+  4. Go back to Mendeley, and check the citation key of the random paper we downloaded. You can find it in the detail tab at the right of the screen, scroll down a bit. In my example below, it is `VanLissa2021`
 
-<mark> XXX screenshots be here </mark>
+```{r, echo=FALSE, message=FALSE, fig.width=8 }
+knitr::include_graphics(here::here(
+    "images",
+    "mendeley_detailwindow.png"
+  )
+)
+```
 
-You can now cite papers it in your .Rmd using their citation key:
+Scroll down a bit:
+
+
+```{r, echo=FALSE, message=FALSE, fig.width=4 }
+knitr::include_graphics(here::here(
+    "images",
+    "mendeley_citationkey.png"
+  )
+)
+```
+
+
+You can now cite papers it in your .Rmd using citation keys:
   
   ```
-  Lisa said something really smart [@Author2000].
+  They said something really smart [@VanLissa2021].
   ```
 or two people:
 
@@ -839,13 +851,26 @@ Van der Ploeg says so too [-@vdploeg04].
 
 **Portfolio assignment 6**
 
-<mark>XXX uitwerken: is dit genoeg?</mark>
+A)
 
-  A) Make a new folder within Mendeley for the projecticum. Place all pdf's you used till now in your folder (if you did not use any papers as source yet, find 3 papers on Pubmed now that you could use for your introduction.). Copy your .bib file in the folder on your computer you are using for the Projecticum git repo.
-  B) Start a .Rmd named "introduction.Rmd" with a few lines introduction on your projecticum topic.
-  C) Include automatic inline references to the papers you used.
-  D) The bibliography will be placed at the end of the document. Provide an appropriate header.
-  E) Merge your work with that of your projecticum partner through github. Solve all the problems you encounter. If github does not want to merge .bib files and you want a merged one, try [here](https://caltechlibrary.github.io/bibtex/webapp/bibmerge.html).
+ - Make sure you have:
+    1. Two personal repositories on github: one for your portfolio, one for the regular exercises.
+    1. One repo in the projecticum organisation, that you share  with your partner.
+    1. Your local repositories are up to date with the main for all three of them.
+    1. A github project, with kanban board filled with issues connected to the projecticum repository.
+    1. One (separate!) .Rmd file for each of your projecticum assignments.
+    1. Three local (i.e. on your laptop) Rstudio projects: projecticum, portfolio and regular_assignments. (you may have given them other names, that's fine)
+
+
+B)
+
+  1. Make a new folder within Mendeley for the projecticum. Place all pdf's you used till now in your folder (if you did not use any papers as source yet, find 3 papers on Pubmed now that you could use for your introduction.). Copy your .bib file to the folder on your computer you are using for the Projecticum git repo.
+  1. Start a .Rmd named "introduction.Rmd" with a few lines introduction on your projecticum topic.
+  1. Include automatic inline references to the papers you used.
+  1. The bibliography will be placed at the end of the document. Provide an appropriate header.
+  1. Merge your work with that of your projecticum partner through github. Solve all the problems you encounter. If github does not want to merge .bib files and you want a merged one, try [here](https://caltechlibrary.github.io/bibtex/webapp/bibmerge.html).
+  1. Find out how you can add websites as reference to Mendeley.
+  1. Write (so not "copy"!) at least 500 words of introduction for your projecticum project and use at least 5 references.
 
 
 </div>
@@ -858,18 +883,7 @@ Van der Ploeg says so too [-@vdploeg04].
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- maybe later -->
 <!-- ## Summary -->
 
 <!-- - Markdown is a simple plain text format suitable for authoring rich documents -->

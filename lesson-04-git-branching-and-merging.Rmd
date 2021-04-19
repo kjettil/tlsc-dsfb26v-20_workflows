@@ -1,4 +1,4 @@
-# Git Branching and Merging {#gitbranchmerge}
+# Agile collaboration {#gitbranchmerge}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -6,11 +6,109 @@ knitr::opts_chunk$set(echo = FALSE)
 les <- 4
 ```
 
-In part two of this lesson you learned how to use Git if you are the only person working on a project. However, often you are **working together with other persons**. Git offers some additional tools to promote collaboration. We will introduce these additional tools in this part.
+In the previous lesson you learned how to use Git if you are the only person working on a project. However, often you are **working together with other persons**. Git offers some additional tools to promote collaboration. We will introduce these additional tools in this part.
 
 **before you do anything, make a local backup of your github repositories now**
 Most likely, you will have the local clone(s) on your computer. Just backup this folder. 
 Github collaborating can be tricky and you will be messing around in github today. While you can most of the time recover previous work, you will want to have the peace of mind that you won't lose anything while learning. This gives you the opportunity to really try and see what happens if you mess things up while working with 2 people on the same repo, and see if you can fix it. We mean it, try to break stuff! We are here now to help you fix it, and you have the time now to learn. You don't want to have your first github mess-up when working on a deadline in your internship...
+
+Remember [this](https://xkcd.com/1597/) if you really mess up or git is telling you something like "you need to do A before you can do B, and remember you need to do B before you can do A".
+
+## Learning aims
+
+In this lesson you will get to know many useful tools for collaboration in Github. You are required to apply them in your `Data Science Projecticum` as well as in your `workflows portfolio`.
+
+After this lesson you can do the following tasks with github and Rstudio:
+
+Branching and merging
+
+ - Creating branches
+ - Solving merge issues
+ - assigning issues
+
+Issues
+
+ - Creating issues
+ - Assigning issues
+ - Fixing an issue [`fixes #<issue_number>`]
+
+Kanban & automation
+
+ - Assigning tasks
+ - Kanban columns
+ - Labels
+ - Milestones
+ - Projects
+ - using am agile workflow in general
+
+Pull requests
+
+ - Creating a pull request
+ - Merging a branch into `main`
+ - Deleting a stale branch
+
+
+### Conflicts
+
+Before we start branching, merging and collaborating, let's create and solve a simple conflict in case you haven't gotten one yet.
+
+(1)
+
+First, **if you have no practice github repository yet** do the following:
+ - If you haven't got one yet: Create a private github repository for the normal (=not portfolio) exercises in the lessons.
+ - Create a new version controlled R project linked to this github, and copy your exercise results from the previous lessons to this folder.
+ - commit and push the changes.
+
+(2) 
+
+Everyone now has a repository to save your regular (not portfolio) exercises, and practise with github. Now let's create a conflict:
+
+ - Change 2 lines in your README.md locally (on your own computer)
+ - Create one commit for each change:
+    - Select the changes you want to commit and click commit
+    - Add a commit message and click Commit
+ - **Do NOT push (yet)**
+
+(3)
+
+Go to github online and open README.md. Make a change on the exact same line you just edited locally, and commit this change online.
+
+(4)
+
+Back in Rstudio, push your local changes.
+Git will give you a warning and will not change the file!
+
+
+(5)
+
+Click Pull to download the changes from Github
+
+Git will tell you there is a **conflict** and that you will have to resolve it first. It will open README.md (if not, open it yourself.)
+It looks somewhat like this:
+
+```
+# your repo name
+
+<<<<<<< HEAD
+aThis is the bookdown course etc... # the local change
+=======
+bThis is the bookdown course etc... # the online change
+>>>>>>> 884f9b4fb3730bbefaa12b079b3cb132d767e78a
+```
+
+Choose which lines to keep and delete all the rest, including the <<<< and >>>> lines. So you keep for instance:
+```
+# your repo name
+
+aThis is the bookdown course etc... # the local change
+
+```
+
+Save README.md, commit and push. Now it will update!
+
+
+
+
 
 ## The extended Git workflow: branching & merging
 
@@ -27,7 +125,9 @@ In summary, the workflow for projects with multiple persons consists of the foll
 
 Below, we will explain these steps in detail and we will show how you can perform the steps in RStudio and GitHub.
 
-## The extended Git workflow in RStudio and GitHub
+
+**IMPORTANT: you need to actually try all these things below. Not just scan our examples and believe us that this is how it works...**
+
 
 ### Creating a new development environment (branching)
 
@@ -53,7 +153,7 @@ After creating the development branch, you can see that you automatically switch
 
 ### Saving a new version of your files (commit and push)
 
-Now that you are on the new development branch, you can start changing files. After you made your changes, you can commit your changes and push the changes to GitHub as explained in the previous section. You can also see the changes you made in GitHub by selecting the correct branch. You can do this in the 'code' menu of your repository:
+Now that you are on the new development branch, you can start changing files. Change some files in any way you like. After you made your changes, you can commit your changes and push the changes to GitHub as explained in the previous section. You can also see the changes you made in GitHub by selecting the correct branch. You can do this in the 'code' menu of your repository:
 
 ```{r echo=FALSE, fig.align='center', fig.cap='Branch menu in GitHub.', out.width='40%'}
 knitr::include_graphics('images/lesson23_4_branchesGitHub.png')
@@ -61,7 +161,7 @@ knitr::include_graphics('images/lesson23_4_branchesGitHub.png')
 
 ### Creating and resolving a pull request on GitHub
 
-Once you finished making your changes, you can add the changes to the main branch. The most easy way to do this is to create a pull request on GitHub. On the GitHub website you can go to the pull request menu:
+Once you finished making your changes, you can add the changes to the main branch. The easiest way to do this is to create a pull request on GitHub. On the GitHub website go to the pull request menu (again: do all this. don't just read about it):
 
 ```{r echo=FALSE, fig.align='center', fig.cap='Pull request menu in GitHub (1).'}
 knitr::include_graphics('images/lesson23_5_pullrequest.png')
@@ -101,7 +201,7 @@ Then you pull the changes from GitHub to your local Git repository using the blu
 
 ### Deleting the local development branch
 
-You have updated the Git repository on GitHub and on your laptop. You have also removed the development branch from GitHub. However, the branch is still present on your laptop. You can remove the branch by opening the Terminal in RStudio and typing the command `git branch -d Bas3` (of course you have to use the name of your development branch instead of 'Bas3').
+You have updated the Git repository on GitHub and on your laptop. You have also removed the development branch from GitHub. However, the branch is still present on your laptop. You can remove the branch by opening the Terminal in RStudio and typing the command `git branch -d Bas3` (of course you have to use the name of your development branch instead of 'Bas3'). Try this.
 
 The circle is closed: you have made some changes to the project using a development branch and merged this branch into the main branch. If you want to make some new changes, you can create a new branch and follow the same steps for these new changes. 
 
@@ -124,21 +224,279 @@ d) After resolving the pull request on GitHub and pulling the changes to your co
 e) You can delete the branch on your computer using the command `git branch -d <branch-name>`.
 </details>
 
-## Portfolio assignment `r paste0(les, " ")` {-}
-<div class="dagopdracht">
+
+
+
+<div class="question">
+##### Exercise `r les` {-}
 **Projecticum repository**
 
-Create one shared Git repository on GitHub for your Projecticum project. Make sure that the repository is shared and that your group member(s) can contribute. Subsequently, clone the GitHub repository to your computer and add your files using a development branch. Commit/push the changes and add the files to the main branch with a pull request.
+(A)
 
-Try working on the same files at the same time, and merge your branches to the main branch. Solve the issues you encounter.
+Create one shared Git repository on GitHub for your Projecticum project. 
 
-Try renaming a file and merge your branches to the main branch. Solve the issues you encounter.
+The teachers have created a projecticum organisation on github, make sure you make your repository within this organisation.
 
-<mark> XXX uitbreiden </mark>
+Also make sure that the repository is **shared** and that your group member(s) can contribute. Subsequently, **clone** the GitHub repository to your computer and add your files using a **development branch**. Now **Commit/push the changes** and add the files to the main branch with a **pull request**.
+
+(B)
+
+Try working on the same files at the same time in separate branches, and merge your branches to the main branch. Solve the issues you encounter.
+
+(C)
+
+Try both renaming a file and merge your branches to the main branch. Solve any issues you encounter.
+
 
 </div>
 
-## Git resources
+
+## Collaboration {#gitcollaboration}
+
+Today there will be an online demo. In this demo we will focus on the good practices when working in an Agile/SCRUM team and learn how to apply the basics in your own project work. If you have reached this point in the lesson and have not seen the demo yet, let the teachers know! We can do the demo a little earlier (or later) than we planned. In the meanwhile, you can just continue working, you don't yet really need the demo. You may see the terms "agile" or "scrum" sometimes though.
+
+The workflow proposed below is documented [here:](https://guides.github.com/introduction/flow/) 
+
+<div class="question">
+##### Exercise `r les` {-}
+Study the Github Flow Documentation site mentioned above.
+
+Discuss it with your Projecticum partner. See to it that you two really understand all the steps of the flow mentioned in the documentation.
+ 
+
+</div>
+
+### Github projects
+
+You can have several projects running within one repository. For the projecticum, you will probably have just one project.
+We will try to be consist in calling github projects **github** projects, as you should also be working in a project in Rstudio (if not, do so now!).
+
+<div class="question">
+##### Exercise `r les` {-}
+
+**Github documentation**
+
+ A) Study the github documentation on "Project Boards" [here](https://docs.github.com/en/github/managing-your-work-on-github/managing-project-boards)
+
+
+ B) Setup a github project for your projecticum in your github account.
+ 
+ C) Use the repo within the projecticum organisation, Link this repo to the github project you just created. 
+
+
+</div>
+
+
+### Issues
+
+Github issues are the core for collaboration with people within and outside your code project. Issues can be used for external people to report a bug, a feature request or a question regarding functionality or implementation. People using for example your package can ask questions or report problems in the form of an issue. Below, an example is shown for the `{dplyr}` R-package, which has a huge user community.
+
+```{r}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "dplyr_issues.png"
+  )        
+)
+```
+
+Posting an issue when you encounter an error or bug helps developers create robuster code and is the core driving force for developing new features or resolving problems in open source software. Opening issues is an easy way to start contributing to the open source community.
+
+We have shown you before how to make issues if you find any mistakes in the reader. This serves as our todo-list. Now we will use issues as a development-todo list for the projecticum.
+
+<div class="question">
+##### Exercise `r les` {-}
+**Looking at issues to learn from others**
+
+(A)  
+Review the first bug you can find on this page: 
+
+https://github.com/tidyverse/dplyr/issues
+
+Read the description and the proposed solutions if any. Describe in your own words what the bug relates to. Discuss the bug with a fellow student.
+
+(B)  
+Review issue  `#5640` in the `{dplyr}` issues. Why was this issue closed? Was the issue resolved for the user who reported it?
+</div>
+
+#### Creating issues in your project repo
+
+When collaborating together on project repository, you can create issues to stay on track for the different actions that need to be undertaken. Issues can be related to adding functionality (code) to the project, but also to report a bug or to request the addition or improvement of documentation. You can create an issue by opening the `Issues` tab and creating a new issue by clicking the green `New issue` button. A form will open where you can add a title and further remarks to document your issue. The formatting of the `Leave a comment` field can be entered using Markdown formatting. When creating an issue, it is important to assign (preferable one) person to the issue. You can also choose a label, and if needed you can customize the label categories. When a Kanban/Project is also linked to the organization or repo, you can also add the issue to a Kanban board. More about Kanban here \@ref(kanban-and-automation). When creating a new issue, you can also add a `Milestone`. We will discuss this later \@ref(milestones) 
+
+<div class="question">
+##### Exercise `r les` {-}
+**The teachers have created a projecticum organisation on github, use the repository you have made here for this exercise.** 
+
+Follow these steps to complete this exercise:
+
+ 1. Add your first issue to the issue list in your **projecticum**: This issue has to be related to adding valuable project documentation to your repository. For example: start with editing the README.md file to contain information on the project and the repo.
+ 1. Assign the issue to your co worker (agree on an issue first, so make this exercise together with your project companion)
+ 1. Assign the issue to the Github project linked to the repo (if you have no project, create it and ad the repo as a linked repo to the github project)
+ 1. Create a new branch in the repo that you call issue_<issue_number>
+ 1. Clone (or pull if you already cloned the repo) the new branch to your RStudio projecticum project environment
+ 1. Solve the issue in your 'local' version of the repo
+ 1. Write a commit that addresses the issue solved and that also includes this phrase: "fixes #<issue_number>". Replace the `<issue_number>` part with the issue number that you are trying to push.
+ 1. Generate a pull request and merge the pull request to the main branch
+ 1. Check the issue list to see if the issue was automatically closed
+ 1. Check the issue on the project Kanban board to see if it was automatically put in the `closed` column.
+ 1. Delete the branch related to the issue you just resolved 
+</div>
+
+ 
+#### One issue per change, one issue per branch [`fixes #<issue_number>` and `new branch`]
+In the exercise above we saw how to open, fix and automatically close an issue. But what defines an issue and how would you prevent working on the same piece of code when working together.
+
+In the main [resource](https://guides.github.com/introduction/flow/) used for this piece in the course, we can read this about branches (as was already explained previously):
+
+
+>Branching is a core concept in Git, and the entire GitHub flow is based upon it. There's only one rule: anything in the main branch is always deployable.
+
+>Because of this, it's extremely important that your new branch is created off of main when working on a feature or a fix. Your branch name should be descriptive (e.g., refactor-authentication, user-content-cache-key, make-retina-avatars), so that others can see what is being worked on.
+
+
+When working together in git/github, this flow is extremely important to agree upon and than stick to it. 
+
+
+<div class="question">
+##### Exercise `r les` {-}
+
+ - You will have plenty of things you still want to do for your portfolio. Finish that first exercise, push the working code to the repo, finish your cv... Put all these things as issues in your **portfolio** repository.
+
+</div>
+
+
+## Agile workflow
+*There will be a demo today*
+
+[Adapted from Wikipedia - The free Ecyclopedia](https://en.wikipedia.org/wiki/Agile_software_development)
+
+In software development, agile (here written as Agile) practices approach discovering requirements and developing solutions through the collaborative effort of self-organizing and cross-functional teams. Their customer(s)/end user(s) play a pivotal role in the work process and are involved in reviews at regular intervals. It advocates adaptive planning, evolutionary development, early delivery, and continual improvement, and it encourages flexible responses to change. 
+
+### Agile explained
+The Agile way of working is also very suitable for Scientific projects that have elements of Data Science and Software development. Because it is short-cycle development and prototyping, it is very useful in projects where different tasks need to be integrated in a tool or workflow or analysis.
+During the Data Science Projecticum, we will require you (within you project team, to apply the Agile way of working).
+
+### SCRUM 
+In practical sense, scrum is the collection of meetings and the tools used to administer the workload. The central tool that is being used to monitor all activities is called the 'Project Backlog'. You can look at this 'Project Backlog as the collection of all the work that needs to be done to complete the full project. Because the Agile way of work does not work with long term planning, but works according short cycles of developing a product, a service or perform a study, or involve stakeholders, the 'Project Backlog' is where all the team members go regularly together to agree on what needs to be done next.
+
+The short cycles of working on developing new features, running computations, performing experiments, interviewing customers and stake-holders and acquiring new tools are called 'Sprints'. In each sprint, which typically lasts 3 working weeks, a number of items from the Backlog are 'moved' to the so-called 'Sprint Backlog'. During regular weekly sessions discussion take place which items need to go from the 'Project Backlog' to the 'Sprint Backlog' in order to add value to the project. These sessions are called 'Sprint planning'. At the start of each sprint a single  
+
+
+## Agile Workflow in github
+
+![](https://cloud.githubusercontent.com/assets/1859381/5411950/c44c229e-8207-11e4-915f-d31ccd66c5bd.png)
+
+Image: [Scrum primer](http://www.scrumprimer.org/overview).
+
+We have discussed the Agile workflow in the demo.
+
+### Milestones
+Milestones in Gihub can be considered as Agile/SCRUM sprints. So each sprint is associated with one or multiple milestones that need to be resolved at the end of each sprint.
+
+### Project boards {#kanban-and-automation}
+
+When using a github project, you can setup a project to track issues. Project boards are a github Kanban board, and will keep track of the issues, pull requests and notes, and will display them as cards in columns, similar to for instance trello or MSteams planners. But they are in fact the same issues as we have seen and used before, Issues on the Kanban are also resolved when you close an issue, either manually or through a pull request.
+
+<div class="question">
+##### Exercise `r les` {-}
+To complete this exercise, you need to complete the following steps:
+
+ 1. Create at least 1 milestones for the first sprint of your projecticum project 
+ 1. Create a number of issues that need to be resolved for these 2 milestones to be completed (link these issue to the appropriate milestone you created in the previous step) 
+    - Remember: a good issue is so small that it can be tackled in approximately a day's work or less! 
+    - If you find you have little issues to solve yet for the projecticum, discuss with your partner and add more issues.
+    - An issue can basically be anything, but here we mean something than can be commited to a repo, such as a piece of code, a new .bib file, a dataset or documentation.
+ 1. Put these issues on the Kanban board in the 'In progress' column
+ 1. Each of you chooses a small issue to work on now. Choose issues that you think you could solve in max. 60 minutes for this assignment.
+ 1. Create branch for both (or all three) issues. You can choose to work on the same issue if you prefer, but we would recommend still making two branches and have github do the merging for you.
+ 1. Synchronize you local branches in RStudio, with the remote branches
+ 1. Switch to a branch of the issue you want to work on
+ 1. Start working and solving an issue (or spend max. 60 minutes working on it)
+ 1. Commit your changes, first to you local issue-branch, than push the commit to the remote (remember to use the 'fixes #<issue_number>' phrase in your commit if you fixed it)
+ 1. Create a pull request to the main branch
+ 1. Merge the pull request into main
+ 1. Observe what happened on the Kanban board. Where did the issue you just resolved land? What happened to the milestone? 
+ 1. Delete the branch related to the issue you just resolved 
+ 
+
+
+
+
+### How it works in Detail
+
+- items are reported as **issues**
+- points and meta data are assigned to items as **labels**
+- **milestones** are used to group issues in sprints
+
+#### 1. Create issues as backlog items {-}
+
+To create a new backlog item, just create a new issue.
+
+Once a new issue has been created, assign it the right labels and/or assign it to a sprint (milestone).
+
+Issues allow you to have a conversation about the item and even allow you to create task lists inside the issue using [GitHub's markdown](https://guides.github.com/features/mastering-markdown/).
+
+#### 2. Add labels to issues {-}
+
+Add the following labels to your repository:
+
+**Priorities**
+
+`priority` labels allow you to prioritize items in your backlog e.g.:
+
+- `priority: lowest`
+- `priority: low`
+- `priority: medium`
+- `priority: high`
+- `priority: highest`
+
+
+**Types**
+
+`type` labels allow you to easily filter items (issues) in the dashboard e.g.:
+
+- `type:bug`: bug
+- `type:chore`: chore, maintenance work
+- `type:feature`: new feature
+- `type:infrastructure`: infrastructure related
+- `type:performance`: performance related
+- `type:refactor`: refactor
+- `type:test`: test related
+
+**Other**
+
+You can define and assign custom labels that you need within your workflow or organization.
+
+#### 3. Define sprints as milestones {-}
+
+You can create a milestone for every sprint and add items (issues) from the backlog to a milestone.
+
+This allows you to group items in sprints and track them by milestone in your [issue dashboard](https://github.com/issues).
+
+The backlog then consists of all items (issues) that have no `milestone` attached to it.
+
+**TIP**: Use `no:milestone` in the search field on your [issue dashboard](https://github.com/issues) to find backlog items.
+
+
+#### Helpful links
+
+- [Mastering GitHub issues](https://guides.github.com/features/issues/)
+- [Mastering GitHub markdown](https://guides.github.com/features/mastering-markdown/)
+- [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)
+
+
+<div class = "question">
+##### Exercise `r les` {-}
+ - Fill your backlog with all the tasks that you foresee in the projecticum. Make relatively small tasks: at most an estimated 8 hours of work per task. Give them labels.
+ - Discuss which tasks will be selected to finish in the next two weeks. Assign those to a milestone.
+
+</div>
+
+<div class = "dagopdracht">
+This lesson has no portfolio assignment. The exercises within this lesson of course help build your portfolio.
+</div>
+
+## Resources
 
 ### Git command line
 
@@ -150,4 +508,7 @@ Try renaming a file and merge your branches to the main branch. Solve the issues
 - [Collaboration and time travel using Git](https://rstudio.com/resources/webinars/collaboration-and-time-travel-version-control-with-git-github-and-rstudio/). In this video (approximately 45 minutes), R guru Hadley Wickham explains the concepts of Git collaboration and Git version control. 
 - [Happy Git with R book](https://happygitwithr.com/). This book is a nice resource for R users that want to use Git in their projects.
 
+### scrum / agile
 
+https://github.com/jvandemo/github-scrum-workflow
+https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/managing-your-work-with-issues-and-pull-requests

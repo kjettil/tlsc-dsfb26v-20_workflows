@@ -1,0 +1,423 @@
+# RMarkdown - Output formats {#rmarkdownoutput}
+```{r setuples, include=FALSE}
+les <- 6
+```
+
+## Learning outcome:
+After this lesson you will be able to
+
+ 1. Have an overview of different output formates for RMarkdown and render those formats.
+ 1. Setup github pages
+ 1. Create a bookdown project
+ 1. Render a bookdown project to a local website (aka html pages)
+ 1. Add the rendered site to your github pages
+
+## Easy start: job interviews
+
+Before we start diving into RMarkdown again, read the following blog post. While you can see that we (the teachers) may have a slightly different opinion in some aspects (tidyverse!), it gives a nice checklist for you to scan on any omissions in your general R knowledge.[click](https://www.springboard.com/blog/27-essential-r-interview-questions-with-answers/)
+
+## Output possibilities
+
+With Rmarkdown you can generate many different things. This reader was made in Rmarkdown. The DAUR1 capstone pdf? RMarkdown. The latest report Alyanne had to send to an ethical committee? Again RMarkdown. 
+
+These websites are examples too: [click](https://holtzy.github.io/Pimp-my-rmd/), [click](https://www.r-graph-gallery.com/index.html).
+
+Have a look around on the following website to get a feeling for what is possible with Rmarkdown.
+
+- [https://r-markdown-gallery.com/index.html](https://r-markdown-gallery.com/index.html)
+- [https://bookdown.org/yihui/rmarkdown/basics-examples.html](https://bookdown.org/yihui/rmarkdown/basics-examples.html)
+
+The options include:
+
+  - documents
+    - pdf
+    - Word
+    - html (also: blogs)
+    - handouts
+    - books
+  - interactive documents
+    - html widgets
+    - dashboards
+    - shiny applications
+  - presentations
+    - slides (Beamer, ioslides, Slidy etc)
+    - Powerpoint presentation
+
+### Setting output format
+
+You can specifically choose which output format to render to with the RStudio "Knit" button in the toolbar, or with:
+
+```
+rmarkdown::render("your_file_name.Rmd", output_format = "word_document")
+```
+
+But usually, you use the YAML header to control which output format(s) knitting will produce and even customize the options for each format separately.
+To customize each output format, you can alter the YAML header output argument:
+
+```
+---
+title: "My document"
+output:
+  html_document:
+---
+```
+
+You can change **html_document** to for instance **pdf_document** or **word_document**.
+
+Or customize HTML and PDF output both, this is useful if you want to render multiple types of output.:
+
+```
+---
+title: "My document"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+  pdf_document:
+    fig_caption: false
+---
+```
+
+<div class="question">
+
+##### Exercise `r les` {-}
+
+[exercise from r4ds here](https://r4ds.had.co.nz/r-markdown.html#exercises-71)
+
+Download Lorem.Rmd [here](https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/blob/main/Rmd/lorem.Rmd).
+
+From this .Rmd, knit one new document for each of the three built-in formats: HTML, PDF and Word. How does the output differ? How does the input differ? (You may need to install LaTeX in order to build the PDF output — RStudio will prompt you if this is necessary.)
+</div>
+
+### Output options
+
+The YAML header can contain a lot more settings for your output. For instance, you may want to add a table of contents (TOC) to you html page, in this example a floating one:
+
+```
+---
+title: "My document"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+```
+
+Other settings can just be added below html_document:
+
+#### Tabbed sections {-}
+
+You can organize content using tabs by applying the .tabset class attribute to headers within a document. This will cause all sub-headers of the header with the .tabset attribute to appear within tabs rather than as standalone sections. For example:
+
+```
+## Quarterly Results {.tabset}
+
+### By Product
+
+(tab content)
+
+### By Region
+
+(tab content)
+```
+
+#### Themes {-}
+
+You learned how to specify you own formatting with css last lesson. But RMarkdown has some [preset themes](https://www.datadreaming.org/post/r-markdown-theme-gallery/) you can use as well. And of course, you can download packages with more themes.
+
+```
+title: "Stuff"
+output:
+  html_document:
+    theme: united
+```
+
+<div class="question">
+
+##### Exercise `r les` {-}
+
+  A) What is a floating TOC?
+  B) Use Lorem.Rmd again and add a TOC
+  C) Give the TOC a set depth (toc_depth) and see what happens if you change it. (for instance `toc_depth = 2` can be set just as you set `toc_float: true` earlier.)
+  D) Also try `code_folding: hide` and `number_sections: FALSE`.
+  E) Google how to put two authors on one .Rmd, with affiliations. Put your and your labpartner's names as authors.
+  F) Apply a theme you like, but not "united".
+  G) try tabbed sections
+
+</div>
+
+
+## PDF 
+
+Rendering pdf files does not differ much from html. Themes work as well. There are few things you can set in the YAML header for pdf files. Note that these options do not get an indent, but rather need to be defined at the same level as title, author, output etc.
+
+```
+---
+title: "My document"
+output: pdf_document
+fontsize: 11pt
+geometry: margin=1in
+---
+```
+
+
+## Interactivity {#rmarkdowninteractive}
+
+Until now, we discussed static output formats. But RMarkdown files can also render interactive content! There are two main types of content to render: html widgets and shiny apps. Shiny apps will be covered in two masterclasses in the projecticum. Shiny uses actual R code to render the interactivity. This gives you a very broad range of options, but also means that it requires a live R session running somewhere.
+
+Html widgets use JavaScript libraries to produce for instance interactive graphs, using R syntax! These will work without an R session, in any web brwoser.They will still only work in html though, you can't suddenly make pdf files interactive.
+
+### Tables
+We actually already showed you how to make interactive tables with `datatable()` in a previous lesson:
+
+```{r, message=F, error=F, warning=F,}
+library(DT)
+datatable(iris, options = list(pageLength = 5))
+```
+
+### Javascript packages
+
+You can do similar interactivity with graphs and figures. Generally, these packages link R to a javascript packages. Check the possibilities [here](http://www.htmlwidgets.org/showcase_leaflet.html). These packages actually do most of the work for you.
+
+Let's try a few:
+
+#### Maps 
+
+The leaflet package let's you use maps (click on the dot and try moving the map)
+
+```{r, message=F, error=F, warning=F, fig.cap = "You are here! But not in 2021, in 2021 we are at home"}
+library(htmlwidgets)
+library(leaflet)
+
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lat=52.084036170323024, lng=5.173630727235891, popup="Here be HL7!") 
+# get coordinates from google maps
+
+m  # Print the map
+```
+
+<!-- You can change map colours if you like. type `names(providers)` for all the options. -->
+<!-- No you can't in bookdown see https://github.com/rstudio/bookdown/issues/15 -->
+
+<!-- ```{r, fig.cap="Apparently we have horse racing tracks here?"} -->
+<!-- m %>% addProviderTiles(providers$Stamen.Toner) -->
+<!-- ``` -->
+
+Suppose you want to show all locations where you catched rabbits for your ongoing study on rabbit ear length at the Uithof:
+
+```{r, message=F, error=F, warning=F, fig.cap="Here be rabbits"}
+library(leaflet)
+library(tidyverse)
+
+rabbit_locations <- tibble( rabbitnr = c(1:5),
+                            lat  = c(52.0852,52.0832,52.08247,52.0834,52.08309),
+                            long = c(5.171109,5.171248,5.171248,5.176055,5.17268) )
+
+leaflet(data = rabbit_locations) %>% addTiles() %>% 
+  addMarkers(~long, ~lat, popup = ~as.character(rabbitnr), label = ~as.character(rabbitnr))
+```
+
+Want more? Check out this website [here](http://rstudio.github.io/leaflet/)
+
+<div class="question">
+##### Exercise `r les` {-} 
+
+**rabbits!**
+
+Change the markers in the example above to little icons of rabbits! See [here (click)](http://rstudio.github.io/leaflet/markers.html) how to do this.
+</div>
+
+#### 3d figures
+
+Sometimes 2 axes don't cut it. 
+
+```{r, message=F, error=F, warning=F, fig.cap="With 3 axes you may want to be able to rotate the graph."}
+library(threejs)
+library(palmerpenguins)
+z <- penguins$bill_length_mm
+x <- penguins$flipper_length_mm
+y <- penguins$body_mass_g
+N = length(levels(penguins$species)) # we want 3 colours
+scatterplot3js(x,y,z, color=rainbow(N)[penguins$species])
+
+
+```
+
+See some more examples, if you like, here: [click](https://bwlewis.github.io/rthreejs/)
+
+<!-- <div class="question"> -->
+<!-- ##### Exercise `r les` {-}  -->
+
+<!-- **principal components of genomic variant data** -->
+<!-- http://bwlewis.github.io/1000_genomes_examples/PCA.html#fn1 -->
+<!-- Voor volgend jaar, memory issues -->
+<!-- kleinere vcf here https://github.com/vcflib/vcflib/blob/master/samples/1kg-phaseIII-v5a.20130502.genotypes.chr22-16-16.5mb.vcf.gz -->
+<!-- </div> -->
+
+#### time series
+
+This rabbit ear experiment has been going for quite a while. Let's say you started catching rabbits about 10 years ago and calculated average ear length every three weeks. The graph below shows the average ear length per 3 weeks. It also shows the time frame of the mysterious long ear disease (LED) outbreak of 2018:
+
+```{r, message=F, error=F, warning=F, fig.cap="Average rabbit ear length at the uithof per 3 weeks for the last 10 years."}
+
+# Libraries
+library(dygraphs)
+library(xts) 
+
+# get some data
+# Your time column MUST be a time format or numbers
+rabbitdata <- data.frame(
+  time=seq(from=Sys.Date()-(10*365), to=Sys.Date(), by=21 ), 
+  oorlengte=runif((10*365)/21+1,min = 6, max = 10)
+)
+
+rabbitdata$oorlengte[120:138]<-rabbitdata$oorlengte[120:138]+4
+
+# create xts format because dygraph() only eats xts
+rabbitdata.xts <- xts(x = rabbitdata$oorlengte, order.by = rabbitdata$time)
+
+# plot
+dygraph(rabbitdata.xts) %>% 
+  dySeries(label="average ear length (cm)", color="black") %>%
+  dyShading(from=rabbitdata$time[120], to=rabbitdata$time[138], color="#FFE6E6") %>%
+  dyRangeSelector(dateWindow = c(rabbitdata$time[90], rabbitdata$time[150]))
+
+
+```
+
+See some more examples, if you like, here: [click](http://rstudio.github.io/dygraphs/)
+
+#### Plotly
+And most famously, [plotly](https://plotly.com/r/). This package can turn any ggplot2 graph into an interactive plotly graph. Mousing over a point displays information about that point. Clicking on a legend point removes that class from the plot. Clicking on it again returns it.
+
+<!-- ####  rCharts -->
+<!-- https://bookdown.org/BaktiSiregar/data-science-for-beginners/Advanced-Visualizations.html#interactive-graphs -->
+<!-- shiny..hier nog maar niet, voor de masterclass -->
+
+Plotly can just make your scatterplot zoom-able with labels for the data points:
+
+
+```{r}
+library(plotly)
+
+fig <- plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length)
+
+fig
+```
+
+```{r}
+#box plots
+plot_ly(                  #creates first box plot
+  y = rnorm(50),          #choose numeric variable for first plot
+  type = "box") %>%       #specifies plot type is box plot
+  
+  add_trace(              #creates second box plot
+    y = rnorm(50, 1))     #choose numeric variable for second plot
+```
+
+
+Basically, if you think "Hey, I have this ggplot graph and it is nice, but it could be clearer if it had osme interactive options..." take a look at the [plotly examples here](https://plotly.com/r/). It is also rather usefull when you want subplots in your figure, like this:
+
+```{r}
+library(plotly)
+fig1 <- plot_ly(economics, x = ~date, y = ~unemploy)
+fig1 <- fig1 %>% add_lines(name = ~"unemploy")
+fig2 <- plot_ly(economics, x = ~date, y = ~uempmed)
+fig2 <- fig2 %>% add_lines(name = ~"uempmed")
+fig <- subplot(fig1, fig2)
+
+fig
+```
+
+It can do Sankey diagrams. Sankey diagrams are what the cool kids do nowadays, it seems. A Sankey Diagram is a visualisation technique that allows to display flows. 
+
+```{r}
+fig <- plot_ly(
+    type = "sankey",
+    orientation = "h",
+
+    node = list(
+      label = c("A1", "A2", "B1", "B2", "C1", "C2"),
+      color = c("blue", "blue", "purple", "purple", "darkred", "darkred"),
+      pad = 15,
+      thickness = 20,
+      line = list(
+        color = "black",
+        width = 0.5
+      )
+    ),
+
+    link = list(
+      source = c(0,1,0,2,3,3),
+      target = c(2,3,3,4,4,5),
+      value =  c(8,4,2,8,4,2)
+    )
+  )
+fig <- fig %>% layout(
+    title = "Basic Sankey Diagram",
+    font = list(
+      size = 10
+    )
+)
+
+fig
+```
+
+
+<!-- ### Flex Dashboards -->
+<!-- I don't like them -->
+
+
+## Bookdown {#bookdownportfolio}
+
+XXX intro bookdown<mark> XXX </mark>
+
+You have generated a couple of .Rmd files for your portfolio by now. The next task will be to bundle them into one portfolio website, hosted by github.
+
+We will be setting up a bookdown project and publishing it online as course portfolio 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+ 
+## Github pages
+Each account on github can be associated to one or multiple websites that are hosted on Github.com. To setup a website on Github (also called `github-pages` or `gh-pages`), we need to create a repository with a special name. For this course we will require you to upload results from the exercises and assignments results to you personal github pages. **This is a hard requirement for passing this course. If you have no or an empty portfolio, you cannot pass this course**
+
+<div class="question">
+##### Exercise `r les` {-}
+
+ 1. Execute the steps explained [here](https://guides.github.com/features/pages/) to setup a github-pages repository called `workflows-portfolio`
+ 1. Send the url to your public portfolio address to the teachers by personal chat. 
+
+</div>
+
+## Bookdown
+The `{bookdown}` R package is basically a collection of RMarkdown files, collated into a website with nice formatting and the possibility to cross reference and add citations and visualizations. The author of the bookdown is also the main author of `{knitr}`.    
+
+## A simple bookdown example
+To start with bookdown, there is a [good and free resource available](https://bookdown.org/yihui/bookdown/get-started.html). 
+
+## Transform your current portfolio project to a bookdown site
+By now you should have collected several Rmd files for completing the exercises and assignments in the course thusfar. If everything went well, you have these files collected in your portfolio RStudio project, linked to a Github repo.
+To start building your bookdown project, use the minimal example you have seen above. Start by rendering your project using `bookdown::render()`. To the very least you should have an index.html file that contains the yaml definitions for your bookdown project. You can arrange the chapters by using an index in every Rmd file. Use indexes like `001_<file_name>.Rmd`. When you want to add a chapter in between two chapters, this makes it easier. to achieve this.
+
+## Render the book locally
+When you have build your `index.Rmd` file and have collected all files in the root of your project, be sure all depending data, scripts and other files such as images etc. are also present in the project. Use the guerrilla analytics logic to setup the project structure. Set the option `new_session: yes` in your `_bookdown.yml` or `index.Rmd` file. This prevent problems down the line. Render the book until all errors are solved. You can debud each file and error by looking at the line numbers where the rendering is causing problems.
+
+
+## Hosting the bookdown project in your github pages
+
+**IMPORTANT NOTE ON CONFIDENTIALITY**
+
+<mark>**When hosting you portfolio on a public web address, please make sure that there is no confidential information visable in your project. Data that falls under a non-disclosure agreement for example from your projecticum may not be shared. Also, be sure not to publish any personal secrets such as passwords and tokens, inside a github repo or webpage.**</mark> 
+
+Once you have succesfully rendered your bookdown to a full website, hosting can be achieved by copying all html files to your Github-pages. The easiest way is to clone your github pages repo and add, commit and push all html files to your github pages repo. The website will be automatically updated after some time. You can also setup a theme for your github pages. See [here](https://docs.github.com/en/github/working-with-github-pages/adding-a-theme-to-your-github-pages-site-with-the-theme-chooser) for more info.
+
+For a complete manual on working with github pages, [see the gh-pages docs](https://docs.github.com/en/github/working-with-github-pages/getting-started-with-github-pages) 
+
+If you want to go for a full continuous integration workflow (which is highly recommended), you can follow these steps in [this blog](https://medium.com/@delucmat/how-to-publish-bookdown-projects-with-github-actions-on-github-pages-6e6aecc7331e)
+
+## Portfolio assignment `r paste0(les, " ")` {-}

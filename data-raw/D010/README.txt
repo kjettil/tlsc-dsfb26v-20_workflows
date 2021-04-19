@@ -5,7 +5,7 @@
 # Date: 22 June, 2020
 ###################################################################################
  
-## README for File "./data-raw/Do10/covid_ecdc_cases_geography.R"
+## README for File "./data-raw/D010/covid_ecdc_cases_geography.R"
 
 The data in this file was derived from a direct download of the csv file from R with script:
 

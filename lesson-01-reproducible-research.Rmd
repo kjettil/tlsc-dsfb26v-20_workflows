@@ -288,8 +288,9 @@ We will practice this a bit and see this happening live in an exercise
  B) What problems do you encounter, when trying to import this Excel file using `{readxl}`?
  C) Perform a manual download of this file by going [here:](http://genesdev.cshlp.org/content/suppl/2009/06/11/gad.1806309.DC1). You need the file under the link `Supp Table 2.xls`
  D) Why is manually downloading this file a problem with regard to open science?
- E) Import the manually downloaded Excel file into R 
- F) Open the file and compare the contents of the file to the Supplementary table shown [here](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7#Sec1). What do you observe? Why do you think this is happening?
+ E) Import the manually downloaded Excel file into R
+ F) Download [this file](https://ndownloader.figstatic.com/files/7148432)
+ F) Open the file and compare the contents of the file to the Supplementary table shown [here](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7#Sec1). Look specifically at the column `Example Gene Name Conversion`. What do you observe? Why do you think this is happening?
  G) Look at this article in the Microsoft help: https://support.microsoft.com/en-us/office/stop-automatically-changing-numbers-to-dates-452bd2db-cc96-47d1-81e4-72cec11c4ed8
  H) Change the column `Example Gene Name Conversion` in the file 
 [here:](http://genesdev.cshlp.org/content/suppl/2009/06/11/gad.1806309.DC1) to text. 

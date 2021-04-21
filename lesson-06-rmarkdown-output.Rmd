@@ -165,7 +165,7 @@ geometry: margin=1in
 
 Until now, we discussed static output formats. But RMarkdown files can also render interactive content! There are two main types of content to render: html widgets and shiny apps. Shiny apps will be covered in two masterclasses in the projecticum. Shiny uses actual R code to render the interactivity. This gives you a very broad range of options, but also means that it requires a live R session running somewhere.
 
-Html widgets use JavaScript libraries to produce for instance interactive graphs, using R syntax! These will work without an R session, in any web brwoser.They will still only work in html though, you can't suddenly make pdf files interactive.
+HTML widgets use JavaScript libraries to produce for instance interactive graphs, using R syntax! These will work without an R session, in any web browser.They will still only work in html though, you can't suddenly make pdf files interactive.
 
 ### Tables
 We actually already showed you how to make interactive tables with `datatable()` in a previous lesson:
@@ -255,7 +255,7 @@ See some more examples, if you like, here: [click](https://bwlewis.github.io/rth
 <!-- kleinere vcf here https://github.com/vcflib/vcflib/blob/master/samples/1kg-phaseIII-v5a.20130502.genotypes.chr22-16-16.5mb.vcf.gz -->
 <!-- </div> -->
 
-#### time series
+#### Time series
 
 This rabbit ear experiment has been going for quite a while. Let's say you started catching rabbits about 10 years ago and calculated average ear length every three weeks. The graph below shows the average ear length per 3 weeks. It also shows the time frame of the mysterious long ear disease (LED) outbreak of 2018:
 
@@ -317,7 +317,7 @@ plot_ly(                  #creates first box plot
 ```
 
 
-Basically, if you think "Hey, I have this ggplot graph and it is nice, but it could be clearer if it had osme interactive options..." take a look at the [plotly examples here](https://plotly.com/r/). It is also rather usefull when you want subplots in your figure, like this:
+Basically, if you think "Hey, I have this ggplot graph and it is nice, but it could be clearer if it had some interactive options..." take a look at the [plotly examples here](https://plotly.com/r/). It is also rather useful when you want subplots in your figure, like this:
 
 ```{r}
 library(plotly)

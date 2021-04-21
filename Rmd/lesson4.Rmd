@@ -1,0 +1,112 @@
+---
+title: "les 5: vooruitkijken" 
+subtitle: "HU OSIRIS: tlsc-dsfb26v-20_workflows"
+author: "Alyanne de Haan, PhD; Bas van Gestel; Marc Teunis, PhD"
+date: "12-4-2021"
+output: 
+  ioslides_presentation:
+     widescreen: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## jaar 1 + 2
+
+ - basis statistiek, wiskunde, excel
+ - basis bioinformatica
+ - heel veel biologie / life sciences!
+
+## DSFB1+2 
+
+In DSFB1 + 2
+
+ - basis GNU / linux / bash, toepassing op bioinformatica
+ - basis dataverwerking in R
+ - bioinformatica in R
+ - toepassen skills in projecticum
+ - workflows:
+    - open science
+    - version control
+    - reproducible workflow (RMarkdown)
+    - SQL
+
+## DSFB1+2
+
+Dus:
+
+ - 1 taal aardig wat + intro in 2 andere
+ - toepassing op bioinformatica
+ - ondersteunende skills
+
+## Ben ik nou een bioinformaticus?
+
+Weet je niche
+
+ - bio(medisch) analist met een bioinformatica / data science "minor"
+ - dat is je selling point, gebruik dat!
+ - groeiende vraag in het werkveld
+ - geen ICT-ers, geen bioinformatici (kan wel, moet je verder studeren)
+
+## nu in DSFB2
+
+Start gemaakt met projecticum
+
+Op zoek naar stageplaatsen
+
+Beetje beeld van de mogelijkheden
+
+
+## 3 vragen
+
+ - waar wil ik naartoe?
+ - hoe doe ik het nu?
+ - wat is de volgende stap?
+
+## laatste les (les 9)
+
+ - 2 uur voor wat er nodig blijk aan stof tijdens het blok
+ - 2 uur voor presentaties:
+    - waar wil je naartoe?
+    - welke stap is dan na DSFB2?
+    - plan van aanpak om daar ca 4 dagen aan te werken dit blok
+
+## voorbeelden
+
+ - Snakemake uitzoeken
+ - start maken met python
+ - goed worden in SQL
+ - beter worden in shiny
+ - labjournaals automatiseren
+ - toepassingen R in microbiologie uitzoeken
+ - start maken met machine learning
+ - RNA-sequencing uitpluizen
+ - image processing gaan bekijken
+ - bayesian statistics
+ - misschien wil je een premaster of hbo master doen met requirements die je nog niet hebt?
+
+## uren: 140 (5 EC)
+ 
+ - 6*9=54 uur lessen
+ - zelf bijwerken / voorbereiden: 2*9 = 18 uur
+ - portfolio 32 uur
+ 
+ = 102 uur
+ 
+ --> ca 36 uur (= zeg 4 dagen) de tijd!
+ om een start te maken.(+ paar uur voor het rapporteren)
+
+## eisen:
+
+ - moet over biologie gaan
+ - moet over data science / bioinformatica gaan
+ - leren haken moet een andere keer
+ - moet in je portfolio
+
+## Vandaag
+
+ - lekker lesje syntax
+ - cross references & references (demo Mendeley 11:15)
+ - opmaak voor je portfolio (maak er wat van)
+ - dagopdracht: inleiding projecticum + references

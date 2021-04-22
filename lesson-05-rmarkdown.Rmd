@@ -849,7 +849,7 @@ Van der Ploeg says so too [-@vdploeg04].
 ## Portfolio assignment `r paste0(les, " ")` {-}  
 <div class="dagopdracht">
 
-**Portfolio assignment 6**
+**Portfolio assignment `r les`**
 
 A)
 

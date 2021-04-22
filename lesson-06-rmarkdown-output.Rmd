@@ -82,7 +82,7 @@ output:
 
 ##### Exercise `r les` {-}
 
-[exercise from r4ds here](https://r4ds.had.co.nz/r-markdown.html#exercises-71)
+This exercise is adapted from [this one from r4ds here](https://r4ds.had.co.nz/r-markdown.html#exercises-71)
 
 Download Lorem.Rmd [here](https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/blob/main/Rmd/lorem.Rmd).
 
@@ -160,6 +160,29 @@ geometry: margin=1in
 ---
 ```
 
+## Word ...
+
+Now word files are a different beast... You can export them easily enough:
+
+---
+title: "My weekly report"
+author: Joep
+date: March 22, 1999
+output: word_document
+---
+
+But now how do we edit the layout? RMarkdown can use a reference .docx file to get all the layout information from.
+
+<div class="question">
+##### Exercise `r les` {-} 
+ - Follow these steps until "Beyond the basics".
+ - Get your word-styles-reference-01.docx to work as a style reference.
+
+</div>
+
+
+<!-- What if some collaborator adds comments or tracked changes? -->
+<!-- For now, nothing. I will try to get redoc to work -->
 
 ## Interactivity {#rmarkdowninteractive}
 
@@ -181,7 +204,7 @@ You can do similar interactivity with graphs and figures. Generally, these packa
 
 Let's try a few:
 
-#### Maps 
+#### Maps {-}
 
 The leaflet package let's you use maps (click on the dot and try moving the map)
 
@@ -228,7 +251,7 @@ Want more? Check out this website [here](http://rstudio.github.io/leaflet/)
 Change the markers in the example above to little icons of rabbits! See [here (click)](http://rstudio.github.io/leaflet/markers.html) how to do this.
 </div>
 
-#### 3d figures
+#### 3d figures {-}
 
 Sometimes 2 axes don't cut it. 
 
@@ -255,7 +278,7 @@ See some more examples, if you like, here: [click](https://bwlewis.github.io/rth
 <!-- kleinere vcf here https://github.com/vcflib/vcflib/blob/master/samples/1kg-phaseIII-v5a.20130502.genotypes.chr22-16-16.5mb.vcf.gz -->
 <!-- </div> -->
 
-#### Time series
+#### Time series {-}
 
 This rabbit ear experiment has been going for quite a while. Let's say you started catching rabbits about 10 years ago and calculated average ear length every three weeks. The graph below shows the average ear length per 3 weeks. It also shows the time frame of the mysterious long ear disease (LED) outbreak of 2018:
 
@@ -288,7 +311,7 @@ dygraph(rabbitdata.xts) %>%
 
 See some more examples, if you like, here: [click](http://rstudio.github.io/dygraphs/)
 
-#### Plotly
+#### Plotly {-}
 And most famously, [plotly](https://plotly.com/r/). This package can turn any ggplot2 graph into an interactive plotly graph. Mousing over a point displays information about that point. Clicking on a legend point removes that class from the plot. Clicking on it again returns it.
 
 <!-- ####  rCharts -->
@@ -298,7 +321,7 @@ And most famously, [plotly](https://plotly.com/r/). This package can turn any gg
 Plotly can just make your scatterplot zoom-able with labels for the data points:
 
 
-```{r}
+```{r, message=F, error=F, warning=F, fig.cap="Minimal example plotly graph"}
 library(plotly)
 
 fig <- plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length)
@@ -319,7 +342,7 @@ plot_ly(                  #creates first box plot
 
 Basically, if you think "Hey, I have this ggplot graph and it is nice, but it could be clearer if it had some interactive options..." take a look at the [plotly examples here](https://plotly.com/r/). It is also rather useful when you want subplots in your figure, like this:
 
-```{r}
+```{r, message=F, error=F, warning=F, fig.cap="Plotly with subplots. You can also use cowplot()"}
 library(plotly)
 fig1 <- plot_ly(economics, x = ~date, y = ~unemploy)
 fig1 <- fig1 %>% add_lines(name = ~"unemploy")
@@ -332,7 +355,7 @@ fig
 
 It can do Sankey diagrams. Sankey diagrams are what the cool kids do nowadays, it seems. A Sankey Diagram is a visualisation technique that allows to display flows. 
 
-```{r}
+```{r, message=F, error=F, warning=F, fig.cap="Somehow, plotly doesn't like our reader. The ugly lines shouldn't be there."}
 fig <- plot_ly(
     type = "sankey",
     orientation = "h",
@@ -382,16 +405,25 @@ The `{bookdown}` R package contains functions to bundle a collection of RMarkdow
 **A simple bookdown example**
 To start with bookdown, there is a [good and free resource available](https://bookdown.org/yihui/bookdown/get-started.html). 
  - Download the example zip of the [minimal example here: click](https://github.com/yihui/bookdown-minimal)
- - follow the steps in the link and render the book.
- - 
+ - follow the steps in this link [(click)](https://bookdown.org/yihui/bookdown/get-started.html) and render the book.
+ - If you don't have a `build book` button in your build tab, make sure you are in the demo project!
+ 
+ ```{r, echo=FALSE, message=FALSE, fig.width=4 }
+knitr::include_graphics(here::here(
+    "images",
+    "build_book.png"
+  )
+)
+```
+ 
 
 </div>
 
-A bookdown book will consist of different chapters, each in their own .Rmd file (this is why you had to do this for your portfolio). The home page, or firrst page, is always index.Rmd, which contains the YAML header.
+A bookdown book will consist of different chapters, each in their own .Rmd file (this is why you had to do this for your portfolio). The home page, or first page, is always index.Rmd, which contains the YAML header.
 
 Chapters are rendered in alphabetical + numerical order of their .Rmd file name. So if you want 3 chapters, you will have files like `ìndex.Rmd`, `01_introduction.Rmd`, `02_cv.Rmd` and `03_firstproject.Rmd`. Go ahead and check the files in the repo of this course if you like, and compare them to the reader online.
 
-Filenames that start with an underscore are skipped (in case you want to include files in the repo but not in the book for some reason).
+File names that start with an underscore are skipped (in case you want to include files in the repo but not in the book for some reason).
 
 Each R Markdown file must start immediately with the chapter title using the first-level heading, e.g., `# Chapter Title`. So chapters will look somewhat like this:
 
@@ -414,24 +446,47 @@ more bla
 
 ```
 
-
 <div class="question">
 ##### Exercise `r les` {-}
  - add two new pages to the example bookdown project.
- - render the bookdown again
+ - render the bookdown again (build book)
 </div>
 
 
+### bookdown::render_book()
 
+The `build book` button is calling a function: bookdown::render_book(). You need to check some boxes before this actually works. If you want to use the `build book` option in the future:
 
+ 1. Configure the build tools: Click on the menu button "Build" and then select "Configure build tools". You want to select "Website".
+ 1. Put this line in the YAML header: `site: bookdown::bookdown_site`
 
+But you know our opinion on having to click anything at all, so you can use the console instead, for instance:
 
-## Transform your current portfolio project to a bookdown site
-By now you should have collected several Rmd files for completing the exercises and assignments in the course thusfar. If everything went well, you have these files collected in your portfolio RStudio project, linked to a Github repo.
-To start building your bookdown project, use the minimal example you have seen above. Start by rendering your project using `bookdown::render()`. To the very least you should have an index.html file that contains the yaml definitions for your bookdown project. You can arrange the chapters by using an index in every Rmd file. Use indexes like `001_<file_name>.Rmd`. When you want to add a chapter in between two chapters, this makes it easier. to achieve this.
+```
+bookdown::render_book(here::here("index.Rmd"), "bookdown::gitbook")
+bookdown::render_book("index.Rmd", "bookdown::pdf_book")
+```
+
+or simply try (really, try it. does it work?)
+
+```
+bookdown::render_book(".")
+```
+
+These options work if your chapter .Rmd files are in the project root directory (the one you see when you type `here::here()` in the console.)
+
+If you really want to keep your chapter files in a subdirectory, which we don't recommend, you can still render the book with:
+
+```
+xfun::in_dir('mapje/nogeenmapje', bookdown::render_book('index.Rmd'))
+```
+
+### Transform your current portfolio project to a bookdown site
+By now you should have collected several Rmd files for completing the portfolio assignments in the course thusfar. If everything went well, you have these files collected in your portfolio RStudio project, linked to a Github repo.
+To start building your bookdown project, use the minimal example you have seen above. Start by rendering your project using `bookdown::render_book()`. To the very least you should have an index.rmd file that contains the yaml definitions for your bookdown project. You can arrange the chapters by using file names like `001_<file_name>.Rmd`. 
 
 ## Render the book locally
-When you have build your `index.Rmd` file and have collected all files in the root of your project, be sure all depending data, scripts and other files such as images etc. are also present in the project. Use the guerrilla analytics logic to setup the project structure. Set the option `new_session: yes` in your `_bookdown.yml` or `index.Rmd` file. This prevent problems down the line. Render the book until all errors are solved. You can debud each file and error by looking at the line numbers where the rendering is causing problems.
+When you have build your `index.Rmd` file and have collected all files in the root of your project, be sure all depending data, scripts and other files such as images etc. are also present in the project. Use the guerrilla analytics logic to setup the project structure if you lost track of it. Set the option `new_session: yes` in your `_bookdown.yml` or `index.Rmd` file. This prevent problems down the line. Render the book until all errors are solved. You can debug each file and error by looking at the line numbers where the rendering is causing problems.
 
 
 ## Hosting the bookdown project in your github pages
@@ -441,24 +496,29 @@ When you have build your `index.Rmd` file and have collected all files in the ro
 <mark>**When hosting you portfolio on a public web address, please make sure that there is no confidential information visable in your project. Data that falls under a non-disclosure agreement for example from your projecticum may not be shared. Also, be sure not to publish any personal secrets such as passwords and tokens, inside a github repo or webpage.**</mark> 
 
 
- 
-## Github pages
+### Github pages
 Each account on github can be associated to one or multiple websites that are hosted on Github.com. To setup a website on Github (also called `github-pages` or `gh-pages`), we need to create a repository with a special name. For this course we will require you to upload results from the exercises and assignments results to you personal github pages. **This is a hard requirement for passing this course. If you have no or an empty portfolio, you cannot pass this course**
 
-<div class="question">
-##### Exercise `r les` {-}
 
- 1. Execute the steps explained [here](https://guides.github.com/features/pages/) to setup a github-pages repository called `workflows-portfolio`
- 1. Send the url to your public portfolio address to the teachers by personal chat. 
-
-</div>
-
-
-
-Once you have succesfully rendered your bookdown to a full website, hosting can be achieved by copying all html files to your Github-pages. The easiest way is to clone your github pages repo and add, commit and push all html files to your github pages repo. The website will be automatically updated after some time. You can also setup a theme for your github pages. See [here](https://docs.github.com/en/github/working-with-github-pages/adding-a-theme-to-your-github-pages-site-with-the-theme-chooser) for more info.
-
+### More information
 For a complete manual on working with github pages, [see the gh-pages docs](https://docs.github.com/en/github/working-with-github-pages/getting-started-with-github-pages) 
 
 If you want to go for a full continuous integration workflow (which is highly recommended), you can follow these steps in [this blog](https://medium.com/@delucmat/how-to-publish-bookdown-projects-with-github-actions-on-github-pages-6e6aecc7331e)
 
-## Portfolio assignment `r paste0(les, " ")` {-}
+
+
+
+## Portfolio assignment `r paste0(les, " ")` {-}  
+<div class="dagopdracht">
+
+**Portfolio assignment `r les`**
+
+ - Execute the steps explained [here](https://guides.github.com/features/pages/) to setup a github-pages repository called `myname-portfolio` or something similar.
+ 
+Once you have successfully rendered your bookdown to a full website, hosting can be achieved by copying all html files to your Github-pages. The easiest way is to clone your github pages repo and add, commit and push all html files to your github pages repo. The website will be automatically updated after some time. You can also setup a theme for your github pages. See [here](https://docs.github.com/en/github/working-with-github-pages/adding-a-theme-to-your-github-pages-site-with-the-theme-chooser) for more info, but you have learned to use css, so this is a nice opportunity to display that.
+
+ - Put your portfolio on your github pages
+ - Send the url to your public portfolio address on the "prikbord" channel. 
+
+</div>
+

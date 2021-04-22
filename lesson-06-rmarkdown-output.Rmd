@@ -223,9 +223,6 @@ m  # Print the map
 <!-- You can change map colours if you like. type `names(providers)` for all the options. -->
 <!-- No you can't in bookdown see https://github.com/rstudio/bookdown/issues/15 -->
 
-<!-- ```{r, fig.cap="Apparently we have horse racing tracks here?"} -->
-<!-- m %>% addProviderTiles(providers$Stamen.Toner) -->
-<!-- ``` -->
 
 Suppose you want to show all locations where you catched rabbits for your ongoing study on rabbit ear length at the Uithof:
 
@@ -276,6 +273,9 @@ See some more examples, if you like, here: [click](https://bwlewis.github.io/rth
 <!-- http://bwlewis.github.io/1000_genomes_examples/PCA.html#fn1 -->
 <!-- Voor volgend jaar, memory issues -->
 <!-- kleinere vcf here https://github.com/vcflib/vcflib/blob/master/samples/1kg-phaseIII-v5a.20130502.genotypes.chr22-16-16.5mb.vcf.gz -->
+
+<!-- of andere les hier: https://broadinstitute.github.io/2020_scWorkshop/feature-selection-and-cluster-analysis.html -->
+
 <!-- </div> -->
 
 #### Time series {-}

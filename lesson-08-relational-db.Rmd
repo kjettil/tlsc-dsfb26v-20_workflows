@@ -1,9 +1,12 @@
 # Working with relational data & databases {#relationaldb}
 
 ```{r setup, include=FALSE}
-les <- 9
+les <- 8
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+This one is obviously not yet finished. Work on your portfolio first :)
+
 
 ## Resources and references
 Part of the materials in this chapter were reproduced in a an adapted form from [@r4ds]. DBeaver tutorials from youtube (see \@ref(resources)). Tutorials on using the package `{RPostgreSQL}` can also be found in \@ref(resources)

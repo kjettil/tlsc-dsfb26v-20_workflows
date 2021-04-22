@@ -307,7 +307,7 @@ If you are seriously interested in making figures for colourblind people, check 
 <div class="question">
 ##### Exercise `r les` {-} 
 Generate a graph with ggplot (any graph you like, here are some [examples](https://www.r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html)) and try some options to make it colourblind-friendly.
-Test your figure [here](https://www.color-blindness.com/coblis-color-blindness-simulator/) (Take a screenshot and upload the screenshot to this website.)
+Test your figure [here](https://www.color-blindness.com/coblis-color-blindness-simulator/) (Export your graph to jpeg using the export option in Rstudio (bottom right, above the graph) or `ggsave()` and upload the file to this website.)
 </div>
 
 <!-- ### animations: gganimate? -->

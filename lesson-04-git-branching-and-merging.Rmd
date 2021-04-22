@@ -106,7 +106,7 @@ aThis is the bookdown course etc... # the local change
 
 Save README.md, commit and push. Now it will update!
 
-
+(If it won't and give you an error about unfinished commits, try adding another line in the README.md locally, commit and push.)
 
 
 
@@ -319,7 +319,7 @@ Read the description and the proposed solutions if any. Describe in your own wor
 Review issue  `#5640` in the `{dplyr}` issues. Why was this issue closed? Was the issue resolved for the user who reported it?
 </div>
 
-#### Creating issues in your project repo
+#### Creating issues in your project repo {-}
 
 When collaborating together on project repository, you can create issues to stay on track for the different actions that need to be undertaken. Issues can be related to adding functionality (code) to the project, but also to report a bug or to request the addition or improvement of documentation. You can create an issue by opening the `Issues` tab and creating a new issue by clicking the green `New issue` button. A form will open where you can add a title and further remarks to document your issue. The formatting of the `Leave a comment` field can be entered using Markdown formatting. When creating an issue, it is important to assign (preferable one) person to the issue. You can also choose a label, and if needed you can customize the label categories. When a Kanban/Project is also linked to the organization or repo, you can also add the issue to a Kanban board. More about Kanban here \@ref(kanban-and-automation). When creating a new issue, you can also add a `Milestone`. We will discuss this later \@ref(milestones) 
 
@@ -343,7 +343,7 @@ Follow these steps to complete this exercise:
 </div>
 
  
-#### One issue per change, one issue per branch [`fixes #<issue_number>` and `new branch`]
+#### One issue per change, one issue per branch [`fixes #<issue_number>` and `new branch`] {-}
 In the exercise above we saw how to open, fix and automatically close an issue. But what defines an issue and how would you prevent working on the same piece of code when working together.
 
 In the main [resource](https://guides.github.com/introduction/flow/) used for this piece in the course, we can read this about branches (as was already explained previously):

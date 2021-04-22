@@ -93,7 +93,7 @@ In this lesson we will focus a bit more on RMarkdown, as it offers a reproducibl
   - do not forget lesson 2 on data management and all lessons on github
   - You can run chunks (green triangle) or all the chunks up to that chunk (left of the green triangle). You don't need to knit the whole thing every time.
   - Do not put all your R code into one big chunk. Split your code and provide text inbetween, explaining methods or results. If you find you are building a .Rmd file with just one big chunk of code, you actually want a script. 
-  - Do everything within your .Rmd file. Don't export data, change some numbers in Excel en load them back in. This is breaking the reproducible workflow. If you find a mistake in the raw data, fix it within the .Rmd and provide a comment explaining what you are doing.
+  - Do everything within your .Rmd file. Don't export data, change some numbers in Excel and load them back in. This is breaking the reproducible workflow. If you find a mistake in the raw data, fix it within the .Rmd and provide a comment explaining what you are doing.
   - That said, if you are working with very large datasets and loads of data wrangling steps, your .Rmd may get clunky and slow. You may consider using a script to do all the preparations on the data, save the data to a file, and load that file in your .Rmd. Do make sure that all these files are in the same project and the workflow is very clear!
   - `knitr::purl("name_of_your_file.Rmd", documentation = 2)` to turn your .Rmd into a script.
   - `knitr::spin("name_of_your_file.R", knit = FALSE, format = "Rmd")` to turn a script into an .Rmd. (Try these commands now)

@@ -138,7 +138,7 @@ output:
 
   A) What is a floating TOC?
   B) Use Lorem.Rmd again and add a TOC
-  C) Give the TOC a set depth (toc_depth) and see what happens if you change it. (for instance `toc_depth = 2` can be set just as you set `toc_float: true` earlier.)
+  C) Give the TOC a set depth (toc_depth) and see what happens if you change it. (for instance `toc_depth: 2` can be set just as you set `toc_float: true` earlier.)
   D) Also try `code_folding: hide` and `number_sections: FALSE`.
   E) Google how to put two authors on one .Rmd, with affiliations. Put your and your labpartner's names as authors.
   F) Apply a theme you like, but not "united".

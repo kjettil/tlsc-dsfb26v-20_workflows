@@ -6,10 +6,10 @@ params:
 ---
 # RMarkdown - parameters {#rmarkdownparams}
 ```{r, setuples, include=FALSE}
-les <- 8
+les <- 7
 ```
 
-
+Actually, we may go straight to R packages or Docker, depending on how the masterclasses went.
 
 ## Lesson Contents
 

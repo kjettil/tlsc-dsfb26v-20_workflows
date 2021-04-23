@@ -125,12 +125,16 @@ You can organize content using tabs by applying the .tabset class attribute to h
 
 You learned how to specify you own formatting with css last lesson. But RMarkdown has some [preset themes](https://www.datadreaming.org/post/r-markdown-theme-gallery/) you can use as well. And of course, you can download packages with more themes.
 
+
+
 ```
+---
 title: "Stuff"
 output:
   html_document:
     theme: united
 ```
+---
 
 <div class="question">
 
@@ -164,12 +168,15 @@ geometry: margin=1in
 
 Now word files are a different beast... You can export them easily enough:
 
+```
 ---
 title: "My weekly report"
 author: Joep
 date: March 22, 1999
 output: word_document
 ---
+```
+
 
 But now how do we edit the layout? RMarkdown can use a reference .docx file to get all the layout information from.
 

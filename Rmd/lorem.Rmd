@@ -1,7 +1,7 @@
 ---
 title: "lorem"
 output:
-  html_document:
+  html_document
 
 ---
 

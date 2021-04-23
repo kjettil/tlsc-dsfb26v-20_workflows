@@ -17,7 +17,7 @@ Relational data is
 
 
 ## Joining data
- - Joining operations are frequenly used to increase or reduce the amount of data you have
+ - Joining operations are frequently used to increase or reduce the amount of data you have
  - To join tables you need a shared variable called a `key`
  - You can have multiple `keys` to join on 
  - There are anumber of `join` verbs

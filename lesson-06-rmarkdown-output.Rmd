@@ -133,8 +133,8 @@ title: "Stuff"
 output:
   html_document:
     theme: united
-```
 ---
+```
 
 <div class="question">
 

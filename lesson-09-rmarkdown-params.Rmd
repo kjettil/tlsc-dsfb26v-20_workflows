@@ -4,9 +4,9 @@ params:
   month: February March April May June July August September October November December
   year: 2020
 ---
-# RMarkdown - parameters {#rmarkdownparams}
+# RMarkdown parameters & presentations {#rmarkdownparams}
 ```{r, setuples, include=FALSE}
-les <- 7
+les <- 9
 ```
 
 Actually, we may go straight to R packages or Docker, depending on how the masterclasses went.
@@ -88,7 +88,7 @@ The aim of this assignment is to create an RMardown file containing a paramteriz
 Here is where you can find the ECDC data: https://www.ecdc.europa.eu/en/covid-19/data
 
 The minimum requirements for the report is that next to the three parameters mentioned above, it should include at least one graph for the COVID-19 cases and one graph for the COVID-19 related deaths. 
-After writing the Rmd, you should be able to render it with paramters set to any value you like and you need to publish your rendered version in your portfolio.
+After writing the Rmd, you should be able to render it with parameters set to any value you like and you need to publish your rendered version in your portfolio.
 
 Here are some pointers to get your started:
  
@@ -103,8 +103,5 @@ Here are some pointers to get your started:
 </div>
 
 ## Rendering a report using the `rmarkdown::render()` function
-Now that we have a parameterized report written in Rmd, we can use this Rmd file a template to generate multiple static reports, where we vry the values for the parameters. I will illustrate this using the ocean floor example. Then you will have to complete the final assignment of this lesson in which we will apply these principles on the covid-19 report you created in the previous assignment.  
-
-
-## Portfolio assignment `r paste0(les, " ")` {-}
+Now that we have a parameterized report written in Rmd, we can use this Rmd file a template to generate multiple static reports, where wyou vary the values for the parameters. 
 

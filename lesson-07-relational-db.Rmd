@@ -5,52 +5,162 @@ les <- 7
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This one is obviously not yet finished. Work on your portfolio first :)
+## Introduction
+We spend quite some time now on learning how to visualise, analyse, and describe data. But where do we get the data? In DAUR2 we have seen how to [access data from the ](https://datascience.hu.nl/rsconnect/dsfb1-daur2-reader/lesson-4-entrez-combining-biological-datasets.html) and how to use [biomaRt to access ensembl and GEO(Gene Expression Omnibus)](https://datascience.hu.nl/rsconnect/dsfb1-daur2-reader/lesson-3-acquiring-biological-data-from-databases-biomart-geoquery.html). We used the  Bioconductor project, an open source software repository specifically for high-throughput biological assay data.
 
+We have practised a bit with combining data from different sources in DAUR2, and we will build on that experience in this lesson.
 
-## Resources and references
-Part of the materials in this chapter were reproduced in a an adapted form from [@r4ds]. DBeaver tutorials from youtube (see \@ref(resources)). Tutorials on using the package `{RPostgreSQL}` can also be found in \@ref(resources)
+### Relational data
+It is quite rare for a data analysis to use only one table of data. Suppose you investigate the effects of a certain drug on behaviour of rats in a maze. You may have blood levels of the drug at certain times, some automatic recording of movements, maybe you weighted them before every experiment, etc. You may enter some of these values in excel, but other values about the same rats will be stored in different formats or in different files, such as the video recordings or descriptive statistics of these video recordings (average time in maze, number of mistakes etc etc). Still, you will want to look at all this information combined. Collectively, these tables of data are called *relational data*.
 
+For example, we used the NYflights13 package before to look at relational data in DAUR1. It contains several tables with information, which are related. In the diagram below, which we borrowed from [r4ds by Hadley Wickham and Garrett Grolemund](https://r4ds.had.co.nz/relational-data.html), some of the variables in the different tables are depicted:
 
-## Intro
-Relational data is 
+![nyflights relations example](https://d33wubrfki0l68.cloudfront.net/245292d1ea724f6c3fd8a92063dcd7bfb9758d02/5751b/diagrams/relational-nycflights.png)
 
+### Remember `tidy` data?
 
-## Joining data
- - Joining operations are frequently used to increase or reduce the amount of data you have
- - To join tables you need a shared variable called a `key`
- - You can have multiple `keys` to join on 
- - There are anumber of `join` verbs
- - We start with the `join` verbs in dplyr
- - We end with join operations using SQL
- - We sometimes which to reshape the format of the data
- - In previous lessons we learned how to do this with the `{tidyr}`package. The functions that we need to recall are: `pivot_longer()`, `pivot_wider()`  
- - Understanding how joins work is essential for working with data stored in relational databases
+The nyflights tables are really nice and tidy. You have used them before to practice joining tibbles, and they are joined quite easily.
 
+Quite often, datasets need to be tidied up a little before being placed in a database. Or if you download data and want to join two datasets, you sometimes need to reshape it. Usually, having or transforming your data in the `tidy` shape is a good practice if you want to perform subsequent joins.
 
-## Reshaping your data
-In order to get your data in the right shape for joining we sometimes need to reshape it. Usually, having or transforming your data in the `tidy` shape is a good practice if you want to perform subsequent joins.
-
-## Remember `tidy` data
-
+Tidy data means:
  1. All variables in their own column
  1. All observations in their own row
  1. Every cell contains a single observations
  
-Below are two illustrations on how to transfer wide to long and vice versa. These examples can be used to understand the workings of the functions `pivot_longer()` and `pivot_wider()`
+You may have used `gather()` and `spread()` in DAUR1 to make tibbles tidy or untidy depending on your needs. They have been updated to be a bit more user friendly! The new functions are called `pivot_longer` and `pivot_wider`:
+
+Here is an example with pivot_longer() :
 ```{r}
-library(dataAnim)
-#devtools::install_github("chrk623/dataAnim")
+library(palmerpenguins)
+library(tidyverse)
+penguins_long <- penguins %>% 
+  tidyr::pivot_longer(contains("_"), # measurement cols
+                      names_to = c("part", "measure", "unit"), 
+                      names_sep = "_")
 
-data(datoy_wide)
-gather_anim(key = "Subject", value = "Score", col = c("English", "Maths"), data = datoy_wide)
+penguins_long
+```
 
-spread_anim(key = "Subject", value = "Score", data = datoy_long)
+and back to wide again:
+
+```{r}
+penguins_long %>% 
+  tidyr::pivot_wider(names_from = c("part", "measure", "unit"), # take these columns
+                     values_from = "value", 
+                     names_sep = "_") 
+```
+
+<div class="question">
+##### Exercise `r les` {-} 
+what is the first variable in the `penguins_long` dataframe printed above?
+
+</div>
+
+<details><summary>Click for the answer</summary>
+species (just to make sure you still know which parts of a tibble/dataframe are variables)
+</details>
+
+### Joining data in databases
+
+Joining operations are frequently used to increase or reduce the amount of data you have. To join tables you need a shared variable called a `key`. A `key` is a unique identifier for this. In simple cases, one single variable is sufficient to identify each measurement. Each car in the Netherlands is identified by its licence plate. And for example, our fictional rabbit ear length dataset could look like this:
+
+```{r rabbittable, fig.cap="Our fictional rabbit ear length dataset has a simple way of identifying each observation"}
+library(kableExtra)
+rabbitdata <- tibble(
+  rabbit_id = paste0("rabbit_",seq(1,(10*365)/21+1)),
+  time=seq(from=Sys.Date()-(10*365), to=Sys.Date(), by=21 ), 
+  oorlengte=runif((10*365)/21+1,min = 6, max = 10)
+)
+
+kbl(head(rabbitdata)) %>%
+  kable_styling(bootstrap_options = "striped", 
+                full_width = F, 
+                position = "left")
 
 ```
 
-## Relational data
+Let's check if they are indeed unique:
 
+```{r}
+rabbitdata %>% 
+  count(rabbit_id) %>% 
+  filter(n > 1)
+```
+
+<div class="question">
+##### Exercise `r les` {-} 
+Why does this give an error message? Is that a good thing?
+</div>
+
+<details><summary>Click for the answer</summary>
+There are no rabbit_id's that are used twice in the dataset. That is exactly what we wanted.
+</details>
+
+The `penguins` dataset in palmerpenguins does not have one key variable. There is no unique code to identify each penguin. If two separate penguins by some extreme coincidence have the exact same metrics (same year, same species, island, same bill length, same body mass, same everything), their rows would be identical:
+
+```{r, warning=FALSE, message=FALSE}
+penguins %>% head()
+```
+
+You cannot identify an observation by using a single variable ("this penguins bill length is 41.1").
+
+But if you combine several columns, you can identify a penguin (e.g. "this penguin has bill length 39.5, flipper length 186 and is female")
+
+Suppose you have some dataset and want to add a key value, the easiest way is just to number your measurements (I like my ID's to be in the first few columns, so I use ".before="
+
+```{r, warning=FALSE, message=FALSE}
+penguins %>% mutate(penguin_id = seq(1,nrow(penguins)),.before = species)
+```
+
+In this example we made a key value for each penguin. But when searching through a database, a key can also be a combination of attributes (columns). As long as this combination lets you uniquely identify records (rows) in the table.
+
+Keys can be used to join different tables. You have used this before in DAUR1.
+
+<div class="question">
+##### Exercise `r les` {-} 
+Let's refresh your memory. Take the `penguins` dataset. As we all know, Adelie penguins love peanut butter, Chinstrap penguins prefer cheese and Gentoo penguins do everything for chocolate.
+
+Here is a dataset describing food preference:
+```{r}
+food_preference <-
+  tibble(
+    penguin_species = c("Adelie", "Chinstrap", "Gentoo"),
+    favorite_food = c("peanut butter", "cheese", "chocolate")
+  )
+```
+
+Join this dataset with the `penguins` dataset in such a way that *favorite_food* becomes a variable within `penguins`.
+What is/are the **key** variables?
+
+</div>
+
+<details><summary>Click for the answer</summary>
+```{r, eval=F}
+left_join(
+  penguins, food_preference, by = c("species" = "penguin_species")
+)
+```
+
+The key variables are species and penguin_species.
+</details>
+
+<mark>## Perhaps some more tidyverse joining</mark>
+
+
+## SQL
+Now suppose you want to access some other, perhaps company specific database, which does not have it's neatly described bioconductor package. The lingua franca for retrieving information from relational databases is Structured Query Language - or SQL (and transform, manage and store this information, actually). You can pronounce this "S-Q-L" (in English) or "sequel", both are used. It was already developed in the 60's and has grown into a very accessible and popular language (with a few dialects..) to communicate with databases.
+
+Now watch [this GLITCH video on SQL](https://www.youtube.com/watch?v=27axs9dO7AE), because it is very clear and uses LEGO! (seriously, watch it, it is only 4 minutes.)
+
+### Relational data
+We have discussed relational databases in DAUR2, but what were they again? In a relational database, data is organised in -mostly- tables that can be linked to each other based on data that is available in both tables (remember the `left_join()` function?). These tables are called relations, and columns are not called variables but attributes or fields, and rows are called tuples or records. Luckily, SQL just calls them rows, columns and tables. But make note of the terms because you may encounter them when diving in databases.
+
+```{r examplefig,  echo=FALSE, out.width = "300px", fig.cap="Relational databases and their preference for not just naming rows 'rows'."}
+knitr::include_graphics(
+"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Relational_database_terms.svg/350px-Relational_database_terms.svg.png"
+)
+```
 
 
 
@@ -95,3 +205,6 @@ On the server th
 
 
 ## Portfolio assignment `r paste0(les, " ")` {-}
+
+## Resources and references
+Part of the materials in this chapter were reproduced in a an adapted form from [@r4ds]. DBeaver tutorials from youtube (see \@ref(resources)). Tutorials on using the package `{RPostgreSQL}` can also be found in \@ref(resources)

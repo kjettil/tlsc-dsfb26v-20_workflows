@@ -16,24 +16,39 @@ It is quite rare for a data analysis to use only one table of data. Suppose you 
 For example, we used the NYflights13 package before to look at relational data in DAUR1. It contains several tables with information, which are related. In the diagram below, which we borrowed from [r4ds by Hadley Wickham and Garrett Grolemund](https://r4ds.had.co.nz/relational-data.html), some of the variables in the different tables are depicted:
 
 ![nyflights relations example](https://d33wubrfki0l68.cloudfront.net/245292d1ea724f6c3fd8a92063dcd7bfb9758d02/5751b/diagrams/relational-nycflights.png)
+You can see that some variables in one table are present or translate to variables in other tables. Therefore, the tables can be combined. If you want more information on the plane used on a flight in the `flights` table, you can use it's tailnumber to look it up in the `planes` table (or actually, have R do it for you by **joining** the tables, don't look it up manually obviously...)
+
 
 ### Remember `tidy` data?
 
 The nyflights tables are really nice and tidy. You have used them before to practice joining tibbles, and they are joined quite easily.
 
-Quite often, datasets need to be tidied up a little before being placed in a database. Or if you download data and want to join two datasets, you sometimes need to reshape it. Usually, having or transforming your data in the `tidy` shape is a good practice if you want to perform subsequent joins.
+Quite often if you download or gather  data and want to join two datasets, you may need to reshape them. Usually, having or transforming your data in the `tidy` shape is a good practice if you want to perform subsequent joins.
 
+<div class="tip">
 Tidy data means:
+
  1. All variables in their own column
  1. All observations in their own row
  1. Every cell contains a single observations
- 
+
+</div>
+
 You may have used `gather()` and `spread()` in DAUR1 to make tibbles tidy or untidy depending on your needs. They have been updated to be a bit more user friendly! The new functions are called `pivot_longer` and `pivot_wider`:
 
 Here is an example with pivot_longer() :
-```{r}
+```{r, message=FALSE, error=FALSE}
 library(palmerpenguins)
 library(tidyverse)
+
+penguins %>% 
+  tidyr::pivot_longer(contains("_"), # measurement cols
+                      names_to = c("variable_name"), 
+                      values_to = "value")
+```
+
+Or perhaps (see the difference?):
+```{r, message=FALSE, error=FALSE}
 penguins_long <- penguins %>% 
   tidyr::pivot_longer(contains("_"), # measurement cols
                       names_to = c("part", "measure", "unit"), 
@@ -42,18 +57,9 @@ penguins_long <- penguins %>%
 penguins_long
 ```
 
-and back to wide again:
-
-```{r}
-penguins_long %>% 
-  tidyr::pivot_wider(names_from = c("part", "measure", "unit"), # take these columns
-                     values_from = "value", 
-                     names_sep = "_") 
-```
-
 <div class="question">
 ##### Exercise `r les` {-} 
-what is the first variable in the `penguins_long` dataframe printed above?
+What is the first variable in the `penguins_long` dataframe printed above?
 
 </div>
 
@@ -61,11 +67,60 @@ what is the first variable in the `penguins_long` dataframe printed above?
 species (just to make sure you still know which parts of a tibble/dataframe are variables)
 </details>
 
+</br>
+
+Let's get it back to wide again:
+
+```{r, message=FALSE, error=FALSE}
+penguins_long %>% 
+  tidyr::pivot_wider(names_from = c("part", "measure", "unit"), # pivot these columns
+                     values_from = "value", # take the values from here
+                     names_sep = "_") # combine col names using an underscore
+```
+
+
+Oh, we're in trouble. Read the error message. 
+
+<div class="question">
+##### Exercise `r les` {-} 
+What happened? Can you think of a way we could have **prevented** this error a couple of steps before? Try it!
+
+</div>
+
+<details><summary>Click for the answer</summary>
+
+R isn't sure where to put the data anymore, as there are duplicates. Every measurement was not marked by some unique code and there are (for instance) 7 male Adelie penguin measured on Torgersen in 2007, and 5 female Adelie penguin measured on Biscoe in 2007. Now what?
+
+We need to be able to identify each measurement from the other ones based on something else. 
+
+For instance, just number all the measurements in the first place:
+(note that this is just an example of a solution, anything you came up with that works, works!)
+
+```{r}
+# give each measured penguin a number
+penguins_with_id <- penguins %>%  mutate(id=seq(nrow(.)))
+
+# make the data long again
+penguins_long_ided <- penguins_with_id %>% 
+      tidyr::pivot_longer(contains("_"), # measurement cols
+                      names_to = c("part", "measure", "unit"), 
+                      names_sep = "_")
+
+# and wide again
+penguins_long_ided %>% 
+    tidyr::pivot_wider(names_from = c("part", "measure", "unit"), 
+                     values_from = "value", 
+                     names_sep = "_") 
+
+```
+</details>
+
+
 ### Joining data in databases
 
-Joining operations are frequently used to increase or reduce the amount of data you have. To join tables you need a shared variable called a `key`. A `key` is a unique identifier for this. In simple cases, one single variable is sufficient to identify each measurement. Each car in the Netherlands is identified by its licence plate. And for example, our fictional rabbit ear length dataset could look like this:
+Joining operations are frequently used to increase or reduce the amount of data you have. To join tables you need some shared information to uniquely identify each observation: a `key`. In simple cases, one single variable is sufficient to identify each measurement. Each car in the Netherlands is identified by its licence plate. And for example, our fictional rabbit ear length dataset could look like this, with a key variable in the first column:
 
-```{r rabbittable, fig.cap="Our fictional rabbit ear length dataset has a simple way of identifying each observation"}
+```{r rabbittable, message=FALSE, error=FALSE, echo=FALSE}
 library(kableExtra)
 rabbitdata <- tibble(
   rabbit_id = paste0("rabbit_",seq(1,(10*365)/21+1)),
@@ -73,7 +128,7 @@ rabbitdata <- tibble(
   oorlengte=runif((10*365)/21+1,min = 6, max = 10)
 )
 
-kbl(head(rabbitdata)) %>%
+kbl(head(rabbitdata),caption = "Rabbit ear length data") %>%
   kable_styling(bootstrap_options = "striped", 
                 full_width = F, 
                 position = "left")
@@ -90,14 +145,15 @@ rabbitdata %>%
 
 <div class="question">
 ##### Exercise `r les` {-} 
-Why does this give an error message? Is that a good thing?
+Read the output. Why does this give an empty tibble? Is that a good thing?
 </div>
 
 <details><summary>Click for the answer</summary>
 There are no rabbit_id's that are used twice in the dataset. That is exactly what we wanted.
 </details>
+</br>
 
-The `penguins` dataset in palmerpenguins does not have one key variable. There is no unique code to identify each penguin. If two separate penguins by some extreme coincidence have the exact same metrics (same year, same species, island, same bill length, same body mass, same everything), their rows would be identical:
+As you have seen in the previous paragraph, the `penguins` dataset in palmerpenguins does not have one key variable. There is no unique code to identify each measured penguin. If two separate penguins by some extreme coincidence have the exact same metrics (same year, same species, island, same bill length, same body mass, same everything), their rows would be identical.
 
 ```{r, warning=FALSE, message=FALSE}
 penguins %>% head()
@@ -105,12 +161,12 @@ penguins %>% head()
 
 You cannot identify an observation by using a single variable ("this penguins bill length is 41.1").
 
-But if you combine several columns, you can identify a penguin (e.g. "this penguin has bill length 39.5, flipper length 186 and is female")
+But if you combine several columns, you can identify a penguin (e.g. "this penguin has bill length 39.5, flipper length 186 and is female"). As you have seen, not just any combination of variables will work (species + island + sex + year was not enough: "this male Adelie penguin was measured on Torgersen in 2007" will yield you 7 possible penguins.).
 
-Suppose you have some dataset and want to add a key value, the easiest way is just to number your measurements (I like my ID's to be in the first few columns, so I use ".before="
+Suppose you have some dataset and want to add a key value, the easiest way is just to number your measurements as we did before in the example solution to one of the previous questions (I like my ID's to be in the first few columns, so I use ".before=") :
 
 ```{r, warning=FALSE, message=FALSE}
-penguins %>% mutate(penguin_id = seq(1,nrow(penguins)),.before = species)
+penguins %>% mutate(penguin_id = row_number(),.before = species)
 ```
 
 In this example we made a key value for each penguin. But when searching through a database, a key can also be a combination of attributes (columns). As long as this combination lets you uniquely identify records (rows) in the table.
@@ -119,7 +175,9 @@ Keys can be used to join different tables. You have used this before in DAUR1.
 
 <div class="question">
 ##### Exercise `r les` {-} 
-Let's refresh your memory. Take the `penguins` dataset. As we all know, Adelie penguins love peanut butter, Chinstrap penguins prefer cheese and Gentoo penguins do everything for chocolate.
+Let's refresh your memory. Take the `penguins` dataset. 
+
+As we all know, Adelie penguins love peanut butter, Chinstrap penguins prefer cheese and Gentoo penguins do everything for chocolate.
 
 Here is a dataset describing food preference:
 ```{r}
@@ -144,17 +202,31 @@ left_join(
 
 The key variables are species and penguin_species.
 </details>
+</br>
 
-<mark>## Perhaps some more tidyverse joining</mark>
+<div class="question">
+##### Exercise `r les` {-} 
+Now make a new tibble containing only the information on penguin species, sex and bill length measured in 2009 using `filter` and `select`.
+</div>
+
+<details><summary>Click for the answer</summary>
+
+You should really revisit [DAUR1, this lesson here in the link](https://datascience.hu.nl/rsconnect/dsfb1-daur1-reader/lesson-5-data-wrangling.html) if you forgot how to do this. As you filter on year, but year is not part of the selection, filter first, select second.
+</details>
+</br>
+
+<mark>## Perhaps some more tidyverse joining but only if we have time left</mark>
+
+
 
 
 ## SQL
-Now suppose you want to access some other, perhaps company specific database, which does not have it's neatly described bioconductor package. The lingua franca for retrieving information from relational databases is Structured Query Language - or SQL (and transform, manage and store this information, actually). You can pronounce this "S-Q-L" (in English) or "sequel", both are used. It was already developed in the 60's and has grown into a very accessible and popular language (with a few dialects..) to communicate with databases.
+Now suppose you want to access some other, perhaps company specific database, which does not have it's neatly described bioconductor package or is included in an R package. The lingua franca for retrieving (and transform, manage and store) information from relational databases is Structured Query Language - or SQL . You can pronounce this "S-Q-L" (in English) or "sequel", both are used. It was already developed in the 60's and has grown into a very accessible and popular language (with a few dialects..) to communicate with databases.
 
-Now watch [this GLITCH video on SQL](https://www.youtube.com/watch?v=27axs9dO7AE), because it is very clear and uses LEGO! (seriously, watch it, it is only 4 minutes.)
+Watch [this GLITCH video on SQL](https://www.youtube.com/watch?v=27axs9dO7AE), because it is very clear and uses LEGO! (seriously, watch it, it is only 4 minutes.)
 
 ### Relational data
-We have discussed relational databases in DAUR2, but what were they again? In a relational database, data is organised in -mostly- tables that can be linked to each other based on data that is available in both tables (remember the `left_join()` function?). These tables are called relations, and columns are not called variables but attributes or fields, and rows are called tuples or records. Luckily, SQL just calls them rows, columns and tables. But make note of the terms because you may encounter them when diving in databases.
+We have discussed relational databases in DAUR2, but what were they again? In a relational database, data is organised in -mostly- tables that can be linked to each other based on data that is available in both tables (remember the `left_join()` function?). These tables are called **relations**, and columns are not called variables but **attributes or fields**, and rows are called **tuples or records**. Luckily, SQL just calls them rows, columns and tables. But make note of the terms because you may encounter them when diving in databases.
 
 ```{r examplefig,  echo=FALSE, out.width = "300px", fig.cap="Relational databases and their preference for not just naming rows 'rows'."}
 knitr::include_graphics(

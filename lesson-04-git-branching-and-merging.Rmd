@@ -1,8 +1,7 @@
 # Agile collaboration {#gitbranchmerge}
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-
+knitr::opts_chunk$set(echo = FALSE, class.source="Rchunk", class.output="Rout")
 les <- 4
 ```
 

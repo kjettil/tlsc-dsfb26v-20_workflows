@@ -56,6 +56,10 @@ urls <- readr::read_csv(
 )
 ```
 
+```{r include = FALSE, eval = TRUE}
+# set CSS for objects
+knitr::opts_chunk$set(class.source="Rchunk", class.output="Rout")
+```
 
 ```{r, include=FALSE, warning=FALSE, error=FALSE, message=FALSE}
 library(tidyverse)

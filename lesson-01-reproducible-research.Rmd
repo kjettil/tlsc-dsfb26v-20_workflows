@@ -1,6 +1,7 @@
 # Reproducible Research {#represintro}
 ```{r setuples, include=FALSE}
 les <- 1
+knitr::opts_chunk$set(echo = TRUE, class.source="Rchunk", class.output="Rout")
 ```
 
 This lesson is about the 'movement' in science called 'Reproducible Research'. It explains the principles of Open Science and connected terms such as Open Access, Open Source and Reproducible Research, Open Peer Review and Open Data. You will practice with workflows that enable working reproducible.

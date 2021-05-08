@@ -1,12 +1,7 @@
----
-params:
-  geo_id: NL BE
-  month: February March April May June July August September October November December
-  year: 2020
----
-# RMarkdown parameters & presentations {#rmarkdownparams}
+# RMarkdown parameters & presentations {#rpackages}
 ```{r, setuples, include=FALSE}
 les <- 8
+knitr::opts_chunk$set(echo = TRUE, class.source="Rchunk", class.output="Rout")
 ```
 
 Actually, we may go straight to R packages or Docker, depending on how the masterclasses went.

@@ -13,7 +13,7 @@ h3, .h3 {
 
 h4, .h4 {
  color:#35699C;
- font-size: 80%;
+ font-size: 60%;
  font-style: italic;
 }
 
@@ -22,6 +22,10 @@ pre {
     border-radius: 0px;
  }
 
+p.caption {
+  font-size: 85%;
+  font-style: italic;
+}
 
 /* ---------- Links ----------------- */
 .book .book-body .page-wrapper .page-inner section.normal a {

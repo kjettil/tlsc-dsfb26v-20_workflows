@@ -2,61 +2,449 @@
 
 ```{r setup, include=FALSE}
 les <- 7
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, class.source="Rchunk", class.output="Rout")
 ```
 
-This one is obviously not yet finished. Work on your portfolio first :)
+## Relational data in tidyverse
+We spend quite some time now on learning how to visualise, analyse, and describe data. But where do we get the data? In DAUR2 we have seen how to [access data from the ](https://datascience.hu.nl/rsconnect/dsfb1-daur2-reader/lesson-4-entrez-combining-biological-datasets.html) and how to use [biomaRt to access ensembl and GEO(Gene Expression Omnibus)](https://datascience.hu.nl/rsconnect/dsfb1-daur2-reader/lesson-3-acquiring-biological-data-from-databases-biomart-geoquery.html). We used the  Bioconductor project, an open source software repository specifically for high-throughput biological assay data.
+
+We have practised a bit with combining data from different sources in DAUR2, and we will build on that experience in this lesson.
+
+### Relational data
+It is quite rare for a data analysis to use only one table of data. Suppose you investigate the effects of a certain drug on behaviour of rats in a maze. You may have blood levels of the drug at certain times, some automatic recording of movements, maybe you weighted them before every experiment, etc. You may enter some of these values in excel, but other values about the same rats will be stored in different formats or in different files, such as the video recordings or descriptive statistics of these video recordings (average time in maze, number of mistakes etc etc). Still, you will want to look at all this information combined. Collectively, these tables of data are called *relational data*.
+
+For example, we used the NYflights13 package before to look at relational data in DAUR1. It contains several tables with information, which are related. In the diagram below, which we borrowed from [r4ds by Hadley Wickham and Garrett Grolemund](https://r4ds.had.co.nz/relational-data.html), some of the variables in the different tables are depicted:
+
+![nyflights relations example](https://d33wubrfki0l68.cloudfront.net/245292d1ea724f6c3fd8a92063dcd7bfb9758d02/5751b/diagrams/relational-nycflights.png)
+You can see that some variables in one table are present or translate to variables in other tables. Therefore, the tables can be combined. If you want more information on the plane used on a flight in the `flights` table, you can use it's tailnumber to look it up in the `planes` table (or actually, have R do it for you by **joining** the tables, don't look it up manually obviously...)
 
 
-## Resources and references
-Part of the materials in this chapter were reproduced in a an adapted form from [@r4ds]. DBeaver tutorials from youtube (see \@ref(resources)). Tutorials on using the package `{RPostgreSQL}` can also be found in \@ref(resources)
+### Remember `tidy` data?
 
+The nyflights tables are really nice and tidy. You have used them before to practice joining tibbles, and they are joined quite easily.
 
-## Intro
-Relational data is 
+Quite often if you download or gather  data and want to join two datasets, you may need to reshape them. Usually, having or transforming your data in the `tidy` shape is a good practice if you want to perform subsequent joins.
 
-
-## Joining data
- - Joining operations are frequently used to increase or reduce the amount of data you have
- - To join tables you need a shared variable called a `key`
- - You can have multiple `keys` to join on 
- - There are anumber of `join` verbs
- - We start with the `join` verbs in dplyr
- - We end with join operations using SQL
- - We sometimes which to reshape the format of the data
- - In previous lessons we learned how to do this with the `{tidyr}`package. The functions that we need to recall are: `pivot_longer()`, `pivot_wider()`  
- - Understanding how joins work is essential for working with data stored in relational databases
-
-
-## Reshaping your data
-In order to get your data in the right shape for joining we sometimes need to reshape it. Usually, having or transforming your data in the `tidy` shape is a good practice if you want to perform subsequent joins.
-
-## Remember `tidy` data
+<div class="tip">
+Tidy data means:
 
  1. All variables in their own column
  1. All observations in their own row
  1. Every cell contains a single observations
- 
-Below are two illustrations on how to transfer wide to long and vice versa. These examples can be used to understand the workings of the functions `pivot_longer()` and `pivot_wider()`
+
+</div>
+
+You may have used `gather()` and `spread()` in DAUR1 to make tibbles tidy or untidy depending on your needs. They have been updated to be a bit more user friendly! The new functions are called `pivot_longer` and `pivot_wider`:
+
+Here is an example with pivot_longer() :
+```{r, message=FALSE, error=FALSE}
+library(palmerpenguins)
+library(tidyverse)
+
+penguins %>% 
+  tidyr::pivot_longer(contains("_"), # measurement cols
+                      names_to = c("variable_name"), 
+                      values_to = "value")
+```
+
+Or perhaps (see the difference?):
+```{r, message=FALSE, error=FALSE}
+penguins_long <- penguins %>% 
+  tidyr::pivot_longer(contains("_"), # measurement cols
+                      names_to = c("part", "measure", "unit"), 
+                      names_sep = "_")
+
+penguins_long
+```
+
+<div class="question">
+##### Exercise `r les` {-} 
+What is the first variable in the `penguins_long` dataframe printed above?
+
+</div>
+
+<details><summary>Click for the answer</summary>
+species (just to make sure you still know which parts of a tibble/dataframe are variables)
+</details>
+
+</br>
+
+Let's get it back to wide again:
+
+```{r, message=FALSE, error=FALSE}
+penguins_long %>% 
+  tidyr::pivot_wider(names_from = c("part", "measure", "unit"), # pivot these columns
+                     values_from = "value", # take the values from here
+                     names_sep = "_") # combine col names using an underscore
+```
+
+
+Oh, we're in trouble. Read the warning message. 
+
+<div class="question">
+##### Exercise `r les` {-} 
+What happened? Can you think of a way we could have **prevented** this error a couple of steps before? Try it!
+
+</div>
+
+<details><summary>Click for the answer</summary>
+
+R isn't sure where to put the data anymore, as there are duplicates. Every measurement was not marked by some unique code and there are (for instance) 7 male Adelie penguin measured on Torgersen in 2007, and 5 female Adelie penguin measured on Biscoe in 2007. Now what?
+
+We need to be able to identify each measurement from the other ones based on something else. 
+
+For instance, just number all the measurements in the first place:
+(note that this is just an example of a solution, anything you came up with that works, works!)
+
 ```{r}
-library(dataAnim)
-#devtools::install_github("chrk623/dataAnim")
+# give each measured penguin a number
+penguins_with_id <- penguins %>%  mutate(id=seq(nrow(.)))
 
-data(datoy_wide)
-gather_anim(key = "Subject", value = "Score", col = c("English", "Maths"), data = datoy_wide)
+# make the data long again
+penguins_long_ided <- penguins_with_id %>% 
+      tidyr::pivot_longer(contains("_"), # measurement cols
+                      names_to = c("part", "measure", "unit"), 
+                      names_sep = "_")
 
-spread_anim(key = "Subject", value = "Score", data = datoy_long)
+# and wide again
+penguins_long_ided %>% 
+    tidyr::pivot_wider(names_from = c("part", "measure", "unit"), 
+                     values_from = "value", 
+                     names_sep = "_") 
+
+```
+</details>
+
+
+### Joining data in databases
+
+Joining operations are frequently used to increase or reduce the amount of data you have. To join tables you need some shared information to uniquely identify each observation: a `key`. In simple cases, one single variable is sufficient to identify each measurement (*simple key*). Each car in the Netherlands is identified by its license plate. And for example, our fictional rabbit ear length dataset could look like this, with a key variable in the first column:
+
+```{r rabbittable, message=FALSE, error=FALSE, echo=FALSE}
+library(kableExtra)
+rabbitdata <- tibble(
+  rabbit_id = paste0("rabbit_",seq(1,(10*365)/21+1)),
+  time=seq(from=Sys.Date()-(10*365), to=Sys.Date(), by=21 ), 
+  oorlengte=runif((10*365)/21+1,min = 6, max = 10)
+)
+
+kbl(head(rabbitdata),caption = "Rabbit ear length data") %>%
+  kable_styling(bootstrap_options = "striped", 
+                full_width = F, 
+                position = "left")
 
 ```
 
-## Relational data
+Let's check if they are indeed unique:
 
+```{r}
+rabbitdata %>% 
+  count(rabbit_id) %>% 
+  filter(n > 1)
+```
 
+<div class="question">
+##### Exercise `r les` {-} 
+Read the output. Why does this give an empty tibble? Is that a good thing?
+</div>
+
+<details><summary>Click for the answer</summary>
+There are no rabbit_id's that are used more than once in the dataset. That is exactly what we wanted.
+</details>
+</br>
+
+As you have seen in the previous paragraph, the `penguins` dataset in palmerpenguins does not have one key variable. There is no unique code to identify each measured penguin. If two separate penguins by some extreme coincidence have the exact same metrics (same year, same species, island, same bill length, same body mass, same everything), their rows would be identical.
+
+```{r, warning=FALSE, message=FALSE}
+penguins %>% head()
+```
+
+You cannot identify an observation by using a single variable ("this penguins bill length is 41.1").
+
+But if you combine several columns, you can identify a penguin (*compound key* e.g. "this penguin has bill length 39.5, flipper length 186 and is female"). As you have seen, not just any combination of variables will work (species + island + sex + year was not enough: "this male Adelie penguin was measured on Torgersen in 2007" will yield you 7 possible penguins.).
+
+Suppose you have some dataset and want to add a simple key, the easiest way is just to number your measurements as we did before in the example solution to one of the previous questions (I like my ID's to be in the first few columns, so I use ".before=") :
+
+```{r, warning=FALSE, message=FALSE}
+penguins %>% mutate(penguin_id = row_number(),.before = species)
+```
+
+So to recap: In this example we made a key variable with a unique value for each penguin: a simple key. But when searching through a database, a key can also be a combination of attributes (columns): a compound key. As long as this combination lets you uniquely identify records (rows) in the table.
+
+Keys can be used to join different tables. You have used this before in DAUR1.
+
+<div class="question">
+##### Exercise `r les` {-} 
+Let's refresh your memory. Take the `penguins` dataset. 
+
+As we all know, Adelie penguins love peanut butter, Chinstrap penguins prefer cheese and Gentoo penguins do everything for chocolate.
+
+Here is a table describing food preference:
+```{r}
+food_preference <-
+  tibble(
+    penguin_species = c("Adelie", "Chinstrap", "Gentoo"),
+    favorite_food = c("peanut butter", "cheese", "chocolate")
+  )
+```
+
+Join this table with the `penguins` table in such a way that *favorite_food* becomes a variable within `penguins`.
+What is/are the **key** variables?
+
+</div>
+
+<details><summary>Click for the answer</summary>
+```{r, eval=F}
+left_join(
+  penguins, food_preference, by = c("species" = "penguin_species")
+)
+```
+
+The key variables are species and penguin_species. 'species' here can be called the "primary key" as it is the key variable in the table we are working with primarily. The counterpart key variable in another table (in this case 'penguin_species') is called the "foreign key".
+</details>
+</br>
+
+<div class="question">
+##### Exercise `r les` {-} 
+Now make a new tibble containing only the information on penguin species, sex and bill length measured in 2009 using `filter` and `select`.
+</div>
+
+<details><summary>Click for the answer</summary>
+
+You should really revisit [DAUR1, this lesson here in the link](https://datascience.hu.nl/rsconnect/dsfb1-daur1-reader/lesson-5-data-wrangling.html) if you forgot how to do this. 
+
+Note: as you filter on year, but year is not part of the selection, filter first, select second.
+</details>
+</br>
+
+## Databases in the wild
+We spent some time in R to get familiar with the act of joining, filtering, playing with data again. And we introduced *keys*: "primary key" in the table we are working with primarily, and the counterpart key variable in another table: the "foreign key".
+
+Now suppose you want to access some other, perhaps company specific database, which does not have its neatly described bioconductor package or is included in an R package. The lingua franca for retrieving (and transform, manage and store) information from relational databases is Structured Query Language - or SQL . You can pronounce this "S-Q-L" (in English) or "sequel", both are used. It was already developed in the 60's and has grown into a very accessible and popular language (with a few dialects..) to communicate with databases. 
+
+Watch [this GLITCH video on SQL](https://www.youtube.com/watch?v=27axs9dO7AE), because it is very clear and uses LEGO! (seriously, watch it, it is only 4 minutes.)
+
+### Relational databases
+We have discussed relational databases in DAUR2, but what were they again? In a relational database, data is organised in -mostly- tables that can be linked to each other based on data that is available in both tables (remember the `left_join()` function?). These tables are called **relations**, and columns are not called variables but **attributes or fields**, and rows are called **tuples or records**. Luckily, SQL just calls them rows, columns and tables. But make note of the terms because you may encounter them when diving in databases.
+
+```{r examplefig,  echo=FALSE, out.width = "300px", fig.cap="Relational databases and their preference for not just naming rows 'rows'."}
+knitr::include_graphics(
+"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Relational_database_terms.svg/350px-Relational_database_terms.svg.png"
+)
+```
+
+### database management stystems
+
+These relational databases can be stored on your computer or on a server you have direct access to, and managed in different ways. One popular system is PostgreSQL (often pronounced without the Q and L), used for instance Instagram, Spotify, Reddit and Netflix. It is not (yet) the most used system, according to a Stack Overflow Developer Survey [(see eversql.com here)](https://www.eversql.com/most-popular-databases-in-2020/), that would be MySQL. But as PostgreSQL is growing very fast, and actually works about the same as MySQL but with some additional possibilities, we will focus on PostgresQL. PostGreSQL is one possible way to store, retrieve and update (relational) data in a database.
+
+We will discuss how to create databases, create or join tables within databases, how to insert records, delete or update them. Also we will do some data wrangling with SQL.
+
+## Introduction to DBeaver and SQL
+In order to work with a database, we will need access to one. You can actually use SQL in the terminal, but we will use software instead: DBeaver. One of the prerequisites for this course was installing DBeaver. You may have clicked around in DBeaver a bit, which would be great. We will walk you through some steps, you are required to do them too. Not just read about it.
+
+Upon installation, DBeaver will ask you if you want a sample database. You can click ok, or if you didn't, click help --> Create Sample Database. It will show up on the left part of the screen. This is not MySQL or PostgreSQL, but a SQlite database, but it will work just fine to have a look around.
+
+```{r,  echo=FALSE, out.width = "500px", fig.cap="Starting DBeaver for the first time"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "DBeaver_start.PNG"
+  )
+)
+```
+
+Double click on the sample database, and agree to download some drivers.
+
+Now below the sample database item are several contents: tables, views, indexes etc. 
+
+Open **Tables** and double click on **album**. This in one of the available tables in de database. You are presented with some meta data (columns, keys, foreign keys etc). 
+
+<div class="question">
+##### Exercise `r les` {-} 
+To which table is the foreign key in this table linking?
+</div>
+
+<details><summary>Click for the answer</summary>
+
+Artist
+
+</details>
+</br>
+
+To see the actual data, you can click on the data tab:
+
+```{r,  echo=FALSE, out.width = "500px", fig.cap="The Data tab can be a bit hard to find.."}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "InkedDBeaver_albums2.jpg"
+  )
+)
+```
+
+There indeed seems to be a direct link to the Artist table. Double click the Artist table and have a look at that data. 
+
+<div class="question">
+##### Exercise `r les` {-} 
+
+Which artist has ArtistId 168?
+
+</div>
+
+<details><summary>Click for the answer</summary>
+
+Youssou N'Dour[^teasenote]
+
+[^teasenote]: I absolutely chose this example artist to tease the other teachers, as they will probably have a certain song in their heads for the rest of the day.
+
+</details>
+</br>
+
+This worked fine, but you had to scroll all the way to number 168 manually. As you know by now, we are notoriously lazy when it comes to having to click or scroll to access data. 
+
+When using R, the data tables could for instance have been stored in a package called `sample_database`. You would load the database you're looking for, and ask for a specific datapoint: within table **Artist** on the row where the variable **ArtistId** is 168, what is the value of variable **Name** :
+
+(Hypothetical example code, don't run this, as there is obviously not really a package "sample_database":)
+```{r, eval=F}
+library(sample_database)
+Artist %>% dplyr::filter(ArtistId==168) %>% select(Name)
+
+```
+
+So in pseudocode ([what?](https://simple.wikipedia.org/wiki/Pseudocode))
+
+```
+load database
+table %>% filter row %>% select column
+```
+
+In SQL this looks like (this is actual SQL):
+
+```
+SELECT Name FROM Artist
+WHERE ArtistId=168;
+```
+
+Or in pseudocode:
+
+```
+SELECT value_from_column FROM database
+WHERE filter_on_rows;
+```
+
+Some database systems require a semicolon at the end of each SQL statement, so we will do this. SQL doesn't mind blank lines or spaces, and is not case sensitive though. As you can see, the order of the code is also different from tidyverse piping. 
+
+**Select -> table -> filter** instead of **table -> filter -> select**
+
+In DBeaver, click on **SQL Editor** in the top menu (next to File, Edit, etc) --> New SQL Script. Copy-paste the SQL code above in the SQL script (the actual SQL, not the pseudocode), select it and press ctrl+enter. Does it work?
+
+<div class="question">
+##### Exercise `r les` {-} 
+
+Alter the code a bit to see the **Albums** in the database by the artist with **ArtistId** 90.
+
+</div>
+
+<details><summary>Click for the answer</summary>
+
+```
+SELECT Title FROM Album
+WHERE ArtistId=90;
+```
+
+</details>
+</br>
 
 
 ## Creating a PostgreSQL database in DBeaver
-In order 
 
+Now that you have played around in DBeaver for a bit, let's make our own database. If you make a database, it needs to be stored somewhere. One of the more familiar places to store databases is with cloud providers, such as Google Cloud, Amazon and Azure. But actually, just any accessible space is fine. You can store databases on your own computer, or on any server you have access to. Setting up a database on your own computer is free and easy, so this is what we will use in this lesson.
+
+First, download PostgreSQL [here](https://www.postgresql.org/download/).
+
+We will set up our own local PostgreSQL server, and it will only be accessible from the same computer it is installed on. By default, PostgreSQL database server remote access is disabled for security reasons and we will definitely keep it that way.
+
+Run the installer with all the default settings. Remember your password.
+
+Go back to DBeaver. Click on the icon for "new database connection" just below "file" 
+
+
+
+```{r,  echo=FALSE, out.width = "200px", fig.cap="New connection right there"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "DBeaver_new.PNG"
+  )
+)
+```
+
+and select PostgreSQL, the icon with the elephant. Click next.
+```{r,  echo=FALSE, out.width = "400px", fig.cap="Choose PostgreSQL"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "DBeaver_new2.PNG"
+  )
+)
+```
+
+Download drivers if DBeaver wants you to.
+
+Now leave all the defaults, but fill in your password:
+```{r,  echo=FALSE, out.width = "400px", fig.cap="Leave all the defaults here."}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "DBeaver_new3.PNG"
+  )
+)
+```
+
+In de PostgreSQL tab, click "show all databases" and click finish:
+```{r,  echo=FALSE, out.width = "400px", fig.cap="Click on Show all databases"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "DBeaver_new4.PNG"
+  )
+)
+```
+
+
+
+A new connection will have appeared below your DBeaver Sample Database connection, called *postgres*. This is the default administrative connection database.
+
+Let's make a new database.
+
+Open a SQL console (DBeaver, like Rstudio differentiates between scripts (code you want to save) and console (other code)). Type and run:
+
+```
+CREATE DATABASE myfirstdb;
+```
+```{r,  echo=FALSE, out.width = "700px", fig.cap="Just after creating a new database"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "DBeaver_createdb.PNG"
+  )
+)
+```
+
+In the lower right quadrant of the screen, DBeaver tells you that it made a database. However, it doesn't yet show up in the left, below **postgres**.
+
+We can have it show up by refreshing the list on the left: select the *connection* in the list on the left (postgres - localhost:5432) and pres F5 (or right click --> refresh).
+
+
+
+
+
+
+## SQL in DBeaver
+
+To keep things clear, we will use ALL CAPS for all SQL functions, as is quite commonly done with SQL (actually, the language is not case sensitive, it is just common practice).
+
+## exporteren van data uit DBeaver
 
 
 
@@ -95,3 +483,6 @@ On the server th
 
 
 ## Portfolio assignment `r paste0(les, " ")` {-}
+
+## Resources and references
+Part of the materials in this chapter were reproduced in a an adapted form from [@r4ds]. DBeaver tutorials from youtube (see \@ref(resources)). Tutorials on using the package `{RPostgreSQL}` can also be found in \@ref(resources)

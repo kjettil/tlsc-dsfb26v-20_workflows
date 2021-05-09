@@ -21,6 +21,8 @@ You can see that some variables in one table are present or translate to variabl
 
 ### Remember `tidy` data?
 
+We will start this lesson with a rehearsal of things you did in DAUR1 and 2.
+
 The nyflights tables are really nice and tidy. You have used them before to practice joining tibbles, and they are joined quite easily.
 
 Quite often if you download or gather  data and want to join two datasets, you may need to reshape them. Usually, having or transforming your data in the `tidy` shape is a good practice if you want to perform subsequent joins.
@@ -242,9 +244,11 @@ We will discuss how to create databases, create or join tables within databases,
 ## Introduction to DBeaver and SQL
 In order to work with a database, we will need access to one. You can actually use SQL in the terminal, but we will use software instead: DBeaver. One of the prerequisites for this course was installing DBeaver. You may have clicked around in DBeaver a bit, which would be great. We will walk you through some steps, you are required to do them too. Not just read about it.
 
-Upon installation, DBeaver will ask you if you want a sample database. You can click ok, or if you didn't, click help --> Create Sample Database. It will show up on the left part of the screen. This is not MySQL or PostgreSQL, but a SQlite database, but it will work just fine to have a look around.
+Open DBeaver.
 
-```{r,  echo=FALSE, out.width = "500px", fig.cap="Starting DBeaver for the first time"}
+Upon installation, DBeaver will have asked you if you wanted a sample database. If you didn't, click help --> Create Sample Database. It will show up on the left part of the screen. This is not MySQL or PostgreSQL, but a SQlite database, but it will work just fine to have a look around.
+
+```{r,  echo=FALSE, out.width = "700px", fig.cap="Starting DBeaver for the first time"}
 knitr::include_graphics(
   here::here(
     "images",
@@ -257,7 +261,7 @@ Double click on the sample database, and agree to download some drivers.
 
 Now below the sample database item are several contents: tables, views, indexes etc. 
 
-Open **Tables** and double click on **album**. This in one of the available tables in de database. You are presented with some meta data (columns, keys, foreign keys etc). 
+Open **Tables** and double click on **Album**. This in one of the available tables in de database. You are presented with some meta data (columns, keys, foreign keys etc). 
 
 <div class="question">
 ##### Exercise `r les` {-} 
@@ -273,7 +277,7 @@ Artist
 
 To see the actual data, you can click on the data tab:
 
-```{r,  echo=FALSE, out.width = "500px", fig.cap="The Data tab can be a bit hard to find.."}
+```{r,  echo=FALSE, out.width = "700px", fig.cap="The Data tab can be a bit hard to find.."}
 knitr::include_graphics(
   here::here(
     "images",
@@ -364,11 +368,11 @@ First, download PostgreSQL [here](https://www.postgresql.org/download/).
 
 We will set up our own local PostgreSQL server, and it will only be accessible from the same computer it is installed on. By default, PostgreSQL database server remote access is disabled for security reasons and we will definitely keep it that way.
 
-Run the installer with all the default settings. Remember your password.
+Run the installer with all the default settings. Remember your password. {#installposgreSQL}
+
+(May we recommend using a [password manager](https://www.pcmag.com/picks/the-best-password-managers) here if you are not already using one?)
 
 Go back to DBeaver. Click on the icon for "new database connection" just below "file" 
-
-
 
 ```{r,  echo=FALSE, out.width = "200px", fig.cap="New connection right there"}
 knitr::include_graphics(
@@ -411,13 +415,11 @@ knitr::include_graphics(
 )
 ```
 
-
-
-A new connection will have appeared below your DBeaver Sample Database connection, called *postgres*. This is the default administrative connection database.
+A new connection will have appeared below your DBeaver Sample Database connection, called *postgres*. This is the default administrative connection database. (If it is all not working, are you sure you actually installed PostgreSQL [here](#installposgreSQL)?)
 
 Let's make a new database.
 
-Open a SQL console (DBeaver, like Rstudio differentiates between scripts (code you want to save) and console (other code)). Type and run:
+Open a SQL console (DBeaver, like Rstudio differentiates between scripts (code you want to save) and console (other code)). Make sure your new **connection** is selected. Right click it -> SQL Editor -> Open SQL Console. The new console tab should say "<postgres> Console" on top. Type and run:
 
 ```
 CREATE DATABASE myfirstdb;
@@ -433,16 +435,443 @@ knitr::include_graphics(
 
 In the lower right quadrant of the screen, DBeaver tells you that it made a database. However, it doesn't yet show up in the left, below **postgres**.
 
-We can have it show up by refreshing the list on the left: select the *connection* in the list on the left (postgres - localhost:5432) and pres F5 (or right click --> refresh).
+We can have it show up by refreshing the list on the left: select the *connection* in the list on the left (postgres - localhost:5432) and press F5 (or right click --> refresh).
+
+But we can also ask using SQL in the SQL console, try this: 
+
+```
+SELECT datname FROM pg_database
+WHERE datistemplate = false;
+```
+
+(In case any of you already knows some SQL: *SHOW DATABASES* works in MySQL, but not in PostgreSQL.)
+
+We made a database! An empty one, but still a database.
+
+Check if it is indeed empty by running the following code in the SQL console to list all the tables in the database:
+
+```
+SELECT table_name
+FROM information_schema.tables
+WHERE table_schema = 'public';
+```
+
+<div class="question">
+##### Exercise `r les` {-} 
+
+Open a new SQL console for the DBeaver Sample Database (right click on the connection name in the list on the left -> SQL Editor -> open SQL console). Copy paste the code to list the available tables and run it. Why does this give an SQL error?
+
+</div>
+
+<details><summary>Click for the answer</summary>
+
+Because this database is SQLite, not PostgreSQL. There are slight differences in the SQL dialects. 
+
+Just as an addition, you did not need to guess this, but in SQLite this translates to:
+
+```
+SELECT 
+    name
+FROM 
+    sqlite_master 
+WHERE 
+    type ='table' ;
+```
+
+Check if you see the similarity with the PostgreSQL syntax.
+
+</details>
+</br>
 
 
+## Filling databases
+
+<div class="id">
+To keep things clear, we will use ALL CAPS for all SQL functions, as is quite commonly done with SQL.
+
+DBeaver may change text to lower case when typing, that's no problem. We'll just use upper case in the reader for clarity.
+</div>
 
 
+### Creating tables
+
+Now, we will put some data in this database. Again, open a new SQL script or console, but make sure to do so by right clicking your new **database** in the list now, as the console will take this as it's working directory. 
+
+We will make two, related tables:
+
+```
+CREATE TABLE konijn (
+    verfnummer int, -- you can put comments here. I have no further comments
+    oorkleur char(50),
+    primary key (verfnummer) 
+);
+
+CREATE TABLE rat ( -- painting rats, no regrets
+    verf int,
+    staartkleur char(50),
+    foreign key (verf) references konijn (verfnummer) 
+);
+
+```
+
+Note that we restricted values for "oorkleur" and "staartkleur" to 50 characters. We could assign more here, if you feel like you need more space.
+
+Tables in PostgreSQL databases are organised into **schemas**. Schemas are analogous to directories in windows, except that you cannot put schemas within schemas. This seems like a bit overkill at first, coming from the SQLite example where we found tables directly under "tables". But consider having to place everything on your home computer in "My Documents" without further subfolders for work, study, your Pokemon collection and anything related to folk dancing. It will be quite hard to find anything. 
+
+*(Fun fact: my father, who is in his 70's actually sort-of does this. He will save documents where-ever his computer suggests it first, including /program files, /windows/addins, anywhere. If he needs to find anything, he just types the name of the file in the search bar. I haven't been able to convince him that this may not be a good idea... I hope this will convince you though.)*
+
+So, your new tables can be found in myfirstdb/Schemas/public/Tables. Go ahead and find them in the list on the left.
+
+```{r,  echo=FALSE, out.width = "700px", fig.cap="Just after creating a new database"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "DBeaver_newtablebehere.PNG"
+  )
+)
+```
+
+Double click on one of the tables and check in the ER Diagram tab (next to the Data tab) whether they are indeed related.
+
+We want to keep things a bit organised though, so let's delete them again. try:
+
+```
+DROP TABLE konijn;
+```
+
+This would normally work, but not this time, as our table "rat" depends on "konijn". Let's drop them both:
+
+```
+DROP TABLE konijn, rat;
+```
+
+or drop "konijn" and all dependend tables like this:
+
+```
+DROP TABLE konijn CASCADE;
+
+```
+
+Be careful with dropping stuff! You can't just take them out of the recycle bin like in Windows or MacOS.
+
+### Creating tables within a schema
+
+Now we will make a new schema to recreate our tables in (select your database and press F5 after to see it turn up in the list):
+
+```
+CREATE SCHEMA verfexperiment;
+```
+
+To create a table within a schema, you just put the required schema in front of the table name. So to make a new table within /public:
+
+```
+CREATE TABLE public.test (
+    a int,
+    b int
+);
+
+```
+
+But note that the default is also /public. So if you do not define which schema a table needs to go, it will be put in /public.
 
 
-## SQL in DBeaver
+<div class="question">
+##### Exercise `r les` {-} 
 
-To keep things clear, we will use ALL CAPS for all SQL functions, as is quite commonly done with SQL (actually, the language is not case sensitive, it is just common practice).
+Create the "konijn" and "rat" tables within the verfexperiment schema, but call them "rabbit" and "rat". Create a third table as well, with whatever variables you like.
+
+</div>
+</br>
+
+
+<div class="question">
+##### Exercise `r les` {-} 
+
+Here is the generic PostgeSQL code for changing the schema name:
+
+```
+ALTER SCHEMA schema_name 
+RENAME TO new_name;
+```
+
+Change schema "verfexperiment" to "paintexp". After doing so, select the **connection** in the list on the left (postgres-localhost:5432) and press F5 to see the change.
+
+</div>
+</br>
+
+### Data types
+
+As you will have noticed in the examples from the previous paragraph, when you create a table in SQL, it wants you to specify the data type. For example:
+
+
+```
+CREATE TABLE public.test (
+    a int,
+    b char(8)
+);
+
+```
+
+We used *int* (integers) and *char(n)* (character) before, with the latter even asking you to specify the maximum length. There are a lot of possible possible data types in PostgreSQL (check them [here](https://www.tutorialspoint.com/postgresql/postgresql_data_types.htm)), most notably:
+
+ - int: the typical choice for whole integer data
+ - decimal(precision, scale): define how many digits (precision) and how many of them after (scale) the decimal point.  So the number 12.3456 has a precision of 6 and a scale of 4. 
+ - float: also decimals, but limited precision. Faster to work with.
+ - char(n): characters, fixed length
+ - text: characters but unlimited length (this takes more space)
+ - boolean: TRUE/FALSE
+
+Storing numbers in databases can be a bit tricky. Excel for example stores numeric data with a maximum of 15 significant digits. You may have run into this before. For example, see the following image from Wikipedia:
+
+```{r,  echo=FALSE, out.width = "400px", fig.cap="Example of precision issues in Excel By [Brews ohare - Own work, Public Domain]( https://commons.wikimedia.org/w/index.php?curid=9978565)"}
+knitr::include_graphics(
+"https://upload.wikimedia.org/wikipedia/commons/a/a8/Excel_fifteen_figure.PNG"
+)
+```
+
+The top figure shows what Excel will show for 1/9000 in red. While this number will have an infinite string of ones, only the first 15 ones will be stored (leading zeroes don't count). In the second line, the number one is added to the fraction, and again Excel displays only 15 figures (red). Now if we subtract 1 again from z (third line), mathematically, the result should be the same as the top line. However, it is not. It is not even what you would expect to get from the numbers displayed, as you would have expected to get z-1 = 0.000111111111110000. So the numbers excel is showing you are not the numbers it is doing calculations with. This is not a bug in Excel, it is an issue with how computers are designed in general.
+
+Try the same calculations in R:
+
+```{r, eval=F}
+a <- 1/9000
+a
+
+z <- 1+(1/9000)
+z
+
+z-1
+
+```
+
+We won't go into detail with floating point problems and binary calculations, but remember that if you ask a computer to remember "1/9000" for you, it won't store **exactly** 1/9000.
+
+In SQL, you can define however how precise it needs to be. The data type decimal/numeric (they're the same in PostgreSQL) can store numbers with a very large number of digits and perform calculations with them. So if you require the numbers to be stored exactly (such as monetary amounts), use this data type. If you don't need numbers to be rounded to an exact precision and have a lot of data to work with, you can use `float` instead of `decimal`, as it is faster. 
+
+
+### Generating data with SQL
+
+Now we will put some data into our `rabbit` and `rat` tables.
+
+```
+insert into paintexp.rabbit
+(verfnummer, oorkleur)
+values
+(1, 'red'),
+(2, 'blue'),
+(3, 'green');
+
+insert into paintexp.rat
+(verf)
+values
+(2),
+(3);
+
+```
+
+Have a look what happened in both tables (press F5 if you don't see anything).
+
+<div class="question">
+##### Exercise `r les` {-} 
+
+Add 2 more rows in both tables.
+
+</div>
+
+<div class="question">
+##### Exercise `r les` {-} 
+
+Verify with SQL what's in the tables now, here is the generic SQL code:
+
+```
+SELECT * FROM table;
+```
+
+</div>
+
+<details><summary>Click for the answer</summary>
+```
+SELECT * FROM paintexp.rabbit;
+SELECT * FROM paintexp.rat;
+```
+</details>
+</br>
+
+
+<!-- #### Missing values -->
+<!-- Numeric variables in SQL can also contain Not-a-Numbers (NA in R): 'NaN'.  As in R, as you do any calculations with fields containing NaNs, this will give you NaN as a result. -->
+
+<!-- When writing this value as a constant in an SQL command, you must put quotes around it: -->
+
+<!-- <mark> examples </mark> -->
+
+
+### Altering tables
+
+We made a column for the rat tail colours, but it is empty. If we want to change, this, we need to update the table. 
+
+```
+UPDATE paintexp.rat
+SET staartkleur = 'orange'
+WHERE verf = 3;
+```
+
+<div class="question">
+##### Exercise `r les` {-} 
+Suppose you have a table with 50 rats and want to change a specific rat's tail colour value? What would you need to be able to use the code from the example above?
+</div>
+
+<details><summary>Click for the answer</summary>
+A unique identifier for each rat. So basically, a simple key.
+</details>
+</br>
+
+
+The PostgreSQL ALTER TABLE command is used to add, delete or modify columns in an existing table. 
+
+```
+ALTER TABLE tablename ADD column_name datatype;
+```
+
+<div class="question">
+##### Exercise `r les` {-} 
+
+Add a column to the rabbit table named 'rating'. You can leave it empty
+
+</div>
+
+
+You can also use ALTER TABLE to change the table name, but this works a bit weird. The schema needs to be specified in the old name, but not the new:
+
+```
+ALTER TABLE paintexp.rat RENAME TO rats
+```
+
+
+Or if we for instance want to add anything to the text in a column:
+
+```
+update paintexp.rabbit
+  set oorkleur = 'brownish '||oorkleur;
+```
+Before we continue, why are we doing this again? This seems hard? What's wrong with typing some data into Excel? Or even Notepad? Well, that depends. If you have just a little data, typing it manually and storing as a .csv is fine. But most large databases out in the wild are accessible through SQL.
+Also, suppose you want to add some data to such a database. Using SQL to do so, ensures that you are working reproducible, as you are using code to change anything.
+
+
+## Filtering and selecting
+
+SQL is often used to find specific data in a database. We will practice a bit with another example database: pagila. Pagila is a "DVD Rental Store" example database for PostgreSQL which is not very biological, but it is specifically designed to show case features within PostgreSQL. 
+
+Download [Pagila here](https://www.postgresql.org/ftp/projects/pgFoundry/dbsamples/pagila/pagila/). Pagila is an example database.
+
+Make a new database called pagila.
+
+```{r,  echo=FALSE, out.width = "700px", fig.cap="The new database on the left"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "DBeaver_pagila1.PNG"
+  )
+)
+```
+
+Open psql (SQL shell, Psql is the interactive terminal for working with Postgres) and enter the following (add your password). (If you have no clue where psql.exe is, just type "psql" in the search bar in Windows.)
+
+```{r,  echo=FALSE, out.width = "700px", fig.cap="Screenshot of psql"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "DBeaver_pagila2.PNG"
+  )
+)
+```
+
+It should say **pagile-#**.
+
+Type (change "yourpathhere" to reflect where you put the files): 
+```
+\i yourpathhere/pagila-schema.sql
+```
+For me, this looks like this
+```{r,  echo=FALSE, out.width = "500px"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "DBeaver_pagila3.PNG"
+  )
+)
+```
+
+Now type (again, update the path):
+
+\i yourpathhere/pagila-insert-data.sql
+
+And wait for it to finish.
+
+Go back to DBeaver and refresh the connection, and out pagila database will be filled!
+Also, you have met psql, PostgreSQL's shell thingy, in the process.
+
+If for some reason some tables are empty, try in psql:
+
+\i yourpathhere/pagila-data.sql
+
+
+```{r,  echo=FALSE, out.width = "500px", fig.cap="Making sure we are working in the correct database"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "DBeaver_pagila4.PNG"
+  )
+)
+```
+
+### Selecting
+
+This database contains fictional business processes of a DVD rental store. It contains 15 tables. We will use is to try some queries (a query is a request for data results from a database). In fact, we already did some queries, such as:
+
+```
+select * from database.table; 
+```
+Is in fact sending a query for all columns in a table.
+
+You can also ask for specific columns:
+
+```
+SELECT
+   first_name,
+   last_name,
+   email
+FROM
+   customer;
+```
+
+<div class="question">
+##### Exercise `r les` {-} 
+Select only the customer_id column from the customer table. 
+</div>
+
+The following example uses the SELECT statement to return full names and emails of all customers, using `||` as the concatenating operator that concatenates one or more strings into a single string, and using `AS` to give the new column a descriptive name. Try what happens if you omit the "AS full_name".
+
+```
+SELECT 
+   first_name || ' ' || last_name AS full_name,
+   email
+FROM 
+   customer;
+```
+
+You can order your selection, in ascending (ASC) or descending (DESC) order:
+
+```
+SELECT
+	first_name,
+	last_name
+FROM
+	customer
+ORDER BY
+	first_name ASC;
+```
+
 
 ## exporteren van data uit DBeaver
 
@@ -450,6 +879,12 @@ To keep things clear, we will use ALL CAPS for all SQL functions, as is quite co
 
 ## Using R to work with PostgreSQL databases
 On the server th
+
+
+
+## I really love this and want more
+
+There are a lot of exercises [here at pgexercises.com/](https://pgexercises.com/gettingstarted.html)
 
 
 ##### Exercise `r les` {-}
@@ -484,5 +919,8 @@ On the server th
 
 ## Portfolio assignment `r paste0(les, " ")` {-}
 
-## Resources and references
-Part of the materials in this chapter were reproduced in a an adapted form from [@r4ds]. DBeaver tutorials from youtube (see \@ref(resources)). Tutorials on using the package `{RPostgreSQL}` can also be found in \@ref(resources)
+## resources
+
+The query bit in this lesson borrows heavily from [postgresqltutorial.com/](https://www.postgresqltutorial.com/)
+
+

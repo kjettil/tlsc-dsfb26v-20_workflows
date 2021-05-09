@@ -10,6 +10,8 @@ We spend quite some time now on learning how to visualise, analyse, and describe
 
 We have practised a bit with combining data from different sources in DAUR2, and we will build on that experience in this lesson.
 
+There is quite a lot of material today, but the exercises within the lesson are short. You won't be an absolute SQL wizard after this afternoon. We are aiming on giving you enough of a steady start with DBeaver and SQL to build on when you may encounter working with SQL in the future. But at times it will feel pretty cool, we promise!
+
 ### Relational data
 It is quite rare for a data analysis to use only one table of data. Suppose you investigate the effects of a certain drug on behaviour of rats in a maze. You may have blood levels of the drug at certain times, some automatic recording of movements, maybe you weighted them before every experiment, etc. You may enter some of these values in excel, but other values about the same rats will be stored in different formats or in different files, such as the video recordings or descriptive statistics of these video recordings (average time in maze, number of mistakes etc etc). Still, you will want to look at all this information combined. Collectively, these tables of data are called *relational data*.
 
@@ -20,6 +22,8 @@ You can see that some variables in one table are present or translate to variabl
 
 
 ### Remember `tidy` data?
+
+We will start this lesson with a rehearsal of things you did in DAUR1 and 2.
 
 The nyflights tables are really nice and tidy. You have used them before to practice joining tibbles, and they are joined quite easily.
 
@@ -242,9 +246,11 @@ We will discuss how to create databases, create or join tables within databases,
 ## Introduction to DBeaver and SQL
 In order to work with a database, we will need access to one. You can actually use SQL in the terminal, but we will use software instead: DBeaver. One of the prerequisites for this course was installing DBeaver. You may have clicked around in DBeaver a bit, which would be great. We will walk you through some steps, you are required to do them too. Not just read about it.
 
-Upon installation, DBeaver will ask you if you want a sample database. You can click ok, or if you didn't, click help --> Create Sample Database. It will show up on the left part of the screen. This is not MySQL or PostgreSQL, but a SQlite database, but it will work just fine to have a look around.
+Open DBeaver.
 
-```{r,  echo=FALSE, out.width = "500px", fig.cap="Starting DBeaver for the first time"}
+Upon installation, DBeaver will have asked you if you wanted a sample database. If you didn't, click help --> Create Sample Database. It will show up on the left part of the screen. This is not MySQL or PostgreSQL, but a SQlite database, but it will work just fine to have a look around.
+
+```{r,  echo=FALSE, out.width = "700px", fig.cap="Starting DBeaver for the first time"}
 knitr::include_graphics(
   here::here(
     "images",
@@ -257,7 +263,7 @@ Double click on the sample database, and agree to download some drivers.
 
 Now below the sample database item are several contents: tables, views, indexes etc. 
 
-Open **Tables** and double click on **album**. This in one of the available tables in de database. You are presented with some meta data (columns, keys, foreign keys etc). 
+Open **Tables** and double click on **Album**. This in one of the available tables in de database. You are presented with some meta data (columns, keys, foreign keys etc). 
 
 <div class="question">
 ##### Exercise `r les` {-} 
@@ -273,7 +279,7 @@ Artist
 
 To see the actual data, you can click on the data tab:
 
-```{r,  echo=FALSE, out.width = "500px", fig.cap="The Data tab can be a bit hard to find.."}
+```{r,  echo=FALSE, out.width = "700px", fig.cap="The Data tab can be a bit hard to find.."}
 knitr::include_graphics(
   here::here(
     "images",
@@ -332,7 +338,7 @@ SELECT value_from_column FROM database
 WHERE filter_on_rows;
 ```
 
-Some database systems require a semicolon at the end of each SQL statement, so we will do this. SQL doesn't mind blank lines or spaces, and is not case sensitive though. As you can see, the order of the code is also different from tidyverse piping. 
+Some database systems require a semicolon at the end of each SQL statement, so we will do this. SQL doesn't mind blank lines or spaces. As you can see, the order of the code is  different from tidyverse piping. 
 
 **Select -> table -> filter** instead of **table -> filter -> select**
 
@@ -356,7 +362,7 @@ WHERE ArtistId=90;
 </br>
 
 
-## Creating a PostgreSQL database in DBeaver
+## Creating a PostgreSQL database in DBeaver {#installposgreSQL}
 
 Now that you have played around in DBeaver for a bit, let's make our own database. If you make a database, it needs to be stored somewhere. One of the more familiar places to store databases is with cloud providers, such as Google Cloud, Amazon and Azure. But actually, just any accessible space is fine. You can store databases on your own computer, or on any server you have access to. Setting up a database on your own computer is free and easy, so this is what we will use in this lesson.
 
@@ -366,9 +372,9 @@ We will set up our own local PostgreSQL server, and it will only be accessible f
 
 Run the installer with all the default settings. Remember your password.
 
+(May we recommend using a [password manager](https://www.pcmag.com/picks/the-best-password-managers) here if you are not already using one?)
+
 Go back to DBeaver. Click on the icon for "new database connection" just below "file" 
-
-
 
 ```{r,  echo=FALSE, out.width = "200px", fig.cap="New connection right there"}
 knitr::include_graphics(
@@ -411,13 +417,11 @@ knitr::include_graphics(
 )
 ```
 
-
-
-A new connection will have appeared below your DBeaver Sample Database connection, called *postgres*. This is the default administrative connection database.
+A new connection will have appeared below your DBeaver Sample Database connection, called *postgres*. This is the default administrative connection database. (If it is all not working, are you sure you actually installed PostgreSQL [here](#installposgreSQL)?)
 
 Let's make a new database.
 
-Open a SQL console (DBeaver, like Rstudio differentiates between scripts (code you want to save) and console (other code)). Type and run:
+Open a SQL console (DBeaver, like Rstudio differentiates between scripts (code you want to save) and console (other code)). Make sure your new **connection** is selected. Right click it -> SQL Editor -> Open SQL Console. The new console tab should say ```"<postgres> Console"``` on top. Type and run:
 
 ```
 CREATE DATABASE myfirstdb;
@@ -433,56 +437,854 @@ knitr::include_graphics(
 
 In the lower right quadrant of the screen, DBeaver tells you that it made a database. However, it doesn't yet show up in the left, below **postgres**.
 
-We can have it show up by refreshing the list on the left: select the *connection* in the list on the left (postgres - localhost:5432) and pres F5 (or right click --> refresh).
+We can have it show up by refreshing the list on the left: select the *connection* in the list on the left (postgres - localhost:5432) and press F5 (or right click --> refresh).
+
+But we can also ask using SQL in the SQL console, try this: 
+
+```
+SELECT datname FROM pg_database
+WHERE datistemplate = false;
+```
+
+(In case any of you already knows some SQL: *SHOW DATABASES* works in MySQL, but not in PostgreSQL.)
+
+**We made a database! An empty one, but still a database.**
+
+Check if it is indeed empty by running the following code in the SQL console to list all the tables in the database:
+
+```
+SELECT table_name
+FROM information_schema.tables
+WHERE table_schema = 'public';
+```
+
+<div class="question">
+##### Exercise `r les` {-} 
+
+Open a new SQL console for the DBeaver Sample Database (right click on the connection name in the list on the left -> SQL Editor -> open SQL console). Copy paste the code to list the available tables and run it. Why does this give an SQL error?
+
+</div>
+
+<details><summary>Click for the answer</summary>
+
+Because this database is SQLite, not PostgreSQL. There are slight differences in the SQL dialects. 
+
+Just as an addition, you did not need to guess this, but in SQLite this translates to:
+
+```
+SELECT 
+    name
+FROM 
+    sqlite_master 
+WHERE 
+    type ='table' ;
+```
+
+Check if you see the similarity with the PostgreSQL syntax.
+
+</details>
+</br>
 
 
+## Filling databases
+
+<div class="id">
+To keep things clear, we will use ALL CAPS for all SQL functions, as is quite commonly done with SQL.
+
+DBeaver may change text to lower case when typing, that's no problem. We'll just use upper case in the reader for clarity.
+</div>
 
 
+### Creating tables
+
+Now, we will put some data in this database. Again, open a new SQL script or console, but make sure to do so by right clicking your new **database** in the list now, as the console will take this as it's working directory. 
+
+We will make two, related tables:
+
+```
+CREATE TABLE konijn (
+    verfnummer int, -- you can put comments here. I have no further comments
+    oorkleur char(50),
+    primary key (verfnummer) 
+);
+
+CREATE TABLE rat ( -- painting rats, no regrets
+    verf int,
+    staartkleur char(50),
+    foreign key (verf) references konijn (verfnummer) 
+);
+
+```
+
+Note that we restricted values for "oorkleur" and "staartkleur" to 50 characters. We could assign more here, if you feel like you need more space.
+
+Tables in PostgreSQL databases are organised into **schemas**. Schemas are analogous to directories in windows, except that you cannot put schemas within schemas. This seems like a bit overkill at first, coming from the SQLite example where we found tables directly under "tables". But consider having to place everything on your home computer in "My Documents" without further subfolders for work, study, your Pokemon collection and anything related to folk dancing. It will be quite hard to find anything. 
+
+*(Fun fact: my father, who is in his 70's actually sort-of does this. He will save documents where-ever his computer suggests it first, including /program files, /windows/addins, anywhere. If he needs to find anything, he just types the name of the file in the search bar. I haven't been able to convince him that this may not be a good idea... I hope this will convince you though.)*
+
+So, your new tables can be found in myfirstdb/Schemas/public/Tables. Go ahead and find them in the list on the left.
+
+```{r,  echo=FALSE, out.width = "700px", fig.cap="Here are the new tables."}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "DBeaver_newtablebehere.PNG"
+  )
+)
+```
+
+Double click on one of the tables and check in the ER Diagram tab (next to the Data tab) whether they are indeed related.
+
+We want to keep things a bit organised though, so let's delete them again. try:
+
+```
+DROP TABLE konijn;
+```
+
+This would normally work, but not this time, as our table "rat" depends on "konijn". Let's drop them both:
+
+```
+DROP TABLE konijn, rat;
+```
+
+or drop "konijn" and all dependend tables like this:
+
+```
+DROP TABLE konijn CASCADE;
+
+```
+
+Be careful with dropping stuff! You can't just take them out of the recycle bin like in Windows or MacOS.
+
+### Creating tables within a schema
+
+Now we will make a new schema to recreate our tables in (select your database and press F5 after to see it turn up in the list):
+
+```
+CREATE SCHEMA verfexperiment;
+```
+
+To create a table within a schema, you just put the required schema in front of the table name. So to make a new table within /public:
+
+```
+CREATE TABLE public.test (
+    a int,
+    b int
+);
+
+```
+
+But note that the default is also /public. So if you do not define which schema a table needs to go, it will be put in /public.
 
 
-## SQL in DBeaver
+<div class="question">
+##### Exercise `r les` {-} 
 
-To keep things clear, we will use ALL CAPS for all SQL functions, as is quite commonly done with SQL (actually, the language is not case sensitive, it is just common practice).
+Create the "konijn" and "rat" tables within the verfexperiment schema, but call them "rabbit" and "rat". Create a third table as well, with whatever variables you like.
 
-## exporteren van data uit DBeaver
-
-
-
-## Using R to work with PostgreSQL databases
-On the server th
+</div>
+</br>
 
 
-##### Exercise `r les` {-}
-## <mark> EXERCISE 1 </mark> {-} 
+<div class="question">
+##### Exercise `r les` {-} 
+
+Here is the generic PostgeSQL code for changing the schema name:
+
+```
+ALTER SCHEMA schema_name 
+RENAME TO new_name;
+```
+
+Change schema "verfexperiment" to "paintexp". After doing so, select the **connection** in the list on the left (postgres-localhost:5432) and press F5 to see the change.
+
+</div>
+</br>
+
+### Data types
+
+As you will have noticed in the examples from the previous paragraph, when you create a table in SQL, it wants you to specify the data type. For example:
+
+
+```
+CREATE TABLE public.test (
+    a int,
+    b char(8)
+);
+
+```
+
+We used *int* (integers) and *char(n)* (character) before, with the latter even asking you to specify the maximum length. There are a lot of possible possible data types in PostgreSQL (check them [here](https://www.tutorialspoint.com/postgresql/postgresql_data_types.htm)), most notably:
+
+ - int: the typical choice for whole integer data
+ - decimal(precision, scale): define how many digits (precision) and how many of them after (scale) the decimal point.  So the number 12.3456 has a precision of 6 and a scale of 4. 
+ - float: also decimals, but limited precision. Faster to work with.
+ - char(n): characters, fixed length
+ - text: characters but unlimited length (this takes more space)
+ - boolean: TRUE/FALSE
+
+Storing numbers in databases can be a bit tricky. Excel for example stores numeric data with a maximum of 15 significant digits. You may have run into this before. For example, see the following image from Wikipedia:
+
+```{r,  echo=FALSE, out.width = "400px", fig.cap="Example of precision issues in Excel By [Brews ohare - Own work, Public Domain]( https://commons.wikimedia.org/w/index.php?curid=9978565)"}
+knitr::include_graphics(
+"https://upload.wikimedia.org/wikipedia/commons/a/a8/Excel_fifteen_figure.PNG"
+)
+```
+
+The top figure shows what Excel will show for 1/9000 in red. While this number will have an infinite string of ones, only the first 15 ones will be stored (leading zeroes don't count). In the second line, the number one is added to the fraction, and again Excel displays only 15 figures (red). Now if we subtract 1 again from z (third line), mathematically, the result should be the same as the top line. However, it is not. It is not even what you would expect to get from the numbers displayed, as you would have expected to get z-1 = 0.000111111111110000. So the numbers excel is showing you are not the numbers it is doing calculations with. This is not a bug in Excel, it is an issue with how computers are designed in general.
+
+Try the same calculations in R:
+
+```{r, eval=F}
+a <- 1/9000
+a
+
+z <- 1+(1/9000)
+z
+
+z-1
+
+```
+
+We won't go into detail with floating point problems and binary calculations, but remember that if you ask a computer to remember "1/9000" for you, it won't store **exactly** 1/9000.
+
+In SQL, you can define however how precise it needs to be. The data type decimal/numeric (they're the same in PostgreSQL) can store numbers with a very large number of digits and perform calculations with them. So if you require the numbers to be stored exactly (such as monetary amounts), use this data type. If you don't need numbers to be rounded to an exact precision and have a lot of data to work with, you can use `float` instead of `decimal`, as it is faster. 
+
+
+### Generating data with SQL
+
+Now we will put some data into our `rabbit` and `rat` tables.
+
+```
+insert into paintexp.rabbit
+(verfnummer, oorkleur)
+values
+(1, 'red'),
+(2, 'blue'),
+(3, 'green');
+
+insert into paintexp.rat
+(verf)
+values
+(2),
+(3);
+
+```
+
+Have a look what happened in both tables (press F5 if you don't see anything).
+
+<div class="question">
+##### Exercise `r les` {-} 
+
+Add 2 more rows in both tables.
+
+</div>
+
+<div class="question">
+##### Exercise `r les` {-} 
+
+Verify with SQL what's in the tables now, here is the generic SQL code:
+
+```
+SELECT * FROM table;
+```
+
+</div>
+
+<details><summary>Click for the answer</summary>
+```
+SELECT * FROM paintexp.rabbit;
+SELECT * FROM paintexp.rat;
+```
+</details>
+</br>
+
+
+<!-- #### Missing values -->
+<!-- Numeric variables in SQL can also contain Not-a-Numbers (NA in R): 'NaN'.  As in R, as you do any calculations with fields containing NaNs, this will give you NaN as a result. -->
+
+<!-- When writing this value as a constant in an SQL command, you must put quotes around it: -->
+
+<!-- <mark> examples </mark> -->
+
+
+### Altering tables
+
+We made a column for the rat tail colours, but it is empty. If we want to change this, we need to update the table. 
+
+```
+UPDATE paintexp.rat
+SET staartkleur = 'orange'
+WHERE verf = 3;
+```
+
+<div class="question">
+##### Exercise `r les` {-} 
+Suppose you have a table with 50 rats and want to change a specific rat's tail colour value? What would you need to be able to use the code from the example above?
+</div>
+
+<details><summary>Click for the answer</summary>
+A unique identifier for each rat. So basically, a simple key.
+</details>
+</br>
+
+
+The PostgreSQL ALTER TABLE command is used to add, delete or modify columns in an existing table. 
+
+```
+ALTER TABLE tablename ADD column_name datatype;
+```
+
+<div class="question">
+##### Exercise `r les` {-} 
+
+Add a column to the rabbit table named 'rating'. You can leave it empty
+
+</div>
+
+
+You can also use ALTER TABLE to change the table name, in which case the schema needs to be specified in the old name, but not the new:
+
+```
+ALTER TABLE paintexp.rat RENAME TO rats
+```
+
+
+Or if we for instance want to add anything to the text in a column. Try what the following query does:
+
+```
+update paintexp.rabbit
+  set oorkleur = 'brownish '||oorkleur;
+```
+Before we continue, why are we doing this again? This seems hard? What's wrong with typing some data into Excel? Or even Notepad? Well, that depends. If you have just a little data, typing it manually and storing as a .csv is fine. But most large databases out in the wild are accessible through SQL.
+Also, suppose you want to add some data to such a database. Using SQL to do so, ensures that you are working reproducible, as you are using code to change anything.
+
+
+## Filtering and selecting
+
+SQL is often used to find specific data in a database. We will practice a bit with another example database: pagila. Pagila is a "DVD Rental Store" example database for PostgreSQL which is not very biological, but it is specifically designed to show case features within PostgreSQL. 
+
+Download [Pagila here](https://www.postgresql.org/ftp/projects/pgFoundry/dbsamples/pagila/pagila/). Pagila is an example database.
+
+Make a new database called pagila.
+
+```{r,  echo=FALSE, out.width = "700px", fig.cap="The new database on the left"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "DBeaver_pagila1.PNG"
+  )
+)
+```
+
+Open psql (SQL shell, Psql is the interactive terminal for working with Postgres) and enter the following (add your password). (If you have no clue where psql.exe is, just type "psql" in the search bar in Windows.)
+
+```{r,  echo=FALSE, out.width = "700px", fig.cap="Screenshot of psql"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "DBeaver_pagila2.PNG"
+  )
+)
+```
+
+It should say **pagile-#**.
+
+Type (change "yourpathhere" to reflect where you put the files): 
+```
+\i yourpathhere/pagila-schema.sql
+```
+For me, this looks like this
+```{r,  echo=FALSE, out.width = "500px"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "DBeaver_pagila3.PNG"
+  )
+)
+```
+
+Now type (again, update the path):
+
+\i yourpathhere/pagila-insert-data.sql
+
+And wait for it to finish.
+
+Go back to DBeaver and refresh the connection, and our pagila database will be filled!
+Also, you have met psql, PostgreSQL's shell thingy, in the process.
+
+If for some reason some tables are empty, try in psql:
+
+\i yourpathhere/pagila-data.sql
+
+
+```{r,  echo=FALSE, out.width = "500px", fig.cap="We have data!"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "DBeaver_pagila4.PNG"
+  )
+)
+```
+
+### Selecting
+
+This database contains fictional business processes of a DVD rental store. It contains 15 tables. We will use it to try some queries (a query is a request for data results from a database). In fact, we already did some queries, such as:
+
+```
+select * from database.table; 
+```
+Is in fact sending a query for all columns in a table.
+
+You can also ask for specific columns:
+
+```
+SELECT
+   first_name,
+   last_name,
+FROM
+   actor;
+```
+
+<div class="question">
+##### Exercise `r les` {-} 
+Select only the customer_id column from the customer table. 
+</div>
+
+The following example uses the SELECT statement to return full names and emails of all actors, using `||` as the concatenating operator that concatenates one or more strings into a single string, and using `AS` to give the new column a descriptive name. Try what happens if you omit the "AS full_name".
+
+```
+SELECT 
+   first_name || ' ' || last_name AS full_name
+FROM 
+   actor;
+```
+
+You can order your selection, in ascending (ASC) or descending (DESC) order. 
+
+```
+SELECT
+	title,
+	release_year
+FROM
+	film
+ORDER BY
+	release_year DESC,
+	title ASC;
+```
+<div class="question">
+##### Exercise `r les` {-} 
+What did the previous query do?
+</div>
+
+<details><summary>Click for the answer</summary>
+Select the columns *title* and *release_year* from the table *film* and sorts the rows first by the release year in descending order and next by the title in ascending order.
+</details>
+</br>
+
+Which actually did not make much sense, as all releases were in 2006:
+
+SQL has a unique() equivalent as well: DISTINCT. Use it to check if indeed all release_years were 2006:
+
+```
+SELECT
+   DISTINCT release_year
+FROM
+   film;
+```
+
+Now let's see which actor has the longest first name:
+
+```
+SELECT 
+	first_name,
+	LENGTH(first_name) len
+FROM
+	actor
+ORDER BY 
+	len DESC;
+```
+
+### Filtering
+
+If you do not want to get the whole column, but a specific set of rows, you can filter. In SQL, this is called WHERE:
+
+```
+SELECT select_list
+FROM table_name
+WHERE condition
+```
+
+Tidyverse `filter(columnA==4)` would translate to `WHERE columnA=4`
+
+<div class="question">
+##### Exercise `r les` {-} 
+Find all the actors named ED, and have them returned to you in alphabetical order of their last name.
+</div>
+<details><summary>Click for the answer</summary>
+
+``
+SELECT 
+	first_name,
+	last_name
+FROM
+	actor
+WHERE 
+	first_name='ED'
+ORDER BY 
+	last_name ASC;
+``
+
+</details>
+</br>
+
+
+You can search for patterns within a column with the LIKE operator. Read about it [here](https://www.w3schools.com/sql/sql_like.asp)
+
+<div class="question">
+##### Exercise `r les` {-} 
+Find the actors with a first name starting with the letter B, sort them in alphabetical order and return their full name.
+
+</div>
+<details><summary>Click for the answer</summary>
+
+```
+SELECT 
+   first_name || ' ' || last_name AS full_name
+FROM
+	actor
+where 
+	first_name LIKE 'B%'
+ORDER BY 
+	first_name ASC;
+```
+</details>
+</br>
+
+We can add operators like `AND`, `OR` and `IN` as well, just like in tidyverse filtering, as well as `!=`
+
+```
+SELECT
+	first_name,
+	last_name
+FROM
+	actor
+WHERE
+	last_name = 'HARRIS' OR 
+	first_name IN ('BOB','BEN','Bill');
+
+```
+
+Now that we have introduced you to the W3schools website, you can actually look up the syntax for all kinds of operations in the menu on the left. [tutorialspoint](https://www.tutorialspoint.com/) also has a good list. Use these two websites to solve the following questions:
+
+ - Which customers have a first name BETWEEN 5 and 7 characters long?
+ - What was the MAX amount payed for a rental?
+ - Find all actors not called ED.
+ - COUNT the number of films in the database.
+ - Find the last names of all actors and customers (UNION) 
+ - Play with the [SQL quiz](https://www.w3schools.com/sql/sql_quiz.asp) if you like.
+
+### group by
+
+The GROUP BY statement groups rows that have the same values into summary rows, like "find the number of films in each category". Try this:
+
+```
+SELECT COUNT(film_id), category_id 
+FROM film_category
+GROUP BY category_id;
+```
+
+And run this code to list the last names of actors and the number of actors who have that last name, but only for names that are shared by at least two actors.
+
+```
+SELECT
+  last_name
+  ,COUNT(last_name) AS last_name_count
+FROM actor
+GROUP BY last_name
+HAVING COUNT(last_name) >= 2
+ORDER BY last_name_count DESC
+;
+
+```
+### Joining
+
+But now what if we want to combine information from different tables? 
+
+On the bottom of [this page](https://www.postgresqltutorial.com/postgresql-joins/) is an image explaning the different kind of joins with their SQL syntax. Note that the image does not show you what happens when there is missing data.
+
+You could for instance want to display the first and last names, as well as the address, of each staff member, but this information is in two separate tables:
+
+```
+SELECT
+  first_name
+  , last_name
+  , address.address AS street_address
+FROM staff
+  INNER JOIN address ON address.address_id = staff.address_id
+;
+```
+
+<div class="question">
+##### Exercise `r les` {-} 
+What does "INNER JOIN address ON address.address_id = staff.address_id" mean? How are these attributes called? What is the underlying assumption with using these keys?
+</div>
+<details><summary>Click for the answer</summary>
+This part does an inner join, selecting only records that have matching values in both tables, with address_id in staff as a primary key and within address as a foreign key. It assumes that no two (or more) staff members live at the same address.
+</details>
+</br>
+
+
+Or add all the category information to each film title in the film table:
+
+
+```
+SELECT
+*
+FROM
+	film
+LEFT JOIN film_category
+   ON film_category.film_id = film.film_id
+LEFT JOIN category
+   ON category.category_id = film_category.category_id
+ORDER BY title;
+```
+
+## from PostgreSQL to somewhere else
+
+Exporting your query results to .csv is quite easy:
+
+- right click anywhere in the SQL code of the query you want to export and choose Execute > Export from query. (alternatively, right click on the result and choose Export Data)
+- Choose CSV
+- Leave all the default settings, but choose a destination folder and if you like, change the file name.
+
+
+<div class="question">
+##### Exercise `r les` {-} 
+Make a table containing only all the film titles and their category (Documentary, Horror etc..). Export this as .csv
+</div>
+
+## From R to PostgreSQL
+
+The `RPostgres` package contains a database interface and 'PostgreSQL' driver for R. 
+
+Start with installing some packages:
+
+
+```{r, eval=F}
+install.packages('RPostgreSQL')
+#install.packages('devtools') # you should have this one already
+install.packages('remotes')
+install.packages('RPostgres')
+```
+
+And make a connection to the PostgreSQP server again, but now from R (fill in your password):
+```{r, eval=F}
+library(DBI)
+
+con <- dbConnect(RPostgres::Postgres(), 
+                 dbname = "pagila", 
+                 host="localhost", 
+                 port="5432", 
+                 user="postgres", 
+                 password="password") 
+```
+
+Use the following code, what does it do?
+```{r, eval=FALSE}
+dbListTables(con) 
+```
+
+Also try:
+
+```{r, eval=FALSE}
+dbListFields(con, "actor")
+```
+
+And
+
+```{r, eval=FALSE}
+actor <- dbReadTable(con, "actor")
+head(actor)
+```
+
+
+You can actually write SQL queries as well:
+
+```
+dbGetQuery(con, 'SELECT * FROM actor')
+```
+
+
+In RMarkdown, you don't even have to do the dbGetQuery() function, you can just insert a SQL code chunk (however, both starting the connection and closing it again still needs to be done in r code chunks.)
+```
+'''{sql, connection=con}
+select * from actor where actor_id > 75;
+'''
+```
+
+Or if you prefer: make a connection to a table and use tidyverse syntax to send queries. 
+
+```{r, eval=FALSE}
+actortbl <- tbl(con, "actor")
+```
+
+Try if this works and send a few queries! One example to get you started:
+
+```{r, eval=FALSE}
+actortbl %>% 
+  select(actor_id, first_name, last_name) %>% 
+  filter(actor_id > 5 & actor_id < 12 )
+
+```
+
+
+### Parameterized query
+
+It is very tempting to create queries with variables by pasting strings together:
+
+```{r, eval=FALSE}
+# DON'T DO THIS!
+myvar <- "bla"
+dbGetQuery(con, paste0("SELECT * FROM table_name WHERE column_name = '", myvar ,"'"))
+```
+
+But this will pose a security risk if you do this on connections over the internet. Someone may alter the query to contain more rows than you intended or even damage the database:
+```{r, eval=FALSE}
+# EVIL ATACKER BE LIKE:
+myvar <- "bla'; DROP TABLE 'table_name"
+dbGetQuery(con, paste0("SELECT * FROM table_name WHERE column_name = '", myvar ,"'"))
+```
+
+Instead, use a parameterised query with dbSendQuery() and dbBind():
+
+You create a query containing a placeholder and send it to the database with dbSendQuery(), Use dbBind() to execute the query with specific values, then dbFetch() to get the results. $1 is the placeholder here, and we substitute it with a 4:
+```{r, eval=FALSE}
+myquery <- dbSendQuery(con, "select * from actor where actor_id = $1")
+dbBind(myquery, list(4))
+dbFetch(myquery)
+```
+
+When you’re done with the results from a prepared query, clear the result:
+```{r, eval=FALSE}
+dbClearResult(myquery)
+```
+
+Let's disconnect and connect to the *myfirstdb* database:
+
+```{r, eval=FALSE}
+dbDisconnect(con) 
+
+con <- dbConnect(RPostgres::Postgres(), 
+                 dbname = "myfirstdb", 
+                 host="localhost", 
+                 port="5432", 
+                 user="postgres", 
+                 password="password") 
+```
+
+And write some data to the database from R:
+
+To write for instance the penguin data to our myfirstdb database:
+```{r, eval=FALSE}
+library('palmerpenguins')
+
+dbWriteTable(con, "penguinswide", penguins)
+```
+
+Go to Dbeaver and check myfirstdb -> schemas -> public -> tables to check if it worked.
+
+<div class="question">
+##### Exercise `r les` {-} 
+Actually, we had better uploaded tidy data..
+Remove the table again with 
+
+```{r, eval=FALSE}
+dbRemoveTable(con, "penguinswide")
+```
+
+Transform the penguins data to tidy data format (you actually already did this in the first part of this lesson) and upload it to the *myfirstdb* database.
+
+
+</div>
+<details><summary>Click for the answer</summary>
+
+```{r, eval=FALSE}
+library(tidyverse)
+penguins_long <- penguins %>% 
+  tidyr::pivot_longer(contains("_"), # measurement cols
+                      names_to = c("part", "measure", "unit"), 
+                      names_sep = "_")
+
+dbWriteTable(con, "penguinslong", penguins_long)
+```
+
+</details>
+</br>
+
+
+And finally, the connection must be closed:
+
+```{r, eval=FALSE}
+dbDisconnect(con) 
+```
+
+
+## Portfolio assignment `r paste0(les, "")` {-}  
+<div class="dagopdracht">
+
+**relational databases**
  
 **TIPS**
 
  - Be aware, the flu and dengue data contains metadata that should be stripped from the data on load.
  - Think of a way to create valid country names that fit with the gapminder data.
- - Use `readr::write_csv()` and `readr::write_rds()` to write cleaned tables to disk
+ - Remember (!) that in the end, this assignment needs to be reported by a .Rmd file for your portfolio. So save what you are doing, save your SQL scripts, make screenshots if you want, and in general design a clear and attractive report in RMarkdown to showcase your SQL/database-skills in your portfolio. You may be sending this to propspective employers in the future! (also, the portfolio is what we as teachers will be grading. But definitely think about the future rather than only about "passing the course")
  
- a) Load the flu ("./data/flu_data.csv), the dengue ("./data/dengue_data.csv) and the gapminder (`{dslabs}` package) into three separate dataframes in R
+ <!-- - If you need to export tables Use `readr::write_csv()` and `readr::write_rds()` to write cleaned tables to disk -->
  
- b) Check if they are in the right shape. Is the data in the 'tidy' format? If not change the format to 'tidy' 
+**Assignment**
  
- c) Change the `country` and `date` variables of the three tables so that they coincide in terms of data type, class and values 
+ 1. Load the flu ("./data/flu_data.csv), the dengue ("./data/dengue_data.csv) and the gapminder (`{dslabs}` package) into three separate dataframes in R
  
- d) Store the three tables as seperate (so six in total) .csv and .rds files.
+ 1. Check if they are in the right shape. Is the data in the 'tidy' format? If not change the format to 'tidy' 
+ 
+ 1. Change the `country` and `date` variables of the three tables so that they coincide in terms of data type, class and values 
+ 
+ 1. Store the three tables as separate (so six in total) .csv and .rds files.
+
+ 1. In Dbeaver create a new PostgreSQL database "workflowsdb"
+  
+ 1. Using `RPostgreSQL`, insert the tables into the database.
+  
+ 1. Inspect the contents of the tables with SQL (in DBeaver) and save the SQL script.
+ 
+ 1. Inspect the contents of the tables with dplyr (in R) and save a RMarkdown showing what you are doing.
+ 
+ 1. Load the `gapminder` data in R and change the dataframe in such as way that you could join it to `dengue` and `flue`.
+ 
+ 1. Save this clean gapminder data in the "workflowsdb" database
+ 
+ 1. Perform some joins (your choice) with SQL (can be done in DBeaver or with dplyr.
+ 
+ 1. Generate a joined table, and export this from the database to R.
+ 
+ 1. Show some descriptive statistics with this table, and at least 3 visualisations using ggplot2.
+ 
+ 1. show all of your actions in this assignment in a Rmd file, perhaps with pictures and provide text explaining and showcasing your skills.
 
 
+## Resources
+https://db.rstudio.com/best-practices/run-queries-safely/
+https://nuitrcs.github.io/databases_workshop/r/r_databases.html
 
-    In R, maak van de wide tables een long/stacked formaat met {dplyr} (pivot longer()). Sla de nieuwe tabellen op als rds (R binary)
-    In Dbeaver creeer een nieuwe lege PostgreSQL database "workflowsdb"
-    Met behulp van R script ({RPostgreSQL} insert de twee tabellen in de "workflowsdb" database
-    Inspecteer de content van de tabellen met SQL (in DBeaver) en in R met behulp van {dplyr} en {dbplyr}
-    Laadt de gapminder data en pas de data in R zo aan dat een join met de dengue en flue data in de databse mogelijk is (bijvoorbeeld landnamen hetzelfde maken)
-    Sla deze clean gapminder data op in de "workflowsdb" database
-    Doe een aantal joins en inspecties op de data met SQL (bijvoorbeeld in DBeaver of met dplyr.
-    Genereer een grote tabel joined en exporteer die van de database naar de R sessie
-    Maak een aantal visualisatie op basis van de joined data met ggplot2 etc...
+## I really love SQL and want more
 
+There are a lot of exercises [here at pgexercises.com/](https://pgexercises.com/gettingstarted.html)
 
-## Portfolio assignment `r paste0(les, " ")` {-}
+And [here as well](https://www.w3schools.com/sql/exercise.asp)
 
-## Resources and references
-Part of the materials in this chapter were reproduced in a an adapted form from [@r4ds]. DBeaver tutorials from youtube (see \@ref(resources)). Tutorials on using the package `{RPostgreSQL}` can also be found in \@ref(resources)
+Here are some [more queries for the pagila] database(https://github.com/Jkremr/pagila-queries/blob/master/README.md)
+
+Here is a blog post on [building complex queries](https://www.sqlshack.com/learn-sql-how-to-write-a-complex-select-query/)
+

@@ -841,7 +841,7 @@ You can also ask for specific columns:
 ```
 SELECT
    first_name,
-   last_name,
+   last_name
 FROM
    actor;
 ```

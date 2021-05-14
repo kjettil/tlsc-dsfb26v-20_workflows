@@ -44,16 +44,17 @@ During the exercises it is important that you perform all the steps in R/RStudio
 </div>
 
 ## Package structure
-The most basic package consists of just one elementary file called the `DESCRPTION` file. This is the file that hold valuable information about:
+The most basic package consists of just one elementary file called the `DESCRIPTION` file. This is the file that holds valuable information about:
 
- - Package name
- - Package version
- - Package authors
- - What the package does in more details
- - What are functions or packages are needed for the package (these are called dependencies)
- - What system dependencies (for example software in Linux, Mac or Windows) is needed additionally
+ - Package name (`Package` field)
+ - Short description (`Title` field)
+ - Package version (`Version` field)
+ - Package authors (`Authors@R` field)
+ - What the package does in more details (`Description` field)
+ - What are the R version, functions or packages are needed for the package (these are called dependencies) (`Depends`, `Imports` and `Suggests` fields)
+ - What system dependencies (for example software in Linux, Mac or Windows) are needed additionally (`SystemRequirements` field)
 
-To learn more about how R packages, we will look at such a DESCRIPTION file during an exercise:
+To learn more about how R packages, we will look at a demo during an exercise:
 
 <div class="question">
 ##### Exercise `r paste0(les, "")` {-} 
@@ -202,7 +203,7 @@ available(<your_intended_package_name>)
 
 **To pass this assignment, your new package should at least include:**
 
- 1. A properly formatted DESCRIPTION file, with the fields including relevant information
+ 1. A properly formatted `DESCRIPTION` file, with all the fields including relevant information (so change the default values)
  1. 4 different functions that you wrote and with proper documentation, using roxygen2 comments
  1. A NAMESPACE file, generated with the command `devtools::document()`
  1. 1 Raw dataset that is documented and cleaned into a clean dataset. This clean dataset should be accessible inside your package. This means that if I install your package from Github, I would be able to call `data(<dataset_name>, <package_name>)` to load the cleaned dataset of interest in the Global Environment.

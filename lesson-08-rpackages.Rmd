@@ -68,7 +68,7 @@ To accomplish this:
  1. Initiate a new RStudio project using the link to your `foofactors` Github repo
  1. Close this RStudio project.
  1. From the R console (while not inside any RStudio project) execute the following steps
- 1. Initiate an R package by running `usethis::create_package("./foobar")` from the R Console. R will ask you to overwrite the `foofactors.Rproj` file, you should choose 'yes'
+ 1. Initiate an R package by running `usethis::create_package("./foofactors")` from the R Console. R will ask you to overwrite the `foofactors.Rproj` file, you should choose 'yes'
  1. A new RStudio session will start and you will find yourself inside your newly created `{foofactors}` package.
  
  If you did things properly this is what you see in the console after following all the steps above (**again: be sure you run this outside an Rstudio project**). You are now ready to follow the rest of the 'Whole Game' demo as mentioned above (<mark>[here is the link again:](https://r-pkgs.org/whole-game.html)</mark>) 

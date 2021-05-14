@@ -4,7 +4,19 @@ les <- 8
 knitr::opts_chunk$set(echo = TRUE, class.source="Rchunk", class.output="Rout")
 ```
 
-We will focus on R Packages this lesson.
+```{r, echo=FALSE}
+knitr::include_graphics(
+    here::here(
+        "images",
+        "rpackages_network.png"
+    )
+)
+
+```
+
+Figure from: https://www.informationisbeautifulawards.com/showcase/4498-cran-r-packages
+
+We will focus on R package structure and development in this lesson.
 
 ## Lesson Contents
 
@@ -15,7 +27,7 @@ We will focus on R Packages this lesson.
  - Fill your package and publish it on Github (portfolio assignment)
  
 ## Why R packages
-R packages are at the hart of the success that R has in the current Data Science field. Because code, data, models and everything you can basically think of that is needed to disseminate tools, can be packages into an R package, it is the core structure fro every analysis. When you want to share your R work (and why putting in the effort if you don't share it!), you will need to learn about R packages. The single unit of sharing things with future you or others is best done using an R packages structure. Therefore, I have two important tips:
+R packages are at the hart of the success that R has in the current Data Science field. Because code, data, models and everything you can basically think of that is needed to disseminate tools, can be packaged into an R package. It is the core structure for every analysis. When you want to share your R work (and why putting in the effort if you don't share it!), you will need to learn about R packages. The single unit of sharing things with future you or others is best done using an R packages structure. Therefore, I have two important tips:
 
 <div class="tip">
 
@@ -27,7 +39,9 @@ R packages are at the hart of the success that R has in the current Data Science
 
 As you go along, you can extend the package and build everything you do in that project into an R package. To help you with that, there is a very handy helper-package called `{usethis}`. This package automates the most important parts of creating, extending and maintaining an R package. We will see the most important functions of `{usethis}` in action during this lesson. 
 
-During the exercises it is important that youn perform all the steps in RStudio, not just read trhough them, but actually run all the code and perform the asctivities in the demo.
+<div class="tip">
+During the exercises it is important that you perform all the steps in R/RStudio, not just read through them, but actually run all the code and perform the activities in the demos and exercises.
+</div>
 
 ## Package structure
 The most basic package consists of just one elementary file called the `DESCRPTION` file. This is the file that hold valuable information about:

@@ -1,11 +1,212 @@
-# Building your own Packages {#rpackages}
+# Creating R packages {#rpackages}
 ```{r, setuples, include=FALSE}
 les <- 8
 knitr::opts_chunk$set(echo = TRUE, class.source="Rchunk", class.output="Rout")
 ```
 
-We will focus on RPackages this lesson. Content TBA
-
-
+We will focus on R Packages this lesson.
 
 ## Lesson Contents
+
+ - Why R packages
+ - Package structure 
+ - Build your own
+ - Start with an RMarkdown file
+ - Fill your package and publish it on Github (portfolio assignment)
+ 
+## Why R packages
+R packages are at the hart of the success that R has in the current Data Science field. Because code, data, models and everything you can basically think of that is needed to disseminate tools, can be packages into an R package, it is the core structure fro every analysis. When you want to share your R work (and why putting in the effort if you don't share it!), you will need to learn about R packages. The single unit of sharing things with future you or others is best done using an R packages structure. Therefore, I have two important tips:
+
+<div class="tip">
+
+ **1. Start every R code project with a basic R package structure**
+ 
+ **2. Link that project to a github repo (either private or public)**
+
+</div>
+
+As you go along, you can extend the package and build everything you do in that project into an R package. To help you with that, there is a very handy helper-package called `{usethis}`. This package automates the most important parts of creating, extending and maintaining an R package. We will see the most important functions of `{usethis}` in action during this lesson. 
+
+During the exercises it is important that youn perform all the steps in RStudio, not just read trhough them, but actually run all the code and perform the asctivities in the demo.
+
+## Package structure
+The most basic package consists of just one elementary file called the `DESCRPTION` file. This is the file that hold valuable information about:
+
+ - Package name
+ - Package version
+ - Package authors
+ - What the package does in more details
+ - What are functions or packages are needed for the package (these are called dependencies)
+ - What system dependencies (for example software in Linux, Mac or Windows) is needed additionally
+
+To learn more about how R packages, we will look at such a DESCRIPTION file during an exercise:
+
+<div class="question">
+##### Exercise `r paste0(les, "")` {-} 
+Go over <mark>[this demo](https://r-pkgs.org/whole-game.html)</mark>. It is a chapter of the booklet on R-packages written by Hadley Wickham and hosted as a bookdown project <mark>[here](https://r-pkgs.org/index.html)</mark>
+
+Execute all the steps in the demo and publish your version of his `{foofactors}` package as a Github repo in your Github account.
+
+To accomplish this: 
+
+ 1. Start with creating a repo in your account called `foofactors`. 
+ 1. Initiate a new RStudio project using the link to your `foofactors` Github repo
+ 1. Close this RStudio project.
+ 1. From the R console (while not inside any RStudio project) execute the following steps
+ 1. Initiate an R package by running `usethis::create_package("./foobar")` from the R Console. R will ask you to overwrite the `foofactors.Rproj` file, you should choose 'yes'
+ 1. A new RStudio session will start and you will find yourself inside your newly created `{foofactors}` package.
+ 
+ If you did things properly this is what you see in the console after following all the steps above (**again: be sure you run this outside an Rstudio project**). You are now ready to follow the rest of the 'Whole Game' demo as mentioned above (<mark>[here is the link again:](https://r-pkgs.org/whole-game.html)</mark>) 
+ 
+ ```
+ usethis::create_package("./foofactors")
+√ Setting active project to 'C:/Users/mteunis/workspaces/foofactors'
+√ Creating 'R/'
+√ Writing 'DESCRIPTION'
+Package: foofactors
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R (parsed):
+    * First Last <first.last@example.com> [aut, cre] (YOUR-ORCID-ID)
+Description: What the package does (one paragraph).
+License: `use_mit_license()`, `use_gpl3_license()` or friends to
+    pick a license
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+√ Writing 'NAMESPACE'
+Overwrite pre-existing file 'foofactors.Rproj'?
+
+1: Absolutely not
+2: Not now
+3: Absolutely
+
+Selection: 3
+√ Writing 'foofactors.Rproj'
+√ Adding '^foofactors\\.Rproj$' to '.Rbuildignore'
+√ Adding '^\\.Rproj\\.user$' to '.Rbuildignore'
+√ Opening 'C:/Users/mteunis/workspaces/foofactors/' in new RStudio session
+√ Setting active project to '<no active project>'
+> 
+```
+
+</div>
+
+**Perform the exercises below, _after_ you have completely finished the 'Whole Game' R packages demo and included all the functionality in your version of the `{foofactors}` package**
+
+<div class="question">
+##### Exercise `r les` {-} 
+If everything went well you now have created an R package (probably your first), called `{foofactors}`, which is hosted on Github. To publish your `{foofactors}` package, you should commit and push the files present in the project. Do that now.
+
+</div>
+
+<div class="question">
+##### Exercise `r les` {-} 
+After creating your commits and pushing to Github, try installing your own `{foofactors}` R package, using the function `devtools::install_github(<package_name/github_account_name>)` 
+</div>
+
+## Start with an RMarkdown file
+In a normal day-to-day data science routine you would probably not start the way your started above for the demo. Probably, you already have some R Markdown files available or loose scripts that define functions, download data or do something else. That is why I want to introduce you to an alternative approach. I call this approach: "Start with RMarkdown". During one of the Utrecht University R cafe meetings, I held a demo on this.
+
+Imagine you are building up an analysis in an RMarkdown file. The analysis includes the following steps:
+
+ 1. Load packages
+ 1. Load data
+ 1. Inspect the raw data
+ 1. Clean data
+ 1. Make data tidy
+ 1. Do some exploratory data analysis (descriptive statistics and visualizations)
+ 1. Some statistical modelling
+
+If you adopt a proper workflow in R, you probably will have written a number of functions to complete the steps above. Furthermore, you will probably want to save the cleaned, tidy version of the data as a file. And, most importantly, you will want to document the cleaning steps from raw to celan data, the analysis steps and the packages you used (dependencies) for your analysis. This is important in relationship to reproducibility. Future you or others will want to be able to rerun the analysis, with the same results or review the steps you took to get from the raw tot the cleaned data. Once you have finished writing this RMarkdown, plus all the depending scripts, you could stop there. **But I recommend that you keep on working, to create an R package from your RMarkdown**. The biggest advantage is that you will end up with a package, for which you already have a so-called vignette: It is the very RMarkdown you started with when you decided to build the package in the first place! The package will include:
+
+ - All the dependencies
+ - A proper documentation on what the analysis is about
+ - A version
+ - A documentation of the steps you took from the raw data to the cleaned data (and if you want also the raw-data and the cleaned data itself)
+ - Properly documented functions
+ - A demonstration of what you can do with those functions and the data in the package (the vignette)
+
+This approach is also called: "RMarkdown driven development". The advantage is that now you do not only have an RMarkdown and an analysis, but you have it in a stable an sharable unit - as an R package - that you can ship, share and build upon.
+
+To show you how this "Start with RMarkdown" works, I will point you to some excellent resources on this topic. You will need to study and understand these materials in order to successfully complete this lesson's portfolio assignment.
+
+<div class="question">
+##### Exercise `r les` {-} 
+
+Firstly: Read through 
+
+<mark>[this very good blogpost](https://emilyriederer.netlify.app/post/rmarkdown-driven-development/)<mark>  
+
+of Emily Riederer, who first came up with the idea to use RMarkdown as driver for R package development.
+
+Secondly: Go over the <mark>[Technical Appendix to the blogpost above here:](https://emilyriederer.netlify.app/post/rmddd-tech-appendix/)</mark>
+
+If you like to have additional information, see the <mark>[video of the RStudio::CONF 2020 talk by Emily here](https://resources.rstudio.com/rstudio-conf-2020/rmarkdown-driven-development-emily-riederer)</mark>
+
+</div>
+
+## Learning more:
+
+There are very many good references on the internet that you can consult to learn more:
+
+ - [R Packages bookdown site](https://r-pkgs.org/index.html)
+ - [RMarkdown driven development](https://emilyriederer.netlify.app/post/rmarkdown-driven-development/)
+ - The `{usethis}] package(https://usethis.r-lib.org/)
+ - [Demo by Karl Broman](https://kbroman.org/AdvData/18_rpack_demo.html)
+ - [`{usethis}`blogpost](https://www.hvitfeldt.me/blog/usethis-workflow-for-package-development/) 
+
+## Create your own package and publish it on Github (portfolio assignment)
+
+In the assignment below you will create your own R package, related to work you have previously done in the programming courses. The final end-result is a personal package (publish the link to your package in your portfolio), that includes functionality that you can use in later analysis. **This assignment needs you to be creative and proactive**
+
+## Portfolio assignment `r paste0(les, "")` {-}  
+<div class="dagopdracht">
+
+**First read the whole assignment before you begin!**
+
+To complete this portfolio assingment you need to perform the following steps:
+
+ 1. From your collection of RMarkdown files, collect 1 or a few that you know contain duplication of code (which should be fixed by writing a function). If there are already functions in your RMarkdown files, you can also select those
+ 2. Setup a new RStudio project with an R package (think about a cool name* - cannot included special character and spaces), linked to a github repo in your Github account
+ 3. Transfer the RMarkdown files that you selected in step 1 (and all their dependencies like data and scripts) to your new package (put them in the appropriate folders).
+ 4. Using what you have learnt so far (and what you can read from https://r-pkgs.org/index.html and https://emilyriederer.netlify.app/post/rmarkdown-driven-development/), transform your RMarkdown files into one R package. Publish the link to this package in your portfolio:
+ 
+*When choosing a name for a package, this quote [from]() might help:
+
+"Side-note, if you are to create an R package, you need a name. It needs to be unique, especially if you plan on getting your package on CRAN. The `{available}` package can help you evaluate possible names to make sure they do not clash with other names and that they do not mean something rude."
+
+_We do not appreciate package names including offensive words_
+
+Use this code to check the name you would like to use:
+
+```{r, eval=FALSE}
+library(available)
+available(<your_intended_package_name>)
+```
+
+**To pass this assignment, your new package should at least include:**
+
+ 1. A properly formatted DESCRIPTION file, with the fields including relevant information
+ 1. 4 different functions that you wrote and with proper documentation, using roxygen2 comments
+ 1. A NAMESPACE file, generated with the command `devtools::document()`
+ 1. 1 Raw dataset that is documented and cleaned into a clean dataset. This clean dataset should be accessible inside your package. This means that if I install your package from Github, I would be able to call `data(<dataset_name>, <package_name>)` to load the cleaned dataset of interest in the Global Environment.
+ 1. One vignette that is accessible via the command `browseVignettes(<package_name>)` or `vignette(<package_name>)`
+ 1. The package installs from Github without errors when I run: `devtools::install_github("package_name/account_name")`
+ 
+<div class="tip">
+A few tips:
+
+ - Rewrite any duplication of your code into a seperate function
+ - Put every function in a .R file, with the same name of the function, and put those scripts (with only the function definition) in the `./R` folder of your package
+ - Document your functions and datasets using `{roxygen2}` comments
+ - Build the `NAMESPACE` using the `devtools::document()` function
+ - Include R package dependencies of your package with `usethis::use_package(<package_name>)`
+ - If you use the pipe (`%>%`) in your package code, run `usethis::use_pipe()` to add the `%>%` as a dependency to your package `NAMESPACE` file
+ - Regularly build your package using the options in RStudio in the `Build` pane
+ - Learn how to create a package vignette [here](https://r-pkgs.org/vignettes.html)
+
+GOOD LUCK!!
+
+</div>

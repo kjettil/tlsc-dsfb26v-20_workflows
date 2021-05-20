@@ -118,7 +118,7 @@ If everything went well you now have created an R package (probably your first),
 
 <div class="question">
 ##### Exercise `r les` {-} 
-After creating your commits and pushing to Github, try installing your own `{foofactors}` R package, using the function `devtools::install_github(<package_name/github_account_name>)` 
+After creating your commits and pushing to Github, try installing your own `{foofactors}` R package, using the function `devtools::install_github(<github_account_name/package_name>)` 
 </div>
 
 ## Start with an RMarkdown file
@@ -208,7 +208,7 @@ available(<your_intended_package_name>)
  1. A NAMESPACE file, generated with the command `devtools::document()`
  1. 1 Raw dataset that is documented and cleaned into a clean dataset. This clean dataset should be accessible inside your package. This means that if I install your package from Github, I would be able to call `data(<dataset_name>, <package_name>)` to load the cleaned dataset of interest in the Global Environment.
  1. One vignette that is accessible via the command `browseVignettes(<package_name>)` or `vignette(<package_name>)`
- 1. The package installs from Github without errors when I run: `devtools::install_github("package_name/account_name")`
+ 1. The package installs from Github without errors when I run: `devtools::install_github("account_name/package_name")`
  
 <div class="tip">
 A few tips:

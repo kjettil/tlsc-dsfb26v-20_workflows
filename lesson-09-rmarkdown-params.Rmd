@@ -9,29 +9,9 @@ params:
 les <- 9
 knitr::opts_chunk$set(echo = TRUE, class.source="Rchunk", class.output="Rout")
 ```
-
-Obviously not finished yet
-
-
-
-## Lesson Contents
-
- - RMarkdown parameters (params in yaml header, params in chunks)
- - Using `rmarkdown::render()` to render one or multiple parameterized reports
-
- ## Resources
-
- - https://github.com/r-lib/actions/blob/master/examples/README.Rmd
- - https://rmarkdown.rstudio.com/developer_parameterized_reports.html%23parameter_types%2F
- - https://bookdown.org/yihui/rmarkdown/parameterized-reports.html
- - [github actions for R](https://community.rstudio.com/t/github-actions-for-r-introducing-the-ghactions-package/23571) 
- - https://bookdownplus.netlify.app/portfolio/
-
-## Introduction
-
-As we saw previously, RMarkdown is R's answer to doing reproducible research. In this lesson we take the next step in customization of RMardown reports. First we introduce a number of additional formatting, style and technical capabilities in RMarkdown to increase productivity and creativity with RMarkdown. 
-Furthermore, we will see that RMarkdown can used for a number of semi- and fully automated reporting work flows. We will start with a user side definition of parameters that can be used to render documents and run code inside Rmd files that can be varied on the basis of user-defined input. Next step in complexity is to move to interactive Shiny elements build into an RMarkdown file, approaching the development of App-like documents or websites. We will spend time on this in (\@ref(rmarkdowninteractive)). Than we introduce the `{bookdown}` package as a publication framework for publishing reports, books and websites. You will learn how to setup your own website to host data products that will help you show your skills as a programmer/bioinformatician. This can be very helpful in finding a job. You are required to hand in your hosted bookdown project as the exam for this course. We will explain how to set this up in \@ref(rmarkdowninteractive)      
-
+<center>
+![](https://upload.wikimedia.org/wikipedia/commons/e/ed/Linecons_parameters.svg){ width=30%}
+</center>
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   echo = TRUE,
@@ -54,57 +34,85 @@ library(zoo)
 library(blscrapeR)
 ```
 
+## Lesson Contents
+
+ - RMarkdown parameters (params in yaml header, params in chunks)
+ - Using `rmarkdown::render()` to render one or multiple parameterized reports
+
+## Introduction
+
+As we saw previously, RMarkdown is R's answer to doing reproducible research. In this lesson we take the next step in customization of RMardown reports. We will see that RMarkdown can be used for a number of semi- and fully automated reporting work flows. 
+
+This is a much shorter lesson than the previous ones, as we will have the portfolio presentations today. The lesson consists mainly of a number of exercises.
+
+
 ## RMarkdown parameterization
 By now you must have a clear idea on the possibilities of writing a reproducible `static` analysis report in RMarkdown. It is time to make it a bit more flexible and robust.
-Most of the time an analysis will depend on several parameters that yoy might want to vary for an analysis. We can think of the following things - and I will show examples of all later (this list is not exclusive):
+Most of the time an analysis will depend on several parameters that you might want to vary for an analysis. We can think of the following things (this list is not exclusive):
 
- - The input data: The data might vary according for example a version of the data of the date it was generated, or the experiment that it was derived from. When the formatting of the data has been standardized, this can be parameterized. Think for exmaple about a transcriptome analysis for different input data.
+ - The input data: The data might vary according for example a version of the data of the date it was generated, or the experiment that it was derived from. When the formatting of the data has been standardized, this can be parameterized. Think for example about a transcriptome analysis for different input data.
  - The statistical method: If multiple statistical models can be applied to the data or is dependent on the data input, you could parameterize the statistical method
- - Visualizations: If different types of visualizations are generated from the Rmd, you could parameterize the type of visulization. This could be meaningful when you want to produce a report for different target audiences
+ - Visualizations: If different types of visualizations are generated from the Rmd, you could parameterize the type of visualisation. This could be meaningful when you want to produce a report for different target audiences
  - Groups in the data that represent a subset of the data. Imagine you have data of a transcriptome analysis for a large population of cancer patients. The type of cancer is a grouping variable that could be a meaningful parameter to use to generate a per cancer type report.  
 
 <div class="question">
-##### Exercise `r les` {-}
+##### Exercise `r les`{-}
+Discuss the possibilities with your class mates and come up with at least 2 more uses for parameterized RMDs.
+</div>
+
+<div class="question">
+##### Exercise `r les`{-}
+
+**Ocean Data**
 
 To learn how to build a parameterized RMarkdown, go over [this tutorial](https://rmarkdown.rstudio.com/lesson-6.html). 
-The Rmd file of this tutorial can be found in the course folder: `./Rmd/ocean_floor.Rmd`
+The Rmd file of this tutorial can be found in the course repo: `./Rmd/ocean_floor.Rmd`
 
 Go over the following steps to complete the exercise
  
- 1. Knit the Rmd as is and see what happens
- 1. Try adjusting the parameter 'data' according the available datasets in the `{marmap}` (the command `data("marmap")`, will give you the available setting for the `data` parameter)
- 1. RMarkdown Parameters are case sensitive (like everything else in R). Add a code chunk that takes both "Hawaii" and "hawaii" as valid input
- 1. Place a version of the rendered document (with the parameter `data` set to a different value than default - so not "hawaii") in your portfolio project.
+ 1. Knit the Rmd as is and see what happens. For now, don’t try to knit it from within your bookdown project folder, open it in a different session and folder. You will be prompted to install some packages (*marmap*, *mapproj*). 
+ 1. Try adjusting the parameter 'data' according the available datasets in the `{marmap}` (the command `data(package = "marmap")`, will give you the available setting for the `data` parameter)
+ 1. Knit using the render() function as shown in the link but use `rmarkdown::render()`.
+ 1. Paste the rmarkdown::render() command in a separate script (so not in the ocean_floor.Rmd) and build a forloop to generate 4 different reports automatically. You can use `vcdExtra::datasets("marmap")` to get all the available dataset names in a dataframe.
 
-## Parameterizing input data
-The most obvious use of paramterization is creating a parameter for different data inputs. Here we will examine an example using the European Center for Disease Control (ECDC) COVID-19 case data as an examples. 
 
-<div class="question">
-##### Exercise `r les` {-}
+## Portfolio assignment `r paste0(les, "")` {-}  
+<div class="dagopdracht">
 
-The aim of this assignment is to create an RMardown file containing a paramterized report for the COVID-19 cases as can be downloaded from the ECDC. The Rmd should include at least three parameters:
+**First read the whole assignment before you begin!**
+
+Obviously, as you are presenting your portfolio's to us today, this assignment does not need to be included in the presentation.
+
+The most obvious use of paramterization is creating a parameter for different data inputs. Here we will use the European Center for Disease Control (ECDC) COVID-19 case data. 
+
+**The aim of this assignment** is to create an RMardown file containing a parameterized report for the COVID-19 cases as can be downloaded from the ECDC. The Rmd should include at least three parameters:
 
  1. The country to which the report applies to
  1. The year that the reported data applies to 
  1. The period in months that the report applies to
 
-Here is where you can find the ECDC data: https://www.ecdc.europa.eu/en/covid-19/data
+**Here is where you can find the ECDC data:** https://www.ecdc.europa.eu/en/covid-19/data
 
-The minimum requirements for the report is that next to the three parameters mentioned above, it should include at least one graph for the COVID-19 cases and one graph for the COVID-19 related deaths. 
-After writing the Rmd, you should be able to render it with parameters set to any value you like and you need to publish your rendered version in your portfolio.
+The **minimum requirements** for the report is that next to the three parameters mentioned above, it should include at least one graph for the COVID-19 cases and one graph for the COVID-19 related deaths. After writing the Rmd, you should be able to render it with parameters set to any value you like.  1. Think about a way to show in your portfolio that you can work with parameterized reports **and** to showcase your rendered report on COVID-19 related deaths! 
 
-Here are some pointers to get your started:
+
+Remember that your portfolio is an online CV. It needs to look like something you would send out while job hunting or to prospective internship supervisors.
+
+**Here are some pointers to get your started:**
  
  1. Start in a new Rmd file in your portfolio bookdown project
  1. Start by downloading and exploring the data (you may pick multiple datasets)
  1. First create an non parameterized version of your analysis (you need to come up with a graph for cases and a graph for deaths)
  1. After the code is finished for a static report, you can start replacing parts of your filtering steps for parameters.
- 1. One way to access the parameters while you are writing your report is by running the first code chunk in your Rmd interactively, this will make the parameters available as a list in your Global environment. You can than access the individual paramter values by using the `$` (params$<parameter_key>) operator in your code (as explained in the ocean floor tutorial). 
+ 1. One way to access the parameters while you are writing your report is by running the first code chunk in your Rmd interactively, this will make the parameters available as a list in your Global environment. You can than access the individual parameter values by using the `$` (params$<parameter_key>) operator in your code (as you have seen in the ocean_floor.Rmd example, and explained in the ocean floor tutorial). 
  
 **This assignment does not have a solution available, you are on your own here** 
  
 </div>
 
-## Rendering a report using the `rmarkdown::render()` function
-Now that we have a parameterized report written in Rmd, we can use this Rmd file a template to generate multiple static reports, where wyou vary the values for the parameters. 
+
+## Resources
+
+ - https://rmarkdown.rstudio.com/developer_parameterized_reports.html%23parameter_types%2F
+ - https://bookdown.org/yihui/rmarkdown/parameterized-reports.html
 

@@ -58,7 +58,7 @@ To learn more about how R packages, we will look at a demo during an exercise:
 
 <div class="question">
 ##### Exercise `r paste0(les, "")` {-} 
-Go over <mark>[this demo](https://r-pkgs.org/whole-game.html)</mark>. It is a chapter of the booklet on R-packages written by Hadley Wickham and hosted as a bookdown project <mark>[here](https://r-pkgs.org/index.html)</mark>
+Go over [this demo](https://r-pkgs.org/whole-game.html). It is a chapter of the booklet on R-packages written by Hadley Wickham and hosted as a bookdown project [here](https://r-pkgs.org/index.html).
 
 Execute all the steps in the demo and publish your version of his `{foofactors}` package as a Github repo in your Github account.
 
@@ -71,7 +71,7 @@ To accomplish this:
  1. Initiate an R package by running `usethis::create_package("./foofactors")` from the R Console. R will ask you to overwrite the `foofactors.Rproj` file, you should choose 'yes'
  1. A new RStudio session will start and you will find yourself inside your newly created `{foofactors}` package.
  
- If you did things properly this is what you see in the console after following all the steps above (**again: be sure you run this outside an Rstudio project**). You are now ready to follow the rest of the 'Whole Game' demo as mentioned above (<mark>[here is the link again:](https://r-pkgs.org/whole-game.html)</mark>) 
+ If you did things properly this is what you see in the console after following all the steps above (**again: be sure you run this outside an Rstudio project**). You are now ready to follow the rest of the 'Whole Game' demo as mentioned above ([here is the link again:](https://r-pkgs.org/whole-game.html)) 
  
  ```
  usethis::create_package("./foofactors")
@@ -152,13 +152,13 @@ To show you how this "Start with RMarkdown" works, I will point you to some exce
 
 Firstly: Read through 
 
-<mark>[this very good blogpost](https://emilyriederer.netlify.app/post/rmarkdown-driven-development/)<mark>  
+[this very good blogpost](https://emilyriederer.netlify.app/post/rmarkdown-driven-development/)
 
 of Emily Riederer, who first came up with the idea to use RMarkdown as driver for R package development.
 
-Secondly: Go over the <mark>[Technical Appendix to the blogpost above here:](https://emilyriederer.netlify.app/post/rmddd-tech-appendix/)</mark>
+Secondly: Go over the [Technical Appendix to the blogpost above here](https://emilyriederer.netlify.app/post/rmddd-tech-appendix/)
 
-If you like to have additional information, see the <mark>[video of the RStudio::CONF 2020 talk by Emily here](https://resources.rstudio.com/rstudio-conf-2020/rmarkdown-driven-development-emily-riederer)</mark>
+If you like to have additional information, see the [video of the RStudio::CONF 2020 talk by Emily here](https://resources.rstudio.com/rstudio-conf-2020/rmarkdown-driven-development-emily-riederer)
 
 </div>
 

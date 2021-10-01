@@ -245,15 +245,6 @@ everything else is a distraction."
 
 So what happens if we do not adhere to this principle?
 
-```{r, dpi = 80, echo=FALSE, message=FALSE}
-knitr::include_graphics(
-  file.path(
-    image_dir,
-    "gollum_climbing.jpg"
-  )
-)
-```
-
  - The connection between the theoretical knowledge and the supporting data could get lost
  - The integrity of the data can become compromised (the data can get corrupt)
  - The steps from the (raw) data to the final conclusions are not well documented and cannot be traced or reproduced
@@ -689,7 +680,7 @@ Have a look at the special Bioconductor channel: https://f1000research.com/gatew
 
 **Open Peer Review**
 
-This exercise is about identifying reproducibility issues in a scientific publication. We use the criteria for reproduciblity that are publically available [via here](https://www.researchgate.net/deref/https%3A%2F%2Fwww.ripeta.com%2Fuploads%2F7%2F4%2F8%2F7%2F7487334%2Fripeta_approach_and_criteria_definitions.pdf)
+This exercise is about identifying reproducibility issues in a scientific publication. We use the criteria for reproduciblity that are publically available [via here](https://www.researchgate.net/publication/340244621_Reproducibility_and_reporting_practices_in_COVID-19_preprint_manuscripts)
 
 | Transparency Criteria| Definition       | Response Type|
 |---------|-------------------------------|----------|

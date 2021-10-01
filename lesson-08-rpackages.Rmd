@@ -4,17 +4,6 @@ les <- 8
 knitr::opts_chunk$set(echo = TRUE, class.source="Rchunk", class.output="Rout")
 ```
 
-```{r, echo=FALSE}
-knitr::include_graphics(
-    here::here(
-        "images",
-        "rpackages_network.png"
-    )
-)
-
-```
-
-Figure from: https://www.informationisbeautifulawards.com/showcase/4498-cran-r-packages
 
 We will focus on R package structure and development in this lesson.
 

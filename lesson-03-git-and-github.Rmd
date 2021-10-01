@@ -127,12 +127,10 @@ After committing your changes, you have to update the GitHub repository. You can
 
 The first time you push commits to GitHub from a repository in RStudio, you will be prompted for your user name and password. Likely, Rstudio will save your credentials, so that you will not have to enter them again. If it doesn't, do the following:
 
-<mark> XXX  Wat is ook al weer die linux code hiervoor? Bas? </mark>
 
 git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
 
-<mark>  Of moet daar nog password bij? </mark>
+git config --global user.name "Your Name"
 
 
 After pushing your changes, you can see the new/changed files in GitHub (you may need to refresh your page to see the changes). GitHub also offers a nice interface to see the exact file changes for each commit. In the main menu of your repository, you can click on the 'commits' link and subsequently select your most recent commit. You will then see all file changes that were committed during that commit (see figure below). 

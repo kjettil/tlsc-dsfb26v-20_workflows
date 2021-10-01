@@ -4,14 +4,9 @@ les <- 2
 knitr::opts_chunk$set(echo = TRUE, class.source="Rchunk", class.output="Rout")
 ```
 
-```{r, dpi = 50, echo=FALSE}
-knitr::include_graphics(
-  here::here(
-    "images",
-    "one-does-not-simply-migrate-data.jpg"
-  )
-)
-```
+<a title="Hamid Hajihusseini, CC BY 3.0 &lt;https://creativecommons.org/licenses/by/3.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Eurasian_Cranes_migrating_to_Meyghan_Salt_Lake.jpg"><img width="512" alt="Eurasian Cranes migrating to Meyghan Salt Lake" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Eurasian_Cranes_migrating_to_Meyghan_Salt_Lake.jpg/512px-Eurasian_Cranes_migrating_to_Meyghan_Salt_Lake.jpg"></a>
+
+*Picture by Hamid Hajihusseini, CC BY 3.0, via Wikimedia Commons*
 
 
 ```{r setup, include=FALSE}
@@ -459,13 +454,6 @@ Basically this is what you are doing with literate programming (e.g. RMarkdown) 
  - Data is pulled from the storage in the Analytics Environment by a script  
  - The work products (Rmd / Notebooks) bring it together
 
-```{r, dpi=200, fig.align='right'}
-knitr::include_graphics(
-  file.path(
-  image_dir,
-  "one_ring.jpg")
-)
-```
 
 ### Principle 5: Version control for data and code - Git/Github
 
@@ -524,6 +512,8 @@ knitr::include_graphics(
     "summarizedexperiment.png"
   ))
 ```
+
+*Morgan M, Obenchain V, Hester J, Pagès H (2021). SummarizedExperiment: SummarizedExperiment container. R package version 1.22.0, https://bioconductor.org/packages/SummarizedExperiment.*
 
 For machine learning purposes, data is often formatted in the `wide` format. We see an example here: 
 ```{r}

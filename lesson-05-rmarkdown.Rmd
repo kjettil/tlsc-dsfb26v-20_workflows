@@ -210,7 +210,7 @@ You can also include a local (or web url linked) image using html.
 
 Adding basic graphs to an RMarkdown is something you already learned in DSFB1.
 
-To display your graphs, you again give the chunck in which you generate it some settings. Let's use a really visually pleasing graph for the occasion [source](https://adrienne-marshall.github.io/ggplot2_workshop/), using 3 additional packages! 
+To display your graphs, you again give the chunck in which you generate it some settings. Let's use a really visually pleasing graph for the occasion ([source](https://adrienne-marshall.github.io/ggplot2_workshop/)), using 3 additional packages! 
 
 ````
 ```{r figdiam, echo=FALSE, fig.height = 5, fig.width = 5, fig.align = "center", fig.cap = "Cut and price of diamonds"}`r ''`
@@ -733,11 +733,8 @@ You can do footnotes by hand within RMarkdown[^smallnote]. Even multiline-footno
 
 [^bignote]: Here's one with multiple paragraphs and code.
     In case you want to include whole novels in your footnotes.
-    Even code chunks work fine: `r seq(1:5)`
-    
-    And images:
-    ![You found me!](images/korok.jpg){width=20%}
-    
+    Even code chunks work fine: `r seq(1:5)` and images too.
+
     Please do not include novels in your footnotes by the way.
 
 ```

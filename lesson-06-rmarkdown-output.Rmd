@@ -400,7 +400,7 @@ fig
 <!-- I don't like them -->
 
 
-## Bookdown {#bookdownportfolio}
+## Bookdown {#bookdownportfolioa}
 
 You have generated a couple of .Rmd files for your portfolio by now. The next task will be to bundle them into one portfolio website, hosted by github.
 

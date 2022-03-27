@@ -11,23 +11,48 @@ knitr::opts_chunk$set(echo = TRUE)
 **It is not allowed to hand in a pre-existing analysis as your own work. It is allowed to let yourself be inspired by existing work and copy a few lines of code from pre-existing work, as long as you provide credit to the work you are using or changing. Pay respect to the associated license if present. It is not allowed to let somebody else create your portfolio for you. All suspects or assessments of fraude or plagiarism will be reported to the Examcommittee of the Institute for Life Sciences & Chemistry**
 
 ## Details on exam for this course
-As explained, the course will be completed with an assessment on your portfolio. 
-The portfolio needs to be hosted on a publicly accessible Gihub pages website. During a live assessment, the teacher and you will go over the portfolio together. The idea is that you provide clarifications on any questions that might arise 
-from your portfolio. Two teachers will be present during this assessment.
+As explained, the course will be completed with a portfolio. 
+The portfolio needs to be hosted on a publicly accessible Gihub pages website. During a live assessment halfway trough the course, the teacher, fellow students and you will go over the portfolio together. The idea is that you provide clarifications on any questions that might arise from your portfolio. You will have to process all the feedback you receive and include the alterations in your final portfolio.
 
-## Assessment duration
-The assessment will be planned during a 20 minutes online video call. Enabling 
-your camera during this call is obligatory. The call will start on the planned 
-time, so be there on time. Showing up too late in the call without further notice will fail you the assessment. In case you fail the assessment, a new assessment 
-will be planned as a do-over. If you fail that do-over again, we will register a 'fail' for the course.
-
-## Portfolio ready before assessment
-Make sure that you have shared the public weblink to your portfolio **at least 3 days before the planned assessment**. WE need to have some time in advance to prepare. If, for some reason, you cannot make this deadline, let us know.
+## Assessment 
+If there are remaining questions about the portfolio, an assessment will be planned for you to be able to elaborate.
 
 ## Getting help
 We are here to help you pass this course! If you need assistance on getting your portfolio in order, please let us know. We do not have all the answers though, sometimes we will merely be able to point you in a solutions direction. Make sure to look around on the internet, usually other people have encountered very similar problems and have shared how they solved them. Or they were solved on a forum and you can look at it for inspiration. 
 
-<!-- Nemen ze echt te letterlijk. Geen spoortje van excuses geven om opdrachten te outsourcen. You can get help also on fora, either on public fora such as Stack Overflow. Or on the course forum on Canvas. I can highly recommend posing a question on Stack Overflow yourself. If you stick to the forum rules, you will find that there are a lot of friendly fellow-programmers willing to aid you in your programming quest.  -->
+## portfolio requirements
+
+Your portfolio needs te be something that you would happily send to your current/prospective internship supervisor or boss, and linked to from LinkedIn. Something really showcasing your skills in data science for biology.
+
+**Let bij het maken van je portfolio in het algemeen op:**
+
+ - dat je alle portfolio-opdrachten er in stopt en de eisen die in die opdrachten staan goed leest... zie lijstje met criteria hieronder.
+ - dat het er uit ziet als een professioneel portfolio. Laat wat zien van wat je kan. Maak gebruik van de mogelijkheden van Rmarkdown en css
+ - denk aan je eigen reproduceerbaarheid, ook in je github repo's (zie les 2)
+ - zet alles niet op het laatste moment in github pages, grote kans dat er dan toch iets nog niet werkt en dan heb je geen tijd meer om het op te lossen
+ - de open opdracht bestaat min of meer uit: een plan + een uitwerking. Voor beide zijn punten te halen. We willen dus graag een goed plan zien (onderbouwd, praktisch toepasbaar), en een resultaat van de eerste stappen in dat plan. Dat resultaat moet iets (eigenlijk meestal een stukje code) zijn wat je **zelf gemaakt** hebt, anders kunnen wij nog niet zien wat je nu kan. En daar gaat een portfolio juist over. Dus de code van een tutorial in je portfolio plakken is niet goed. 
+ - Verwerk de feedback op je portfolio.
+ - Stop minimaal alle portfolio-opdrachten in je portfolio. Andere gerelateerde skills includeren is een goed idee!
+ - Deel je portfolio niet in met headers als "opdracht 1.1" en "opdracht 5". Daar kan een potentiele werkgever niets mee. Geef inhoudelijke titels en leg ook uit wat er te zien is. Hou in je hoofd steeds in gedachten dat je dit meestuurt met een sollicitatie.
+ 
+
+**Lijstje criteria portfolio-opdrachten: **
+
+ - je kan laten zien dat je data analyses van iemand anders kan reproduceren (portfolio-opdracht 1.1)
+ - je kan de reproduceerbaarheid van een wetenschappelijke studie beoordelen en hierover rapporteren (portfolio-opdracht 1.2)
+ - Je includeert in een repo alle files (data code, documentatie) die nodig zijn om de gebruikte workflow te reproduceren (portfolio-opdracht 2)
+ - github wordt ingezet als uitgangsbasis voor profilering als professional (portfolio-opdracht 3)
+ - portfolio-opdracht 4 bestaat niet
+ - je houdt je aan de regels rond citeren van werk van anderen en past dit toe in een reproducible workflow (portfolio-opdracht 5)
+ - je werkt reproducible en open door middel van het delen van je werk in Rmarkdown en github pages (portfolio-opdracht 6.1)
+ - Je hebt een onderbouwd plan voor de vrije ruimte (portfolio-opdracht 6.2)
+ - Je hebt in de vrije ruimte een goede stap gemaakt met het gaan leren van een nieuwe skill (portfolio-opdracht 6.2)
+ - Je kan R en SQL toepassen om met relational databases te werken (portfolio-opdracht 7)
+ - Je kan Rpackages bouwen om je werk voor jezelf en anderen reproduceerbaar te houden (portfolio-opdracht 8)
+ - je geeft blijk van kennis van literate progamming (RMarkdown) en past deze toe in je werk (portfolio-opdracht 9 en allemaal)
+ - de principes van reproducible research zijn herkenbaar toegepast in de eindproducten (allemaal)
+ - Het portfolio is een professionele weergave van wat je nu kan en wat je aan het leren bent (allemaal)
+ - werkhouding is conform open science practice (algemeen)
 
 ## Setting up a bookdown project and publishing it online as course portfolio {#bookdownportfolio}
 
@@ -42,10 +67,10 @@ The part below will show you how to:
 Each account on github can be associated to one or multiple websites that are hosted on Github.com. To setup a website on Github (also called `github-pages` or `gh-pages`), we need to create a repository with a special name. For this course we will require you to upload results from the exercises and assignments results to you personal github pages. **This is a hard requirement for passing this course. If you have no or an empty portfolio, you cannot pass this course**
 
 <div class="question">
-##### Exercise `r les`
+##### Exercise setup portfolio
 
  1. Execute the steps explained [here](https://guides.github.com/features/pages/) to setup a github-pages repository called `workflows-portfolio`
- 1. Send the url to your public portfolio address to the teachers by personal chat. 
+ 1. Send the url to your public portfolio address to the teachers by personal chat / email.
 
 </div>
 
@@ -66,12 +91,12 @@ When you have build your `index.Rmd` file and have collected all files in the ro
 
 **IMPORTANT NOTE ON CONFIDENTIALITY**
 
-<mark>**When hosting you portfolio on a public web address, please make sure that there is no confidential information visable in your project. Data that falls under a non-disclosure agreement for example from your projecticum may not be shared. Also, be sure not to publish any personal secrets such as passwords and tokens, inside a github repo or webpage.**</mark> 
+<mark>**When hosting you portfolio on a public web address, please make sure that there is no confidential information visible in your project. Data that falls under a non-disclosure agreement for example from your projecticum may not be shared. Also, be sure not to publish any personal secrets such as passwords and tokens, inside a github repo or webpage.**</mark> 
 
 Once you have sucefully rendered your bookdown to a full website, hosting can be achived by copying all html files to your Github-pages. The easiest way is to clone your github pages repo and add, commit and push all html files to your github pages repo. The website will be automatically updated after some time. You can also setup a theme for your github pages. See [here](https://docs.github.com/en/github/working-with-github-pages/adding-a-theme-to-your-github-pages-site-with-the-theme-chooser) for more info.
+
+Trouble with figures not showing up? Try googling ".nojekyll file figures".
 
 For a complete manual on working with github pages, [see the gh-pages docs](https://docs.github.com/en/github/working-with-github-pages/getting-started-with-github-pages) 
 
 If you want to go for a full continuous integration workflow (which is highly recommended), you can follow these steps in [this blog](https://medium.com/@delucmat/how-to-publish-bookdown-projects-with-github-actions-on-github-pages-6e6aecc7331e)
-
-

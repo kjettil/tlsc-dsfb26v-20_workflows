@@ -29,8 +29,10 @@ Some additional things you need to take into account or that you will need for t
 
  - When installing the software, make sure you install the software you do not yet have in the order indicated above.
  - Next to this software we assume you also have an account set up in [**Github.com**](https://github.com/). You will need this to setup your portfolio.
- - We will use Teams to communicate with you and guide you through the exercises and assignments. 
- - During the course we will monitor your active participation in group or session chats, participation in the Q&A platform and your commits on github. We expect an active contribution and will take your activity into account when determining your score for the course. 
+ 
+<!-- - We will use Teams to communicate with you and guide you through the exercises and assignments.  -->
+ 
+ - During the course we will monitor your active participation in class, group or session chats, and your commits on github. We expect an active contribution and will take your activity into account when determining your score for the course. 
 
 <!-- ## Online Sessions -->
 <!-- The online sessions require you to have an internet connection and an updated version of Microsoft Teams and sufficient bandwidth to use audio and video during the sessions. -->

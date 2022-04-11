@@ -10,17 +10,18 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Software {#softwarelist}
 This course assumes you have a working installation and administrator access to the following software - Below we assume you have the ability to install the software on a local laptop. Please contact the teachers if you do not have this possibility. 
 
- 1. [Docker Desktop](https://www.docker.com/get-started)
- 1. [Visual Studio Code - Microsoft](https://code.visualstudio.com/)
- 1. [Visual Studio Code Docker plugin](https://code.visualstudio.com/)
+ <!-- 1. [Docker Desktop](https://www.docker.com/get-started) -->
+ <!-- 1. [Visual Studio Code - Microsoft](https://code.visualstudio.com/) -->
+ <!-- 1. [Visual Studio Code Docker plugin](https://code.visualstudio.com/) -->
+  <!-- 1. [CyberDuck](https://cyberduck.io/) -->
+  
  1. [R - at least Version 4.0](https://cran.r-project.org/)
  1. [RStudio IDE](https://rstudio.com/products/rstudio/download/)
  1. [Git for Windows](https://git-scm.com/download/win)
  1. [DBeaver](https://dbeaver.io/)
- 1. [CyberDuck](https://cyberduck.io/)
  1. [Microsoft Teams](https://www.microsoft.com/nl-nl/microsoft-teams/group-chat-software)
 
-For some exercises and assignment you need an Server account. You you can use your RStudio Server account from the previous DSFB2 ("DAUR2") course.
+For some exercises and assignment you need an Server account. You you can use your RStudio Server account from the previous DSFB2 ("DAUR") course.
 
 ## Additional 'things'
 

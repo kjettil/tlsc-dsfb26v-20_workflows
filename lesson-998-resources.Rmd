@@ -92,3 +92,5 @@ There are many 'R resources lists' to be found on the internet. Here, I just men
  - https://db.rstudio.com/dplyr/
  - https://dbplyr.tidyverse.org/
  - [database samples](https://wiki.postgresql.org/wiki/Sample_Databases)
+
+

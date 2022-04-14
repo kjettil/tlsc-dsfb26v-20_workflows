@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Software {#softwarelist}
-This course assumes you have a working installation and administrator access to the following software - Below we assume you have the ability to install the software on a local laptop. Please contact the teachers if you do not have this possibility. 
+This course assumes you have a working installation and administrator access to the following software - Below we assume you have the ability to install the software on a local laptop. Please contact the teachers if you do not have this possibility. It is possible to use the DAUR server like in DSFB1, but we would like to prepare you for your internship next school year.
 
  <!-- 1. [Docker Desktop](https://www.docker.com/get-started) -->
  <!-- 1. [Visual Studio Code - Microsoft](https://code.visualstudio.com/) -->
@@ -30,9 +30,11 @@ Some additional things you need to take into account or that you will need for t
  - When installing the software, make sure you install the software you do not yet have in the order indicated above.
  - Next to this software we assume you also have an account set up in [**Github.com**](https://github.com/). You will need this to setup your portfolio.
  
-<!-- - We will use Teams to communicate with you and guide you through the exercises and assignments.  -->
+- We will use Teams to communicate within the course.
  
  - During the course we will monitor your active participation in class, group or session chats, and your commits on github. We expect an active contribution and will take your activity into account when determining your score for the course. 
+ 
+
 
 <!-- ## Online Sessions -->
 <!-- The online sessions require you to have an internet connection and an updated version of Microsoft Teams and sufficient bandwidth to use audio and video during the sessions. -->

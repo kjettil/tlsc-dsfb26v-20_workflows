@@ -2,7 +2,7 @@
 title: "Data Science Workflows Course" 
 subtitle: "HU OSIRIS: tlsc-dsfb26v-20_workflows"
 author: "Alyanne de Haan, PhD; Bas van Gestel; Marc Teunis, PhD"
-date: "`r Sys.time()`"
+date: published on "`r Sys.time()`"
 site: bookdown::bookdown_site
 output: 
     bookdown::gitbook:
@@ -31,7 +31,6 @@ params:
   month: February March April May June July August September October November December
   year: 2020
 ---
-
 
 ```{r include=FALSE, eval=FALSE}
 # source(here::here("code", "get_rmd_dependencies.R"))
@@ -86,18 +85,26 @@ The course is build on these fundamental concepts and technologies.
  1. Literate Programming using R flavored Markdown (R Markdown)
  1. Relational databases to improve data provenance, computational speed and traceability of observations 
  
-This is also (globally) the contents of the course. The Projecticum course is further _enriched_ with four Masterclasses on relevant extra tools and concepts. In this edition of the course we will have the following Masterclasses:
+This is also (globally) the contents of the course. 
 
- 1. Tools for Reproducible Research: `conda`, `renv` and `Docker`
- 1. Shiny; Getting started
- 1. Shiny; Dashboards
- 1. Visualizations; How to produce a publication grade graph with `{ggplot2}`
+<!-- The Projecticum course is further _enriched_ with four Masterclasses on relevant extra tools and concepts. In this edition of the course we will have the following Masterclasses: -->
+
+<!--  1. Tools for Reproducible Research: `conda`, `renv` and `Docker` -->
+<!--  1. Shiny; Getting started -->
+<!--  1. Shiny; Dashboards -->
+<!--  1. Visualizations; How to produce a publication grade graph with `{ggplot2}` -->
 
 ## Software, Laptop and RStudio server
-In order for you to be able to start applying what you have learned during the course, we require you to install the software needed for this course on your own computer. We do also offer an account on the RStudio Server that you used during the previous DSFB-2 course ("DAUR2"). For some exercises, you will need to login to the RStudio Sever with the account provided to you previously. The server can be found here `r as.character(unlist(urls[4,2]))`. If you do not have access to your account any more, please inform your teachers. The list of required software can be found here \@ref(softwarelist). 
+In order for you to be able to start applying what you have learned during the course, we require you to install the software needed for this course on your own computer. This means you will get some extra practice with installing packages and dependencies, and you have your laptop installed and ready for your internship next school year.
+
+We do also still offer an account on the RStudio Server that you used during the previous DSFB-2 course ("DAUR"). The server can be found here `r as.character(unlist(urls[4,2]))`. If you do not have access to your account any more, please inform your teachers. The list of required software can be found here \@ref(softwarelist). 
 
 ## Seeking interaction and help
-During this course we really invite you to seek interaction on the course contents, the exercises and assignments with fellow course participants and the instructors. We planned rather long lessons to accommodate this. We will take breaks during the day of course. Your teachers will not be present all day long, but quite frequently we will. 
+During this course we really invite you to seek interaction on the course contents, the exercises and assignments with fellow course participants and the instructors. To fascilitate collaboration and also the possibility for you to build a strong "class of `r lubridate::year(Sys.Date())`" network, we scheduled 5 hour sessions at the HU. We will of course include breaks. Your teachers may not always be present during the whole session, but quite frequently we will. We will start every class with a plenary meeting.
+
+Note that you will have to work on Workflows outside of class hours.
+
+**Presence in class is in principle mandatory!** We would have a very hard time teaching you how to collaborate on DSFB projects when you or your classmates aren't there. 
 
 ## Exercises and portfolio
 
@@ -106,29 +113,31 @@ Within the lesson you will encounter a number of exercises.
 
 Please answer all the assignments and exercises in an RMarkdown document. You learned how to make one in DAUR1. **Save it** somewhere in your course project. Seriously, you may need code from one lesson in one of the following lessons.
 
+<div class="dagopdracht">
 ### Portfolio
 At the end of every lesson (and sometimes in the middle), there is a larger _portfolio assignment_. You will work on this assignment for the rest of the day, after finishing the smaller exercises in the lesson. Save all portfolio assignments in separate Rmd files! **Please create a separate RStudio project to complete all the portfolio assignments.** 
 
-The collection of all the portfolio assignments will form the main part of your portfolio for this course. The portfolio is also the exam for this course. The details are described here \@ref(portfolioexam). In short: You will have to publish a bookdown project to github pages in your github account. This page will function as a portfolio where you will post all the assignments and output products* of the course. Only the lecturers of the course will have access to your portfolio products. A live (or online) assessment may be held to grade your portfolio. Bookdown and github will be covered within this course.**You will need to pass all portfolio assignments in order to pass the course!**. See \@ref(portfolioexam) for more info. 
+The collection of all the portfolio assignments will form the main part of your portfolio for this course. The portfolio is also the exam for this course. The details are described [here](#portfolioexam). In short: You will have to publish a bookdown project to github pages in your github account. This page will function as a portfolio where you will post all the assignments and output products* of the course and should be a professional looking representation of your DSFB skills at the end of this semester. Bookdown and github will be covered within this course.**You will need to pass all portfolio assignments in order to pass the course!**. See [here](#portfolioexam) for more info. 
 
 * *As your work on the projecticum is probably your first real data science / bioinformatics project, your portfolio is the logical place to display it. Therefore, the work you do for the projecticum will also be part of your potfolio. However, the projecticum is only graded for the projecticum.* 
 
+</div>
+
 ## Study hours
-Please also note that this is a 5 EC course, so count on about 140 hours of work in total. Part of this workload will be spread over the semester, to work on your portfolio. But we scheduled these lessons to ensure that you have most of the first 3 weeks in this semester available to finish the lessons in workflows. Use this time to you advantage! You will need the skills from this course within the projecticum. 
+Please also note that this is a 5 EC course, so count on about 140 hours of work in total. Part of this workload will be spread over the semester, to work on your portfolio. But we scheduled these lessons in such a way that you will be able to finish most lessons in the first 3 weeks of the semester. Use this time to you advantage! You will need the skills from this course within the projecticum. 
 
 ## Passing or failing the course
 
 This course is about the workflows that are available to adopt good practices in data science for biology. This is a field in which you rarely work alone. Participating and contributing to a data science community is an important skill to practice! Active participation is therefore conditional for getting a grade on your portfolio. 
-
 So, to summarise: to successfully complete this course, you will need to pass these checks:
 
  1. Add all required assignments and materials to your online portfolio
- 1. Provide the teachers access to your online portfolio
+ 1. Provide the teachers access to your online portfolio **before June 6th, 23:59h.**
  1. Meet the assignment minimal requirements
  1. Participate actively in class
- 1. possibly: Pass the live (online) assessment that will be held to grade your portfolio.
+ 1. possibly, only if there is clarification needed: Pass the live (online) assessment that will be held to grade your portfolio.
 
-For more detailed information on the requirements and rules for passing this course see \@ref(portfolioexam) 
+For more detailed information on the requirements and rules for passing this course see [the page on the portfolio](#portfolioexam).
 
 
 
@@ -175,3 +184,4 @@ install.packages("bookdown")
 # devtools::install_github("rstudio/bookdown")
 ```
 
+We will use it extensively in this course.

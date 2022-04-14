@@ -1,7 +1,7 @@
 ---
 title: "Reproducible research" 
 subtitle: "HU OSIRIS: tlsc-dsfb26v-20_workflows"
-author: "Alyanne de Haan, PhD; Bas van Gestel; Marc Teunis, PhD"
+author: "Alyanne de Haan, Chris van Oevelen"
 date: "12-4-2021"
 output: 
   ioslides_presentation:
@@ -24,6 +24,8 @@ knitr::include_graphics(
 )
 ```
 
+Is niet alleen maar "mik je data in een database".
+
 ## First: Open science
 
 "In a nutshell, **Open Science** is transparent and accessible knowledge that is shared and developed through collaborative networks" (Vicente-Sáez & Martínez-Fuentes 2018).
@@ -41,6 +43,14 @@ who has the power to set research agendas, and
 how knowledge is legitimized.
 
 ([Leslie Chan](https://www.openlibhums.org/news/314/))
+
+## First: Open science
+
+![](https://www.dub.uu.nl/sites/default/files/styles/large/public/grf-kosten-uitgevers_0.jpg?itok=2WSx_QyU)
+
+kosten voor een onderwijsinstelling in 2015: paar miljoen.
+
+Wie heeft die miljoenen? Wij wel, blijkbaar...
 
 ## Open science and reproducible research
 
@@ -223,3 +233,17 @@ Daarom: heel belangrijk om zoveel mogelijk informatie te delen!
     - Als problematisch: (voorlopig) dummy/synthetic data open beschikbaar maken 
  - Werkgevers/opdrachtgevers/politiek die belang niet inzien
     - help mee open science de norm te maken
+
+## portfolio-opdrachten
+
+ - Begin op tijd. Deadline is niet morgen, maar ze moeten wel straks allemaal in je portfolio...
+ - Maak voor elke portfolio-opdracht een nieuwe .Rmd file.
+ - werk in je _portfolio project voor de portfolio-opdrachten
+ - maar niet voor de les-opdrachten.
+ 
+ 
+## portfolio-opdracht reproducible science
+
+ - lees na de lunch allemaal de portfolio-opdracht
+ - kies een paper uit
+ - stem met elkaar af dat je niet hetzelfde paper kiest. (schrijf bijv pmid op het whiteboard of in teams)

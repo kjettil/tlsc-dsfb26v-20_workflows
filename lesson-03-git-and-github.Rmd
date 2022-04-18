@@ -252,7 +252,7 @@ You could also check if your mess up is listed [here](https://ohshitgit.com/) or
 </details>
 
 
-## Portfolio assignment `r paste0(les, " ")` {-}
+## Portfolio assignment `r paste0(les, ".1")` {-}
 <div class="dagopdracht">
 **Start your portfolio with a CV**
 
@@ -268,3 +268,29 @@ You can look around online for examples of cv's (/resume). Your cv will be part 
 
 </div>
 
+
+## Portfolio assignment `r paste0(les, ".2")` {-}  
+<div class="dagopdracht">
+
+**looking ahead**
+
+In class, we discussed this assignment yesterday. In the following weeks, start looking for what you will want to spend your extra time on this semester.
+
+Try, for yourself, to answer the following questions:
+
+ - Where do I want to be in ~2 years time?
+ - How am I doing now with respect to this goal?
+ - What would be the next skill to learn?
+
+Make a planning on how to start learning this new skill. 
+
+Note the following points:
+
+ - It has to be life sciences or useful for life sciences (no knitting, riding horses etc)
+ - It has to be data science / bioinformatics
+ - You have to show your plan in your portfolio, together with the result of the first few steps you took in trying to rech this goal.
+ - You probably won't learn this skill in a few days. Just get started.
+
+This assignment will show us whether you succeeded in reaching an overview of the field and possibilities in data science for biology.
+
+</div>

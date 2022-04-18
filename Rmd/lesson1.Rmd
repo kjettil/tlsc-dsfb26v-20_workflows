@@ -52,6 +52,15 @@ kosten voor een onderwijsinstelling in 2015: paar miljoen.
 
 Wie heeft die miljoenen? Wij wel, blijkbaar...
 
+## open access afspraken
+
+ - EU terecht boos: veel onderzoek betaald uit gemeenschapsgeld
+ - Meeste NL instellingen hebben nu kortings-afspraken met uitgevers om papers open access te publiceren: de lezer betaalt niet.
+ - maar de instelling dus wel
+ - waar betalen we eigenlijk voor?
+ - welk gevolg heeft dit?
+
+
 ## Open science and reproducible research
 
 Lijken hetzelfde maar zijn verschillende bewegingen:
@@ -81,13 +90,9 @@ knitr::include_graphics(
 ```
 *(figure: probably Caterina Penone)*
 
-## Reproducible vs  replicable
+## Repliceerbaar
 
 Jullie zijn getrained in *repliceerbaarheid* van methoden: anderen moeten je experiment op basis van je methodensectie exact kunnen herhalen.
-
-Stel ze krijgen je data gewoon? Komen ze dan op dezelfde **resultaten**?
-
-Wat zouden ze daarvoor nodig hebben? 
 
 ```{r, echo = FALSE, out.width=400}
 knitr::include_graphics(
@@ -98,6 +103,32 @@ knitr::include_graphics(
   
 )
 ```
+
+## Whitaker's matrix of reproducibility
+
+```{r, echo = FALSE, out.width=400}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "whitaker.png"
+    )
+  
+)
+```
+
+Kirstie Whitaker, University of Cambridge, Creative Commons Attribution license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+
+
+## Reproduceerbaar
+
+Stel ze krijgen je data gewoon? Komen ze dan op dezelfde **resultaten**?
+
+Dat zou wel moeten...
+
+Wat zouden ze daarvoor nodig hebben? 
+
+
 
 
 

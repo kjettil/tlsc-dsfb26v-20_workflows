@@ -169,7 +169,7 @@ This principle is simple: storage costs are low these days so there is no need t
  1. Keep your files, you never know when you need them. The price for a storage units has dramatically dropped over the past years, so there is no need to delete files or clean up any more. Just save old files in an archive. 
  1. Store data that you actively work on in online-cloud storage. Usually, you will be better of storing data on a remote location in the cloud. This reduces the risk of data loss, when something happens to the local file system. Cloud storage is usually redundant. Which means copies of the same file are ditributed over mupltiple locations (even geographically if you want). When one disk fails, there is always a back up, so no real data loss if hardware dies.
  1. Protect yourself: do not click on attachments and spiffy emails, cyber criminals are getting smarter everyday. 
- <!-- When installing open source software always check the checksums of the downloaded file. More on this topic later in @\ref(checksums) -->
+ <!-- When installing open source software always check the checksums of the downloaded file. More on this topic in the next paragraph -->
  1. Create md5sums for important (source) data-files to ensure data integrity and data transfer validity. A MD5 ‘hash’ or ‘checksum’ is a 128-bit summary of the file contents. Files with different MD5 sums are different. So you can use this to check whether a file has changed since you last used it.
  1. Agree on a storage system, share it, use it, stick to it
  
@@ -371,7 +371,7 @@ So when managing files in projects adhere to the following guidelines
  1. **Create a separate folder for each analytics project** . Keep the unit of a project small. So a larger research project can usually be subdivided into smaller projects. Create an analysis project for each sub-project. Don't try to fit it all together.
  1. **Do not deeply nest folders** (max 2-3 levels, so no *project/documentation/applications/metc/first_communication/input/stuff/morestuff/mail.txt*)
  1. **Keep information about the data, close to the data**. So store descriptions about variables for example in a README.txt file and store that README.txt file in the same folder as where the data lives that it describes. When using Excel files, you may choose to store the README information in a separate worksheet. More on this later \@ref(metadata1)
- 1. **Store each dataset in its own sub-folder.** I usually work like the example below. Each dataset I receive goes in a numbered folder in the `data-raw` folder. If I recieve an updated file, I add the old file to a new folder called `v01` inside the orginal `D..` folder. The updated file replaces the `v01` file. If then you recieve yet another update, you can repeat this trick with a `v02` folder inside the `D..` folder. In this way, the file directly in the `D..` folder is always the latest updated version. The README.txt file containing data about the data (see \@ref(metadata1)) lives also in the root of the `D..` folder.
+ 1. **Store each dataset in its own sub-folder.** I usually work like the example below. Each dataset I receive goes in a numbered folder in the `data-raw` folder. If I recieve an updated file, I add the old file to a new folder called `v01` inside the orginal `Data..` folder. The updated file replaces the `v01` file. If then you recieve yet another update, you can repeat this trick with a `v02` folder inside the `D..` folder. In this way, the file directly in the `D..` folder is always the latest updated version. The README.txt file containing data about the data (see \@ref(metadata1)) lives also in the root of the `Data..` folder.
  1. **Do not change file names or move them.** As explained before, never change a file name of a file you recieve or download from the internet. If you need to change the file for analysis reasons (sometimes bioinformatics pipelines require specially formatted file names and than you do not have a choice, but to rename them), record your changes in the README.txt file!
  1. **Do not manually edit data source files.** in fact **Never, ever change a value inside a file**. You can (_almost_) always solve this using code. 
  1. **In code, use relative paths** (here::here etc)
@@ -392,6 +392,14 @@ When you share data with someone else, consider taking these steps:
  >- Agree on where data is stored and who has access
  >- Suppress the impulse to store multiple copies of the data in different locations
  >- If you sent data files, sent the md5sums along
+
+<div class="question">
+##### Exercise `r les` {-}
+**project data**
+
+Now look at your last laboratory project and take a look at your folder structure. Clean it! 
+
+</div>
 
 ### Principle 3: Automate _everything_ with program code
 If we consider this lesson is about Reproducible Research, this is the core principle we need to consider thoroughly. From the R programming perspective, we can do this easily when using RMarkdown in combination with scripts. It already automates everything from the data file to the final results of an analysis. And, what is even better: it is neatly packaged in a reproducible report that, when rendered to html, can be opened on every computer.
@@ -474,6 +482,14 @@ AKA communicate! When working together it is vital to come to an agreement on ho
  >- Work together on code using Github or some other version control based repository system (e.g. Gitlab / Bitbucket).
  >- Provide for education and share best practices within the organization, the department and/or the team (this is what we try to achieve with this course).
 
+<div class="question">
+##### Exercise `r les` {-}
+**tips**
+
+Please share all tips for fellow students on the prikbord in teams!
+
+</div>
+
 ### Principle 7: Prefer analytics code that runs from start to finish
 
  - Create work products in RMarkdown (or Jupyter notebooks if you like)
@@ -481,6 +497,156 @@ AKA communicate! When working together it is vital to come to an agreement on ho
  - Use iterations to prevent repetition. Write clear and compact loops, for example in R by using the map-family of functions from the `{purrr}` package. I prefer these above writing `for()` loops because they focus on the object that is being changed, not on the computation that is done.
   - For the future: [In R, create an R-package](https://github.com/UtrechtUniversity/R-data-cafe/tree/master/themes/start_with_rmd). Once you have a fully functional RMarkdown file, it is quite easy to rebase that code into an R Package. I call this the "Start with Rmd" - workflow. The demo in the link shows you an example, you don't need to do the demo now, but use it in the future if you like.
 
+
+## Metadata {#metadata1}
+
+Meta data is data about the data, such as for instance the type of variables, number of observations, experimental design and who gathered the data. This is quite often not reliably documented (or at least not easily accessible) but very important: data without context loses some of its purpose. 
+
+Take a look at this [Wikipedia image of cocoa pods](https://commons.wikimedia.org/wiki/File:Cocoa_Pods.JPG) and scroll down. As you can see, Wikipedia stores a lot of metadata on file usage, licence, author, date, source, file size... Even the original meta data from the camera is included (scroll to the bottom).
+
+Meta information for data files, like type of variables, ranges, units, number of observations or subjects in a study, type of analysis or experimental design often goes in a README.txt file or a sheet in the Excel file containing the data. Keep the readme information close to the data file. Also, information about who is the owner of the data or who performed the experiment when and where and with what type of device or reagents is very useful to include.
+In our exercise above such README information would have saved us a lot of time figuring out what is what in the Excel file, don't you think?
+
+An example of a readme file is depicted below. 
+
+ 
+```{r,  dpi=100, echo=FALSE, fig.cap="A short example of a README.txt file"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "readme_updated.png"))
+```
+ 
+It does not need to be very long, but provides information on where the data (which project?) refers to, who the owners are, who to contact in case of questions and what are the contents of the data (variable description) 
+
+### YAML header
+Rmd files include a metadata section themselves: the YAML header. At the very least, specify the title, author and date here.
+
+### saving metadata
+
+Save at the very least in your Readme.txt:
+
+ - General information
+    - title 
+    - information about the authors (name, institution, email address)
+    - date of data collection
+    - location of data collection
+ - license information
+ - a data log with for each data file:
+    - short description
+    - date the file was created
+    - variable list (full names and explanations)
+    - units of measurements
+    - definition for missing data (NA)
+ - methodological information
+    - description of methods (you can link to piublications or protocols)
+    - description of data processing (link to RMarkdown file)
+    - any software or specific instruments used
+    - Describe details that may influence reuse or replication efforts
+
+
+Here is a nice example file by the university of Bath for [bioinformatics projects](https://researchdata.bath.ac.uk/91/19/ReadMe.txt), another more general template [available for download](https://library.bath.ac.uk/ld.php?content_id=32074262), and here [another template for experimental data](https://library.bath.ac.uk/ld.php?content_id=32652573)
+
+This may seem to be a bit too much for your current projects, but try and see how much you could fill in and keep the template for future projects! Remember that any metadata is better than none.
+ 
+#### Data-log
+This is an overview of all datafiles in a project.
+
+Keep an MS Excel file (called "data_log.xlsx") in the root of the folder `\data` of each project and keep it up to date to track all the files present in this folder. Provide names and additional information here. Meta information for the `\data_raw` folder is best kept in that folder in a `README.txt` file.
+
+Use versioning of data files. Decide on a versioning system for yourself (we showed you an exampole before, but you are free to look for other options), an stick to it.
+
+### Annotations and meta data in multiple files
+Some metadata is most useful if you have it available in the code directly.
+
+In order to reduce effort in generating a complete tidy table for your data it might be worthwhile to create a number of extra tables containing meta data.
+Typically this is how it would work:
+
+Assume we have wide data format originally created in Excel looking like this:
+(Actually, we will ask R to generate some data that looks like it was imported from excel instead, because we [didn't feel like](https://im.indiatimes.in/photogallery/2015/Mar/1328016_1437683070.jpg?w=1200&h=900&cc=1) copy-pasting 4x100 numbers to make an excelfile...)
+
+```{r}
+# generate some dummy data for the example
+measured1 <- rbinom(100, size = 2, prob = 0.3)
+measured2 <- rnorm(100, mean = 5.3, sd = 0.1)
+measured3 <- rnbinom(100, size = 10, prob = 0.1)
+concentration <- rep(1:10, 10)
+
+# put it in a tibble
+data <- tibble::tibble(
+  `concentration (mMol/l)` = concentration,
+  `measured 1 (pg/ml)` = measured1,
+  `measured 2 (ng/ml)` = measured2,
+  `measured 3 (ng/ml)` = measured3
+)
+data
+```
+
+The `r names(data)` are the variable names as provided in Excel. As you can see they are not adherent in a few ways tot the aforementioned naming conventions ( \@ref(namingconv)). The `r names(data)[2:ncol(data)]` refer to three variables that were determined in some experiment. The units of measurements are (as is common in Excel files) mentioned between brackets in the column name.
+
+For compatibility and inter-operability reasons this data format can be improved to a more machine readable format: 
+
+<!-- There are two solutions that could be provided here. One is more laborious to achieve manually (solution 2) than the other (solution 1). If there is no expertise for scripting reformatting and cleaning up data is available in the research group, I recommend solution 2. -->
+
+<!-- ### Solution 1 (requires programming skills) -->
+
+
+<!-- Add meta data and variable information to a separate table. The strategy is to keep all experimentally relevant data that is related to the experimental design in one sheet and all additional data (metadata or also called 'data about the data').  -->
+
+In this case, the unit information that is included in the variable names can be considered metadata. So you can put that information in a separate table. In the example below, I will call it coldata (short for column data)
+
+First we need to create a pivoted table where the first column represents the variable names of our `data` table. Then we need to add a row for each variable in our data. It is best if the variable names and the values in the meatdata table in column 1 excactly match (in term of spelling and typesetting). I will show how this looks for our data
+```{r}
+var_names <- names(data)
+metadata <- tibble::tibble(
+  varnames = var_names
+)
+metadata
+```
+
+We now have a `metadata` table with one column called `varnames`. However, we are not done. If we want to create a tidy format of our metadata table we need to separate the unit information from the variable names column. Let's extract the units into it's own column
+
+```{r}
+metadata %>%
+  mutate(
+    varnames = str_replace_all(
+      varnames,
+      pattern = " ",
+      replacement = "")) %>%
+  separate(
+    varnames,
+    into = c("varnames", "units"), sep = "\\(", remove = FALSE) %>%
+  mutate(
+    units = str_replace_all(
+      units,
+      pattern = "\\)",
+      replacement = "")) -> metadata_clean
+metadata_clean
+```
+
+We can now start adding additonal information such as remarks or methods to the the metadata column.
+
+```{r}
+methods <- c("dilution", "elisa", "lcms", "flow cytometry")
+remarks <- c(
+  "concentration of exposure compound",
+  "compound x is related to elevated blood pressure"
+  )
+```
+
+## Study documentation
+
+The folder `\doc` contains documentation and can be basically everything concerning information about the project, not concerning the data. For example a PowerPoint presentation on the experimental design of a study, or a contract or something else. Data information goes in the “supporting’ folder that is in the same folder as where the data file it refers to is stored.
+
+<div class="question">
+##### Exercise `r les` {-}
+
+Provide study documentation and meta data for your last laboratory project.
+
+<!-- Make `/doc` and `/data` and `data_raw` folders now for all (at least) 3 of your projects this semester. Add a `data_log.xlsx` for the projecticum folder. -->
+
+While you are at it, add `/code` folders for any scripts you write (outside of the RMarkdown files) and `/R` folders for any functions you write.
+</div>
 
 ## What your data should look like
 
@@ -533,7 +699,9 @@ The data file for this exercise can be found here: `./data/salmonella CFU kineti
 
 <a href="https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/data/salmonella%20CFU%20kinetics%20OD600%20in%20LB%20van%20ipecs%208okt2020%20kleur.xlsx" download> Download it here if you've lost it </a> and take a good look at your file management...
 
-Go over the following steps to complete this exercise. Add the resulting RMarkdown to your portfolio bookdown project (see \@ref(bookdownportfolio)).
+Go over the following steps to complete this exercise. 
+
+<!-- Add the resulting RMarkdown to your portfolio bookdown project (see \@ref(bookdownportfolio)). -->
 
  1. Review your answers to the previous exercise where we used this file in this lesson.
  1. Try reading the sheet called `All Cycles` in the Excel file. 
@@ -697,9 +865,9 @@ data_tidy_time %>%
  - Use explicit encoding: male/female instead of `0`/`1`
  - Encodings can always be altered programmatically
  - Be consistent (see Figure \@ref(fig:flipperplot))
- - Write a code journal that explains encodings, including units and levels
+ - Write documentation that explains encodings, including units and levels
  - Use factors if a variable has a set of discrete possible outcomes: `sex`, `species`, `marital_status` etc
- - Use an ordered factor if there is a hiearchy in the factor levels: `year`, `month`, `number_of_legs`
+ - Use an ordered factor if there is a hiearchy in the factor levels: e.g. `year`, `month`, etc
 
 Here we use the `{palmerpenguins}` dataset as an example to show you how they dealt with encoding variables.
 
@@ -791,153 +959,7 @@ For Excel users:
  - Adhere to the naming conventions for variable names (see above)
  - Use cell validation for entered values. This is especially true if you have multiple categorical variables that need manual labeling in Excel. A typo is just around the corner.
 
-## Metadata {#metadata1}
 
-Meta data is data about the data, such as for instance the type of variables, number of observations, experimental design and who gathered the data. This is quite often not reliably documented (or at least not easily accessible) but very important: data without context loses some of its purpose. 
-
-Take a look at this [Wikipedia image of cocoa pods](https://commons.wikimedia.org/wiki/File:Cocoa_Pods.JPG) and scroll down. As you can see, Wikipedia stores a lot of metadata on file usage, licence, author, date, source, file size... Even the original meta data from the camera is included (scroll to the bottom).
-
-Meta information for data files, like type of variables, ranges, units, number of observations or subjects in a study, type of analysis or experimental design often goes in a README.txt file or a sheet in the Excel file containing the data. Keep the readme information close to the data file. Also, information about who is the owner of the data or who performed the experiment when and where and with what type of device or reagents is very useful to include.
-In our exercise above such README information would have saved us a lot of time figuring out what is what in the Excel file, don't you think?
-
-An example of a readme file is depicted below. 
-
- 
-```{r,  dpi=100, echo=FALSE, fig.cap="A short example of a README.txt file"}
-knitr::include_graphics(
-  here::here(
-    "images",
-    "readme_updated.png"))
-```
- 
-It does not need to be very long, but provides information on where the data (which project?) refers to, who the owners are, who to contact in case of questions and what are the contents of the data (variable description) 
-
-### YAML header
-Rmd files include a metadata section themselves: the YAML header. At the very least, specify the title, author and date here.
-
-### saving metadata
-
-Save at the very least in your Readme.txt:
-
- - General information
-    - title 
-    - information about the authors (name, institution, email address)
-    - date of data collection
-    - location of data collection
- - license information
- - a data log with for each data file:
-    - short description
-    - date the file was created
-    - variable list (full names and explanations)
-    - units of measurements
-    - definition for missing data (NA)
- - methodological information
-    - description of methods (you can link to piublications or protocols)
-    - description of data processing (link to RMarkdown file)
-    - any software or specific instruments used
-    - Describe details that may influence reuse or replication efforts
-
-
-Here is a nice example file by the university of Bath for [bioinformatics projects](https://researchdata.bath.ac.uk/91/19/ReadMe.txt), another more general template [available for download](https://library.bath.ac.uk/ld.php?content_id=32074262), and here [another template for experimental data](https://library.bath.ac.uk/ld.php?content_id=32652573)
-
-This may seem to be a bit too much for your current projects, but try and see how much you could fill in and keep the template for future projects! Remember that any metadata is better than none.
- 
-#### Data-log
-This is an overview of all datafiles in a project.
-
-Keep an MS Excel file (called "data_log.xlsx") in the root of the folder `\data` of each project and keep it up to date to track all the files present in this folder. Provide names and additional information here. Meta information for the `\data_raw` folder is best kept in that folder in a `README.txt` file.
-
-Use versioning of data files. Decide on a versioning system for yourself (we showed you an exampole before, but you are free to look for other options), an stick to it.
-
-### Annotations and meta data in multiple files
-Some metadata is most useful if you have it available in the code directly.
-
-In order to reduce effort in generating a complete tidy table for your data it might be worthwhile to create a number of extra tables containing meta data.
-Typically this is how it would work:
-
-Assume we have wide data format originally created in Excel looking like this:
-(Actually, we will ask R to generate some data that looks like it was imported from excel instead, because we [didn't feel like](https://im.indiatimes.in/photogallery/2015/Mar/1328016_1437683070.jpg?w=1200&h=900&cc=1) copy-pasting 4x100 numbers to make an excelfile...)
-
-```{r}
-# generate some dummy data for the example
-measured1 <- rbinom(100, size = 2, prob = 0.3)
-measured2 <- rnorm(100, mean = 5.3, sd = 0.1)
-measured3 <- rnbinom(100, size = 10, prob = 0.1)
-concentration <- rep(1:10, 10)
-
-# put it in a tibble
-data <- tibble::tibble(
-  `concentration (mMol/l)` = concentration,
-  `measured 1 (pg/ml)` = measured1,
-  `measured 2 (ng/ml)` = measured2,
-  `measured 3 (ng/ml)` = measured3
-)
-data
-```
-
-The `r names(data)` are the variable names as provided in Excel. As you can see they are not adherent in a few ways tot the aforementioned naming conventions ( \@ref(namingconv)). The `r names(data)[2:ncol(data)]` refer to three variables that were determined in some experiment. The units of measurements are (as is common in Excel files) mentioned between brackets in the column name.
-
-For compatibility and inter-operability reasons this data format can be improved to a more machine readable format: 
-
-<!-- There are two solutions that could be provided here. One is more laborious to achieve manually (solution 2) than the other (solution 1). If there is no expertise for scripting reformatting and cleaning up data is available in the research group, I recommend solution 2. -->
-
-<!-- ### Solution 1 (requires programming skills) -->
-
-
-<!-- Add meta data and variable information to a separate table. The strategy is to keep all experimentally relevant data that is related to the experimental design in one sheet and all additional data (metadata or also called 'data about the data').  -->
-
-In this case, the unit information that is included in the variable names can be considered metadata. So you can put that information in a separate table. In the example below, I will call it coldata (short for column data)
-
-First we need to create a pivoted table where the first column represents the variable names of our `data` table. Then we need to add a row for each variable in our data. It is best if the variable names and the values in the meatdata table in column 1 excactly match (in term of spelling and typesetting). I will show how this looks for our data
-```{r}
-var_names <- names(data)
-metadata <- tibble::tibble(
-  varnames = var_names
-)
-metadata
-```
-
-We now have a `metadata` table with one column called `varnames`. However, we are not done. If we want to create a tidy format of our metadata table we need to separate the unit information from the variable names column. Let's extract the units into it's own column
-
-```{r}
-metadata %>%
-  mutate(
-    varnames = str_replace_all(
-      varnames,
-      pattern = " ",
-      replacement = "")) %>%
-  separate(
-    varnames,
-    into = c("varnames", "units"), sep = "\\(", remove = FALSE) %>%
-  mutate(
-    units = str_replace_all(
-      units,
-      pattern = "\\)",
-      replacement = "")) -> metadata_clean
-metadata_clean
-```
-
-We can now start adding additonal information such as remarks or methods to the the metadata column.
-
-```{r}
-methods <- c("dilution", "elisa", "lcms", "flow cytometry")
-remarks <- c(
-  "concentration of exposure compound",
-  "compound x is related to elevated blood pressure"
-  )
-```
-
-## Study documentation
-
-The folder `\doc` contains documentation and can be basically everything concerning information about the project, not concerning the data. For example a PowerPoint presentation on the experimental design of a study, or a contract or something else. Data information goes in the “supporting’ folder that is in the same folder as where the data file it refers to is stored.
-
-<div class="question">
-##### Exercise `r les` {-}
-
-Make `/doc` and `/data` and `data_raw` folders now for all (at least) 3 of your projects this semester. Add a `data_log.xlsx` for the projecticum folder.
-
-While you are at it, add `/code` folders for any scripts you write (outside of the RMarkdown files) and `/R` folders for any functions you write.
-</div>
 
 ## Portfolio assignment `r paste0(les, " ")` {-}
 <div class = "dagopdracht">
@@ -945,10 +967,14 @@ While you are at it, add `/code` folders for any scripts you write (outside of t
 **Applying the Guerrilla analytics framework to your own project.**
 
 (A) 
- 1. Look at your RStudio project that you created for the DAUR-II final assignment
- 1. Rearrange your project according the Guerilla principles explained above
- 1. Add README files to the datasets 
+ 1. Look at your RStudio project that you created for the DAUR-II assignments
+ 1. download your folders (not the HUGE datafiles and kraken-database!) and rearrange your project according the Guerilla principles explained above
+ 1. for the data... folders: provide only a readme.txt with alle the info you would normally put there + where the data is stored
+ 1. Provide study documentation and meta data. 
  1. Use the `{fs}` package to share a screenshot of your folder tree in your portfolio, look [at:](https://www.tidyverse.org/blog/2018/01/fs-1.0.0/) for more info on how to use the `{fs}` package. 
+
+
+hint: you had 3 datasets within the RNAseq project, one of them being the exam project, and 2 datasets within the metagenomics project. 
 
 (B)
 Now clean up your work environment for this course (workflows) and the parallel course in DSFB2 (projecticum). Set up a folder structure that will accomodate future plans and collaboration on the projecticum. Provide readme-files or comments within the code where needed. 

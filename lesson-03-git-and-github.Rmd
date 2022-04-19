@@ -103,9 +103,27 @@ knitr::include_graphics('images/lesson22_2_downloadRepo.png')
 
 OK, you are ready to go! You have created your first Git repository and you can now start to add files and track their changes. In this part, we will show you how to commit your changes and how to push your changes to the Git repository on GitHub. 
 
+#### Git personal access token
+
+Github uses personal access tokens. You will have to generate one on github, and tell Rstudio / git on your computer what is is.
+
+Copy the following to the console:
+
+```{r, eval=F}
+install.packages("gitcreds")
+library(gitcreds)
+gitcreds_set()
+```
+
+Rstudio asks for a github token. Let it wait for a bit. Go to your browser. Generate your token by following [these steps](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). 
+
+Copy your token (you only get to see it once!) and paste it in Rstudio (who was still waiting for your reply).
+
+You will probably have to give Rstudio your github name and password later as well. We'll get to that.
+
 #### Getting started with Git in RStudio {-}
 
-We start by creating a new R script and saving it in the directory of the Git repository. In the right upper corner of RStudio, you can find a submenu called 'Git'. If you open this menu, you can see the changes you have made to the repository (see figure below). These changes may be new files that you just added to the repository, but they also can be changes to the content of pre-existing files. 
+We will start by creating a new R script and saving it in the directory of the Git repository. In the right upper corner of RStudio, you can find a submenu called 'Git'. If you open this menu, you can see the changes you have made to the repository (see figure below). These changes may be new files that you just added to the repository, but they also can be changes to the content of pre-existing files. 
 
 ```{r echo=FALSE, out.width='70%', fig.align='center', fig.cap='Git menu in RStudio.'}
 knitr::include_graphics('images/lesson22_3_gitmenu.PNG')
@@ -125,7 +143,7 @@ knitr::include_graphics('images/lesson22_4_commitmenu.PNG')
 
 After committing your changes, you have to update the GitHub repository. You can do this by pushing the recent commit(s) to GitHub using the 'Push' button (with the green, upward pointing arrow) in the Git menu.
 
-The first time you push commits to GitHub from a repository in RStudio, you will be prompted for your user name and password. Likely, Rstudio will save your credentials, so that you will not have to enter them again. If it doesn't, do the following:
+The first time you push commits to GitHub from a repository in RStudio, you will be prompted for your user name and password. Likely, Rstudio will save your credentials, so that you will not have to enter them again. **If it doesn't**, type the following in the terminal:
 
 
 git config --global user.email "you@example.com"

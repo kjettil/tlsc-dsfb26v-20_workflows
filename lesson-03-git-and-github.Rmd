@@ -143,7 +143,7 @@ knitr::include_graphics('images/lesson22_4_commitmenu.PNG')
 
 After committing your changes, you have to update the GitHub repository. You can do this by pushing the recent commit(s) to GitHub using the 'Push' button (with the green, upward pointing arrow) in the Git menu.
 
-The first time you push commits to GitHub from a repository in RStudio, you will be prompted for your user name and password. Likely, Rstudio will save your credentials, so that you will not have to enter them again. If it doesn't, do the following:
+The first time you push commits to GitHub from a repository in RStudio, you will be prompted for your user name and password. Likely, Rstudio will save your credentials, so that you will not have to enter them again. **If it doesn't**, type the following in the terminal:
 
 
 git config --global user.email "you@example.com"

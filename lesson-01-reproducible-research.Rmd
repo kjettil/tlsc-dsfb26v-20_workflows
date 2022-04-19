@@ -290,10 +290,10 @@ We will practice this a bit and see this happening live in an exercise
 ##### Exercise `r les` {-}
  
  1. Download [this file](https://ndownloader.figstatic.com/files/7148432)
- 1. Open the file and compare the contents of the file to the Supplementary table shown [here](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7#Sec1). Look specifically at the column `Example Gene Name Conversion`. What do you observe? Why do you think this is happening?
+ 1. Open the file and compare the contents of the file to the Supplementary table shown [here](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7#Sec1). (click on additional file 1) Look specifically at the column `Example Gene Name Conversion`. What do you observe? Why do you think this is happening?
  1. Look at this article in the Microsoft help: https://support.microsoft.com/en-us/office/stop-automatically-changing-numbers-to-dates-452bd2db-cc96-47d1-81e4-72cec11c4ed8
  1. Change the column `Example Gene Name Conversion` in the file 
-[here:](http://genesdev.cshlp.org/content/suppl/2009/06/11/gad.1806309.DC1) to text. 
+[here](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7#Sec1). to text. 
  1. Change the column named `GENE SYMBOL` in [this file](http://genesdev.cshlp.org/content/suppl/2009/11/03/23.21.2484.DC2/Bilodeau_Supp_Table_11.xls) to text.
  1. Now try to find the wrongly converted gene called `40059` in this data file
  1. On the basis of your observations in this exercise: what are your conclusions about using Excel. How could you make the use of Excel _safer_ for data collection and analysis? What would you recommend your peers? Write (in Rmd) a short recommendation on the safe use of Excel for data collection (min 200 words). Keep this advice around! If you plan on being the person at a lab that "is quite good with data" or helps out with data analysis, you *will* use this in the future.
@@ -738,7 +738,7 @@ _To complete this assignment you will have to execute activity H to P_
 
 Read [this abstract](https://www.r-bloggers.com/2022/03/newish-paper-share-the-code-not-just-the-data-a-case-study-of-the-reproducibility-of-jml-articles-published-under-the-open-data-policy/). We are going to try something similar, but on just one paper.
 
-(H) Using the [OSF website](https://osf.io/), search for `R code paper` or for instance `R code paper AND tags:("COVID-19")` and select a project that involves a paper on anything (remotely) related to life sciences. 
+(H) Choose one of the papers used in this study. Or, using the [OSF website](https://osf.io/), search for `R code paper` or for instance `R code paper AND tags:("COVID-19")` and select a project that involves a paper on anything (remotely) related to life sciences. 
 (I) Make sure you selected a project that has a dataset and R-code shared in the project environment. 
 (J) Have a look at the code. Describe in your own words what the code intents to achieve.
 (K) In terms of readibility of the code, how would you grade (1(very bad)-5(very good)) the code available.

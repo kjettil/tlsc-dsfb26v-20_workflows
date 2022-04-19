@@ -1,8 +1,8 @@
 --- 
 title: "Data Science Workflows Course" 
 subtitle: "HU OSIRIS: tlsc-dsfb26v-20_workflows"
-author: "Alyanne de Haan, PhD; Bas van Gestel; Marc Teunis, PhD"
-date: published on "`r Sys.time()`"
+author: "docenten:  Alyanne de Haan, Chris van Oevelen"
+date: "2021/2022"
 site: bookdown::bookdown_site
 output: 
     bookdown::gitbook:

@@ -21,7 +21,7 @@ This course assumes you have a working installation and administrator access to 
  1. [DBeaver](https://dbeaver.io/)
  1. [Microsoft Teams](https://www.microsoft.com/nl-nl/microsoft-teams/group-chat-software)
 
-For some exercises and assignment you need an Server account. You you can use your RStudio Server account from the previous DSFB2 ("DAUR") course.
+For some exercises and assignment you need an Server account. You can use your RStudio Server account from the previous DSFB2 ("DAUR") course.
 
 ## Additional 'things'
 

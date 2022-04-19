@@ -31,6 +31,9 @@ The example shows that it is important to keep track of your changes. Of course 
 
 However, you often want to work together with others (for example, fellow students or colleagues) on the same scripts. **GitHub** is a [web-based platform](https://github.com/) that was created to promote collaboration. GitHub is based on the Git software. The platform allows you to create an online copy of your files and the Git version history. This copy can then be shared with others, who can then also contribute to the code themselves. You can use the online copy on GitHub also for yourself, for example as a backup of your code in case your computer crashes or you accidentally remove some folders on your computer.     
 
+## github video
+
+Some people are way better at explaining stuff than at visual animations. Watch the first 5 1/2 minute of [this video](https://www.youtube.com/watch?v=PhyUy7z4S-M)
 
 ## The Git workflow
 

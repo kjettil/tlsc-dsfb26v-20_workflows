@@ -1,14 +1,13 @@
 --- 
 title: "Data Science Workflows Course" 
 subtitle: "HU OSIRIS: tlsc-dsfb26v-20_workflows"
-author: "docenten:  Alyanne de Haan, Chris van Oevelen"
-date: "2021/2022"
+author: "Alyanne de Haan, PhD; Bas van Gestel; Marc Teunis, PhD"
+date: "2022-04-11 14:33:12"
 site: bookdown::bookdown_site
 output: 
     bookdown::gitbook:
         css: style.css
         number_sections: true
-        anchor_sections: false
         split_by: chapter
         config:
             sharing:
@@ -32,38 +31,14 @@ params:
   year: 2020
 ---
 
-```{r include=FALSE, eval=FALSE}
-# source(here::here("code", "get_rmd_dependencies.R"))
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-
-```
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.width = 6, fig.height = 4,
-                      warning = FALSE,
-                      error = FALSE, message = FALSE)
 
 
-image_dir <- here::here(
-  "images"
-)
 
-urls <- readr::read_csv(
-  here::here("urls")
-)
-```
 
-```{r include = FALSE, eval = TRUE}
-# set CSS for objects
-knitr::opts_chunk$set(class.source="Rchunk", class.output="Rout")
-```
 
-```{r, include=FALSE, warning=FALSE, error=FALSE, message=FALSE}
-library(tidyverse)
-```
+
+
+
 
 # Course introduction {-}
 When you program, you seldom program in isolation. Usually, you are writing analyses, pieces of software or creating visualizations within a collaborative (research) project. Adopting a robust and reproducible workflow is key for managing your own work and that of others. Using a version control system, managing your data and other files in a structured way, deploying your software or analysis pipeline in a robust manner are all good practices you need to apply in your work as a bioinformatician or data analyst, translator or scientist.
@@ -85,26 +60,18 @@ The course is build on these fundamental concepts and technologies.
  1. Literate Programming using R flavored Markdown (R Markdown)
  1. Relational databases to improve data provenance, computational speed and traceability of observations 
  
-This is also (globally) the contents of the course. 
+This is also (globally) the contents of the course. The Projecticum course is further _enriched_ with four Masterclasses on relevant extra tools and concepts. In this edition of the course we will have the following Masterclasses:
 
-<!-- The Projecticum course is further _enriched_ with four Masterclasses on relevant extra tools and concepts. In this edition of the course we will have the following Masterclasses: -->
-
-<!--  1. Tools for Reproducible Research: `conda`, `renv` and `Docker` -->
-<!--  1. Shiny; Getting started -->
-<!--  1. Shiny; Dashboards -->
-<!--  1. Visualizations; How to produce a publication grade graph with `{ggplot2}` -->
+ 1. Tools for Reproducible Research: `conda`, `renv` and `Docker`
+ 1. Shiny; Getting started
+ 1. Shiny; Dashboards
+ 1. Visualizations; How to produce a publication grade graph with `{ggplot2}`
 
 ## Software, Laptop and RStudio server
-In order for you to be able to start applying what you have learned during the course, we require you to install the software needed for this course on your own computer. This means you will get some extra practice with installing packages and dependencies, and you have your laptop installed and ready for your internship next school year.
-
-We do also still offer an account on the RStudio Server that you used during the previous DSFB-2 course ("DAUR"). The server can be found here `r as.character(unlist(urls[4,2]))`. If you do not have access to your account any more, please inform your teachers. The list of required software can be found here \@ref(softwarelist). 
+In order for you to be able to start applying what you have learned during the course, we require you to install the software needed for this course on your own computer. We do also offer an account on the RStudio Server that you used during the previous DSFB-2 course ("DAUR2"). For some exercises, you will need to login to the RStudio Sever with the account provided to you previously. The server can be found here https://datascience.hu.nl/rstudio/tlsc-dsfb16v-20-21/. If you do not have access to your account any more, please inform your teachers. The list of required software can be found here \@ref(softwarelist). 
 
 ## Seeking interaction and help
-During this course we really invite you to seek interaction on the course contents, the exercises and assignments with fellow course participants and the instructors. To facilitate collaboration and also the possibility for you to build a strong "class of `r lubridate::year(Sys.Date())`" network, we scheduled 5 hour sessions at the HU. We will of course include breaks. Your teachers may not always be present during the whole session, but quite frequently we will. We will start every class with a plenary meeting.
-
-Note that you will have to work on Workflows outside of class hours.
-
-**Presence in class is in principle mandatory!** We would have a very hard time teaching you how to collaborate on DSFB projects when you or your classmates aren't there. 
+During this course we really invite you to seek interaction on the course contents, the exercises and assignments with fellow course participants and the instructors. We planned rather long lessons to accommodate this. We will take breaks during the day of course.
 
 ## Exercises and portfolio
 
@@ -113,38 +80,36 @@ Within the lesson you will encounter a number of exercises.
 
 Please answer all the assignments and exercises in an RMarkdown document. You learned how to make one in DAUR1. **Save it** somewhere in your course project. Seriously, you may need code from one lesson in one of the following lessons.
 
-<div class="dagopdracht">
 ### Portfolio
 At the end of every lesson (and sometimes in the middle), there is a larger _portfolio assignment_. You will work on this assignment for the rest of the day, after finishing the smaller exercises in the lesson. Save all portfolio assignments in separate Rmd files! **Please create a separate RStudio project to complete all the portfolio assignments.** 
 
-The collection of all the portfolio assignments will form the main part of your portfolio for this course. The portfolio is also the exam for this course. The details are described [here](#portfolioexam). In short: You will have to publish a bookdown project to github pages in your github account. This page will function as a portfolio where you will post all the assignments and output products* of the course and should be a professional looking representation of your DSFB skills at the end of this semester. Bookdown and github will be covered within this course.**You will need to pass all portfolio assignments in order to pass the course!**. See [here](#portfolioexam) for more info. 
+The collection of all the portfolio assignments will form the main part of your portfolio for this course. The portfolio is also the exam for this course. The details are described here \@ref(portfolioexam). In short: You will have to publish a bookdown project to github pages in your github account. This page will function as a portfolio where you will post all the assignments and output products* of the course. Only the lecturers of the course will have access to your portfolio products. A live (online) assessment may be held to grade your portfolio. Bookdown and github will be covered within this course.**You will need to pass all portfolio assignments in order to pass the course!**. See \@ref(portfolioexam) for more info. 
 
 * *As your work on the projecticum is probably your first real data science / bioinformatics project, your portfolio is the logical place to display it. Therefore, the work you do for the projecticum will also be part of your potfolio. However, the projecticum is only graded for the projecticum.* 
 
-</div>
-
 ## Study hours
-Please also note that this is a 5 EC course, so count on about 140 hours of work in total. Part of this workload will be spread over the semester, to work on your portfolio. But we scheduled these lessons in such a way that you will be able to finish most lessons in the first 3 weeks of the semester. Use this time to you advantage! You will need the skills from this course within the projecticum. 
+Please also note that this is a 5 EC course, so count on about 140 hours of work in total. Part of this workload will be spread over the semester, to work on your portfolio. But we scheduled these lessons to ensure that you have most of the first 3 weeks in this semester available to finish the lessons in workflows. Use this time to you advantage! You will need the skills from this course within the projecticum. 
 
 ## Passing or failing the course
 
 This course is about the workflows that are available to adopt good practices in data science for biology. This is a field in which you rarely work alone. Participating and contributing to a data science community is an important skill to practice! Active participation is therefore conditional for getting a grade on your portfolio. 
+
 So, to summarise: to successfully complete this course, you will need to pass these checks:
 
  1. Add all required assignments and materials to your online portfolio
- 1. Provide the teachers access to your online portfolio **before June 6th, 23:59h.**
+ 1. Provide the teachers access to your online portfolio
  1. Meet the assignment minimal requirements
- 1. Participate actively in class
- 1. possibly, only if there is clarification needed: Pass the live (online) assessment that will be held to grade your portfolio.
+ 1. Participate actively in the meetings
+ 1. Pass the live (online) assessment that will be held to grade your portfolio.
 
-For more detailed information on the requirements and rules for passing this course see [the page on the portfolio](#portfolioexam).
+For more detailed information on the requirements and rules for passing this course see \@ref(portfolioexam) 
 
 
 
 <!-- ## Getting the course materials -->
 <!-- To compile this website locally, in RStudio, initiate a new project from the website repository at: -->
 
-<!-- `r urls[1,2]` -->
+<!-- https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows -->
 
 <!-- Run `devtools::install(".")` from within the cloned repo directory. This will install all the dependent R-packages. -->
 
@@ -155,12 +120,13 @@ For more detailed information on the requirements and rules for passing this cou
 ## A future proof course
 No matter where you will go after this course, if you stay in the field of bioinformatics or data science, you will encounter and use many of the concepts that are dealt with in this course, in your daily work. Organizing your work in a **WORKFLOW** will reduce confusion, time spend debugging or tracing mistakes and will improve the robustness and reproducibility of your science. It will also require you to spend time to learn about these concepts. We believe it is well worth the investment, because it will pay off, not only for you personally, but for science in general. We have done our best to make this course enjoyable and educational at the same time. We sincerely hope you will have fun learning about this important (yet under-appreciated) aspect of data analysis and we hope you will take along many of the lessons learned to your future job. If you can, try to inspire others to adopt a 'reproducible research' mindset. If anything, at least you will have a nice portfolio to show off to your (possible) future boss.  
 
-Of course, we have carefully put together this reader to include example code, inspiring exercises and fulfilling assignments to be added to your portfolio. We have used many external resources to generate the content of this reader. We tried to pay proper credit to all of those resources. If you feel we have made a mistake somewhere, or did not pay proper respect to a source used, please let us know by reaching out to us via email or generate a pull request in the github repo, linked to this project (`r urls[1,2]`). Please notify us of any typo's and other mistakes you find.
+Of course, we have carefully put together this reader to include example code, inspiring exercises and fulfilling assignments to be added to your portfolio. We have used many external resources to generate the content of this reader. We tried to pay proper credit to all of those resources. If you feel we have made a mistake somewhere, or did not pay proper respect to a source used, please let us know by reaching out to us via email or generate a pull request in the github repo, linked to this project (https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows). Please notify us of any typo's and other mistakes you find.
 
 ## Get info
 The easiest way to get information about the authors is by using the `{desc}` package from within the reader bookdown project. Run the code below to get email-address information.
 
-```{r, eval=FALSE}
+
+```{.r .Rchunk}
 #install.packages("desc")
 library(desc)
 desc <- description$new()
@@ -170,18 +136,17 @@ desc$get_authors()
 If you would like to cite our work, run:
 
 ```
-devtools::install_github(`r urls[1,2]`)
-citation("workflows")
+devtools::install_github(https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows)
+citation("workflows)
 ```
 
 ## The `{bookdown}` package
 This website was created using the `{bookdown}` [@R-bookdown] package written by Yihui Xie. The package can be downloaded from CRAN. For more information see the [documentation](https://bookdown.org/yihui/bookdown/).
 
 The `{bookdown}` package can be installed from CRAN or Github:
-```{r eval=FALSE}
+
+```{.r .Rchunk}
 install.packages("bookdown")
 # or the development version
 # devtools::install_github("rstudio/bookdown")
 ```
-
-We will use it extensively in this course.

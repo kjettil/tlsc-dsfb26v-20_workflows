@@ -1,6 +1,7 @@
 # Data management {#represdata}
 ```{r setuples, include=FALSE}
 les <- 2
+load("course_urls.RData")
 knitr::opts_chunk$set(echo = TRUE, class.source="Rchunk", class.output="Rout")
 ```
 
@@ -258,7 +259,11 @@ md5sums_all %>% select(filename,value)
 
 For the data in this exercise use the file  `toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv`
 
-[On our github repo](https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/data/)
+[toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv](data/toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv)
+
+<!-- <a href="https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/data/toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv" download> Download the data here.</a> -->
+
+<!-- [On our github repo](https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/data/) -->
 
  (a) Determine the md5sums of the file. Save the checksums to a file [write a piece of R code] 
 
@@ -289,7 +294,7 @@ md5sums_toxref %>% # write as dataframe for easy access
 
 </details>
 
- (b) Upload the file to the [server](https://datascience.hu.nl/rstudio/tlsc-dsfb16v-20-21/) and check again. Again, save the resulting md5sums in a file. Do the md5sums you calculated on the server and the md5sums of the local file match?
+ (b) Upload the file to the [Rstudio server](`r serverurl`) and check again. Again, save the resulting md5sums in a file. Do the md5sums you calculated on the server and the md5sums of the local file match?
  
 <details><summary>Click for the answer</summary>
 You should get `r md5sums_toxref$value` as md5sums on both the server and locally

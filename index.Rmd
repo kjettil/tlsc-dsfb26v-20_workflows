@@ -41,6 +41,20 @@ knitr::write_bib(c(
 
 ```
 
+```{r include = FALSE}
+# Define the web addresses for the course
+# run as needed, not included automatically because of stuff (aka git complains)
+serverurl <- "https://daur.rstudio.hu.nl/"
+githuburl <- "https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows"
+readerurl <- "https://lesmaterialen.rstudio.hu.nl/workflows-reader"
+email <- "alyanne.dehaan@hu.nl"
+deadline1 <- "6 juni 23:59 uur"
+
+save(
+    list = c("serverurl", "githuburl", "readerurl"), 
+    file = "course_urls.RData")
+```
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, fig.width = 6, fig.height = 4,
                       warning = FALSE,

@@ -524,7 +524,7 @@ plot_ergo
 
 **Mind the variability per subject, what do you see?**
 
- (A) Can you say something about within-subject variability (note 'Minster Blue')?
+ (A) Can you say something about within-subject variability (note 'Mister Blue')?
  (B) Can you say something about between-subject variability (note 'Mister Green', vs 'Mister Black')?
  (C) Which chair type takes, on average the biggest effort to arise from?
  (D) Looking at the code, why do you think the x-axis is not displaying the `Chair type` in a numeric order?

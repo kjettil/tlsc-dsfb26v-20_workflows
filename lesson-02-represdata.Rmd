@@ -239,7 +239,7 @@ If you want, `md5sum` can handle multiple files at the same time, but wants full
 
 myDir <- here::here(
     "data",
-    "md5_examples")
+    "md5_examples2")
 
 fileNames <- list.files(myDir, recursive = TRUE)
 

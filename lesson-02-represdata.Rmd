@@ -256,7 +256,9 @@ md5sums_all %>% select(filename,value)
 ##### Exercise `r les`{-}
 **Calculating and checking md5sums checksums in R**
 
-For the data in this exercise use the file under `data/toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv`
+For the data in this exercise use the file  `toxrefdb_nel_lel_noael_loael_summary_AUG2014_FOR_PUBLIC_RELEASE.csv`
+
+[On our github repo](https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/data/)
 
  (a) Determine the md5sums of the file. Save the checksums to a file [write a piece of R code] 
 

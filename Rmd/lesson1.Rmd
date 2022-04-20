@@ -90,6 +90,16 @@ knitr::include_graphics(
 ```
 *(figure: probably Caterina Penone)*
 
+## Replication crisis?
+
+Relatief best veel gepubliceerde studies blijken slecht repliceerbaar.
+
+ - publish or perish
+ - can only publish positive results (H0 rejected) --> why?
+ - sample size
+ - p-hacking
+ - methods incomplete
+
 ## Repliceerbaar
 
 Jullie zijn getrained in *repliceerbaarheid* van methoden: anderen moeten je experiment op basis van je methodensectie exact kunnen herhalen.
@@ -117,7 +127,6 @@ knitr::include_graphics(
 ```
 
 Kirstie Whitaker, University of Cambridge, Creative Commons Attribution license [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-
 
 
 ## Reproduceerbaar
@@ -264,17 +273,3 @@ Daarom: heel belangrijk om zoveel mogelijk informatie te delen!
     - Als problematisch: (voorlopig) dummy/synthetic data open beschikbaar maken 
  - Werkgevers/opdrachtgevers/politiek die belang niet inzien
     - help mee open science de norm te maken
-
-## portfolio-opdrachten
-
- - Begin op tijd. Deadline is niet morgen, maar ze moeten wel straks allemaal in je portfolio...
- - Maak voor elke portfolio-opdracht een nieuwe .Rmd file.
- - werk in je _portfolio project voor de portfolio-opdrachten
- - maar niet voor de les-opdrachten.
- 
- 
-## portfolio-opdracht reproducible science
-
- - lees na de lunch allemaal de portfolio-opdracht
- - kies een paper uit
- - stem met elkaar af dat je niet hetzelfde paper kiest. (schrijf bijv pmid op het whiteboard of in teams)

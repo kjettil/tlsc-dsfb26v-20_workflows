@@ -1,8 +1,8 @@
 ---
 title: "Data management" 
 subtitle: "HU OSIRIS: tlsc-dsfb26v-20_workflows"
-author: "Alyanne de Haan, PhD; Bas van Gestel; Marc Teunis, PhD"
-date: "14-4-2021"
+author: "Docenten: Alyanne de Haan, Chris van Oevelen"
+date: "2021-2022"
 output: 
   ioslides_presentation:
      widescreen: true
@@ -11,6 +11,14 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+## Les 2: data management
+
+ - folder structure
+ - meta data
+ - more on tidy data
+ 
+ - Guerrilla Analytics Principles als kapstok
 
 ## file management in general
 
@@ -54,7 +62,7 @@ knitr::include_graphics(
 
 ![file names true story](http://www.phdcomics.com/comics/archive/phd052810s.gif)
 
-<!-- Maar gaat met data niet heel anders. wat kan je doen om dat te voorkomen? -->
+Maar gaat met data niet heel anders. wat kan je doen om dat te voorkomen? 
 
 ## FAIR data
 ```{r, echo = FALSE, out.width=780, fig.cap="Europese commissie volgens mij"}
@@ -68,6 +76,28 @@ knitr::include_graphics(
 
 <!-- Want voorbeeld van net is niet heel fair, reproducibility wordt een zooitje -->
 
+## folder structure
+
+```
+projectnaam
+│   README.md
+│   metadata.txt    
+└───analyse
+│   │   analyse_projectnaam.R
+│   └───data
+│   |   │   datalog.txt
+│   |   │   data295834.csv
+│   |   └───v1
+│   |   │   | data295834.csv
+│   └───data_raw
+│       │   originaldatafile1.txt
+│       │   originaldatafile2.txt
+│   
+└───verslag
+    │   paper_projectnaam.docx
+```
+
+
 ## Hoe dan?
 
 ```{r, echo = FALSE, out.width=780, fig.cap="ICSU/IAP:TWAS/ISSC: it is not just a technology challenge. (Open data in a Big Data World, 2016)"}
@@ -80,15 +110,6 @@ knitr::include_graphics(
 ```
 
 <!-- Mogelijkheden scheppen is niet genoeg, mensen moeten het zelf doen! -->
-
-## Les 2: data management
-
- - identifiers
- - data formats
- - meta data
- - folder structure
- 
- - Guerrilla Analytics Principles als kapstok
 
 ## Licensing
 
@@ -108,13 +129,18 @@ knitr::include_graphics(
 )
 ```
 
-<!-- Deze cursus: nog X mailtjes heen en weer of we de reader buiten canvas op internet mogen zetten. Van wie is deze cursus? Van ons omdat we hem schreven? Van de hogeschool omdat ze ons betaalden? Van iedereen omdat de hogeschool overheidsgeld krijgt? -->
+## This course: open or not?
 
- <!-- It's complicated, maar ga niet zomaar akkoord met "niet open, want we hebben er niet over nagedacht en het klinkt eng" -->
- 
+ - Van wie is deze cursus? 
+    - van de docenten, omdat wij  hem gemaakt hebben?
+    - van de HU, omdat die betaald heeft?
+    - van iedereen, want de HU krijgt overheidsgeld? 
+    
+ - It's complicated, maar ga niet zomaar akkoord met "niet open, want we hebben er niet over nagedacht en het klinkt eng" 
+
 ## Metadata
 
-Maar alleen de data is niet genoeg. 
+Maar alleen de data delen is niet genoeg. 
 
 ```{r, echo = FALSE, out.width=800}
 knitr::include_graphics(
@@ -124,6 +150,7 @@ knitr::include_graphics(
     )
 )
 ```
+image credit: I got this slide from Ted Laderas
 
 ## Examples metadata:
 
@@ -140,11 +167,38 @@ Stel je voor: we willen twee datasets combineren van twee instellingen die hetze
 
 In het experiment werd getest of een bepaald medicijn ervoor zorgt dat mensen afvallen, in vergelijking met een placebo. Deelnemers zijn gewogen voor en na behandeling.
 
+## Discuss metadata:
+
+| patient | locatie        | gewicht_voor | gewicht_na |
+|---------|----------------|--------------|------------|
+| A       | Theme Hospital | 64           | 62         |
+| B       | Theme Hospital | 71           | 70         |
+
 Welke metadata zou je willen hebben als je de datasets wilt combineren? 
 
-Denk aan details op experiment-niveau, niet deelnemer-niveau (dus bijvoorbeeld: wat was de dosis van het medicijn? Was dat op beide locaties hetzelfde?)
+Denk aan details op experiment-niveau, niet deelnemer-niveau (dus bijvoorbeeld: wat was de tijd tussen de twee meetpunten? Was dat op beide locaties hetzelfde?)
 
 *(dank aan Ted Laderas voor de opdracht)*
 
-## Les 2: have fun
+## bijvoorbeeld
+
+| **metadata**                  | **should be in data**  |
+|-------------------------------|------------------------|
+| tijdpad experiment            | leeftijd participanten |
+| afgenomen door wie            | andere medicijnen?     |
+| soort weegschaal              |                        |
+| dosis medicijn                |                        |
+| naam project                  |                        |
+| welke variabelen zijn gemeten |                        |
+| waar is de data?              |                        |
+| protocol                      |                        |
+| informed consent formulieren  |                        |
+
+## Les 2: planning vandaag
+ - 9:00 introductie en aan het werk + error_of_the_day
+ - 10:45 pauze
+ - 11:00 “waar wil ik naartoe?” + aan het werk
+ - 12:15 pauze
+ - 12:45  ruim-je-laptop-op-half-uur
+ - (13:30-17:00 opdrachten en portfolio-opdrachten)
 

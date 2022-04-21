@@ -459,7 +459,7 @@ Add the following labels to your repository:
 - `type:feature`: new feature
 - `type:infrastructure`: infrastructure related
 - `type:performance`: performance related
-- `type:refactor`: refactor
+- `type:refactor`: refactor (opruimen van code)
 - `type:test`: test related
 
 **Other**

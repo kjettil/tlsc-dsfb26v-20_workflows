@@ -59,6 +59,7 @@ If you work together with other persons, it may be the case that the Git reposit
 
 Pulling is only important if other persons contributed to the repository. In part two of this lesson, we will focus on the simple situation were you work alone on your files and you are the only person contributing to the Git repository on GitHub. In part three, we will explore the best practices for working together on the same files. 
 
+
 ## Git and RStudio {#gitrstudio}
 
 
@@ -85,9 +86,14 @@ Once you click on 'New', you will be taken to a menu were you can specify the de
 knitr::include_graphics('images/lesson22_1_createRepo.png')
 ```
 
+
+Let's try the git workflow on github first.
+
+Follow the tutorial [here](https://docs.github.com/en/get-started/quickstart/create-a-repo#commit-your-first-change) starting from "commit your first change".
+
 #### Step 2: Downloading the Git repository to your computer (cloning) {-}
 
-Once you have created a new Git repository on GitHub, you can download the repository to your computer. Downloading a Git repository is called **cloning**. The steps for cloning a Git repository are as follows:
+Once you have created a Git repository on GitHub, you can download the repository to your computer. Downloading a Git repository is called **cloning**. The steps for cloning a Git repository are as follows:
 
 1. Copy the GitHub link to the new Git repository (see figure below, top panel). 
 2. In RStudio, go to File > New Project...

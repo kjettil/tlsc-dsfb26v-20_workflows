@@ -533,7 +533,7 @@ Once you have successfully rendered your bookdown to a full website, hosting can
  1. copy all the html files rendered with bookdown to this folder
  1. commit and push all changes to your github pages repo. The website will be automatically updated after some time. 
  
-You can also setup a theme for your github pages. See [here](https://docs.github.com/en/github/working-with-github-pages/adding-a-theme-to-your-github-pages-site-with-the-theme-chooser) for more info, but you have learned to use css, so this is a nice opportunity to display that.
+You have learned to use css, so this is a nice opportunity to display that. You are allowed to use themes as well if you like. Just make sure your portfolio looks professional, it is meant to be used with future job applications!
 
  - Put your portfolio on your github pages
  - Send the url to your public portfolio address on the "prikbord" channel. 

@@ -1,5 +1,5 @@
 # tlsc-dsfb26v-20_workflows
-2022
+
 This is the bookdown course repo for the Data Science for Biology 2 Module; Course Workflows
 
 
@@ -16,4 +16,6 @@ install.packages("bookdown")
 bookdown::render_book(".")
 ```
 
-## The contents of the course (to be updated)
+## The contents of the course 
+
+to be updated

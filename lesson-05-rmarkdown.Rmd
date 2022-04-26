@@ -755,68 +755,142 @@ You can do simple footnotes within RMarkdown[^smallnote]. Even multiline-footnot
 
 ### Using a reference manager
 
-<!-- I should switch to Zotero now that Mendeley is owned by Elsevier :/ I will update when I have time.  -->
 
-For this example, we will use Mendeley. Mendeley is a free reference manager. If you are not yet using a reference manager, you start doing so right now. It will save you a lot of time in the future.
+If you are not already using a reference manager, life when writing reports is going to get a lot easier. Reference managers are software packages that store and organise all the references you use, usually including the pdf's.
 
-Go the [the Mendeley website](https://www.mendeley.com/download-desktop-new/), download and install Mendeley and open the program. (note: if you already use a reference manager, check if it provides BibTeX output. We need a .bib file later.)
+We will use Zotero in this course, as Zotero is completely open source. If you use Mendeley or Endnote, you still can. Just google for how to integrate the software package of your choice in a Rmarkdown/github workflow. We had a Mendeley workflow last year, we put it in the "resources" page in the reader (see left in the menu.) It might still work. We won't keep it updated.
 
-If this is your first time using Mendeley: you can simply drag and drop pdf files into Mendeley. It will automatically start searching the web for the meta data. If your pdf is a published paper, there will be a lot of meta data available. 
+(note: if you already use a reference manager, do check if it provides BibTeX output. We need a .bib or .json file later.)
+
+As Zotero with their latest update included a pdf-viewer, we are quite happy to move to Zotero now.
+
+#### Download and install Zotero
+
+Go to the [Zotero website](https://www.zotero.org/) to download Zotero. Install and configure using default settings. Make sure you install as administrator.
+
+You will have to create a Zotero account. 
+
+#### start a new collection for workflows and one for projecticum
+
+[See this information on collections](https://www.zotero.org/support/collections_and_tags#creating_collections) and make two new collections. One for workflows and one for projecticum.
+
+You can drag and drop pdf files into your zotero collections.
+
+If this is your first time using Zotero: you can simply drag and drop pdf files into collections. It will automatically start searching the web for the meta data. If your pdf is a published paper, there will be a lot of meta data available.
+
+#### Install the browser connector
+
+The fastest way to get papers into Zotero, is with their browser extension, or as they call it: connector. Download it [here](https://www.zotero.org/download/#).
+
+You can add papers by clicking the browser extension icon in the upper right of your browser and add the paper to a collection. Zotero will download meta data and the pdf if available.
 
 <div class="question">
-
 ##### Exercise `r les` {-}
-Import some random paper from Pubmed into Mendeley (drag & drop the pdf into Mendeley). What metadata do you get? 
+Import some random paper from Pubmed into Zotero (drag & drop the pdf or use the web connector). What metadata do you get? 
 
-Import some pdf you rendered yourself from RMarkdown into Mendeley. What metadata do you get? 
-
-Try making some notes and highlighting some text within Mendeley.
+Import some pdf you rendered yourself from RMarkdown into Zotero. What metadata do you get? 
 
 </div>
 
-#### How to get Mendeley into RMarkdown {-}
-Special thanks to [Rosanna van Hespen](https://rosannavanhespen.nl/rmarkdown/writing-your-thesis-with-r-markdown-2-text-citations-and-equations/) for sharing her workflow online!
+#### Install the “Better BibTex for Zotero” Add-on
 
-  1. First, start a new .Rmd file.
+As Zotero is open source, anyone can upgrade their software with extensions. We will add the “Better BibTex for Zotero” Add-on from [this website](https://retorque.re/zotero-better-bibtex/installation/) :
 
-  2. Next, we need a file with all the references Mendeley is currently managing for you. At least 1 random paper and 1 self-made pdf. Mendeley can make a file containing this information: a .bib file. You can have Mendeley automatically updating this file for you, but as we are already syncing stuff with github, we will not make things this complicated for now. **So, you will need to repeat this step if you add new papers to Mendeley.**
-  
-  - Select the citations you want to include 
-  - Click File --> Export
-  - Select the BibTeX format and give your file a name
-  - choose an export location (the folder with your new .Rmd file)
+ 1. In **Zotero**, go to Tools > Add-ons
+ 1. Select ‘Extensions’
+ 1. Click on the gear in the top-right corner and choose ‘Install Add-on From File…’
+ 1. Choose .xpi that you’ve just downloaded, click ‘Install’
+ 1. Restart Zotero
 
-  3. Go back to your .Rmd file and change the YAML header: write ‘bibliography: library_projecticum.bib’ (or whatever is the name of your .bib file), so your header will look like something this:
+You will get a menu pop up for the add on.
 
-```
-title: "Untitled" 
-output: html_document 
-bibliography: library_projecticum.bib
-```
+ - Use the BBT default citekey format
+ - just use all the default settings.
 
-  4. Go back to Mendeley, and check the citation key of the random paper we downloaded. You can find it in the detail tab at the right of the screen, scroll down a bit. In my example below, it is `VanLissa2021`
+#### Install the rbbt package
+
+`devtools::install_github("paleolimbot/rbbt")`
+
+ - restart Rstudio
+ - go to Addins
+ - You can add citations now by clicking on "insert Zotero citation". Zotero needs to be running.This will pop up a zotero search where you can search for a reference.
+ - If you like, [make a shortkey](https://support.rstudio.com/hc/en-us/articles/206382178-Customizing-Keyboard-Shortcuts-in-the-RStudio-IDE) for adding citations 
+
+We will not use the new "visual markdown editor”, mainly because your teachers don't like it. Feel free to explore on your own risk. 
+
+In that case, select the addon here:
+
+ 1. In **Rstudio** go to tools > global options > Rmarkdown (left) > citations (top)
+ 1. select "use better bibtex"
 
 ```{r, echo=FALSE, message=FALSE, fig.width=8 }
 knitr::include_graphics(here::here(
     "images",
-    "mendeley_detailwindow.png"
+    "zotero1.png"
   )
 )
 ```
 
-Scroll down a bit:
+<div class="question">
+##### Exercise `r les` {-}
+In your Rmd for this lesson, add a few random citations from Zotero. Put square brackets around the citation if you don't want it "inline" but between brackets (after a sentence).
+
+Don't knit the file yet.
+
+(note: dragging and dropping citations from zotero to your Rmarkdown file also works in a way, but puts them in a format only recognised if you knit to pdf. )
+</div>
 
 
-```{r, echo=FALSE, message=FALSE, fig.width=4 }
-knitr::include_graphics(here::here(
-    "images",
-    "mendeley_citationkey.png"
-  )
-)
+#### make a bibliography (automatic header option)
+
+We need a file with all the references Zotero is currently managing for you. The format for a list of references, is a .bib file. 
+
+Put the following line in your YAML header:
+
+`bibliography: "'A'"` (don't copy paste, use the slanted single ticks around A, as it is going to be R code)
+
+but replace A with :
+
+r rbbt::bbt_write_bib('bibliography.json', overwrite = TRUE)
+
+knit your Rmd file. There will be a new file `bibliography.bib` in your folder, a nicely formatted citation in your tekst, and a bibliograhpy at the bottom of your html.
+
+####  make a bibliography (manual option)
+
+ - select your collection in Zotero
+ - click file > export library
+ - select either better bibtex or better json
+ - move the .bib or .json file to your R project folder
+ - put a line in the yaml header referring to the file 
+ (bibliography: references.bib  )
+
+so your header will look like something this:
+
+```
+title: "Untitled" 
+output: html_document 
+bibliography: bibliography.bib
 ```
 
+#### update your .json file
 
-You can now cite papers it in your .Rmd using citation keys:
+Add another reference with the add-on ...
+
+and now update your .json file with:
+
+```{r, eval=F}
+library(rbbt)
+
+bbt_update_bib("test_zotero.rmd")
+```
+ 
+#### formatting citations
+
+see [here](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html) how to format your citations and info on how, for instance, to get appendices after a bibliography.
+
+#### cite!
+ 
+You can now cite papers it in your .Rmd using the rbbt Addon and using citation keys:
   
   ```
   They said something really smart [@VanLissa2021].
@@ -844,6 +918,11 @@ Use a minus sign if you don't want to include the names:
 Van der Ploeg says so too [-@vdploeg04].
   ```
 
+#### Start a Zotero group for your projecticum
+
+[see here](https://www.zotero.org/groups/)
+
+
 ## Portfolio assignment `r paste0(les, " ")` {-}  
 <div class="dagopdracht">
 
@@ -862,13 +941,27 @@ A)
 
 B)
 
-  1. Make a new folder within Mendeley for the projecticum. Place all pdf's you used till now in your folder (if you did not use any papers as source yet, find 3 papers on Pubmed now that you could use for your introduction.). Copy your .bib file to the folder on your computer you are using for the Projecticum git repo.
+  1. Make a new collection within Zotero for the projecticum. Place all pdf's you used till now in your folder (if you did not use any papers as source yet, find 3 papers on Pubmed now that you could use for your introduction.). 
   1. Start a .Rmd named "introduction.Rmd" with a few lines introduction on your projecticum topic.
   1. Include automatic inline references to the papers you used.
   1. The bibliography will be placed at the end of the document. Provide an appropriate header.
-  1. Merge your work with that of your projecticum partner through github. Solve all the problems you encounter. If github does not want to merge .bib files and you want a merged one, try [here](https://caltechlibrary.github.io/bibtex/webapp/bibmerge.html).
-  1. Find out how you can add websites as reference to Mendeley.
-  1. Write (so not "copy"!) at least 500 words of introduction for your projecticum project and use at least 5 references.
+  
+NOTE! Now we will try collaborating using .bib or .json files. We are not entirely sure what will happen if you knit and merge bib/json files using the automatic header option. If you used that to quickly and conveniently get all the references in a .bib/.json file, you may want to change your header to something like this now, and update everytime you add a reference:
+
+```
+title: "Untitled" 
+output: html_document 
+bibliography: bibliography.bib
+```
+
+Or try if you can get it to work with the automatic option! We are curious to see what will happen.
+
+Either way:
+
+  1. Merge your work with that of your projecticum partner through github. Solve all the problems you encounter. If github does not want to merge .bib or .json files and you want a merged one, try [here](https://caltechlibrary.github.io/bibtex/webapp/bibmerge.html).
+  1. Find out how you can add websites as reference to Zotero.
+  1. In your portfolio, write at least 500 words of introduction for your projecticum project and use at least 5 references.
+
 
 
 </div>

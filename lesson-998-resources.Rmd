@@ -93,4 +93,82 @@ There are many 'R resources lists' to be found on the internet. Here, I just men
  - https://dbplyr.tidyverse.org/
  - [database samples](https://wiki.postgresql.org/wiki/Sample_Databases)
 
+## old Mendeley workflow for citations
+
+For this example, we will use Mendeley. Mendeley is a free reference manager. If you are not yet using a reference manager, you start doing so right now. It will save you a lot of time in the future.
+
+Go the [the Mendeley website](https://www.mendeley.com/download-desktop-new/), download and install Mendeley and open the program. (note: if you already use a reference manager, check if it provides BibTeX output. We need a .bib file later.)
+
+If this is your first time using Mendeley: you can simply drag and drop pdf files into Mendeley. It will automatically start searching the web for the meta data. If your pdf is a published paper, there will be a lot of meta data available. 
+
+
+#### How to get Mendeley into RMarkdown {-}
+Special thanks to [Rosanna van Hespen](https://rosannavanhespen.nl/rmarkdown/writing-your-thesis-with-r-markdown-2-text-citations-and-equations/) for sharing her workflow online!
+
+  1. First, start a new .Rmd file.
+
+  2. Next, we need a file with all the references Mendeley is currently managing for you. At least 1 random paper and 1 self-made pdf. Mendeley can make a file containing this information: a .bib file. You can have Mendeley automatically updating this file for you, but as we are already syncing stuff with github, we will not make things this complicated for now. **So, you will need to repeat this step if you add new papers to Mendeley.**
+  
+  - Select the citations you want to include 
+  - Click File --> Export
+  - Select the BibTeX format and give your file a name
+  - choose an export location (the folder with your new .Rmd file)
+
+  3. Go back to your .Rmd file and change the YAML header: write ‘bibliography: library_projecticum.bib’ (or whatever is the name of your .bib file), so your header will look like something this:
+
+```
+title: "Untitled" 
+output: html_document 
+bibliography: library_projecticum.bib
+```
+
+  4. Go back to Mendeley, and check the citation key of the random paper we downloaded. You can find it in the detail tab at the right of the screen, scroll down a bit. In my example below, it is `VanLissa2021`
+
+```{r, echo=FALSE, message=FALSE, fig.width=8 }
+knitr::include_graphics(here::here(
+    "images",
+    "mendeley_detailwindow.png"
+  )
+)
+```
+
+Scroll down a bit:
+
+
+```{r, echo=FALSE, message=FALSE, fig.width=4 }
+knitr::include_graphics(here::here(
+    "images",
+    "mendeley_citationkey.png"
+  )
+)
+```
+
+
+You can now cite papers it in your .Rmd using citation keys:
+  
+  ```
+  They said something really smart [@VanLissa2021].
+  ```
+or two people:
+
+  ```
+  Some people agree with her [@dehaan08; @vangestel18].
+  ```
+
+or include additional information:
+
+  ```
+  As do colleagues[see @teunis99, pp. 33-35; also @svanoef04, ch. 1].
+  
+  or inline:
+  
+  @smith04 [p. 33] says blah.
+  
+  ```
+
+Use a minus sign if you don't want to include the names:
+
+  ```
+Van der Ploeg says so too [-@vdploeg04].
+  ```
 

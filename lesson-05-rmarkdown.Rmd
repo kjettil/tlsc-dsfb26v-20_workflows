@@ -764,13 +764,13 @@ We will use Zotero in this course, as Zotero is completely open source. If you u
 
 As Zotero with their latest update included a pdf-viewer, we are quite happy to move to Zotero now.
 
-#### Download and install Zotero
+#### Download and install Zotero {-}
 
 Go to the [Zotero website](https://www.zotero.org/) to download Zotero. Install and configure using default settings. Make sure you install as administrator.
 
 You will have to create a Zotero account. 
 
-#### start a new collection for workflows and one for projecticum
+#### start a new collection for workflows and one for projecticum {-}
 
 [See this information on collections](https://www.zotero.org/support/collections_and_tags#creating_collections) and make two new collections. One for workflows and one for projecticum.
 
@@ -778,7 +778,7 @@ You can drag and drop pdf files into your zotero collections.
 
 If this is your first time using Zotero: you can simply drag and drop pdf files into collections. It will automatically start searching the web for the meta data. If your pdf is a published paper, there will be a lot of meta data available.
 
-#### Install the browser connector
+#### Install the browser connector {-}
 
 The fastest way to get papers into Zotero, is with their browser extension, or as they call it: connector. Download it [here](https://www.zotero.org/download/#).
 
@@ -792,7 +792,7 @@ Import some pdf you rendered yourself from RMarkdown into Zotero. What metadata 
 
 </div>
 
-#### Install the “Better BibTex for Zotero” Add-on
+#### Install the “Better BibTex for Zotero” Add-on {-}
 
 As Zotero is open source, anyone can upgrade their software with extensions. We will add the “Better BibTex for Zotero” Add-on from [this website](https://retorque.re/zotero-better-bibtex/installation/) :
 
@@ -807,7 +807,7 @@ You will get a menu pop up for the add on.
  - Use the BBT default citekey format
  - just use all the default settings.
 
-#### Install the rbbt package
+#### Install the rbbt package {-}
 
 `devtools::install_github("paleolimbot/rbbt")`
 
@@ -841,7 +841,7 @@ Don't knit the file yet.
 </div>
 
 
-#### make a bibliography (automatic header option)
+#### make a bibliography (automatic header option) {-}
 
 We need a file with all the references Zotero is currently managing for you. The format for a list of references, is a .bib file. 
 
@@ -855,7 +855,7 @@ r rbbt::bbt_write_bib('bibliography.json', overwrite = TRUE)
 
 knit your Rmd file. There will be a new file `bibliography.bib` in your folder, a nicely formatted citation in your tekst, and a bibliograhpy at the bottom of your html.
 
-####  make a bibliography (manual option)
+####  make a bibliography (manual option) {-}
 
  - select your collection in Zotero
  - click file > export library
@@ -872,7 +872,7 @@ output: html_document
 bibliography: bibliography.bib
 ```
 
-#### update your .json file
+#### update your .json/.bib file {-}
 
 Add another reference with the add-on ...
 
@@ -884,11 +884,11 @@ library(rbbt)
 bbt_update_bib("test_zotero.rmd")
 ```
  
-#### formatting citations
+#### formatting citations {-}
 
 see [here](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html) how to format your citations and info on how, for instance, to get appendices after a bibliography.
 
-#### cite!
+#### cite! {-}
  
 You can now cite papers it in your .Rmd using the rbbt Addon and using citation keys:
   
@@ -918,7 +918,7 @@ Use a minus sign if you don't want to include the names:
 Van der Ploeg says so too [-@vdploeg04].
   ```
 
-#### Start a Zotero group for your projecticum
+#### Start a Zotero group for your projecticum {-}
 
 [see here](https://www.zotero.org/groups/)
 

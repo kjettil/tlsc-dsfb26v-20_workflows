@@ -42,7 +42,7 @@ Additionally, Rmarkdown is just plain text. A big advantage of plain text, is th
 If you are starting to get to know the data science realm, you may have encountered people using Jupyter notebooks or Jupyter lab. These are web aplications that, like Rmarkdown combine data, analyses and text. They work with R as well, so that is neat for us! However, they are slightly more difficult to use. While Rmarkdown is in the end plain text, Jupyther notebooks are JSON documents. This is a useful format, but harder to combine with a workflow using git/github.
 
 ### Python
-While we're on the subject, why aren't we teaching you Python? Not because we think there is some epic battle and you will either join the Python or the R side. We are not team R. In fact, most DSFB-teachers can write both. However, Python was developed by software engineers while R was developed by statisticians. So the workflows in using these tools for data science differ. You have some background in statistics but -usually- none in software development, so R will for most of you feel more natural. R is also specifically tailored for data science. As a consequence, R is used [more often](https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis) in the life science work field, academia in general, and for instance pharmaceuticals. 
+While we're on the subject, why aren't we teaching you Python? Not because we think there is some epic battle and you will either join the Python or the R side. We are not team R. In fact, most DSFB-teachers can write both. However, Python was developed by software engineers while R was developed by statisticians. So the workflows in using these tools for data science differ. You have some background in statistics but -usually- none in software development, so R will for most of you feel more natural. R is also specifically tailored for data science. As a consequence, R is used [more often](https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis) in the life science work field, academia in general, and for instance pharmaceuticals. Also, Bioconductor is used a lot when analysing high-throughput genomic data, thereby making R the dominant language in bioinformatics.
 
 The top 3 most asked programming languages in job ads (vacatures) in English speaking countries are [Python, R and SQL](https://towardsdatascience.com/team-r-or-team-python-2f8cf04310e6). We will cover SQL in this course (SQL is a database language designed for using data in relational databases). You have learned some R. If you need to switch from R to Python in the future, this is easily done if you have enough experience in R. The languages are in fact rather similar. If you are comfortable using basic building blocks such as functions, for/while/if-loops and vectors/dataframes/lists/etc, learning to do this in a different language is quite easy. While the words differ a bit these building blocks still work in the same way.
 
@@ -54,7 +54,7 @@ You may have used a workflow like this in the capstone assignments in DAUR1 and 
 - labpartner 1 runs analyses and updates RMarkdown file
 - labpartner 2 tries to do some work furtheron in the analysis 
 - labpartner 1 emails .Rmd to labpartner 2
-- 1 sends whatsapp message to 2 that  they finished their part and that 2 may continue.
+- 1 sends whatsapp message to 2 that they finished their part and that 2 may continue.
 - 2 copy pastes their scripting work into the .Rmd
 - and runs analyses and updates RMarkdown file
 - 2 emails 1 again
@@ -76,7 +76,7 @@ The loop becomes:
 
 This method fits in a 'continuous integration' workflow. You can continue working on the same project with multiple people, and frequently integrate your work to see if there are any errors or you are accidentally working on the same part of the project as a coworker.
 
-For example, when making this reader, Bas, Marc and Alyanne work within their own branches. Usually, we make a branch per task we take on for the day. We make sure we branch of from the main, and at least once a day we merge our work back into the main branch (Continuous integration). Usually this is at the end of the day. Two people may have worked on the same .Rmd file, but this is fine. Git merges them for us. We then make sure the main branch still knits to the html in this reader without crashing or otherwise messing up (Continuous testing). If we think the rest of the team would like to see an update, we publish the newest version of the reader to RSconnect, which publishes this reader as a website (Continuous deployment). You will have noticed that we update this reader frequently to change any issues you or we have found.
+For example, when making this reader, your teachers work within their own branches. Usually, we make a branch per task we take on for the day. We make sure we branch of from the main, and at least once a day we merge our work back into the main branch (Continuous integration). Usually this is at the end of the day. Two people may have worked on the same .Rmd file, but this is fine. Git merges them for us. We then make sure the main branch still knits to the html in this reader without crashing or otherwise messing up (Continuous testing). If we think the rest of the team would like to see an update, we publish the newest version of the reader to RSconnect, which publishes this reader as a website (Continuous deployment). You will have noticed that we update this reader frequently to change any issues you or we have found.
 
 
 <!-- ### To get an example of paramterized RMarkdown: -->
@@ -108,6 +108,7 @@ Roughly, your average deliverable will consist of text, figures and tables. Text
 
 ### pictures
 
+But your portfolio and projecticum-products will also contain pictures. 
 There are basically three ways to include an image from an existing file:
 
  1. In an RMarkdown code chunk

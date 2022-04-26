@@ -1,0 +1,267 @@
+---
+title: "les 4: Samenwerken" 
+subtitle: "HU OSIRIS: tlsc-dsfb26v-20_workflows"
+author: "docenten: Alyanne de Haan, Chris van Oevelen"
+date: "2021/2022"
+output: 
+  ioslides_presentation:
+     widescreen: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Bezoek
+
+## Overzicht vandaag
+les 4!
+
+ - **13:00 git samenwerken: feedback voor Henry**
+ - **13:30 agile intro** 
+   - ca 14:00 aan het werk
+ - **14:45 thee**
+   - 15:15 verder werken 
+ - **16:00 agile en productiviteitsmethodes**
+   - 16:30 verder werken
+
+## git workflow
+
+```{r, echo = FALSE, out.width=1000, fig.cap=""}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "git_workflow.png"
+    )
+)
+```
+
+## git collaboration
+
+```{r, echo = FALSE, out.width=800, fig.cap=""}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "git_col1.png"
+    )
+)
+```
+
+## let's try
+
+Henry houdt van feedback!
+
+## let's try
+
+en ook van vragenlijsten. Dus:
+
+ - geef een tip en een top voor DSFB1 en 2
+ - welk advies zou je studenten voor komend jaar geven?
+
+ 1. Upload een tekst bestand met deze info naar Henry-feedback-repo
+
+ 1. Zet je droombaan op de lijst in readme.md en verbeter de omschrijving van deze repo.
+
+## git conflicten
+
+
+```{r, echo = FALSE, out.width=800, fig.cap=""}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "git_conflicts.png"
+    )
+)
+```
+
+## git conflicten
+
+
+```{r, echo = FALSE, out.width=800, fig.cap=""}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "git_conflicts2.png"
+    )
+)
+```
+
+
+
+## branches
+
+```{r, echo = FALSE, out.width=800, fig.cap=""}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "git_col2_zelfmakenindetoekomst.png"
+    )
+)
+```
+
+## 1 branch per probleem/feature/actie
+
+```{r, echo = FALSE, out.width=800, fig.cap=""}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "git_octopus.jpg"
+    )
+)
+```
+
+## de "main" is altijd een werkend tussenproduct
+
+```{r, echo = FALSE, out.width=800, fig.cap=""}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "git_workflow_azure.jpg"
+    )
+)
+```
+
+
+## agile
+
+```{r, echo = FALSE, out.width=700, fig.cap=""}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "agileandwaterfall.jpg"
+    )
+)
+```
+
+## agile: 3 delen
+
+ 1. plan sprint  
+ 1. sprint
+ 1. bespreek tussenproduct en evalueer
+
+## agile: ball point game
+
+taak: Geef een bal door rond de tafel 
+
+ - Elk teamlid moet per ronde de bal 1 keer aanraken  
+ - Elke keer bal rond de tafel = 1 punt
+
+## agile: ball point game
+
+sprint: 3 minuten
+
+ - minuut 1: planning
+ - minuut 2: geef de bal door
+ - minuut 3: evalueer + puntentelling
+
+meerdere sprints 
+
+## Overzicht vandaag
+
+ - **13:00 git samenwerken: feedback voor Henry**
+ - **13:30 agile intro** 
+   - ca 14:00 aan het werk
+ - **14:45 thee**
+   - 15:15 verder werken 
+ - **16:00 agile en productiviteitsmethodes**
+   - 16:30 verder werken
+ - **16:00 agile en productiviteitsmethodes**
+
+
+## team: waarom scrum en agile en kanban en ..?
+
+ - systemen uit ICT
+ - wij zijn geen ict-ers
+ - maar we werken wel samen aan digitale projecten
+ - mix&match (terminologie is ondergeschikt)
+
+
+## team: agile onderdelen / github
+
+ - **user stories / issues** units werk in hapklare brokjes (max 1 dag/brok)
+ - **sprint / milestone** elke sprint (week? 2 week?) lever je iets werkends op
+ - **backlog / open issues** alle taken die nog moeten
+ - **kanban board** overzicht
+
+## team: sprints in data science
+
+ - start sprint: Planning and prioriteiten stellen (wat moet nu?)
+ - binnen sprint: duidelijke hapklare taken en deadlines (zonder stress over de complete backlog)
+ - tijdens sprint: gedeelde verantwoordelijkheid
+ - eind sprint: tussenproduct, vooruitgang te zien (ook fijn), reflectie
+
+## team: sprints in data science
+
+lastig:
+
+ - data science taken zijn soms moeilijk voorspelbaar
+ - data science taken zijn soms lang en fuzzy
+ - commitment
+ 
+## team: kanban
+```{r, echo = FALSE, out.width=700, fig.cap="Dr ian mitchell, CC0, via Wikimedia Commons"}
+knitr::include_graphics(
+  here::here(
+    "images",
+    "Kanban_board_example.jpg"
+    )
+)
+```
+
+## team: kanbanbord team datascience 
+ ..
+ 
+## team: to do
+
+ - **backlog** maak een github-kanbanbord en vul hem met backlog taken. alles wat je nu kunt verzinnen, klein of groot. 
+ - **kies een milestone** bepaal wat jullie aan het eind van deze sprint af willen hebben (als compleet tussenproduct, niet als "taak A, B, C en D")
+ - **kies sprint-taken** Bepaal welke taken dan af moeten (A, B en C). verdeel die in hapklare dagtaken 
+ - **verdeel** bepaal wie wat gaat doen (hoeft niet)
+ - **standup** overleg elke dag 15 minuten in de ochtend (wat heb je gisteren gedaan, wat ga je nu doen, heb je overleg/hulp nodig?)
+ - **communiceer!** werk zoveel mogelijk bij elkaar in de buurt (live op de HU of begin een teams-meeting)
+
+##  persoonlijk: (dag)taak to do
+
+ 1. kies een taak voor vandaag
+ 1. maak een nieuwe branch
+ 1. ga aan de slag en commit VAAK
+ 1. geef bij elke commit metadata
+ 1. push regematig naar je remote branch 
+ 1. stuur een pull request als je klaar bent
+ 1. overleg of test
+ 1. merge naar de main branch
+
+## persoonlijk: etiquette
+
+ - let op in welke branch je werkt (en in welk project..)
+ - een taak = een branch
+ - pull request = "ik ben klaar, we kunnen testen"
+ - gebruik branches kort (dus maak hapklare taken)
+ - merge iig aan het eind van de dag
+ 
+## persoonlijk: tijd, grenzen, overzicht, prioriteiten
+
+ - laptops zijn nooit gesloten, labs wel
+ - protocollen zijn hapklare brokken, analyses niet
+
+ 1. kanban: planning over projecten
+ 1. bijv todoist: planning per dag 
+ 
+## persoonlijk: tijd, grenzen, overzicht, prioriteiten
+
+"post een error of the day" is een opdracht (reproducible science). Dat lukt maar heel matig. Hoe komt dat? 
+
+## persoonlijk: gebruik je / start een methode 
+
+ - probeer niet het hele blok in je werkgeheugen te houden. Hou overzicht over een behapbare periode.
+ - stel niet (teveel) uit, werk aan school tijdens werkuren
+ - zet prioriteiten: 3 uur aan de kleur van je banner besteden of aan je portfolio-opdracht zelf?
+ - plan niet standaard teveel
+ - hou een systeem vol
+
+## persoonlijk: productivity methods
+
+eerst thee en dan:
+
+https://todoist.com/productivity-methods
+

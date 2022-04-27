@@ -15,11 +15,11 @@ After this lesson you will be able to
 
 ## Easy start: job interviews
 
-Before we start diving into RMarkdown again, read the following blog post. While you can see that we (the teachers) may have a slightly different opinion in some aspects (tidyverse!), it gives a nice checklist for you to scan on any omissions in your general R knowledge.[click](https://www.springboard.com/blog/27-essential-r-interview-questions-with-answers/)
+Before we start diving into RMarkdown again, read the following blog post. While you can see that we (the teachers) may have a slightly different opinion in some aspects (e.g. tidyverse!), it gives a nice checklist for you to scan on general R knowledge. Do keep in mind that these kind of questions would not appear on a life sciences job interview. [click](https://www.springboard.com/blog/27-essential-r-interview-questions-with-answers/)
 
 ## Output possibilities
 
-With Rmarkdown you can generate many different things. This reader was made in Rmarkdown. The DAUR1 capstone pdf? RMarkdown. The latest report Alyanne had to send to an ethical committee? Again RMarkdown. 
+With Rmarkdown you can generate many different things. This reader was made in Rmarkdown. The DAUR1 exam? RMarkdown. Daur2 report? RMarkdown. The latest pdf Alyanne had to send to an ethical committee? Again RMarkdown. 
 
 These websites are examples too: [click](https://holtzy.github.io/Pimp-my-rmd/), [click](https://www.r-graph-gallery.com/index.html).
 
@@ -85,7 +85,7 @@ output:
 
 This exercise is adapted from [this one from r4ds here](https://r4ds.had.co.nz/r-markdown.html#exercises-71)
 
-Download Lorem.Rmd [here](https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/blob/main/Rmd/lorem.Rmd).
+Copy and paste the contents of Lorem.Rmd <a href="https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/Rmd/lorem.Rmd" download> here </a> to a .Rmd file.
 
 From this .Rmd, knit one new document for each of the three built-in formats: HTML, PDF and Word. How does the output differ? How does the input differ? (You may need to install LaTeX in order to build the PDF output — RStudio will prompt you if this is necessary.)
 </div>
@@ -363,7 +363,7 @@ fig
 
 It can do Sankey diagrams. Sankey diagrams are what the cool kids do nowadays, it seems. A Sankey Diagram is a visualisation technique that allows to display flows. 
 
-```{r, message=F, error=F, warning=F, fig.cap="Somehow, plotly doesn't like our reader. The ugly lines shouldn't be there."}
+```{r, message=F, error=F, warning=F, fig.cap="Sankey diagram"}
 fig <- plot_ly(
     type = "sankey",
     orientation = "h",

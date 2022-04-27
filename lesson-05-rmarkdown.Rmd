@@ -918,6 +918,10 @@ Use a minus sign if you don't want to include the names:
 Van der Ploeg says so too [-@vdploeg04].
   ```
 
+#### How to cite, when to cite...
+
+We did a class exercise on this. If you feel you want to revisit the rules on citing, paraphrasing, summarising, etc, to avoid plagiarism, the KU Leuven has a very good summary [here](https://hiw.kuleuven.be/nl/studeren/papers/plagiaat/adequaatverwijzen)
+
 #### Start a Zotero group for your projecticum {-}
 
 [see here](https://www.zotero.org/groups/)

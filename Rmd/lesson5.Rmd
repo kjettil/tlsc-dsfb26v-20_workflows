@@ -1,8 +1,8 @@
 ---
 title: "les 5: vooruitkijken" 
 subtitle: "HU OSIRIS: tlsc-dsfb26v-20_workflows"
-author: "Alyanne de Haan, PhD; Bas van Gestel; Marc Teunis, PhD"
-date: "12-4-2021"
+author: "Alyanne de Haan, Chris van Oevelen"
+date: "jaar 2021/2022"
 output: 
   ioslides_presentation:
      widescreen: true
@@ -11,6 +11,14 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+## dagplanning
+ - 9:00: planning en uitleg open ruimte en portfolio
+ - 9:15 bij iedereen langs wat ze gaan doen voor de open ruimte. 
+ - 10:30 koffie
+ - 10:45 sources-opdracht
+ - 11:45 lunch
+ - 12:30 hoe citeren-opdracht
 
 ## jaar 1 + 2
 
@@ -64,38 +72,54 @@ Beetje beeld van de mogelijkheden
  - hoe doe ik het nu?
  - wat is de volgende stap?
 
-## laatste les (les 9)
+## les 7 (9 mei)
 
- - 2 uur voor wat er nodig blijk aan stof tijdens het blok
- - 2 uur voor presentaties:
-    - waar wil je naartoe?
-    - welke stap is dan na DSFB2?
-    - plan van aanpak om daar ca 4 dagen aan te werken dit blok
+Plan open ruimte af:
+
+ - waar wil je naartoe?
+ - welke stap is dan na DSFB2?
+ - plan van aanpak om daar ca 4 dagen aan te werken dit blok
+
+## les 8 (16 mei)
+
+presentaties portfolio (5-10 minuten per persoon)
+
+ - wat heb je af
+ - opmaak
+ - wat komt er nog
+ - toelichting open ruimte (groot deel)
+
+verzamel en verwerk de feedback! We doen dit niet voor niets 3 weken voor de deadline.
 
 ## voorbeelden
 
  - Snakemake uitzoeken
  - start maken met python
+ - meer NGS workflows leren
  - goed worden in SQL
- - beter worden in shiny
+ - shiny leren
  - labjournaals automatiseren
  - toepassingen R in microbiologie uitzoeken
+
+## voorbeelden
+
+ - pca
+ - proteomics
+ - chemoinformatic
  - start maken met machine learning
- - RNA-sequencing uitpluizen
- - image processing gaan bekijken
+ - image processing data anlyse leren
  - bayesian statistics
  - misschien wil je een premaster of hbo master doen met requirements die je nog niet hebt?
 
 ## uren: 140 (5 EC)
  
- - 6*9=54 uur lessen
- - zelf bijwerken / voorbereiden: 2*9 = 18 uur
- - portfolio 32 uur
+ - 5*9=45 uur lessen
+ - zelf bijwerken / voorbereiden: 3*9 = 27 uur
+ - portfolio afmaken: 32 uur
  
- = 102 uur
  
- --> ca 36 uur (= zeg 4 dagen) de tijd!
- om een start te maken.(+ paar uur voor het rapporteren)
+ --> ca 32 uur (= zeg 4 dagen) de tijd!
+ om een start te maken.(+ 4 uur voor het rapporteren/presenteren)
 
 ## eisen:
 
@@ -107,6 +131,14 @@ Beetje beeld van de mogelijkheden
 ## Vandaag
 
  - lekker lesje syntax
- - cross references & references (demo Mendeley 11:15)
+ - plaatjes, cross references & references 
  - opmaak voor je portfolio (maak er wat van)
  - dagopdracht: inleiding projecticum + references
+
+## dagplanning
+ - 9:00: planning en uitleg open ruimte en portfolio
+ - 9:15 bij iedereen langs wat ze gaan doen voor de open ruimte. 
+ - 10:30 koffie
+ - 10:45 waarom bronnen gebruiken -opdracht
+ - 11:45 lunch
+ - 12:30 hoe bronnen gebruiken -opdracht

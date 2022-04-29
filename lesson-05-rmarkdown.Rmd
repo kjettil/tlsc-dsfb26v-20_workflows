@@ -659,7 +659,7 @@ In the .Rmd file
 ```
 <div class="bordershere">
 text
-</div
+</div>
 ```
 
 Here is an example to get you started with an css file: [click](https://gist.github.com/eirikbakke/1059266/d81dba46c76169c2b253de0baed790677883c221)
@@ -851,11 +851,9 @@ We need a file with all the references Zotero is currently managing for you. The
 
 Put the following line in your YAML header:
 
-`bibliography: "'A'"` (don't copy paste, use the slanted single ticks around A, as it is going to be R code)
+bibliography: "%r rbbt::bbt_write_bib("bibliography.json", overwrite = TRUE)%"
 
-but replace A with :
-
-r rbbt::bbt_write_bib('bibliography.json', overwrite = TRUE)
+but replace % with ` 
 
 knit your Rmd file. There will be a new file `bibliography.bib` in your folder, a nicely formatted citation in your tekst, and a bibliograhpy at the bottom of your html.
 

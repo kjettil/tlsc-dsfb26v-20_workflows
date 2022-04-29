@@ -684,6 +684,10 @@ Include a link to the wikipedia page of your topic. Make the link change to a gr
 
 ## Cross referencing {#crossreffy}
 
+note: Rmarkdown seems to have a hickup regarding crossreferences. Please change your output format in the YAML header to:
+
+`output: bookdown::html-document2`
+
 If you label parts of your RMarkdown, you can refer to them later! For instance, if you give names to code chunks, you can refer to them:
 
 See Figure `\@ref(fig:cars-plot)`

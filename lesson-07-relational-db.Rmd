@@ -184,7 +184,7 @@ Keys can be used to join different tables. You have used this before in DAUR1.
 ##### Exercise `r les` {-} 
 Let's refresh your memory. Take the `penguins` dataset. 
 
-As we all know, Adelie penguins love peanut butter, Chinstrap penguins prefer cheese and Gentoo penguins do everything for chocolate.
+As we all know, Adelie penguins love peanut butter, Chinstrap penguins prefer cheese and Gentoo penguins do anything for chocolate.
 
 Here is a table describing food preference:
 ```{r}

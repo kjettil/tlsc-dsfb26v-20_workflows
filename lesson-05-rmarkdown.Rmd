@@ -686,7 +686,9 @@ Include a link to the wikipedia page of your topic. Make the link change to a gr
 
 note: Rmarkdown seems to have a hickup regarding crossreferences. Please change your output format in the YAML header to:
 
-`output: bookdown::html-document2`
+`output: bookdown::html_document2`
+
+(install the bookdown package if needed)
 
 If you label parts of your RMarkdown, you can refer to them later! For instance, if you give names to code chunks, you can refer to them:
 

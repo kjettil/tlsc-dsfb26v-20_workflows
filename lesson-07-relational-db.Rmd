@@ -839,7 +839,9 @@ select * from database.table;
 ```
 Is in fact sending a query for all columns in a table.
 
-You can also ask for specific columns:
+You can also ask for specific columns.
+
+If this doesn't work, type the following, press TAB after actor to get suggestions on column names. Some letter will appear.
 
 ```
 SELECT
@@ -855,6 +857,8 @@ Select only the customer_id column from the customer table.
 </div>
 
 The following example uses the SELECT statement to return full names and emails of all actors, using `||` as the concatenating operator that concatenates one or more strings into a single string, and using `AS` to give the new column a descriptive name. Try what happens if you omit the "AS full_name".
+
+If this doesn't work, type the following, press TAB after actor to get suggestions on column names. Some letter will appear.
 
 ```
 SELECT 
@@ -1274,7 +1278,7 @@ dbDisconnect(con)
  
  1. Show some descriptive statistics with this table, and at least 3 visualisations using ggplot2.
  
- 1. show all of your actions in this assignment in a Rmd file, perhaps with pictures and provide text explaining and showcasing your skills.
+ 1. Write a short report to show at least te actions listed in this assignment in a Rmd file for your portfolio. Include pictures and provide text explaining and showcasing your skills. 
 
 
 ## Resources

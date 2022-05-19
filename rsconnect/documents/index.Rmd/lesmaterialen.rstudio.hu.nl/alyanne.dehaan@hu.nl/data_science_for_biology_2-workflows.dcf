@@ -5,7 +5,7 @@ account: alyanne.dehaan@hu.nl
 server: lesmaterialen.rstudio.hu.nl
 hostUrl: https://lesmaterialen.rstudio.hu.nl/__api__
 appId: 13
-bundleId: 264
+bundleId: 269
 url: https://lesmaterialen.rstudio.hu.nl/workflows-reader/
-when: 1651953813.00116
-lastSyncTime: 1651953813.00117
+when: 1652874977.65114
+lastSyncTime: 1652874977.6512

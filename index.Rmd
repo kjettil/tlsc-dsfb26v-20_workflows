@@ -1,7 +1,7 @@
 --- 
 title: "Data Science Workflows Course" 
 subtitle: "HU OSIRIS: tlsc-dsfb26v-20_workflows"
-author: "docenten:  Alyanne de Haan, Chris van Oevelen"
+author: "Hogeschool Utrecht: Alyanne de Haan, Marc Teunis, Bas van Gestel"
 date: "2021/2022"
 site: bookdown::bookdown_site
 output: 
@@ -199,3 +199,11 @@ install.packages("bookdown")
 ```
 
 We will use it extensively in this course.
+
+## License
+
+Part of this course if written by us, part of it is inspired by different sources. Please cite the original source if you use anything we also borrowed. Please cite us if you use our work.
+
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)

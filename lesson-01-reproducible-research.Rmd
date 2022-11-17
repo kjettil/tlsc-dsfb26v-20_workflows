@@ -757,3 +757,7 @@ resource: https://www.researchgate.net/publication/340244621_Reproducibility_and
 https://www.displayr.com/what-is-reproducible-research/
 
 https://book.fosteropenscience.eu/en/02OpenScienceBasics/04ReproducibleResearchAndDataAnalysis.html
+
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. Unless it was borrowed (there will be a link), in which case, please use their license.
+

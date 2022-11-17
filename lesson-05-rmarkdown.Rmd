@@ -1011,5 +1011,6 @@ https://nceas.github.io/sasap-training/materials/reproducible_research_in_r_fair
 
 https://guides.github.com/features/mastering-markdown/
 
-
-
+</br>
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. Unless it was borrowed (there will be a link), in which case, please use their license.

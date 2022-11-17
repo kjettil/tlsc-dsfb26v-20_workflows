@@ -996,3 +996,6 @@ For the projecticum folder, make sure you do this together with your lab partner
  - [Guerrilla Analytics](https://guerrilla-analytics.net/the-principles/)
  - [Guerrilla Analytics 'slides'](https://www.slideshare.net/guerrillaanalytics/2014-10-newcastle-university-02web)
  - [F1000 'Preparing your data for sharing'](https://f1000research.com/for-authors/data-guidelines#prepareyourdata)
+
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. Unless it was borrowed (there will be a link), in which case, please use their license.

@@ -511,3 +511,8 @@ This lesson has no portfolio assignment. The exercises within this lesson of cou
 
 https://github.com/jvandemo/github-scrum-workflow
 https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/managing-your-work-with-issues-and-pull-requests
+
+
+</br>
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. Unless it was borrowed (there will be a link), in which case, please use their license.

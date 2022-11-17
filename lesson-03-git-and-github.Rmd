@@ -321,3 +321,7 @@ Note the following points:
 This assignment will show us whether you succeeded in reaching an overview of the field and possibilities in data science for biology.
 
 </div>
+
+</br>
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. Unless it was borrowed (there will be a link), in which case, please use their license.

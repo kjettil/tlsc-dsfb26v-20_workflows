@@ -172,3 +172,5 @@ Use a minus sign if you don't want to include the names:
 Van der Ploeg says so too [-@vdploeg04].
   ```
 
+</br>
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)

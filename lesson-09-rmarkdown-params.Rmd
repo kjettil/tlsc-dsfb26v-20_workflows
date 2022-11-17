@@ -39,6 +39,8 @@ library(blscrapeR)
  - RMarkdown parameters (params in yaml header, params in chunks)
  - Using `rmarkdown::render()` to render one or multiple parameterized reports
 
+Note that class time this week will be mostly spend on the practice job interviews.
+
 ## Introduction
 
 As we saw previously, RMarkdown is R's answer to doing reproducible research. In this lesson we take the next step in customization of RMardown reports. We will see that RMarkdown can be used for a number of semi- and fully automated reporting work flows. 
@@ -116,3 +118,6 @@ Remember that your portfolio is an online CV. It needs to look like something yo
  - https://rmarkdown.rstudio.com/developer_parameterized_reports.html%23parameter_types%2F
  - https://bookdown.org/yihui/rmarkdown/parameterized-reports.html
 
+</br>
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. Unless it was borrowed (there will be a link), in which case, please use their license.

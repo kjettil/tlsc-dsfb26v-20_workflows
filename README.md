@@ -2,8 +2,6 @@
 
 This is the bookdown course repo for the Data Science for Biology 2 Module; Course Workflows
 
-hi!
-
 To install all dependencies needed to build the bookdown locally, clone the repo to your environment and run in R:
 
 ``` 

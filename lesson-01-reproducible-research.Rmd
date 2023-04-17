@@ -294,7 +294,7 @@ We will practice this a bit and see this happening live in an exercise
  1. Look at this article in the Microsoft help: https://support.microsoft.com/en-us/office/stop-automatically-changing-numbers-to-dates-452bd2db-cc96-47d1-81e4-72cec11c4ed8
  1. Change the column `Example Gene Name Conversion` in the file 
 [here](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1044-7#Sec1). to text. 
- 1. Change the column named `GENE SYMBOL` in [this file](http://genesdev.cshlp.org/content/suppl/2009/11/03/23.21.2484.DC2/Bilodeau_Supp_Table_11.xls) to text. (from the previous exercise)
+ 1. Change the column named `GENE SYMBOL` in [this file](http://genesdev.cshlp.org/content/suppl/2009/11/03/23.21.2484.DC2/Bilodeau_Supp_Table_11.xls) to text. 
  1. Now try to find the wrongly converted gene called `40059` in this data file
  1. On the basis of your observations in this exercise: what are your conclusions about using Excel. How could you make the use of Excel _safer_ for data collection and analysis? What would you recommend your peers? Write (in Rmd) a short recommendation on the safe use of Excel for data collection (min 200 words). Keep this advice around! If you plan on being the person at a lab that "is quite good with data" or helps out with data analysis, you *will* use this in the future.
 
